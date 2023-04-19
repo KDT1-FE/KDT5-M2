@@ -3,14 +3,18 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanPlugin } = require("webpack");
 
+// Production
 module.exports = {
   mode: "production",
+  devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "../build"),
-    filename: "js/index.js",
+    filename: "js/[name].js",
+    sourceMapFilename: "./js/[name].js.map",
   },
   module: {
     rules: [
+      // Babel-Loader
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -24,20 +28,32 @@ module.exports = {
           },
         },
       },
+      // CSS-Loader
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      // SASS-Loader
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+      // Source-Map-Loader
+      {
+        test: [/\.js$/, /\.jsx>/],
+        enforce: "pre",
+        exclude: /node_modules/,
+        use: ["source-map-loader"],
+      },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+    }),
     new MiniCssExtractPlugin({
-      filename: "css/style.css",
+      filename: "css/[name].css",
     }),
     new CleanPlugin(),
   ],

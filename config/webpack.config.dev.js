@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanPlugin } = require("webpack");
 
+// Development
 module.exports = {
   mode: "development",
   output: {
     path: path.resolve(__dirname, "../build"),
-    filename: "index.js",
+    filename: "[name].js",
   },
   devServer: {
     static: {
@@ -15,10 +16,10 @@ module.exports = {
     },
     port: 3000,
     liveReload: true,
-    watchFiles: "index.html",
   },
   module: {
     rules: [
+      // Babel-Loader
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -32,10 +33,12 @@ module.exports = {
           },
         },
       },
+      // CSS-Loader
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      // SASS-Loader
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
@@ -43,9 +46,13 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+      filename: "./index.html",
+    }),
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: "css/[name].css",
     }),
     new CleanPlugin(),
   ],
