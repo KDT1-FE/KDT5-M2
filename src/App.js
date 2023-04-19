@@ -1,9 +1,10 @@
-import "./style.scss";
+import { getMovie } from "./lib/api/movieApi";
+import Header from "/src/components/Header";
 
 function App() {
   return (
     <>
-      <h1 className="title">vkvvkvkvk</h1>
+      <Header />
     </>
   );
 }
