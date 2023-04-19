@@ -7,7 +7,7 @@ module.exports = {
   mode: "production",
   output: {
     path: path.resolve(__dirname, "../build"),
-    filename: "index.js",
+    filename: "js/index.js",
   },
   module: {
     rules: [
@@ -37,7 +37,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: "css/style.css",
     }),
     new CleanPlugin(),
   ],
