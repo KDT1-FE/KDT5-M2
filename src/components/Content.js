@@ -6,7 +6,7 @@ function Content() {
     <ContentWrapper>
       <MovieList>
         <MovieItem>
-          <MovieInfoContainer>
+          <MovieInfoContainer className="info-hover">
             <Movietitle>제목</Movietitle>
             <MovieGenre>
               <span>장르1</span>
@@ -60,8 +60,11 @@ const MovieItem = styled.li`
   align-items: center;
   position: relative;
   @media all and (min-width: 320px) and (max-width: 1024px) {
-    & {
-      height: 500px;
+    height: 500px;
+  }
+  &:hover {
+    .info-hover {
+      opacity: 1;
     }
   }
 `;
@@ -73,15 +76,18 @@ const MovieInfoContainer = styled.div`
   bottom: 0;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  border-radius: 0 0 16px 16px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 `;
 
 const Movietitle = styled.h2`
   font-weight: 700;
   font-size: 2rem;
   @media all and (min-width: 320px) and (max-width: 1024px) {
-    & {
-      font-size: 28px;
-    }
+    font-size: 28px;
   }
 `;
 
