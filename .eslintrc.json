@@ -36,6 +36,7 @@
         "allowTypedFunctionExpressions": true,
         "allowHigherOrderFunctions": true
       }
-    ]
+    ],
+    "react/require-default-props": false
   }
 }
