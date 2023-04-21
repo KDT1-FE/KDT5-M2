@@ -1,19 +1,18 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { getMovie } from "./lib/api/movieApi";
-import Header from "/src/components/Header";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ErrorPage from "./routes/ErrorPage";
+import MainPage from "./routes/MainPage";
+import SearchPage from "./routes/SearchPage";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Space />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
-
-const Space = styled.div`
-  margin-bottom: 60px;
-`;
 
 export default App;
