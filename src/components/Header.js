@@ -1,22 +1,31 @@
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
-import { useRef, useState } from "react";
-import { colors } from "../styles/colors";
+import { useState } from "react";
+import { colors } from "../lib/styles/colors";
+import { useNavigate } from "react-router-dom";
 
+// Component
 function Header() {
+  // Hooks
   const [searchOpen, setSearchOpen] = useState(false);
   const [color, setColor] = useState();
-  const scrollRef = useRef();
+  const navigate = useNavigate();
 
+  // Function
   const handleSearchOpen = () => {
     setSearchOpen(!searchOpen);
     setColor(!color);
   };
 
+  const goHome = () => {
+    navigate("/");
+  };
+
+  // Render
   return (
-    <Container>
+    <HeaderContainer>
       <HeaderContent>
-        <h1>MovieApp</h1>
+        <h1 onClick={goHome}>MovieApp</h1>
         <SearchContainer>
           <SearchButton
             onClick={handleSearchOpen}
@@ -33,11 +42,13 @@ function Header() {
           </Search>
         </SearchContainer>
       </HeaderContent>
-    </Container>
+    </HeaderContainer>
   );
 }
 
-const Container = styled.header`
+// Style
+const HeaderContainer = styled.header`
+  width: 100%;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -45,6 +56,8 @@ const Container = styled.header`
   padding: 0 20px;
   border-bottom: 1px solid ${colors.gray[7]};
   background: ${colors.gray[0]};
+  position: fixed;
+  top: 0;
 `;
 
 const HeaderContent = styled.div`
@@ -57,6 +70,7 @@ const HeaderContent = styled.div`
   h1 {
     font-weight: 300;
     font-size: 24px;
+    cursor: pointer;
   }
 `;
 
