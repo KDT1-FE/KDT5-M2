@@ -1,88 +1,74 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { MdSearch } from "react-icons/md";
+import { useRef, useState } from "react";
 
-// Styles
-const HeaderContainer = styled.header`
-  width: 100%;
+function Header() {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const scrollRef = useRef();
+  const handleSearchOpen = () => {
+    setSearchOpen(!searchOpen);
+  };
+  return (
+    <Container>
+      <HeaderContent>
+        <h1>MovieApp</h1>
+        <Search>
+          <SearchButton onClick={handleSearchOpen} />
+          <form className="active">
+            <select>
+              <option value="">1</option>
+              <option value="">1</option>
+              <option value="">1</option>
+              <option value="">1</option>
+            </select>
+            <input type="text" />
+          </form>
+        </Search>
+      </HeaderContent>
+    </Container>
+  );
+}
+
+const Container = styled.header`
   height: 60px;
   background: coral;
-  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  z-index: 9999;
+  padding: 0 20px;
 `;
 
 const HeaderContent = styled.div`
   max-width: 1280px;
   width: 1280px;
   height: inherit;
-  background: cornflowerblue;
+  background: blueviolet;
   display: flex;
   justify-content: space-between;
   align-items: center;
   h1 {
-    font-weight: 700;
+    font-weight: 300;
     font-size: 24px;
   }
 `;
 
-const Search = styled.form`
-  color: #000;
+const SearchButton = styled(MdSearch)`
+  font-size: 36px;
+  cursor: pointer;
+`;
+
+const Search = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  cursor: pointer;
-  svg {
-    font-size: 32px;
+  form {
+    opacity: 0;
+    width: 0;
+    .active {
+      opacity: 1;
+      width: auto;
+    }
   }
 `;
-
-const Input = styled.input`
-  transition: all 0.4s ease-in-out;
-  width: 0;
-  visibility: hidden;
-  height: 30px;
-  border: none;
-  border-radius: 4px;
-  &.active {
-    width: 150px;
-    visibility: visible;
-    margin-left: 8px;
-  }
-`;
-
-// Component
-function Header() {
-  // Hooks
-  const [searchOpen, setSearchOpen] = useState(false);
-
-  // Function
-  const onSearchAnimation = () => {
-    setSearchOpen(!searchOpen);
-  };
-
-  // Render
-  return (
-    <HeaderContainer>
-      <HeaderContent>
-        <h1>MovieApp</h1>
-        <nav>
-          <Search>
-            <MdSearch onClick={onSearchAnimation} />
-            <Input
-              placeholder="영화를 입력하세요."
-              className={searchOpen && "active"}
-            />
-          </Search>
-        </nav>
-      </HeaderContent>
-    </HeaderContainer>
-  );
-}
 
 export default Header;
