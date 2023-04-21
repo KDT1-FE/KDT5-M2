@@ -49,6 +49,9 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${colors.gray[9]};
   }
+  * {
+    box-sizing: inherit;
+  }
 `;
 
 export default GlobalStyle;
