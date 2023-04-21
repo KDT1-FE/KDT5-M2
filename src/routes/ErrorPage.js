@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdOutlineWarningAmber } from "react-icons/md";
-import { colors } from "../styles/colors";
+import { colors } from "../lib/styles/colors";
 
 function ErrorPage() {
   return (
