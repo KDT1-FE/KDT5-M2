@@ -51,7 +51,6 @@ const HeaderContent = styled.div`
   max-width: 1280px;
   width: 1280px;
   height: inherit;
-  /* background: blueviolet; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,7 +64,6 @@ const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  /* background: coral; */
 `;
 
 const Search = styled.form`
