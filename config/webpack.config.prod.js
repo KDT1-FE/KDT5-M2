@@ -9,8 +9,8 @@ module.exports = {
   devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "../build"),
-    filename: "js/[name].js",
-    sourceMapFilename: "./js/[name].js.map",
+    filename: "js/[name].[hash:8].js",
+    sourceMapFilename: "./js/[id].[hash:8].js.map",
   },
   module: {
     rules: [
@@ -51,6 +51,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
+      filename: "./index.html",
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",

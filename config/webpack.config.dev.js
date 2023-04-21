@@ -6,6 +6,7 @@ const { CleanPlugin } = require("webpack");
 // Development
 module.exports = {
   mode: "development",
+  devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "../build"),
     filename: "[name].js",
@@ -16,6 +17,7 @@ module.exports = {
     },
     port: 3000,
     liveReload: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -49,7 +51,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
-      filename: "./index.html",
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
