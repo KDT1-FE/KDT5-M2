@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function MovieSearch() {
   const [movies, setMovies] = useState([])
+  const navigate = useNavigate()
 
   async function getMovies(searchValue) {
     const res = await fetch(
@@ -11,6 +13,7 @@ export default function MovieSearch() {
       }
     )
     const { Search } = await res.json()
+    console.log(Search)
     return Search
   }
 
@@ -37,6 +40,10 @@ export default function MovieSearch() {
     }
   }
 
+  function handleMovieInfo(movie) {
+    navigate(`/MovieInfo/${movie}`)
+  }
+
   return (
     <>
       <h1>영화 리스트</h1>
@@ -50,6 +57,11 @@ export default function MovieSearch() {
         {movies.map(movie => (
           <li key={movie.imdbID}>
             {movie.Title} {movie.Year}
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+              onClick={() => handleMovieInfo(movie.imdbID)}
+            />
           </li>
         ))}
       </ul>
