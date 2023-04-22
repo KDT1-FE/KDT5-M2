@@ -5,7 +5,6 @@ import Main from "../components/Main";
 function MainPage({ movies }) {
   return (
     <>
-      <Header />
       <Main movies={movies} />
     </>
   );
