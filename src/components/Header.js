@@ -1,22 +1,27 @@
-import styled from "styled-components";
-import { MdSearch } from "react-icons/md";
+import styled, { css } from "styled-components";
+import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { colors } from "../lib/styles/colors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
+// Data
+const categories = [
+  {
+    name: "검색",
+    url: "/",
+  },
+  {
+    name: "영화",
+    url: "/movies",
+  },
+];
 
 // Component
-function Header() {
+function Header({ category, onMenuSelect }) {
   // Hooks
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [color, setColor] = useState();
   const navigate = useNavigate();
 
   // Function
-  const handleSearchOpen = () => {
-    setSearchOpen(!searchOpen);
-    setColor(!color);
-  };
-
   const goHome = () => {
     navigate("/");
   };
@@ -26,21 +31,20 @@ function Header() {
     <HeaderContainer>
       <HeaderContent>
         <h1 onClick={goHome}>MovieApp</h1>
-        <SearchContainer>
-          <SearchButton
-            onClick={handleSearchOpen}
-            className={color && "btn-active"}
-          />
-          <Search className={searchOpen && "active"}>
-            <select>
-              <option value="">1</option>
-              <option value="">1</option>
-              <option value="">1</option>
-              <option value="">1</option>
-            </select>
-            <input type="text" placeholder="영화를 입력하세요" />
-          </Search>
-        </SearchContainer>
+        <StyledNav>
+          {categories.map((c) => (
+            <StyledLink
+              to={c.url}
+              active={category === c.name}
+              onClick={() => onMenuSelect(c.name)}
+            >
+              {c.name}
+            </StyledLink>
+          ))}
+        </StyledNav>
+        <Link to="https://github.com/KDT1-FE/KDT5-M2/tree/KDT5_KimPilJin">
+          <GithubButton />
+        </Link>
       </HeaderContent>
     </HeaderContainer>
   );
@@ -74,48 +78,38 @@ const HeaderContent = styled.div`
   }
 `;
 
-const SearchContainer = styled.div`
+const StyledNav = styled.nav`
+  flex: 1;
+  padding: 0 40px;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  gap: 16px;
 `;
 
-const Search = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-  width: 0;
-  visibility: hidden;
-  opacity: 0;
-  select {
-    width: 100px;
-    height: 40px;
-    border: none;
-    margin-right: 10px;
-    background: transparent;
-    border-bottom: 2px solid ${colors.gray[9]};
-  }
-  input {
-    width: 180px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    border-bottom: 2px solid ${colors.gray[9]};
-  }
-  &.active {
-    width: 290px;
-    visibility: visible;
-    opacity: 1;
-  }
-`;
-
-const SearchButton = styled(MdSearch)`
-  font-size: 36px;
+const StyledLink = styled(Link)`
+  padding: 10px 20px;
   cursor: pointer;
-  color: ${colors.gray[9]};
-  &.btn-active {
-    color: ${colors.red[6]};
+  font-size: 18px;
+  color: ${colors.gray[6]};
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${colors.gray[9]};
+  }
+  ${(props) =>
+    props.active &&
+    css`
+      font-weight: 500;
+      background: ${colors.yellow[5]};
+      border-radius: 8px;
+      color: ${colors.gray[9]};
+    `}
+`;
+
+const GithubButton = styled(FaGithub)`
+  font-size: 36px;
+  color: ${colors.gray[6]};
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color: ${colors.gray[9]};
   }
 `;
 
