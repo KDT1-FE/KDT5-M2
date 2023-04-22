@@ -48,11 +48,11 @@ function bundleFrontServer() {
       filename: 'server.js',
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     module: {
       rules: [
-        { test: /\.(js|jsx)$/, use: 'babel-loader' },
+        { test: /\.jsx?$|\.tsx?$/, use: 'babel-loader' },
         { test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg)$/, use: 'url-loader' },
         { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
       ],

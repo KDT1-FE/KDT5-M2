@@ -12,6 +12,14 @@ let assets = {
   'main.css': '/main.css',
 }
 
+let metaData = {
+  '/': {
+    title: 'Home',
+    description: 'Home Page',
+    keywords: 'Home, Page',
+  },
+}
+
 export default async function render(url, res) {
   res.socket.on('error', (error) => {
     console.error('soket연결애 실패했습니다.\n', error)

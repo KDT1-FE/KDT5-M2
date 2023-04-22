@@ -1,25 +1,18 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
 import { Suspense, lazy } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import Html from './Html.jsx'
-import Spinner from './components/Spinner.jsx'
-import Layout from './components/Layout.jsx'
-import NavBar from './components/NavBar.jsx'
+import Spinner from './Spinner.jsx'
+import Layout from './Layout.jsx'
+import NavBar from './NavBar.jsx'
 
-const Comments = lazy(() => import('./components/Comments.jsx' /* webpackPrefetch: true */))
-const Sidebar = lazy(() => import('./components/Sidebar.jsx' /* webpackPrefetch: true */))
-const Post = lazy(() => import('./components/Post.jsx' /* webpackPrefetch: true */))
+// * 사용자가 접속할 확률이 높은 컴포넌트라면 webpackPrefetch를 true로 설정합니다.
+const Comments = lazy(() => import('./Comments.jsx' /* webpackPrefetch: true */))
+const Sidebar = lazy(() => import('./Sidebar.jsx' /* webpackPrefetch: true */))
+const Post = lazy(() => import('./Post.jsx' /* webpackPrefetch: true */))
 
-export default function App({ assets }) {
+export default function App({ assets, title }) {
   return (
-    <Html assets={assets} title='Hello'>
+    <Html assets={assets} title='SUPER VECTOR'>
       <Suspense fallback={<Spinner />}>
         <ErrorBoundary FallbackComponent={Error}>
           <Content />
