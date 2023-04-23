@@ -20,13 +20,13 @@ app.use((req, res, next) => {
 app.use(compress())
 
 // * Home 페이지로 이동합니다.
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
   // todo : 이 곳에 어던 페이지에서 render를 요청했다는 코드가 들어가야합니다. 그래야 페이지마다 SSR이 가능합니다.
   console.log(req.url)
 
   render(req.url, res)
 })
-app.use(express.static('build'))
+app.use(express.static('build-ssr'))
 app.use(express.static('public'))
 
 app

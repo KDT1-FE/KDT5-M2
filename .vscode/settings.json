@@ -1,13 +1,13 @@
 {
   // * prettier default
   //  .prettierrc.json || .prettierrc.json
-  "editor.defaultFormatter": "esbenp.prettier-vscode", // prettier가 deafault fomatter 입니다
-  "prettier.singleQuote": true, // single quote를 사용합니다.
-  "prettier.semi": false,
-  "prettier.tabWidth": 2,
-  "prettier.trailingComma": "all",
-  "prettier.singleAttributePerLine": false,
-  "prettier.printWidth": 100,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode", // prettier가 deafault fomatter 입니다
+  // "prettier.singleQuote": true, // single quote를 사용합니다.
+  // "prettier.semi": false,
+  // "prettier.tabWidth": 2,
+  // "prettier.trailingComma": "all",
+  // "prettier.singleAttributePerLine": false,
+  // "prettier.printWidth": 100,
 
   // * prettier 개별 설정
   "[javascript]": {},

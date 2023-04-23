@@ -8,7 +8,7 @@ const routes = [
       return json({ message: 'Welcome to React Router!' })
     },
     Component() {
-      let data = useLoaderData()
+      const data = useLoaderData()
       return <h1>{data.message}</h1>
     },
   },

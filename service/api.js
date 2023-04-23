@@ -5,7 +5,7 @@ import axios from 'axios'
  * @param {string} query
  * @returns {Promise<{} | null>}
  */
-export async function getSearchMovies(query) {
+export default async function getSearchMovies() {
   try {
     const { data } = await axios({
       url: `https://omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=frozen`,

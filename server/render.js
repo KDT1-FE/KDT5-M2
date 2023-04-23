@@ -1,27 +1,24 @@
 import React from 'react'
 import { renderToPipeableStream } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom/server'
+import dotenv from 'dotenv'
 import App from '../src/App'
 import { MovieProvider } from '../src/context/movieContext'
 
-import { getSearchMovies } from '../service/api.js'
+import getSearchMovies from '../service/api'
 
-// * 서버에서 라우터 정보를 react-router-dom에게 보냅니다. StaticRouter가 없다면 SSR시 StaticRouter가 감싸는 컴포넌트 내에서 useRoutes context를 사용할 수 없습니다.
-// StaticRouter(서버 라우터) == BrowserRouter(클라이언트 라우터)
-import { StaticRouter } from 'react-router-dom/server'
-
+/**
+ * * 서버에서 라우터 정보를 react-router-dom에게 보냅니다.
+ * * StaticRouter가 없다면 SSR시 StaticRouter가 감싸는 컴포넌트 내에서 useRoutes context를 사용할 수 없습니다.
+ * * StaticRouter(서버 라우터) == BrowserRouter(클라이언트 라우터)
+ */
 import { ABORT_DELAY } from './delays'
-import dotenv from 'dotenv'
+
 dotenv.config()
 
-let assets = {
+const assets = {
   'main.js': '/main.js',
   'main.css': '/main.css',
-}
-
-let metaData = {
-  title: 'Home',
-  description: 'Home Page',
-  keywords: 'Home, Page',
 }
 
 export default async function render(url, res) {
@@ -43,15 +40,14 @@ export default async function render(url, res) {
    *   )
    */
 
-  // * TEST CODE
   const stream = renderToPipeableStream(
     <MovieProvider data={stringifySearchData}>
-      <html lang='en'>
+      <html lang="en">
         <head>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1' />
-          <link rel='shortcut icon' href='favicon.ico' />
-          <link rel='stylesheet' href={assets['main.css']} />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="shortcut icon" href="favicon.ico" />
+          <link rel="stylesheet" href={assets['main.css']} />
           <title>Movie App</title>
         </head>
         <body>
@@ -61,14 +57,14 @@ export default async function render(url, res) {
             }}
           />
         </body>
-        <div id='root'>
+        <div id="root">
           <StaticRouter location={url}>
             <App assets={assets} />
           </StaticRouter>
 
           {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
         </div>
-        <script id='__SERVER_DATA__' type='application/json'>
+        <script id="__SERVER_DATA__" type="application/json">
           {stringifySearchData}
         </script>
         {/* // ? 이 부분에 삽입된 데이터는 HTML Entity가 되는데 변환시키지 않고 보낼 방법을 아직 못 찾았습니니다. (추가적으로 decode해줘야하기 떄문에 필요할 것 같습니다.) */}

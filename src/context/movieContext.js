@@ -1,9 +1,15 @@
-import { createContext, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
+import PropTypes from 'prop-types'
 
 const MovieContext = createContext(null)
 
 export function MovieProvider({ children, data }) {
   return <MovieContext.Provider value={data}>{children}</MovieContext.Provider>
+}
+
+MovieProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  data: PropTypes.string.isRequired, // JSON.stringify된 데이터입니다.
 }
 
 export function useMoviesData() {
@@ -17,5 +23,5 @@ export function useMoviesData() {
   // * 아래 serverData와 ctx는 동일한 값을 가지고 있씁니다.
   const serverData = document.getElementById('__SERVER_DATA__')?.textContent
   if (serverData) return serverData
-  else return null
+  return null
 }
