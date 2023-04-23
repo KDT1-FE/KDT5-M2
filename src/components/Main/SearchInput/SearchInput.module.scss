@@ -15,12 +15,14 @@ section {
     width: 100%;
     padding: 20px 300px;
 
-    .movies {
+    .moviesWrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-
+      .movies {
+        text-align: center;
+      }
       .movie {
         display: block;
         --width: 300px;
@@ -34,9 +36,10 @@ section {
       }
       .movieInfo {
         color: white;
-        font-size: 32px;
+        font-size: 1.3rem;
         font-family: 양진체;
         max-width: 300px;
+        margin-top: 16px;
       }
     }
   }
