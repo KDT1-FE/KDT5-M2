@@ -6,6 +6,6 @@ export async function fetchMovies(inputText) {
     method: "GET",
   });
   // ` || [] `:  array.map 오류 방지
-  console.log(data.Searach);
+  console.log(data);
   return data.Search || [];
 }

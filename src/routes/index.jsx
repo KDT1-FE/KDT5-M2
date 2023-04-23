@@ -1,3 +1,5 @@
+// index.jsx 파일을 통해 router 관리
+
 import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 import App from "../App";
