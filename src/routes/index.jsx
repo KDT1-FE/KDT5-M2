@@ -1,13 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
+import Movie from './Movie'
 
 export default createBrowserRouter([
-  // path: '페이지 경로'
-  // element: '페이지에서 사용할 컴포넌트'
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: '/movie',
+    element: <Movie />
   },
   {
     path: '/about',
