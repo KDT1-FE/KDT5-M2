@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanPlugin } = require("webpack");
+const { CleanPlugin, DefinePlugin } = require("webpack");
 
 // Development
 module.exports = {
@@ -56,5 +56,8 @@ module.exports = {
       filename: "css/[name].css",
     }),
     new CleanPlugin(),
+    new DefinePlugin({
+      process: { env: {} },
+    }),
   ],
 };
