@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import ErrorPage from "./routes/ErrorPage";
 import MainPage from "./routes/MainPage";
 import MoviePage from "./routes/MoviePage";
-import SearchPage from "./routes/SearchPage";
 
 function App() {
   // Hooks
@@ -17,7 +16,6 @@ function App() {
       <Header category={category} onMenuSelect={onMenuSelect} />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/search/:title" element={<SearchPage />} />
         <Route path="/movies" element={<MoviePage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
