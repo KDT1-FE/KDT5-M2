@@ -1,0 +1,42 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+node_modules
+bower_componets
+dist
+dist-ssr
+
+# Optional npm cache directory
+.npm
+
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional eslint cache
+.eslintcache
+
+# Thumbnails
+._*
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
