@@ -1,5 +1,10 @@
 import React from "react";
+import TheHeader from "../components/Header/TheHeader";
 
 export default function Movie() {
-  return <h1>Movie page!</h1>;
+  return (
+    <>
+      <TheHeader />
+    </>
+  );
 }
