@@ -55,7 +55,6 @@ function bundleFrontApp(callback) {
     },
   }
   webpack(config, (err, stats) => {
-    console.log(err)
     if (stats.hasErrors()) {
       console.error(err)
       const info = stats.toJson()

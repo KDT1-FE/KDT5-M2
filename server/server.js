@@ -7,13 +7,13 @@ const PORT = process.env.PORT || 4000
 const app = express()
 
 // .js파일 로드시간늦춰서 ssr을 확인해 보기 위한 코드입니다.
-app.use((req, res, next) => {
-  if (req.url.endsWith('.js')) {
-    setTimeout(next, JS_BUNDLE_DELAY)
-  } else {
-    next()
-  }
-})
+// app.use((req, res, next) => {
+//   if (req.url.endsWith('.js')) {
+//     setTimeout(next, JS_BUNDLE_DELAY)
+//   } else {
+//     next()
+//   }
+// })
 
 // Content-Encoding : gzip을 설정하고, 웹 서버에서 클라이언트에게 보낼 파일을 압축합니다.
 // 2023/04/21기준 (커밋 확인) main.js 파일 용량이 148kb에서 48kb로 줄었습니다.

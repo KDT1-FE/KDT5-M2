@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Routes, Route } from 'react-router-dom'
-import Error from './Error'
-import Spinner from './Spinner'
-import Content from './Content'
+import Error from './components/Error'
+import Spinner from './components/Spinner'
+import Home from './pages/Home'
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         element={
           <Suspense fallback={<Spinner />}>
             <ErrorBoundary FallbackComponent={Error}>
-              <Content />
+              <Home />
             </ErrorBoundary>
           </Suspense>
         }

@@ -4,17 +4,21 @@
  */
 import React from 'react'
 import htmlEntitiesDecoder from 'html-entities-decoder'
-import { useMoviesData } from './context/movieContext'
+import { useMoviesData } from '../context/movieContext'
 
 export default function Comments() {
   const movies = JSON.parse(htmlEntitiesDecoder(useMoviesData()))
+
   return (
     <>
-      {movies.map((movie) => (
-        <p className="comment" key={movie}>
-          {movie.Title}
-        </p>
-      ))}
+      {movies.map((movie, i) => {
+        const key = movie.Title + i
+        return (
+          <p className="comment" key={key}>
+            {movie.Title}
+          </p>
+        )
+      })}
     </>
   )
 }

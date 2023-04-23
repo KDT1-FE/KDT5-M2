@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 
 import Spinner from './Spinner'
-import Layout from './Layout'
+import Layout from '../layouts/Layout'
 import NavBar from './NavBar'
 
 // * 사용자가 접속할 확률이 높은 컴포넌트라면 webpackPrefetch를 true로 설정합니다.

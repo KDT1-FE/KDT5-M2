@@ -21,7 +21,9 @@ module.exports = {
     'no-param-reassign': 'off', // DOM을 다루다보면 재할당 할 일이 생긴다고 판단했습니다.
     'import/extensions': 'warn', // js파일을 spliting하기 위해 on -> warn으로 변경 하였습니다.
     'prefer-arrow-callback': 'off', // this를 다루게 될 일이 있을 수도 있으니까 off하였습니다.
+    'no-plusplus': 'off',
     'no-await-in-loop': 'warn',
+    'prefer-const': 'off',
     // library가 .js인 경우도 있기 때문에 .jsx, .js를 모두 컴포넌트로 사용할 수 있습니다.
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },

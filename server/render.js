@@ -20,6 +20,33 @@ const assets = {
   'main.js': '/main.js',
   'main.css': '/main.css',
 }
+function createDelay() {
+  let done = false
+  let promise = null
+  let testData = ''
+  return {
+    read() {
+      console.log('DONE : ', done)
+      console.log('PROMISE : ', promise)
+      console.log('testData : ', testData)
+      if (done) {
+        return
+      }
+      if (promise) {
+        throw promise
+      }
+      promise = new Promise((resolve) => {
+        setTimeout(() => {
+          done = true
+          promise = null
+          testData = 'foo'
+          resolve()
+        }, 9000)
+      })
+      throw promise
+    },
+  }
+}
 
 export default async function render(url, res) {
   res.socket.on('error', (error) => {
@@ -40,8 +67,13 @@ export default async function render(url, res) {
    *   )
    */
 
+  const delay = createDelay()
+  const data = {
+    delay,
+    data: stringifySearchData,
+  }
   const stream = renderToPipeableStream(
-    <MovieProvider data={stringifySearchData}>
+    <MovieProvider data={data}>
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
