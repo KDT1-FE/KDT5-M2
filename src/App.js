@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/common/Header";
 import ErrorPage from "./routes/ErrorPage";
 import MainPage from "./routes/MainPage";
 import MoviePage from "./routes/MoviePage";
