@@ -1,0 +1,30 @@
+header {
+  font-family: "Pretendard";
+  display: flex;
+  height: 100px;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--color-background);
+
+  a {
+    margin-left: 100px;
+    text-decoration: none;
+    font-size: 24px;
+    color: var(--color-white);
+    font-weight: 400;
+  }
+
+  .logo {
+    font-family: "Pretendard";
+    margin-top: 6px;
+    font-size: 56px;
+    letter-spacing: -0.8px;
+    font-weight: 800;
+    color: var(--color-pink);
+  }
+
+  .movie:hover {
+    color: #f82f62;
+    transition: 0.2s;
+  }
+}
