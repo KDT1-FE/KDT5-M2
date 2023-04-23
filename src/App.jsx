@@ -10,15 +10,15 @@ const Comments = lazy(() => import('./Comments.jsx' /* webpackPrefetch: true */)
 const Sidebar = lazy(() => import('./Sidebar.jsx' /* webpackPrefetch: true */))
 const Post = lazy(() => import('./Post.jsx' /* webpackPrefetch: true */))
 
-export default function App({ assets, title }) {
+export default function App() {
   return (
-    <Html assets={assets} title='SUPER VECTOR'>
+    <div>
       <Suspense fallback={<Spinner />}>
         <ErrorBoundary FallbackComponent={Error}>
           <Content />
         </ErrorBoundary>
       </Suspense>
-    </Html>
+    </div>
   )
 }
 

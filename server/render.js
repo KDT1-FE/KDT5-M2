@@ -40,11 +40,34 @@ export default async function render(url, res) {
    */
   const stream = renderToPipeableStream(
     <MovieProvider data={stringifySearchData}>
-      <App assets={assets} />
-      {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
-      <script id='__SERVER_DATA__' type='application/json'>
-        {stringifySearchData}
-      </script>
+      <html lang='en'>
+        <head>
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <link rel='shortcut icon' href='favicon.ico' />
+          <link rel='stylesheet' href={assets['main.css']} />
+          <title>SUPER HECTOR MEOW!!!!</title>
+        </head>
+        <body>
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<b>Enable JavaScript to run this app.</b>`,
+            }}
+          />
+        </body>
+        <div id='root'>
+          <App assets={assets} />
+          {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
+        </div>
+        <script id='__SERVER_DATA__' type='application/json'>
+          {stringifySearchData}
+        </script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `assetManifest = ${JSON.stringify(assets)};`,
+          }}
+        />
+      </html>
     </MovieProvider>,
     {
       // SSR시 bootstrapScripts를 지정해줘야 서버에서 js파일을 먼저 로드합니다.
