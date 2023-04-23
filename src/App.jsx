@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import Html from './Html.jsx'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Spinner from './Spinner.jsx'
 import Layout from './Layout.jsx'
 import NavBar from './NavBar.jsx'
@@ -13,11 +13,18 @@ const Post = lazy(() => import('./Post.jsx' /* webpackPrefetch: true */))
 export default function App() {
   return (
     <div>
-      <Suspense fallback={<Spinner />}>
-        <ErrorBoundary FallbackComponent={Error}>
-          <Content />
-        </ErrorBoundary>
-      </Suspense>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <Suspense fallback={<Spinner />}>
+              <ErrorBoundary FallbackComponent={Error}>
+                <Content />
+              </ErrorBoundary>
+            </Suspense>
+          }
+        />
+      </Routes>
     </div>
   )
 }

@@ -13,3 +13,6 @@
 [babel-register 참고, 외에도 많은 바벨 관련 정보가 많습니다.](https://jbee.io/etc/Everything-about-babel/)
 
 [webpack-prefetch](https://velog.io/@minsu2344/Vue-router-%EC%84%A4%EC%A0%95%EC%9C%BC%EB%A1%9C-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%AF%B8%EB%A6%AC-cache%EC%97%90-%EB%8B%B4%EC%95%84%EB%91%90%EA%B8%B0webpackChunkName-webpackPrefetch)
+
+[react-router-dom v6](https://velog.io/@soryeongk/ReactRouterDomV6)
+[react-route-dom ssr guides](https://reactrouter.com/en/main/guides/ssr)
