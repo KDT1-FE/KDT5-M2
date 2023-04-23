@@ -34,9 +34,9 @@ const SearchInput = () => {
           />
         </div>
         <div className={styles.searchedMovies}>
-          <div className={styles.movies}>
+          <div className={styles.moviesWrapper}>
             {movies.map((movie) => (
-              <div>
+              <div className={styles.movies}>
                 <a
                   className={styles.movie}
                   href={`/movie/${movie.imdbID}`}
