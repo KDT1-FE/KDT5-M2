@@ -58,10 +58,11 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  border-bottom: 1px solid ${colors.gray[7]};
+  /* border-bottom: 1px solid ${colors.gray[7]}; */
   background: ${colors.gray[0]};
   position: fixed;
   top: 0;
+  z-index: 9999;
 `;
 
 const HeaderContent = styled.div`
