@@ -26,6 +26,11 @@ const Empty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 16px;
+  span {
+    font-size: 20px;
+    font-weight: 500;
+  }
 `;
 
 export default SearchEmpty;
