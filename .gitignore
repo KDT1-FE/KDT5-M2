@@ -4,13 +4,10 @@
 .AppleDouble
 .LSOverride
 
-node_modules
-bower_componets
-dist
-dist-ssr
 
 # Optional npm cache directory
 .npm
+.cache
 
 ### Node ###
 # Logs
@@ -21,9 +18,13 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
+# Dependency directory
+node_modules
+bower_componets
+dist
+dist-ssr
 jspm_packages/
+
 
 # Optional eslint cache
 .eslintcache
