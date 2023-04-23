@@ -13,7 +13,31 @@ section {
   }
   .searchedMovies {
     width: 100%;
+    padding: 20px 300px;
 
-    background-color: azure;
+    .movies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+
+      .movie {
+        display: block;
+        --width: 300px;
+        width: var(--width);
+        height: calc(var(--width) * 3 / 2.1);
+        border-radius: 4px;
+        background-color: #ced4da;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+      }
+      .movieInfo {
+        color: white;
+        font-size: 32px;
+        font-family: 양진체;
+        max-width: 300px;
+      }
+    }
   }
 }
