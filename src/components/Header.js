@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { FaGithub } from "react-icons/fa";
-import { useState } from "react";
 import { colors } from "../lib/styles/colors";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -37,6 +36,7 @@ function Header({ category, onMenuSelect }) {
               to={c.url}
               active={category === c.name}
               onClick={() => onMenuSelect(c.name)}
+              key={c.name}
             >
               {c.name}
             </StyledLink>
@@ -90,16 +90,17 @@ const StyledLink = styled(Link)`
   cursor: pointer;
   font-size: 18px;
   color: ${colors.gray[6]};
-  transition: color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
   &:hover {
     color: ${colors.gray[9]};
+    background: ${colors.yellow[2]};
   }
   ${(props) =>
     props.active &&
     css`
       font-weight: 500;
       background: ${colors.yellow[5]};
-      border-radius: 8px;
       color: ${colors.gray[9]};
     `}
 `;
