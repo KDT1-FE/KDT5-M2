@@ -2,7 +2,7 @@
 
 import { createBrowserRouter } from "react-router-dom";
 import React from "react";
-import App from "../App";
+import App from "../components/App";
 import Movie from "./Movie";
 
 export default createBrowserRouter([
@@ -15,5 +15,11 @@ export default createBrowserRouter([
   {
     path: "/movie",
     element: <Movie />,
+    children: [
+      {
+        path: ":movieId",
+        element: <Movie />,
+      },
+    ],
   },
 ]);

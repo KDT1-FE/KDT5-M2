@@ -6,7 +6,7 @@ const TheFooter = () => {
     <>
       <footer>
         <div className={styles.footerDiv}>
-          <h3>hi</h3>
+          <h3>Footer</h3>
         </div>
       </footer>
     </>
