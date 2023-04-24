@@ -1,25 +1,54 @@
 section {
   .inputContainer {
-    padding: 0 100px;
+    position: relative;
+    margin: 50px 100px 0;
+    width: 50vw;
+    border-bottom: 3px solid #fff;
+
     input {
-      width: 60vw;
-      padding: 24px;
+      width: 100%;
+      height: 55px;
       border-radius: 7px;
-      margin: 30px 0;
-      background: rgba(22, 22, 22, 0.7);
-      border-color: rgba(128, 128, 128, 0.7);
+      background: var(--color-background);
       color: var(--color-white);
+      border: 0 none;
+      font-size: 2rem;
+      padding-right: 50px;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--color-pink);
+    }
+    input::placeholder {
+      color: rgba(190, 188, 188, 0.676);
+    }
+
+    .searchButton {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      background-color: transparent;
+      border: 0;
+      .searchIcon {
+        fill: azure;
+        font-size: 36px;
+      }
     }
   }
   .searchedMovies {
     width: 100%;
-    padding: 20px 300px;
+    margin: 30px auto 0;
 
     .moviesWrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
+      padding: 70px 0;
+
+      .message {
+        color: var(--color-pink);
+      }
       .movies {
         text-align: center;
       }
