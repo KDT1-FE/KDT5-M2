@@ -4,7 +4,7 @@ import axios from 'axios'
 export async function request(inputText) {
   const { data } = await axios({
     url: `https://omdbapi.com/?apikey=7035c60c&s=${inputText}}`,
-    method: 'GET',
+    method: 'GET'
   })
   // console.log(data.Search);
   return data.Search
@@ -13,7 +13,7 @@ export async function request(inputText) {
 //화면 출력 함수
 export function renderMovies(ulEl, movies) {
   ulEl.innerHtml = ''
-  movies.forEach((movie) => {
+  movies.forEach(movie => {
     const liEl = document.createElement('li')
     liEl.textContent = movie.Title
     ulEl.append(liEl)

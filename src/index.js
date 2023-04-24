@@ -1,5 +1,8 @@
 // import axios from "axios";
-import { request, renderMovies } from './movie.js'
+import { request, renderMovies } from '~/movie.js'
+import '~/movie.scss'
+import { message } from '~/message.js'
+
 const inputEl = document.querySelector('input')
 const ulEl = document.querySelector('.movies')
 
@@ -17,6 +20,8 @@ const keydownHander = async (event) => {
   }
 }
 inputEl.addEventListener('keydown', keydownHander())
+
+message('1분코딩')
 
 // //비동기 요청 함수
 // async function request(inputText) {
