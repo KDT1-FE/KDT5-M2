@@ -4,9 +4,12 @@ import SearchBox from './SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
 import { Button, Stack, ButtonGroup } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
+import WatchLater from './WatchLater'
+import RemoveToWatch from './RemoveToWatch'
 
 const App = () => {
   const [movies, setMovies] = useState([])
+  const [toWatch, setToWatch] = useState([])
   const [searchValue, setSearchValue] = useState('')
 
   const getMovieRequest = async () => {
@@ -21,6 +24,16 @@ const App = () => {
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue])
+
+  const addToWatch = movie => {
+    const watchList = [...toWatch, movie]
+    setToWatch(watchList)
+  }
+  const removeToWatch = movie => {
+    const watchList = toWatch.filter(li => li.imdbID !== movie.imdbID)
+    setToWatch(watchList)
+  }
+
   return (
     <>
       {/* HEADER */}
@@ -48,9 +61,7 @@ const App = () => {
       </Stack>
       {/* MOVIELIST HEADING */}
       <Stack>
-        <MovieListHeading
-          heading="MOVIE"
-          color="secondary"></MovieListHeading>
+        <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
       {/* MOVIELIST */}
       <Stack
@@ -60,7 +71,28 @@ const App = () => {
         mr={6}
         ml={6}>
         {/* <App  /> */}
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          handleToWatchClick={addToWatch}
+          watchLater={WatchLater}
+        />
+      </Stack>
+      {/* WATCH LATER HEADING */}
+      <Stack>
+        <MovieListHeading heading="Watch Later"></MovieListHeading>
+      </Stack>
+      <Stack
+        direction="row"
+        overflow="scroll"
+        spacing={2}
+        mr={6}
+        ml={6}>
+        {/* <App  /> */}
+        <MovieList
+          movies={toWatch}
+          handleToWatchClick={removeToWatch}
+          watchLater={RemoveToWatch}
+        />
       </Stack>
     </>
   )
