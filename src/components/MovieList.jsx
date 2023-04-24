@@ -6,12 +6,12 @@ const MovieList = props => {
   return (
     <>
       {props.movies.map((movie, index) => (
-        <Box>
+        <Box key={index}>
           <img
             src={movie.Poster}
             alt="movie"
-            width="300px"
-            height="390px"
+            width="200px"
+            height="260px"
           />
         </Box>
       ))}
