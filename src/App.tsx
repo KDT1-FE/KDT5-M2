@@ -1,13 +1,17 @@
-import Container from './components/Container';
-import Navbar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './routes/Home';
+import About from './routes/About';
+import NotFound from './routes/NotFound';
 
 export default function App(): JSX.Element {
   return (
-    <Container>
-      <Navbar />
-      <h1 className="font-Oswald">the Quick fox jumps over the lazy dod</h1>
-      <h1 className="font-bold">the Quick fox jumps over the lazy dod</h1>
-      <h1>the Quick fox jumps over the lazy dod</h1>
-    </Container>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }

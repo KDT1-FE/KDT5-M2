@@ -1,4 +1,5 @@
 import Button from './Button';
+import { Link, NavLink } from 'react-router-dom';
 
 const navItems: NavItem[] = [
   { name: 'Search', href: '/' },
@@ -10,14 +11,23 @@ export default function Navbar(): JSX.Element {
   return (
     <header className="flex justify-between items-center p-2">
       <div className="flex items-center gap-10">
-        <a href="/" className="text-2xl font-Oswald">
+        <Link to="/" className="text-xl font-bold font-Oswald">
           <span className="text-amber-400">OMDbAPI</span>.COM
-        </a>
+        </Link>
+
         <nav>
           <ul className="flex gap-4">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Button name={item.name} onClick={() => {}} />
+                <NavLink to={`${item.href}`}>
+                  {({ isActive }) => {
+                    return isActive ? (
+                      <Button name={item.name} onClick={() => {}} active />
+                    ) : (
+                      <Button name={item.name} onClick={() => {}} />
+                    );
+                  }}
+                </NavLink>
               </li>
             ))}
           </ul>
