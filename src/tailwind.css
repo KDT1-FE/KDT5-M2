@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+body,
+html {
   font-family: system-ui, sans-serif;
+  height: 100vh;
+}
+#root {
+  width: inherit;
+  height: inherit;
 }
 * {
   box-sizing: border-box;

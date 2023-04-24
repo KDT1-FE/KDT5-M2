@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function Layout({ children }) {
-  return <main>{children}</main>
+  return <div className="mr-24 ml-24">{children}</div>
 }
 
 Layout.propTypes = {

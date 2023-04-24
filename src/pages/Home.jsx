@@ -1,37 +1,50 @@
-import React, { lazy, Suspense } from 'react'
-
-import Spinner from '../components/Spinner'
+import React, { useState } from 'react'
 import Layout from '../layouts/Layout'
-import NavBar from '../components/NavBar'
-
-// * 사용자가 접속할 확률이 높은 컴포넌트라면 webpackPrefetch를 true로 설정합니다.
-const Comments = lazy(() => import('../components/Comments' /* webpackPrefetch: true */))
-const Sidebar = lazy(() => import('../components/Sidebar' /* webpackPrefetch: true */))
-const Post = lazy(() => import('../components/Post' /* webpackPrefetch: true */))
+import Header from '../components/Header'
+import { getSearchInfitieMovies } from '../query/query'
+import Search from '../components/Search'
+import SearchList from '../components/SearchList'
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const {
+    data: movies,
+    isLoading,
+    isSuccess,
+    isFetchingNextPage,
+    isFetchingPreviousPage,
+    fetchNextPage,
+    fetchPreviousPage,
+    hasNextPage,
+    hasPreviousPage,
+  } = getSearchInfitieMovies(searchQuery)
+
+  const handleOnSearch = (query) => {
+    setSearchQuery(query)
+  }
+  const GetNextMovies = () => {
+    fetchNextPage()
+  }
   return (
     <Layout>
-      <h1>OMDb API THE OPEN MOVIE DATABASE</h1>
-      <NavBar />
-      <p className="text-3xl font-bold underline">TAIL WIND TEST</p>
-      <aside className="sidebar">
-        <Suspense fallback={<Spinner />}>
-          <Sidebar />
-        </Suspense>
-      </aside>
-      <article className="post">
-        <Suspense fallback={<Spinner />}>
-          <Post />
-        </Suspense>
-        <section className="comments">
-          <h2>Comments</h2>
-          <Suspense fallback={<Spinner />}>
-            <Comments />
-          </Suspense>
+      <Header />
+      <main>
+        <h1>OMDb API THE OPEN MOVIE DATABASE</h1>
+        <p className="underline">
+          The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are
+          contributed and maintained by our users.
+        </p>
+        <p>If you find this service useful, please consider making a one-time donation or become a patron.</p>
+        <Search onSearch={handleOnSearch} />
+        <section>
+          <h2>SearchList</h2>
+          {isLoading && <p>Loading...</p>}
+          {isSuccess ? <SearchList movies={movies} /> : <div>Search for the movie title</div>}
         </section>
-        <h2>Super Vector</h2>
-      </article>
+      </main>
+      <button type="button" onClick={GetNextMovies}>
+        get next data
+      </button>
     </Layout>
   )
 }

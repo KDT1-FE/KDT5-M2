@@ -1,8 +1,15 @@
 import axios from 'axios'
 
 /**
+ * @typedef Query
+ * @property {string | null} s
+ * @property {string | null} y
+ * @property {string | null} p
+ */
+
+/**
  * @description obdb 검색 결과를 가져옵니다.
- * @param {string} query
+ * @param {string} Query
  * @returns {Promise<{} | null>}
  */
 export default async function getSearchMovies() {

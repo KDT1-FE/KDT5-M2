@@ -2,6 +2,8 @@ import React from 'react'
 import { renderToPipeableStream } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import dotenv from 'dotenv'
+
+import { QueryClient, QueryClientProvider } from 'react-query'
 import App from '../src/App'
 import { MovieProvider } from '../src/context/movieContext'
 
@@ -26,35 +28,40 @@ function createDelay() {
   let testData = ''
   return {
     read() {
-      console.log('DONE : ', done)
-      console.log('PROMISE : ', promise)
-      console.log('testData : ', testData)
       if (done) {
-        return
+        return testData
       }
       if (promise) {
         throw promise
       }
       promise = new Promise((resolve) => {
-        setTimeout(() => {
+        getSearchMovies().then((res) => {
+          testData = res
           done = true
-          promise = null
-          testData = 'foo'
           resolve()
-        }, 9000)
+        })
+        // setTimeout(() => {
+        //   done = true
+        //   promise = null
+        //   testData = 'foo'
+        //   resolve()
+        // }, 9000)
       })
       throw promise
     },
   }
 }
 
-export default async function render(url, res) {
+export default async function render(url, req, res) {
   res.socket.on('error', (error) => {
-    console.error('soket연결애 실패했습니다.\n', error)
+    console.error('soket연결에 실패했습니다.\n', error)
   })
   let didError = false
-  const searchData = await getSearchMovies()
-  const stringifySearchData = JSON.stringify(searchData)
+
+  // * 필요없어진 코드입니다.
+  // const searchData = await getSearchMovies(req.query)
+  // const stringifySearchData = JSON.stringify(searchData)
+  // *
   /**
    * @description react 18이전엔 아래와 같이 사용했습니다.
    * @example import {renderToString} from 'react-dom/server';
@@ -66,46 +73,52 @@ export default async function render(url, res) {
    *     </DataProvider>,
    *   )
    */
-
   const delay = createDelay()
   const data = {
     delay,
-    data: stringifySearchData,
+    data: '',
   }
+
+  const queryClient = new QueryClient()
+
   const stream = renderToPipeableStream(
     <MovieProvider data={data}>
-      <html lang="en">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="shortcut icon" href="favicon.ico" />
-          <link rel="stylesheet" href={assets['main.css']} />
-          <title>Movie App</title>
-        </head>
-        <body>
-          <noscript
+      <QueryClientProvider client={queryClient}>
+        <html lang="en">
+          <head>
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="shortcut icon" href="favicon.ico" />
+            <link rel="stylesheet" href={assets['main.css']} />
+            <title>Movie App</title>
+          </head>
+          <body>
+            <noscript
+              dangerouslySetInnerHTML={{
+                __html: `<b>Enable JavaScript to run this app.</b>`,
+              }}
+            />
+          </body>
+          <div id="root">
+            <StaticRouter location={url}>
+              <App assets={assets} />
+            </StaticRouter>
+            {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
+          </div>
+          {data.data && (
+            <script id="__SERVER_DATA__" type="application/json">
+              {data.data}
+            </script>
+          )}
+          {/* // ? 이 부분에 삽입된 데이터는 HTML Entity가 되는데 변환시키지 않고 보낼 방법을 아직 못 찾았습니니다. 
+        (추가적으로 decode해줘야하기 떄문에 변환시키지 않아도 되는 방법이 필요할 것 같습니다.) */}
+          <script
             dangerouslySetInnerHTML={{
-              __html: `<b>Enable JavaScript to run this app.</b>`,
+              __html: `assetManifest = ${JSON.stringify(assets)};`,
             }}
           />
-        </body>
-        <div id="root">
-          <StaticRouter location={url}>
-            <App assets={assets} />
-          </StaticRouter>
-
-          {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
-        </div>
-        <script id="__SERVER_DATA__" type="application/json">
-          {stringifySearchData}
-        </script>
-        {/* // ? 이 부분에 삽입된 데이터는 HTML Entity가 되는데 변환시키지 않고 보낼 방법을 아직 못 찾았습니니다. (추가적으로 decode해줘야하기 떄문에 필요할 것 같습니다.) */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `assetManifest = ${JSON.stringify(assets)};`,
-          }}
-        />
-      </html>
+        </html>
+      </QueryClientProvider>
     </MovieProvider>,
     {
       // SSR시 bootstrapScripts를 지정해줘야 서버에서 js파일을 먼저 로드합니다.

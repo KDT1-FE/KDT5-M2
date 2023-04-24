@@ -9,6 +9,7 @@ const webpackNodeExternals = require('webpack-node-externals')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 function bundleFrontApp(callback) {
+  console.log('start bundling')
   rimraf.sync(path.resolve(__dirname, '../build'))
   const config = {
     mode: process.env.NODE_ENV,
@@ -21,7 +22,6 @@ function bundleFrontApp(callback) {
       path: path.resolve(__dirname, '../build'),
       filename: 'main.js',
     },
-
     module: {
       rules: [
         {
@@ -48,7 +48,6 @@ function bundleFrontApp(callback) {
     plugins: [new MiniCssExtractPlugin()],
     optimization: {
       minimize: true,
-
       minimizer: [
         new CssMinimizerPlugin(), // 따로 옵션을 제공하지 않아도 주석 및 공백 제거를 해줍니다.
       ],
@@ -101,7 +100,7 @@ function bundleFrontServer() {
       info.errors.forEach((e) => console.error(e))
       process.exit(1)
     }
-    console.log('Finished bundling front server')
+    console.log('Finished bundling front server\n')
   })
 }
 
