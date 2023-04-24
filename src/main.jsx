@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from '@mui/material'
 import { RouterProvider } from 'react-router-dom'
-import { theme } from '~/routes/Theme'
+import { theme } from '~/components/Theme'
 import router from '~/routes'
 
 import '@fontsource/roboto/300.css'

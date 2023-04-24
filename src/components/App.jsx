@@ -3,9 +3,10 @@ import MovieList from './MovieList'
 
 const App = () => {
   const [movies, setMovies] = useState([])
+  const [searchValue, setSearchValue] = useState([])
 
   const getMovieRequest = async () => {
-    const url = 'https://omdbapi.com/?s=happy&apikey=7035c60c'
+    const url = 'https://omdbapi.com/?s=Korea&apikey=7035c60c'
     const res = await fetch(url)
     const json = await res.json()
 

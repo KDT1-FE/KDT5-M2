@@ -1,15 +1,19 @@
 import React from 'react'
-
+import { Box } from '@mui/material'
+//Here give styles to each poster
+//??how to scroll by hover
 const MovieList = props => {
   return (
     <>
       {props.movies.map((movie, index) => (
-        <div>
+        <Box>
           <img
             src={movie.Poster}
             alt="movie"
+            width="300px"
+            height="390px"
           />
-        </div>
+        </Box>
       ))}
     </>
   )

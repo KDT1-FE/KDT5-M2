@@ -1,5 +1,5 @@
-import App from './App'
-import { Button, Stack, ButtonGroup, Input, Container } from '@mui/material'
+import App from '~/components/App'
+import { Button, Stack, ButtonGroup, Input } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
 
 export default function Home() {
@@ -7,7 +7,8 @@ export default function Home() {
     <>
       <Stack
         direction="row"
-        justifyContent="space-between">
+        justifyContent="space-between"
+        mb={4}>
         <ButtonGroup
           variant="text"
           aria-label="text button group">
@@ -24,7 +25,8 @@ export default function Home() {
       </Stack>
       <Stack
         direction="row"
-        overflow="scroll">
+        overflow="scroll"
+        spacing={2}>
         <App />
       </Stack>
     </>
