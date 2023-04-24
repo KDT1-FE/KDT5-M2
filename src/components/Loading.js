@@ -9,10 +9,11 @@ function Loading() {
         <span>잠시만 기다려주세요</span>
       </LoadingItem>
     </LoadingContainer>
-  )
+  );
 }
 
-const LoadingContainer = styled.section`
+const LoadingContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 0 20px;

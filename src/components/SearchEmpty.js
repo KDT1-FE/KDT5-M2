@@ -19,11 +19,12 @@ const EmptyContainer = styled.div`
 `;
 
 const Empty = styled.div`
-  background: ${colors.gray[0]};
-  width: 1280px;
   max-width: 1280px;
-  padding: 30px 0;
+  width: 1280px;
+  height: 100px;
+  background: ${colors.gray[0]};
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 16px;
