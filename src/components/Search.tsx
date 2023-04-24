@@ -6,6 +6,7 @@ import {
 } from '../constants/selectItems';
 import Select from './Select';
 import MovieList from './MovieList';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function Search() {
   const [title, setTitle] = useState('');
@@ -15,6 +16,7 @@ export default function Search() {
     year: '',
   });
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearchCategories = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchCategory({ ...searchCategory, [e.target.name]: e.target.value });
@@ -40,6 +42,7 @@ export default function Search() {
     const t = `&type=${type}`;
     console.log(`https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`);
     try {
+      setIsLoading(true);
       const res = await fetch(
         `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`
       );
@@ -54,6 +57,8 @@ export default function Search() {
       return json.Error;
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -86,7 +91,7 @@ export default function Search() {
           Apply
         </button>
       </form>
-      <MovieList movies={movies} />
+      <MovieList movies={movies} isLoading={isLoading} />
     </>
   );
 }
