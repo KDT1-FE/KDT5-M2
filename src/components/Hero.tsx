@@ -2,8 +2,7 @@ export default function Hero() {
   return (
     <>
       <p className="font-Oswald text-7xl">
-        <span className="text-amber-400">OMDb API</span>
-        <br />
+        <h1 className="text-amber-400">OMDb API</h1>
         THE OPEN
         <br />
         MOVIE DATABASE

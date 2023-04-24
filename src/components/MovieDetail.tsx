@@ -5,6 +5,7 @@ import imdb from '../assets/imdb.png';
 import matacritic from '../assets/metacritic.png';
 import rottenTomatoes from '../assets/rottenTomatoes.png';
 import MovieDetailSkeleton from './MovieDetailSkeleton';
+import NotFound from '../routes/NotFound';
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetail>();
@@ -20,6 +21,7 @@ export default function MovieDetail() {
       const json = await res.json();
       if (json.Response === 'True') {
         setMovie(json);
+        return;
       }
       return json.Error;
     } catch (error) {
@@ -32,6 +34,7 @@ export default function MovieDetail() {
   useEffect(() => {
     getMovie(movieId);
   }, []);
+  console.log(movie);
 
   const ratingSource = (source: string) => {
     if (source === 'Internet Movie Database') {
@@ -45,6 +48,9 @@ export default function MovieDetail() {
 
   if (isLoading) {
     return <MovieDetailSkeleton />;
+  }
+  if (!movie) {
+    return <NotFound />;
   }
 
   return (
