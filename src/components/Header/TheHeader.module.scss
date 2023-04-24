@@ -1,7 +1,7 @@
 header {
   font-family: "Pretendard";
   display: flex;
-  height: 100px;
+  height: 80px;
   justify-content: left;
   align-items: center;
   background-color: var(--color-background);
@@ -9,7 +9,7 @@ header {
   a {
     margin-left: 100px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 16px;
     color: var(--color-white);
     font-weight: 400;
   }
@@ -17,7 +17,7 @@ header {
   .logo {
     font-family: "Pretendard";
     margin-top: 6px;
-    font-size: 56px;
+    font-size: 32px;
     letter-spacing: -0.8px;
     font-weight: 800;
     color: var(--color-pink);
