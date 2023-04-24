@@ -1,7 +1,9 @@
 section {
+  background-color: var(--color-background);
   .inputContainer {
     position: relative;
-    margin: 50px 100px 0;
+    margin: 0 100px;
+    padding-top: 50px;
     width: 50vw;
     border-bottom: 3px solid #fff;
 
@@ -20,13 +22,13 @@ section {
       border-color: var(--color-pink);
     }
     input::placeholder {
-      color: rgba(190, 188, 188, 0.676);
+      color: var(--color-gray);
     }
 
     .searchButton {
       position: absolute;
       right: 0;
-      top: 10px;
+      top: 60px;
       background-color: transparent;
       border: 0;
       .searchIcon {
@@ -42,13 +44,11 @@ section {
     .moviesWrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 70px;
       justify-content: center;
       padding: 70px 0;
-
-      .message {
-        color: var(--color-pink);
-      }
+      font-size: 24px;
+      color: var(--color-gray);
       .movies {
         text-align: center;
       }
