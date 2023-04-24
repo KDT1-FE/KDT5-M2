@@ -13,7 +13,10 @@ export default function Navbar(): JSX.Element {
   return (
     <header className="flex justify-between items-center p-2 px-8">
       <div className="flex items-center gap-10">
-        <Link to="/" className="text-xl font-bold font-Oswald">
+        <Link
+          to="/"
+          className="text-xl font-bold font-Oswald hover:scale-105 transition"
+        >
           <span className="text-amber-400">OMDbAPI</span>.COM
         </Link>
 
@@ -23,11 +26,7 @@ export default function Navbar(): JSX.Element {
               <li key={item.href}>
                 <NavLink to={`${item.href}`}>
                   {({ isActive }) => {
-                    return isActive ? (
-                      <Button name={item.name} active />
-                    ) : (
-                      <Button name={item.name} />
-                    );
+                    return <Button name={item.name} active={isActive} />;
                   }}
                 </NavLink>
               </li>
