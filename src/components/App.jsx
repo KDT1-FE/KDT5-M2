@@ -24,16 +24,22 @@ const App = () => {
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue])
+  // ################################################ LOCAL STORAGE
+  const saveToLocalStorage = items => {
+    localStorage.setItem('WatchList', JSON.stringify(items))
+  }
 
+  // ################################################ ADD & REMOVE
   const addToWatch = movie => {
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
+    saveToLocalStorage(watchList)
   }
   const removeToWatch = movie => {
     const watchList = toWatch.filter(li => li.imdbID !== movie.imdbID)
     setToWatch(watchList)
   }
-
+  // ################################################ RENDERING
   return (
     <>
       {/* HEADER */}
