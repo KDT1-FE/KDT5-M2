@@ -1,6 +1,7 @@
 import styles from "./SearchInput.module.scss";
 import React, { useState } from "react";
 import { fetchMovies } from "~/core/movieData";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchInput = () => {
   const [inputText, setInputText] = useState("");
@@ -20,6 +21,14 @@ const SearchInput = () => {
       setMovies(movieList);
     }
   }
+
+  // SearchButton 클릭 시 동일하게 async function으로 movieList 출력
+  async function pressSearchButton() {
+    if (!inputText.trim()) return;
+    const movieList = await fetchMovies(inputText);
+    setMovies(movieList);
+  }
+
   return (
     <>
       <section>
@@ -31,10 +40,15 @@ const SearchInput = () => {
             onKeyDown={pressEnterKey}
             placeholder="검색어를 입력해주세요."
             className={styles}
-          />
+          ></input>
+          <button className={styles.searchButton} onClick={pressSearchButton}>
+            <SearchIcon className={styles.searchIcon} />
+          </button>
         </div>
+
         <div className={styles.searchedMovies}>
           <div className={styles.moviesWrapper}>
+            <div className={styles.message}>!</div>
             {movies.map((movie) => (
               <div className={styles.movies}>
                 <a
