@@ -1,9 +1,5 @@
 import { useRef, useState } from 'react';
-import {
-  AllYears as allYears,
-  queryNumber,
-  shows,
-} from '../constants/selectItems';
+import { allYears, page, shows } from '../constants/selectItems';
 import Select from './Select';
 import MovieList from './MovieList';
 
@@ -11,12 +7,14 @@ export default function Search() {
   const [title, setTitle] = useState('');
   const [searchCategory, setSearchCategory] = useState({
     show: 'movie',
-    queryNumber: '',
-    year: '',
+    page: '10',
+    year: 'All Years',
   });
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState('Search for the movie title!');
+  const [message, setMessage] = useState<string | undefined>(
+    'Search for the movie title!'
+  );
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchCategories = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -34,19 +32,19 @@ export default function Search() {
     try {
       setMessage('');
       setIsLoading(true);
-      const json = await getMovies(
+      const res = await getMovies(
         title,
         searchCategory.year,
-        searchCategory.show
+        searchCategory.show,
+        searchCategory.page
       );
-      if (json.Response === 'True') {
-        setMessage('');
-        const { Search: movies, totalResults } = json;
-        setMovies(movies);
-        return;
+      if (res?.movies && res.movies.length > 0) {
+        setMovies(res.movies);
+      } else {
+        setMessage(res?.errorMsg);
       }
-      setMessage(json.Error);
     } catch (error) {
+      setMessage('Failed to fetch');
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -54,16 +52,31 @@ export default function Search() {
   };
 
   // 영화 정보 요청
-  async function getMovies(title: string, year = '', type = '') {
+  async function getMovies(
+    title: string,
+    year: string,
+    type: string,
+    page: string
+  ) {
     const s = `&s=${title.trim()}`;
     const y = year === 'All Years' ? '' : `&y=${year}`;
     const t = `&type=${type}`;
+    let movies: Movie[] = [];
+    let errorMsg: string = '';
     try {
-      const res = await fetch(
-        `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`
-      );
-      const json = await res.json();
-      return json;
+      for (let i = 1; i <= parseInt(page) / 10; i++) {
+        const res = await fetch(
+          `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}&page=${i}`
+        );
+        const json = await res.json();
+        if (json.Response === 'True') {
+          console.log(json);
+          movies = [...movies, ...json.Search];
+        } else {
+          errorMsg = json.Error || 'Fetch Failed';
+        }
+      }
+      return { movies, errorMsg };
     } catch (error) {
       console.log(error);
       setMessage('Failed to fetch');
@@ -87,8 +100,8 @@ export default function Search() {
           onChange={handleSearchCategories}
         />
         <Select
-          category="queryNumber"
-          options={queryNumber}
+          category="page"
+          options={page}
           onChange={handleSearchCategories}
         />
         <Select

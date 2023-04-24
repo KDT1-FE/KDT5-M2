@@ -1,12 +1,12 @@
 export default function Hero() {
   return (
     <>
-      <p className="font-Oswald text-7xl">
+      <div className="font-Oswald text-7xl">
         <h1 className="text-amber-400">OMDb API</h1>
         THE OPEN
         <br />
         MOVIE DATABASE
-      </p>
+      </div>
       <p className="my-7 text-gray-700">
         The OMDb API is a RESTful web service to obtain movie information, all
         content and images on the site are contributed and maintained by our

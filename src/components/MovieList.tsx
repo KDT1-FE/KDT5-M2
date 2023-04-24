@@ -4,7 +4,7 @@ import MovieCard from './MovieCard';
 interface MovieListProps {
   movies: Movie[];
   isLoading: boolean;
-  message: string;
+  message?: string;
 }
 
 export default function MovieList({
