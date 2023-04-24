@@ -3,5 +3,5 @@ export default function Container({
 }: {
   children: React.ReactNode;
 }): JSX.Element {
-  return <div className="container max-w-7xl mx-auto">{children}</div>;
+  return <div className="container max-w-7xl mx-auto grow">{children}</div>;
 }

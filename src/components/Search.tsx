@@ -48,7 +48,7 @@ export default function Search() {
         options={allYears}
         onChange={handleSearchCategories}
       />
-      <button className="bg-amber-400 rounded-md text-black font-bold w-32">
+      <button className="bg-amber-400 rounded-md text-black font-bold w-32 hover:opacity-80">
         Apply
       </button>
     </form>
