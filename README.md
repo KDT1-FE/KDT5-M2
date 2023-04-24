@@ -134,4 +134,5 @@
 - ThemeProvider를 사용할 때 entry point인 main.jsx에 App.jsx를 감싸는 형식이 기존 예시였지만 라우터를 사용하면서 RouterProvider를 감싸면서 에러가 발생했습니다. => import에 익숙하지 않아 잘못된 경로 설정 문제를 발견해 수정 후 해결했습니다.
 
 ### 궁금한 점(Questions)
- - MUI사용시 Layout설정에서 App Bar(Header)를 사용해야할지 Stack Box를 사용해 수동으로 만들어나가야할지 모르겠습니다. HTML에서는 div태그와 class를 사용해서 만들지 Semantic tags를 사용해 만들지 의미적으로 차이가 있다는 점이 있지만 만들어진 UI 사용시 어떤 차이점이 있는지 궁금합니다.
+
+- MUI사용시 Layout설정에서 App Bar(Header)를 사용해야할지 Stack Box를 사용해 수동으로 만들어나가야할지 모르겠습니다. HTML에서는 div태그와 class를 사용해서 만들지 Semantic tags를 사용해 만들지 의미적으로 차이가 있다는 점이 있지만 만들어진 UI 사용시 어떤 차이점이 있는지 궁금합니다.

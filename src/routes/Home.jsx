@@ -1,23 +1,32 @@
-import AppBar from '@mui/material/AppBar'
-import { theme } from './Theme'
-import { Button, Stack, ButtonGroup, ThemeProvider } from '@mui/material'
+import App from './App'
+import { Button, Stack, ButtonGroup, Input, Container } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
 
 export default function Home() {
   return (
-    <Stack direction="row">
-      <Button
-        startIcon={<TheatersOutlinedIcon />}
-        color="primary">
-        CineMap
-      </Button>{' '}
-      <ButtonGroup
-        variant="text"
-        aria-label="text button group">
-        <Button>Search</Button>
-        <Button>Movie</Button>
-        <Button>About</Button>
-      </ButtonGroup>
-    </Stack>
+    <>
+      <Stack
+        direction="row"
+        justifyContent="space-between">
+        <ButtonGroup
+          variant="text"
+          aria-label="text button group">
+          <Button
+            startIcon={<TheatersOutlinedIcon />}
+            color="primary">
+            CineMap
+          </Button>
+          <Button>Search</Button>
+          <Button>Movie</Button>
+          <Button>About</Button>
+        </ButtonGroup>
+        <Input placeholder="Search"></Input>
+      </Stack>
+      <Stack
+        direction="row"
+        overflow="scroll">
+        <App />
+      </Stack>
+    </>
   )
 }
