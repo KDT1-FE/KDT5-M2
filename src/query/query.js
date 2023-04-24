@@ -2,10 +2,8 @@ import axios from 'axios'
 
 import { useQuery, useInfiniteQuery } from 'react-query'
 
-export const getSearchMovies = (query) => {
-  console.log('QUERY : ', query)
-  console.log('GSM :', `https://omdbapi.com/?apikey=7035c60c&${query}`)
-  return useQuery(
+export const getSearchMovies = (query) =>
+  useQuery(
     ['1', query],
     async () => {
       try {
@@ -14,8 +12,13 @@ export const getSearchMovies = (query) => {
           url: `https://omdbapi.com/?apikey=7035c60c&${query}`,
           method: 'GET',
         })
+
+        if (data.Error) {
+          return []
+        }
         return data.Search
       } catch (err) {
+        console.error('getSearchMovies ERROR : ', err)
         return []
       }
     },
@@ -23,25 +26,34 @@ export const getSearchMovies = (query) => {
       enabled: !!query,
     },
   )
-}
 
 export const getSearchInfitieMovies = (query) =>
   useInfiniteQuery(
     [`2${query}`],
     async ({ pageParam = 1 }) => {
-      console.log(`https://omdbapi.com/?apikey=7035c60c&${query}&page=${pageParam}`)
-      const { data } = await axios({
-        url: `https://omdbapi.com/?apikey=7035c60c&${query}&page=${pageParam}`,
-        method: 'GET',
-      })
-      return data.Search
+      try {
+        console.log(`https://omdbapi.com/?apikey=7035c60c&${query}&page=${pageParam}`)
+        const { data } = await axios({
+          url: `https://omdbapi.com/?apikey=7035c60c&${query}&page=${pageParam}`,
+          method: 'GET',
+        })
+        // * 데이터가 없을 경우 Error가 반환됩니다.
+        if (data.Error) {
+          return []
+        }
+        return data.Search
+      } catch (err) {
+        console.error('ERROR /query/getSearchInfitieMovies.jsx')
+        console.error(err)
+        return []
+      }
     },
     {
       enabled: !!query,
-      getPreviousPageParam: (firstPage) =>
-        // console.log('Previous page id', firstPage)
-        firstPage.previousId ?? undefined,
-      getNextPageParam: (lastPage, allPages) => allPages.length + 1,
+      getNextPageParam: (lastPage, allPages) => {
+        if (!lastPage.length) return undefined
+        return allPages.length + 1
+      },
     },
   )
 

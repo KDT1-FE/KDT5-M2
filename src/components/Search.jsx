@@ -21,7 +21,7 @@ export default function Search({ onSearch }) {
 
   const handleSubmitSearchForm = (e) => {
     e.preventDefault()
-    onSearch(`s=${encodeURIComponent(text)}${year ? `&y=${year}` : ''}${genre ? `&type=${genre}` : ''}`)
+    onSearch(`s=${encodeURIComponent(text)}${year ? `&y=${year}` : ''}${genre ? `&t=${genre}` : ''}`)
   }
   const setInputText = (e) => {
     setText(() => e.target.value.trim())

@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../layouts/Layout'
 import Header from '../components/Header'
 import { getSearchInfitieMovies } from '../query/query'
 import Search from '../components/Search'
 import SearchList from '../components/SearchList'
+import useScollDown from '../hooks/useScollDown'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [isBottom] = useScollDown()
   const {
     data: movies,
     isLoading,
@@ -22,6 +24,11 @@ export default function Home() {
   const handleOnSearch = (query) => {
     setSearchQuery(query)
   }
+
+  useEffect(() => {
+    if (isBottom && isSuccess && hasNextPage) fetchNextPage()
+  }, [isBottom])
+
   const GetNextMovies = () => {
     fetchNextPage()
   }

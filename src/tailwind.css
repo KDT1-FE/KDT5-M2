@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'HalisGRRegularItalic';
+  src: url('/public/fonts/HalisGRRegularItalic.otf') format('opentype');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'HalisGRRegular';
+  src: url('/public/fonts/HalisGRRegular.otf') format('opentype');
+  font-weight: 400;
+}
+
 body,
 html {
-  font-family: system-ui, sans-serif;
+  font-family: HalisGRRegular, HalisGRRegularItalic;
   height: 100vh;
 }
 #root {

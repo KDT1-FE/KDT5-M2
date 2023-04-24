@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 // const movies = JSON.parse(htmlEntitiesDecoder(useMoviesData()))
 
 export default function SearchList({ movies }) {
-  console.log(' movies :', movies)
   return (
     <ul className="flex justify-center flex-wrap">
       {movies &&
@@ -30,31 +29,6 @@ export default function SearchList({ movies }) {
         )}
     </ul>
   )
-  // return (
-  //   <ul className="flex justify-center flex-wrap">
-  //     {movies ? (
-  //       movies.map((movie) => (
-  //         <li key={movie.imdbID}>
-  //           <img
-  //             src={
-  //               movie.Poster === 'N/A'
-  //                 ? 'http://yoonbumtae.com/wp-content/uploads/2022/10/1_hFwwQAW45673VGKrMPE2qQ.png'
-  //                 : movie.Poster
-  //             }
-  //             style={{ width: '200px', height: '300px', objectFit: 'cover' }}
-  //             alt="Movie Poster"
-  //           />
-  //           <div className="description">
-  //             <p>{movie.Year}</p>
-  //             <p>{movie.Title}</p>
-  //           </div>
-  //         </li>
-  //       ))
-  //     ) : (
-  //       <li>empty!</li>
-  //     )}
-  //   </ul>
-  // )
 }
 
 SearchList.propTypes = {
