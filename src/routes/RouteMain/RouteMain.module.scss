@@ -1,0 +1,25 @@
+main {
+  .mainArticle {
+    width: 1100px;
+    min-height: 500px;
+    margin: 0 auto;
+
+    .movieContainer {
+      display: flex;
+      padding: 70px 0 60px 0;
+
+      .moviePoster {
+        width: 500px;
+        height: 750px;
+        margin-right: 70px;
+        border-radius: 10px;
+        background-color: #e9ecef;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
