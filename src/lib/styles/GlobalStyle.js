@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     box-sizing: border-box;
-    background: ${colors.gray[2]};
+    background: ${colors.gray[9]};
   }
   ol, ul {
     list-style: none;
