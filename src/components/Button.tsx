@@ -1,6 +1,6 @@
 type Props = {
   name: string;
-  onClick: () => void;
+  onClick?: () => void;
   active?: boolean;
 };
 

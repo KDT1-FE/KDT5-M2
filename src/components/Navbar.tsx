@@ -24,9 +24,9 @@ export default function Navbar(): JSX.Element {
                 <NavLink to={`${item.href}`}>
                   {({ isActive }) => {
                     return isActive ? (
-                      <Button name={item.name} onClick={() => {}} active />
+                      <Button name={item.name} active />
                     ) : (
-                      <Button name={item.name} onClick={() => {}} />
+                      <Button name={item.name} />
                     );
                   }}
                 </NavLink>
