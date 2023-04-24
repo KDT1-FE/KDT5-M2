@@ -21,9 +21,16 @@ const App = () => {
       setMovies(json.Search)
     }
   }
+  // ################################################ INITIAL LOADING WITH USEEFFECT
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue])
+
+  useEffect(() => {
+    const loadList = JSON.parse(localStorage.getItem('WatchList'))
+    setToWatch(loadList)
+  }, [])
+
   // ################################################ LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
