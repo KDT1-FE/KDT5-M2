@@ -4,25 +4,34 @@ import defaultImg from '../assets/defaultImg.jpg';
 import imdb from '../assets/imdb.png';
 import matacritic from '../assets/metacritic.png';
 import rottenTomatoes from '../assets/rottenTomatoes.png';
+import MovieDetailSkeleton from './MovieDetailSkeleton';
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetail>();
+  const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
 
   async function getMovie(movieId: string | undefined) {
-    const res = await fetch(
-      `https://omdbapi.com/?apikey=7035c60c&i=${movieId}&plot=full`
-    );
-    const json = await res.json();
-    if (json.Response === 'True') {
-      setMovie(json);
+    try {
+      setIsLoading(true);
+      const res = await fetch(
+        `https://omdbapi.com/?apikey=7035c60c&i=${movieId}&plot=full`
+      );
+      const json = await res.json();
+      if (json.Response === 'True') {
+        setMovie(json);
+      }
+      return json.Error;
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
-    return json.Error;
   }
+
   useEffect(() => {
     getMovie(movieId);
   }, []);
-  console.log(movie);
 
   const ratingSource = (source: string) => {
     if (source === 'Internet Movie Database') {
@@ -33,6 +42,10 @@ export default function MovieDetail() {
       return matacritic;
     }
   };
+
+  if (isLoading) {
+    return <MovieDetailSkeleton />;
+  }
 
   return (
     <div className="flex gap-10 text-gray-700">
@@ -59,7 +72,7 @@ export default function MovieDetail() {
           <h3 className="font-Oswald text-xl text-black">Ratings</h3>
           <div className="flex gap-16">
             {movie?.Ratings.map((rating) => (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" key={rating.Source}>
                 <img
                   src={ratingSource(rating.Source)}
                   alt="rating source"
