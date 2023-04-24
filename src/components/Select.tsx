@@ -9,7 +9,7 @@ export default function Select({ category, options, onChange }: Props) {
     <select
       name={category}
       id={category}
-      className="border-2 border-gray-300 rounded-md p-2 focus:ring-4 focus:ring-amber-200"
+      className="border-2 border-gray-300 rounded-md p-2 focus:ring-4 focus:ring-amber-200 w-32"
       onChange={onChange}
     >
       {options.map((option: string) => (

@@ -1,4 +1,4 @@
-export const shows = ['movies', 'series', 'episodes'];
+export const shows = ['movie', 'series', 'episodes'];
 export const queryNumber = ['10', '20', '30'];
 const years: number[] = [];
 
