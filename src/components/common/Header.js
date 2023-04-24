@@ -29,7 +29,7 @@ function Header({ category, onMenuSelect }) {
 
   const onScroll = () => {
     if (window.scrollY > 70) {
-      scrollRef.current.style.background = 'rgba(0, 0, 0, 0.7)';
+      scrollRef.current.style.background = "rgba(0, 0, 0, 0.7)";
     } else if (window.scrollY === 0) {
       scrollRef.current.style.background = colors.gray[9];
     }
@@ -46,7 +46,7 @@ function Header({ category, onMenuSelect }) {
   return (
     <HeaderContainer ref={scrollRef}>
       <HeaderContent>
-        <h1 onClick={goHome}>MovieApp</h1>
+        <Logo onClick={goHome}>MovieApp</Logo>
         <StyledNav>
           {categories.map((c) => (
             <StyledLink
@@ -74,7 +74,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 60px;
   background: ${colors.gray[9]};
   position: fixed;
   top: 0;
@@ -89,11 +89,21 @@ const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  h1 {
-    font-weight: 300;
-    font-size: 24px;
-    cursor: pointer;
-    color: ${colors.gray[0]};
+`;
+
+const Logo = styled.h1`
+  @keyframes blink {
+    50% {
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  font-weight: 300;
+  font-size: 24px;
+  cursor: pointer;
+  color: ${colors.gray[0]};
+  &:hover {
+    animation: blink 1s infinite;
   }
 `;
 
@@ -120,7 +130,7 @@ const StyledLink = styled(Link)`
       background: ${colors.lime[4]};
       color: ${colors.gray[9]};
       &:hover {
-        color: ${colors.gray[9]}
+        color: ${colors.gray[9]};
       }
     `}
 `;
