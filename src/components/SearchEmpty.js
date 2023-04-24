@@ -16,13 +16,14 @@ const EmptyContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 20px;
+  color: ${colors.gray[6]};
 `;
 
 const Empty = styled.div`
   max-width: 1280px;
   width: 1280px;
   height: 100px;
-  background: ${colors.gray[0]};
+  background: ${colors.gray[8]};
   display: flex;
   flex-direction: column;
   justify-content: center;
