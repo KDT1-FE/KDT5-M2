@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { FaGithub } from "react-icons/fa";
 import { colors } from "../../lib/styles/colors";
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 // Data
 const categories = [
@@ -19,15 +20,31 @@ const categories = [
 function Header({ category, onMenuSelect }) {
   // Hooks
   const navigate = useNavigate();
+  const scrollRef = useRef();
 
   // Function
   const goHome = () => {
     navigate("/");
   };
 
+  const onScroll = () => {
+    if (window.scrollY > 70) {
+      scrollRef.current.style.background = 'rgba(0, 0, 0, 0.7)';
+    } else if (window.scrollY === 0) {
+      scrollRef.current.style.background = colors.gray[9];
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.addEventListener("scroll", onScroll);
+    };
+  }, [onScroll]);
+
   // Render
   return (
-    <HeaderContainer>
+    <HeaderContainer ref={scrollRef}>
       <HeaderContent>
         <h1 onClick={goHome}>MovieApp</h1>
         <StyledNav>
@@ -58,11 +75,11 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  /* border-bottom: 1px solid ${colors.gray[7]}; */
-  background: ${colors.gray[0]};
+  background: ${colors.gray[9]};
   position: fixed;
   top: 0;
   z-index: 9999;
+  transition: all 0.2s ease-in-out;
 `;
 
 const HeaderContent = styled.div`
@@ -76,6 +93,7 @@ const HeaderContent = styled.div`
     font-weight: 300;
     font-size: 24px;
     cursor: pointer;
+    color: ${colors.gray[0]};
   }
 `;
 
@@ -83,7 +101,6 @@ const StyledNav = styled.nav`
   flex: 1;
   padding: 0 40px;
   display: flex;
-  gap: 16px;
 `;
 
 const StyledLink = styled(Link)`
@@ -94,24 +111,26 @@ const StyledLink = styled(Link)`
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
   &:hover {
-    color: ${colors.gray[9]};
-    background: ${colors.yellow[2]};
+    color: ${colors.lime[4]};
   }
   ${(props) =>
     props.active &&
     css`
       font-weight: 500;
-      background: ${colors.yellow[5]};
+      background: ${colors.lime[4]};
       color: ${colors.gray[9]};
+      &:hover {
+        color: ${colors.gray[9]}
+      }
     `}
 `;
 
 const GithubButton = styled(FaGithub)`
   font-size: 36px;
-  color: ${colors.gray[6]};
+  color: ${colors.gray[7]};
   transition: all 0.2s ease-in-out;
   &:hover {
-    color: ${colors.gray[9]};
+    color: ${colors.gray[0]};
   }
 `;
 
