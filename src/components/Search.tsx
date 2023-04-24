@@ -6,17 +6,17 @@ import {
 } from '../constants/selectItems';
 import Select from './Select';
 import MovieList from './MovieList';
-import LoadingSpinner from './LoadingSpinner';
 
 export default function Search() {
   const [title, setTitle] = useState('');
   const [searchCategory, setSearchCategory] = useState({
-    show: '',
+    show: 'movie',
     queryNumber: '',
     year: '',
   });
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('Search for the movie title!');
 
   const handleSearchCategories = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchCategory({ ...searchCategory, [e.target.name]: e.target.value });
@@ -24,41 +24,44 @@ export default function Search() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(title, searchCategory);
-    const result = await getMovies(
-      title,
-      searchCategory.year,
-      searchCategory.show
-    );
-    const { movies, totalResults } = result;
-    setMovies(movies);
+    try {
+      setMovies([]);
+      setMessage('');
+      setIsLoading(true);
+      const json = await getMovies(
+        title,
+        searchCategory.year,
+        searchCategory.show
+      );
+      if (json.Response === 'True') {
+        setMessage('');
+        const { Search: movies, totalResults } = json;
+        setMovies(movies);
+        return;
+      }
+      setMessage(json.Error);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
-  console.log(movies);
 
   // 영화 정보 요청
   async function getMovies(title: string, year = '', type = '') {
     const s = `&s=${title}`;
     const y = year === 'All Years' ? '' : `&y=${year}`;
     const t = `&type=${type}`;
-    console.log(`https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`);
+    // console.log(`https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`);
     try {
-      setIsLoading(true);
       const res = await fetch(
         `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`
       );
       const json = await res.json();
-      if (json.Response === 'True') {
-        const { Search: movies, totalResults } = json;
-        return {
-          movies,
-          totalResults,
-        };
-      }
-      return json.Error;
+      return json;
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsLoading(false);
+      setMessage('Failed to fetch');
     }
   }
 
@@ -91,7 +94,7 @@ export default function Search() {
           Apply
         </button>
       </form>
-      <MovieList movies={movies} isLoading={isLoading} />
+      <MovieList movies={movies} isLoading={isLoading} message={message} />
     </>
   );
 }
