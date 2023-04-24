@@ -45,6 +45,7 @@ const App = () => {
   const removeToWatch = movie => {
     const watchList = toWatch.filter(li => li.imdbID !== movie.imdbID)
     setToWatch(watchList)
+    saveToLocalStorage(watchList)
   }
   // ################################################ RENDERING
   return (
