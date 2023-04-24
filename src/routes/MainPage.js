@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import Main from "../components/Main";
 import MovieList from "../components/MovieList";
 import SearchEmpty from "../components/SearchEmpty";
 import SearchForm from "../components/SearchForm";
@@ -30,6 +31,7 @@ function MainPage() {
 
   return (
     <>
+      <Main />
       <SearchForm
         movies={movies}
         searchValue={searchValue}
