@@ -6,17 +6,19 @@ module.exports = {
   resolve: {
     alias: { '~': path.resolve(__dirname, 'src') }
   },
-  entry: './src/index.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: 'bundle.js',
     clean: true
   },
   module: {
     rules: [
-      // {
-      //   use: 'babel-loader',
-      // },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.s?css$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
@@ -39,9 +41,4 @@ module.exports = {
       ]
     })
   ]
-  // presets: ['@babel/preset-env', '@babel/preset-react'],
-  // plugins: [['@babel/plugin-transform-runtime', { corejs: 3 }]],
-  // devserver: {
-  //   port: 8080,
-  // },
 }
