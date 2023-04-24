@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <>
-      <p className="font-Oswald text-7xl mt-10">
+      <p className="font-Oswald text-7xl">
         <span className="text-amber-400">OMDb API</span>
         <br />
         THE OPEN

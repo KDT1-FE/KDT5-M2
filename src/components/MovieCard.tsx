@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom';
+import defaultImg from '../assets/defaultImg.jpg';
+
 export default function MovieCard({ movie }: { movie: Movie }) {
   return (
-    <div
+    <Link
+      to={`/movie/${movie.imdbID}`}
       className="relative w-[200px] h-[300px] overflow-hidden bg-white rounded-md hover:ring-8 ring-amber-400 transition-all duration-300 ease-in-out text-center text-sm font-bold cursor-pointer hover:scale-105"
       key={movie.imdbID}
     >
       <img
-        src={
-          movie.Poster === 'N/A' ? 'src/assets/defaultImg.jpg' : movie.Poster
-        }
+        src={movie.Poster === 'N/A' ? defaultImg : movie.Poster}
         alt={movie.Title}
         className="w-[200px] h-[300px] object-cover"
       />
@@ -15,6 +17,6 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         <p className="text-amber-400">{movie.Year}</p>
         <p className="w-full text-white line-clamp-1">{movie.Title}</p>
       </div>
-    </div>
+    </Link>
   );
 }

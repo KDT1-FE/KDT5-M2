@@ -1,9 +1,10 @@
 import Button from './Button';
 import { Link, NavLink } from 'react-router-dom';
+import hprofile from '../assets/hprofile.jpg';
 
 const navItems: NavItem[] = [
   { name: 'Search', href: '/' },
-  { name: 'Movie', href: '/movie' },
+  { name: 'Movie', href: '/movie/tt4520988' },
   { name: 'About', href: '/about' },
 ];
 
@@ -35,11 +36,7 @@ export default function Navbar(): JSX.Element {
       </div>
 
       <div className="bg-slate-100 w-12 h-12 flex justify-center items-center rounded-full hover:bg-slate-300 transition">
-        <img
-          src="src/assets/hprofile.jpg"
-          alt="profile"
-          className="rounded-full h-8 w-8"
-        />
+        <img src={hprofile} alt="profile" className="rounded-full h-8 w-8" />
       </div>
     </header>
   );
