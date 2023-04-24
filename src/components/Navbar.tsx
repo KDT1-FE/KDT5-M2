@@ -9,7 +9,7 @@ const navItems: NavItem[] = [
 
 export default function Navbar(): JSX.Element {
   return (
-    <header className="flex justify-between items-center p-2">
+    <header className="flex justify-between items-center p-2 px-8">
       <div className="flex items-center gap-10">
         <Link to="/" className="text-xl font-bold font-Oswald">
           <span className="text-amber-400">OMDbAPI</span>.COM
