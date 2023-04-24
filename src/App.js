@@ -8,7 +8,9 @@ import MoviePage from "./routes/MoviePage";
 function App() {
   // Hooks
   const [category, setCategory] = useState("검색");
-  const onMenuSelect = useCallback((category) => setCategory(category), []);
+  const onMenuSelect = useCallback((category) => {
+    setCategory(category);
+  }, []);
 
   // Render
   return (
