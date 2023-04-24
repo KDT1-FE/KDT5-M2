@@ -2,7 +2,7 @@ import hprofile from '../assets/hprofile.jpg';
 
 export default function About() {
   return (
-    <div className="flex flex-col items-center gap-6 justify-center about-hight box-border">
+    <div className="flex flex-col items-center gap-6 justify-center about-hieght">
       <div className="bg-slate-300 w-[250px] h-[250px] flex justify-center items-center rounded-full">
         <div className="bg-slate-200 w-[230px] h-[230px] flex justify-center items-center rounded-full">
           <img

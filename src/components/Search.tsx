@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   AllYears as allYears,
   queryNumber,
@@ -17,6 +17,7 @@ export default function Search() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('Search for the movie title!');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchCategories = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchCategory({ ...searchCategory, [e.target.name]: e.target.value });
@@ -24,8 +25,13 @@ export default function Search() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMovies([]);
+    if (inputRef.current?.value.trim() === '') {
+      inputRef.current.focus();
+      setMessage('Please enter a movie title!');
+      return;
+    }
     try {
-      setMovies([]);
       setMessage('');
       setIsLoading(true);
       const json = await getMovies(
@@ -49,10 +55,9 @@ export default function Search() {
 
   // 영화 정보 요청
   async function getMovies(title: string, year = '', type = '') {
-    const s = `&s=${title}`;
+    const s = `&s=${title.trim()}`;
     const y = year === 'All Years' ? '' : `&y=${year}`;
     const t = `&type=${type}`;
-    // console.log(`https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`);
     try {
       const res = await fetch(
         `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}`
@@ -74,6 +79,7 @@ export default function Search() {
           className="flex-1 border-2 border-gray-300 rounded-md p-2 outline-none focus:ring-4 focus:ring-amber-200"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          ref={inputRef}
         />
         <Select
           category="show"
