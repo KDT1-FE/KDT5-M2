@@ -51,7 +51,7 @@ function Header({ category, onMenuSelect }) {
           {categories.map((c) => (
             <StyledLink
               to={c.url}
-              active={category === c.name}
+              $active={category === c.name}
               onClick={() => onMenuSelect(c.name)}
               key={c.name}
             >
@@ -124,7 +124,7 @@ const StyledLink = styled(Link)`
     color: ${colors.lime[4]};
   }
   ${(props) =>
-    props.active &&
+    props.$active &&
     css`
       font-weight: 500;
       background: ${colors.lime[4]};
