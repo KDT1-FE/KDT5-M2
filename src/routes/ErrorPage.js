@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { MdOutlineWarningAmber } from "react-icons/md";
 import { colors } from "../lib/styles/colors";
 
+// Component
 function ErrorPage() {
+  // Render
   return (
     <Container>
       <MdOutlineWarningAmber />
@@ -12,6 +14,7 @@ function ErrorPage() {
   );
 }
 
+// Style
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -19,6 +22,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: ${colors.gray[0]};
   svg {
     font-size: 180px;
     color: ${colors.red[7]};
