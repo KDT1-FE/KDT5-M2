@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NavigationBar from '~/components/NavigationBar'
 
 export default function MovieSearch() {
   const [movies, setMovies] = useState([])
@@ -47,6 +48,7 @@ export default function MovieSearch() {
   return (
     <>
       <h1>영화 리스트</h1>
+      <NavigationBar />
       <input
         type="text"
         placeholder="영화제목을 입력하세요"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import NavigationBar from '~/components/NavigationBar'
 
 export default function MovieInfo() {
   // useParams를 이용해 URL params 값 가져오기
@@ -21,11 +22,17 @@ export default function MovieInfo() {
   return (
     <>
       <h1>{movies.Title}</h1>
-      <p>{movies.Plot}</p>
+      <NavigationBar />
+      <span>{movies.DVD}</span>
+      <span>{movies.Country}</span>
+      <span>{movies.Actors}</span>
+      <span>{movies.Director}</span>
       <img
         src={movies.Poster}
         alt={movies.Title}
       />
+      <span>{movies.Plot}</span>
+      <span>{movies.imdbRating}</span>
     </>
   )
 }
