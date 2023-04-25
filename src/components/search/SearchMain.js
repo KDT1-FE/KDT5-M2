@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { colors } from "../../lib/styles/colors";
 
+// Component
 function Main() {
+  // Render
   return (
     <MainContainer>
       <MainItem>
@@ -21,9 +23,10 @@ function Main() {
   );
 }
 
+// Style
 const MainContainer = styled.div`
   width: 100%;
-  padding: 0 20px;
+  padding: 0 60px;
   margin-top: 120px;
   display: flex;
   justify-content: center;
