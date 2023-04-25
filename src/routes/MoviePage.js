@@ -1,6 +1,12 @@
+import { useState } from "react";
+import Movie from "../components/movie/Movie";
+
 function MoviePage() {
+  const [movies, setMovies] = useState([]);
   return (
-    <h1>영화 페이지</h1>
+    <>
+      <Movie movies={movies} setMovies={setMovies} />
+    </>
   );
 }
 

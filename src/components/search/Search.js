@@ -19,6 +19,7 @@ function Search({ value, setValue, movies, setMovies }) {
     setLoading(true);
     const movieData = await getMovies(value);
     setMovies(movieData.Search || []);
+    console.log(movieData.Search[0]);
     setLoading(false);
   };
 
@@ -104,9 +105,9 @@ const SearchList = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 20px;
   border-radius: 16px;
   background: ${colors.gray[8]};
+  padding: 20px;
   @media all and (min-width: 320px) and (max-width: 1024px) {
     padding: 20px;
   }
