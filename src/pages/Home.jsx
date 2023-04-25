@@ -23,32 +23,40 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (isBottom && isSuccess && hasNextPage) fetchNextPage()
+    if (isBottom && isSuccess && hasNextPage) {
+      fetchNextPage()
+    }
   }, [isBottom])
 
-  const GetNextMovies = () => {
-    fetchNextPage()
-  }
   return (
     <Layout>
       <main>
-        <h1>OMDb API THE OPEN MOVIE DATABASE</h1>
-        <p className="underline">
-          The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are
-          contributed and maintained by our users.
-        </p>
-        <p>If you find this service useful, please consider making a one-time donation or become a patron.</p>
+        <h1 className="text-4xl tracking-widest mb-10">
+          <p>OMDb API</p>
+          <p>THE OPEN MOVIE DATABASE</p>
+        </h1>
+        <div>
+          <p className="w-10/12 mb-2 ">
+            The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are
+            contributed and maintained by our users.
+          </p>
+          <p className="w-10/12 mb-8 ">
+            If you find this service useful, please consider making a one-time donation or become a patron.
+          </p>
+        </div>
         <Search onSearch={handleOnSearch} />
         <section>
-          <h2>SearchList</h2>
+          <h2 className="text-2xl tracking-widest mb-10">Search List</h2>
           {isLoading && <Spinner />}
           {isSuccess ? <SearchList movies={movies} /> : <div>Search for the movie title</div>}
-          {isFetchingNextPage && <Spinner />}
+          {isFetchingNextPage && (
+            <div className="h-screen">
+              <Spinner pos="fixed bottom-28 left-0 right-0" />
+            </div>
+          )}
+          <div className="h-56" />
         </section>
       </main>
-      <button type="button" onClick={GetNextMovies}>
-        get next data
-      </button>
     </Layout>
   )
 }
