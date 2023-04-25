@@ -1,0 +1,8 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  li {
+    flex-shrink: 0;
+  }
+}
