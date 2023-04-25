@@ -70,7 +70,6 @@ export default function Search() {
         );
         const json = await res.json();
         if (json.Response === 'True') {
-          console.log(json);
           movies = [...movies, ...json.Search];
         } else {
           errorMsg = json.Error || 'Fetch Failed';

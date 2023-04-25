@@ -33,7 +33,7 @@ export default function MovieDetail() {
 
   useEffect(() => {
     getMovie(movieId);
-  }, []);
+  }, [movieId]);
 
   const ratingSource = (source: string) => {
     if (source === 'Internet Movie Database') {

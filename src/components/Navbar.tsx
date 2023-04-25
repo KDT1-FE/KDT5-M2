@@ -1,12 +1,7 @@
 import Button from './Button';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import hprofile from '../assets/hprofile.jpg';
-
-const navItems: NavItem[] = [
-  { name: 'Search', href: '/' },
-  { name: 'Movie', href: '/movie/tt4520988' },
-  { name: 'About', href: '/about' },
-];
+import navItems from '../constants/navItems';
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();

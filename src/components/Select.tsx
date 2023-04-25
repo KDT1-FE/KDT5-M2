@@ -1,10 +1,10 @@
-interface Props {
+interface SelectProps {
   category: string;
   options: string[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export default function Select({ category, options, onChange }: Props) {
+export default function Select({ category, options, onChange }: SelectProps) {
   return (
     <select
       name={category}

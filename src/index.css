@@ -27,7 +27,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: #999;
+  background-color: #ddd;
 }
 
 .skeleton::after {

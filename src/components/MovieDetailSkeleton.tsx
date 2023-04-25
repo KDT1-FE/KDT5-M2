@@ -1,11 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import LoadingSpinner from './LoadingSpinner';
-
 export default function MovieDetailSkeleton() {
-  const [movie, setMovie] = useState<MovieDetail>();
-  const { movieId } = useParams();
-
   return (
     <div className="flex gap-10">
       <div className="skeleton w-[500px] h-[750px] shrink-0"></div>
