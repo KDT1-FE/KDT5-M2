@@ -9,13 +9,14 @@ const app = express()
 // 2023/04/21기준 (커밋 확인) main.js 파일 용량이 148kb에서 48kb로 줄었습니다.
 app.use(compress())
 
+app.use(express.static('build-ssr'))
+app.use(express.static('public'))
+
 // * Home 페이지로 이동합니다.
-app.get('/', (req, res) => {
+app.use('/', (req, res) => {
   // todo : 이 곳에 어던 페이지에서 render를 요청했다는 코드가 들어가야합니다. 그래야 페이지마다 SSR이 가능합니다.
   render(req.url, req, res)
 })
-app.use(express.static('build-ssr'))
-app.use(express.static('public'))
 
 app
   .listen(PORT, () => {

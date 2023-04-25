@@ -32,6 +32,7 @@ export function useMoviesData() {
     //   throw promise
     // }
     // return JSON.stringify(ctx.delay.read())
+    // ctx.delay.read()
     return ctx.data
   }
   // * Client에서 hyration이 되면 useMoviesData()를 호출한 컴포넌트에서 여기 아래 로직을 실행합니다.

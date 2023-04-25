@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../layouts/Layout'
-import Header from '../components/Header'
 import { getSearchInfitieMovies } from '../query/query'
 import Search from '../components/Search'
 import SearchList from '../components/SearchList'
+import Spinner from '../components/Spinner'
 import useScollDown from '../hooks/useScollDown'
 
 export default function Home() {
@@ -14,11 +14,8 @@ export default function Home() {
     isLoading,
     isSuccess,
     isFetchingNextPage,
-    isFetchingPreviousPage,
     fetchNextPage,
-    fetchPreviousPage,
     hasNextPage,
-    hasPreviousPage,
   } = getSearchInfitieMovies(searchQuery)
 
   const handleOnSearch = (query) => {
@@ -34,7 +31,6 @@ export default function Home() {
   }
   return (
     <Layout>
-      <Header />
       <main>
         <h1>OMDb API THE OPEN MOVIE DATABASE</h1>
         <p className="underline">
@@ -45,8 +41,9 @@ export default function Home() {
         <Search onSearch={handleOnSearch} />
         <section>
           <h2>SearchList</h2>
-          {isLoading && <p>Loading...</p>}
+          {isLoading && <Spinner />}
           {isSuccess ? <SearchList movies={movies} /> : <div>Search for the movie title</div>}
+          {isFetchingNextPage && <Spinner />}
         </section>
       </main>
       <button type="button" onClick={GetNextMovies}>

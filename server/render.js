@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import App from '../src/App'
 import { MovieProvider } from '../src/context/movieContext'
 
-import getSearchMovies from '../service/api'
+import { getSearchMovies, getMovieDetailById } from '../service/api'
 
 /**
  * * 서버에서 라우터 정보를 react-router-dom에게 보냅니다.
@@ -40,18 +40,24 @@ function createDelay() {
           done = true
           resolve()
         })
-        // setTimeout(() => {
-        //   done = true
-        //   promise = null
-        //   testData = 'foo'
-        //   resolve()
-        // }, 9000)
+        setTimeout(() => {
+          done = true
+          promise = null
+          testData = 'foo'
+          resolve()
+        }, 9000)
       })
       throw promise
     },
   }
 }
 
+/**
+ *
+ * @param {string} url
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ */
 export default async function render(url, req, res) {
   res.socket.on('error', (error) => {
     console.error('soket연결에 실패했습니다.\n', error)
@@ -79,6 +85,30 @@ export default async function render(url, req, res) {
     data: '',
   }
 
+  if (req.path.endsWith('detail')) {
+    const movieDetailData = await getMovieDetailById(req.query.id)
+
+    movieDetailData.Ratings.map((rating) => {
+      switch (rating.Source) {
+        case 'Internet Movie Database':
+          rating.SourceImage = '/imdb_icon.png'
+          break
+        case 'Rotten Tomatoes':
+          rating.SourceImage = '/rotten_icon.png'
+          break
+        case 'Metacritic':
+          rating.SourceImage = '/matatric_icon.png'
+          break
+        default:
+          rating.SourceImage = '/noImage.png'
+          break
+      }
+      return rating
+    })
+
+    data.data = JSON.stringify(movieDetailData)
+  }
+
   const queryClient = new QueryClient()
 
   const stream = renderToPipeableStream(
@@ -88,8 +118,8 @@ export default async function render(url, req, res) {
           <head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="shortcut icon" href="favicon.ico" />
             <link rel="stylesheet" href={assets['main.css']} />
+            <link rel="icon" type="image/png" href="/favicon.png" />
             <title>Movie App</title>
           </head>
           <body>

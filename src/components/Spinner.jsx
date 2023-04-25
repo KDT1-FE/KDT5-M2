@@ -1,9 +1,12 @@
-export default function Spinner({ active = true }) {
+import React from 'react'
+
+export default function Spinner() {
   return (
     <div
-      className={['spinner', active && 'spinner--active'].join(' ')}
+      className="spinner spinner--active"
       role="progressbar"
-      aria-busy={active ? 'true' : 'false'}
+      aria-label="progressbar"
+      // aria-busy={active ? 'true' : 'false'}
     />
   )
 }
