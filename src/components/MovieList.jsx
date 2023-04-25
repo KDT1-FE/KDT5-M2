@@ -1,14 +1,16 @@
 import { useNavigate } from 'react-router-dom'
+import styles from './MovieList.module.scss'
 
 export default function MovieList(props) {
   const navigate = useNavigate()
+
   function handleMovieInfo(movie) {
     navigate(`/MovieInfo/${movie}`)
   }
 
   return (
     <>
-      <ul>
+      <ul className={styles.movieList}>
         {props.movies.map(movie => (
           <li key={movie.imdbID}>
             <img
@@ -16,7 +18,7 @@ export default function MovieList(props) {
               alt={movie.Title}
               onClick={() => handleMovieInfo(movie.imdbID)}
             />
-            {movie.Title}
+            {/* <span>{movie.Title}</span> */}
           </li>
         ))}
       </ul>
