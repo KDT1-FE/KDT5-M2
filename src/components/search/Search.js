@@ -2,12 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 import { getMovies } from "../../lib/api/movieAPI";
 import { colors } from "../../lib/styles/colors";
+import Loading from "../common/Loading";
 import SearchItem from "./SearchItem";
 
-function Search() {
-  const [value, setValue] = useState("");
-  const [movies, setMovies] = useState([]);
-
+// Component
+function Search({ value, setValue, movies, setMovies }) {
+  const [loading, setLoading] = useState(null);
+  // Function
   const onInputChange = (event) => {
     setValue(event.target.value);
   };
@@ -15,11 +16,14 @@ function Search() {
   const onSubmit = async (event) => {
     event.preventDefault();
     setValue("");
+    setLoading(true);
     const movieData = await getMovies(value);
     setMovies(movieData.Search || []);
-    console.log(value);
+    console.log(movieData.Search[0]);
+    setLoading(false);
   };
 
+  // Render
   return (
     <>
       <SearchContainer>
@@ -33,16 +37,21 @@ function Search() {
         </SearchForm>
       </SearchContainer>
       <SearchResult>
-        <SearchList>
-          {movies.map((movie) => (
-            <SearchItem key={movie.imdbID} movie={movie} />
-          ))}
-        </SearchList>
+        {loading ? (
+          <Loading />
+        ) : (
+          <SearchList>
+            {movies.map((movie) => (
+              <SearchItem key={movie.imdbID} movie={movie} />
+            ))}
+          </SearchList>
+        )}
       </SearchResult>
     </>
   );
 }
 
+// Style
 const SearchContainer = styled.div`
   width: 100%;
   display: flex;
@@ -55,6 +64,7 @@ const SearchForm = styled.form`
   width: 1280px;
   max-width: 1280px;
   display: flex;
+  justify-content: center;
   gap: 20px;
 `;
 
@@ -85,6 +95,7 @@ const SearchResult = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 0 60px;
 `;
 
 const SearchList = styled.ul`
@@ -94,8 +105,10 @@ const SearchList = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+  border-radius: 16px;
+  background: ${colors.gray[8]};
   @media all and (min-width: 320px) and (max-width: 1024px) {
-    padding: 0 20px;
+    padding: 20px;
   }
 `;
 
