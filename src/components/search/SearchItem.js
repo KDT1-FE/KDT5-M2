@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
+// Component
 function SearchItem({ movie }) {
+  // Render
   return (
     <MovieCard bgPhoto={movie.Poster}>
       <h2>{movie.Title}</h2>
@@ -8,10 +10,11 @@ function SearchItem({ movie }) {
   );
 }
 
+// Style
 const MovieCard = styled.li`
   cursor: pointer;
   background: #fff;
-  width: 12.5rem;
+  width: 200px;
   height: 290px;
   border-radius: 16px;
   transition: all 0.3s ease-in-out;
@@ -31,10 +34,12 @@ const MovieCard = styled.li`
     bottom: 0;
     border-radius: 0 0 16px 16px;
     text-align: center;
-    line-height: 60px;
     font-weight: 700;
     opacity: 0;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   /* Media-Query */
   /* 모바일과 태블릿은 hover 이벤트 불필요 */
