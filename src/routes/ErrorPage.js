@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MdOutlineWarningAmber } from "react-icons/md";
 import { colors } from "../lib/styles/colors";
+import { Link } from "react-router-dom";
 
 // Component
 function ErrorPage() {
@@ -10,6 +11,7 @@ function ErrorPage() {
       <MdOutlineWarningAmber />
       <h1>404 Not Found!</h1>
       <h2>페이지를 찾을 수 없습니다.</h2>
+      <Link to="/">홈으로</Link>
     </Container>
   );
 }
@@ -34,6 +36,14 @@ const Container = styled.div`
   }
   h2 {
     font-size: 20px;
+  }
+  a {
+    margin-top: 20px;
+    color: ${colors.blue[4]};
+    font-size: 20px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
