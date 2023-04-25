@@ -21,7 +21,7 @@ const App = () => {
       setMovies(json.Search)
     }
   }
-  // ################################################ INITIAL LOADING WITH USEEFFECT
+  // ################################################################################################ INITIAL LOADING WITH USEEFFECT
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue])
@@ -31,12 +31,12 @@ const App = () => {
     setToWatch(loadList)
   }, [])
 
-  // ################################################ LOCAL STORAGE
+  // ################################################################################################ LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
   }
 
-  // ################################################ ADD & REMOVE
+  // ################################################################################################ ADD & REMOVE
   const addToWatch = movie => {
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
@@ -47,61 +47,66 @@ const App = () => {
     setToWatch(watchList)
     saveToLocalStorage(watchList)
   }
-  // ################################################ RENDERING
+  // ################################################################################################ RENDERING
   return (
     <>
-      {/* HEADER */}
+      {/* ################################################################################################ HEADER */}
       <Stack
         direction="row"
         justifyContent="space-between"
         mb={4}>
-        <ButtonGroup
-          variant="text"
-          aria-label="text button group">
-          <Button
-            startIcon={<TheatersOutlinedIcon />}
-            color="primary">
-            CineMap
-          </Button>
+        <Stack direction="row">
+          <Button startIcon={<TheatersOutlinedIcon />}>CineMap</Button>
           <Button>Search</Button>
           <Button>Movie</Button>
           <Button>About</Button>
-        </ButtonGroup>
-        {/* BEGINNING - SEARCHBOX INPUT */}
+        </Stack>
+
+        {/*################################################################################################  SEARCHBOX */}
+
         <SearchBox
           color="secondary"
           searchValue={searchValue}
           setSearchValue={setSearchValue}></SearchBox>
       </Stack>
-      {/* MOVIELIST HEADING */}
+
+      {/* ################################################################################################ MOVIELIST HEADING */}
+
       <Stack>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
-      {/* MOVIELIST */}
+
+      {/* ################################################################################################ MOVIELIST */}
+
       <Stack
         direction="row"
         overflow="scroll"
         spacing={2}
         mr={6}
-        ml={6}>
-        {/* <App  /> */}
+        ml={6}
+        sx={{ bgcolor: 'tertiary.main', borderRadius: '16px' }}>
         <MovieList
           movies={movies}
           handleToWatchClick={addToWatch}
           watchLater={WatchLater}
         />
       </Stack>
-      {/* WATCH LATER HEADING */}
+
+      {/*################################################################################################ WATCH LATER HEADING */}
+
       <Stack>
         <MovieListHeading heading="Watch Later"></MovieListHeading>
       </Stack>
+
+      {/* ################################################################################################ WATCH LATER */}
+
       <Stack
         direction="row"
         overflow="scroll"
         spacing={2}
         mr={6}
-        ml={6}>
-        {/* <App  /> */}
+        ml={6}
+        sx={{ bgcolor: 'tertiary.main', borderRadius: '16px' }}>
         <MovieList
           movies={toWatch}
           handleToWatchClick={removeToWatch}
