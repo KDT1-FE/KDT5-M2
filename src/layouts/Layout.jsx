@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="mr-24 ml-24">{children}</div>
+      <div className="mr-24 ml-24 pr-4 pl-4">{children}</div>
     </>
   )
 }
