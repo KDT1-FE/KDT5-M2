@@ -10,6 +10,9 @@ export const theme = createTheme({
     },
     tertiary: {
       main: '#F3F6F9'
+    },
+    search: {
+      main: '#e0e3e7'
     }
   }
 })

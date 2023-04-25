@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react'
 import MovieList from './MovieList'
 import SearchBox from './SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
-import { Button, Stack, ButtonGroup } from '@mui/material'
+import { Button, Stack } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
 import WatchLater from './WatchLater'
 import RemoveToWatch from './RemoveToWatch'
@@ -54,21 +54,44 @@ const App = () => {
       <Stack
         direction="row"
         justifyContent="space-between"
-        mb={4}
-        pb={2}
+        mb={3}
         borderBottom={2}
-        borderColor="tertiary.main">
+        borderColor="tertiary.main"
+        p={2}>
         <Stack direction="row">
-          <Button startIcon={<TheatersOutlinedIcon />}>CineMap</Button>
-          <Button>Search</Button>
-          <Button>Movie</Button>
-          <Button>About</Button>
+          <Button
+            startIcon={<TheatersOutlinedIcon />}
+            sx={{
+              fontWeight: 'bold',
+              mx: '30px',
+              textShadow: '0 5px 10px #42a5f5',
+              letterSpacing: 13
+            }}>
+            CineMap
+          </Button>
+          <Button
+            sx={{
+              fontWeight: 'light'
+            }}>
+            Search
+          </Button>
+          <Button
+            sx={{
+              fontWeight: 'light'
+            }}>
+            Movie
+          </Button>
+          <Button
+            sx={{
+              fontWeight: 'light'
+            }}>
+            About
+          </Button>
         </Stack>
 
         {/*################################################################################################  SEARCHBOX */}
 
         <SearchBox
-          color="secondary"
           searchValue={searchValue}
           setSearchValue={setSearchValue}></SearchBox>
       </Stack>
@@ -78,9 +101,12 @@ const App = () => {
       <Stack
         mr={6}
         ml={6}
-        mb={1}
+        mb={2}
         sx={{
-          bgcolor: 'tertiary.main'
+          color: 'primary.main',
+          borderRadius: '16px',
+          fontWeight: 'bold',
+          textShadow: '0 5px 10px #42a5f5'
         }}>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
@@ -110,12 +136,15 @@ const App = () => {
       <Stack
         mr={6}
         ml={6}
-        mt={1}
-        mb={1}
+        mt={3}
+        mb={2}
         sx={{
-          bgcolor: 'tertiary.main'
+          color: 'primary.main',
+          borderRadius: '16px',
+          fontWeight: 'bold',
+          textShadow: '0 5px 10px #42a5f5'
         }}>
-        <MovieListHeading heading="Watch Later"></MovieListHeading>
+        <MovieListHeading heading="WATCH LATER"></MovieListHeading>
       </Stack>
 
       {/* ################################################################################################  WATCH LATER */}

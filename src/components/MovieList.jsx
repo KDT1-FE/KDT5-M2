@@ -11,7 +11,6 @@ const MovieList = props => {
           key={index}
           sx={{
             position: 'relative',
-
             '&:hover': {
               opacity: [0.9, 0.8]
             }
