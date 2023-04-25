@@ -72,7 +72,9 @@ const App = () => {
 
       {/* ################################################################################################ MOVIELIST HEADING */}
 
-      <Stack>
+      <Stack
+        mr={6}
+        ml={6}>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
 
@@ -84,7 +86,11 @@ const App = () => {
         spacing={2}
         mr={6}
         ml={6}
-        sx={{ bgcolor: 'tertiary.main', borderRadius: '16px' }}>
+        sx={{
+          bgcolor: 'tertiary.main',
+          borderRadius: '16px',
+          '&::-webkit-scrollbar': { display: 'none' }
+        }}>
         <MovieList
           movies={movies}
           handleToWatchClick={addToWatch}
@@ -94,7 +100,9 @@ const App = () => {
 
       {/*################################################################################################ WATCH LATER HEADING */}
 
-      <Stack>
+      <Stack
+        mr={6}
+        ml={6}>
         <MovieListHeading heading="Watch Later"></MovieListHeading>
       </Stack>
 
