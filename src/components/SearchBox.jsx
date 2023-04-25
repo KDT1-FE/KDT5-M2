@@ -16,11 +16,17 @@ const SearchBox = props => {
           borderRadius: '10px',
           pl: '10px',
           mr: '30px',
-          '&:hover': { bgcolor: '#e7ebf0', transition: '.2s linear' }
+          '&:hover': {
+            bgcolor: '#e7ebf0',
+            borderColor: '#cdd2d7',
+            transition: '.2s linear'
+          }
         }}>
         <InputBase
           startAdornment={
-            <InputAdornment position="start">
+            <InputAdornment
+              position="start"
+              sx={{ color: 'primary.main' }}>
               <SearchIcon />
             </InputAdornment>
           }

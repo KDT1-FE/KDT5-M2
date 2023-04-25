@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import MovieList from './MovieList'
 import SearchBox from './SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
@@ -47,6 +48,8 @@ const App = () => {
     setToWatch(watchList)
     saveToLocalStorage(watchList)
   }
+  const navigate = useNavigate()
+
   // ################################################################################################  RENDERING  ###################################################
   return (
     <>
@@ -64,26 +67,32 @@ const App = () => {
             sx={{
               fontWeight: 'bold',
               mx: '30px',
-              textShadow: '0 5px 10px #42a5f5',
+              // textShadow: '0 5px 10px #42a5f5',
               letterSpacing: 13
             }}>
             CineMap
           </Button>
           <Button
             sx={{
-              fontWeight: 'light'
+              fontWeight: 'light',
+              letterSpacing: 3
             }}>
             Search
           </Button>
           <Button
             sx={{
-              fontWeight: 'light'
+              fontWeight: 'light',
+              letterSpacing: 3
             }}>
             Movie
           </Button>
           <Button
             sx={{
-              fontWeight: 'light'
+              fontWeight: 'light',
+              letterSpacing: 3
+            }}
+            onClick={() => {
+              navigate('/about')
             }}>
             About
           </Button>
@@ -106,7 +115,7 @@ const App = () => {
           color: 'primary.main',
           borderRadius: '16px',
           fontWeight: 'bold',
-          textShadow: '0 5px 10px #42a5f5'
+          letterSpacing: 4
         }}>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
@@ -142,7 +151,7 @@ const App = () => {
           color: 'primary.main',
           borderRadius: '16px',
           fontWeight: 'bold',
-          textShadow: '0 5px 10px #42a5f5'
+          letterSpacing: 4
         }}>
         <MovieListHeading heading="WATCH LATER"></MovieListHeading>
       </Stack>
