@@ -19,7 +19,6 @@ function Search({ value, setValue, movies, setMovies }) {
     setLoading(true);
     const movieData = await getMovies(value);
     setMovies(movieData.Search || []);
-    console.log(movieData.Search[0]);
     setLoading(false);
   };
 
