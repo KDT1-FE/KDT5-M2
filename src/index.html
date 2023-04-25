@@ -8,29 +8,30 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" /> -->
-    <!-- <link
-      rel="stylesheet"
-      href="~/reset.css" /> -->
     <title>OMDb API</title>
   </head>
   <body>
     <nav class="nav_bar">
-      <a href="">Search</a>
-      <a href="">Movie</a>
-      <a href="">About</a>
+      <div class="nav_menu">
+        <a href="">Search</a>
+        <a href="">Movie</a>
+        <a href="">About</a>
+      </div>
       <span href=""></span>
     </nav>
-    <header class="title">
-      <h1>OMDb API THE OPEN MOVIE DATABASE</h1>
-      <p>
-        The OMDb API is a RESTful web service to obtain movie information, all content and images on the site are contributed and maintained by our users. If you find this service useful, please consider making a one-time donation or become a patron.
-      </p>
-    </header>
-    <input type="text" />
-    <ul class="movies"></ul>
+    <header></header>
+    <!-- <main></main> -->
+    <main class="search_bar">
+      <div class="search_option">
+        <input type="text" placeholder="영화 제목 검색" />
+        <button type="submit">click</button>
+      </div>
+      <ul class="movies"></ul>
+    </main>
+    <section>
+      <div></div>
+      <img src="" alt="" />
+    </section>
     <footer></footer>
   </body>
 </html>
