@@ -1,5 +1,32 @@
 .mainPage {
+  width: 100%;
   background-color: #4a4b43;
-  padding: 50px 0;
-  color: white;
+  padding: 3rem 0;
+  height: 100%;
+  h2 {
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+    line-height: 3rem;
+    span {
+      font-size: 3rem;
+      color: orange;
+    }
+    margin-bottom: 3rem;
+  }
+  #searchForm {
+    .search {
+      background-color: rgb(244, 244, 227);
+      border: 0.1rem solid black;
+      border-radius: 0.5rem;
+      width: 12rem;
+      height: 1.7rem;
+    }
+    button {
+      background-color:rgb(244, 244, 227);
+      border-radius: 0.5rem;
+      width: 4rem;
+      height: 2rem;
+    }
+  }
 }
