@@ -132,11 +132,15 @@
 ### 문제점(Challenge)
 
 - React로 만들어진 해당 프로젝트 내에 사용된 기술들의 작동원리를 **JavaScript**로 모두 설명할 수 있을지 자문해보면 아직 못할 것 같습니다. 꾸준한 자바스크립트 학습의 중요성을 느꼈습니다.
-- ThemeProvider를 사용할 때 entry point인 main.jsx에 App.jsx를 감싸는 형식이 기존 예시였지만 라우터를 사용하면서 RouterProvider를 감싸면서 에러가 발생했습니다. => import에 익숙하지 않아 잘못된 경로 설정 문제를 발견해 수정 후 해결했습니다.
-- MovieListHeading에 스타일 적용 불가
+
+- MUI사용으로 별도의 CSS파일 관리 없이 스타일 작업이 가능했지만 코드에 직접 작성된 **스타일 속성**들로 인해 **가독성**을 해친다는 느낌을 받았습니다. 
+
+- Poster 로딩 실패시 Alt text 출력 미구현
 - 
 ### 궁금한 점(Questions)
 
-- MUI사용시 Layout설정에서 Header구성 시 App Bar, Stack, Box등 여러 방법의 차이점이 궁금합니다. HTML에서는 div + class를 사용시와 Semantic tags를 사용해 만들 때 의미적으로 명확한 차이가 있지만 만들어진 UI를 사용시 어떤 차이점이 있는지 궁금합니다.
+- MUI사용시 Layout설정에서 Header구성 시 **App Bar, Stack, Box**등 여러 방법의 차이점이 궁금합니다. HTML에서는 div + class를 사용시와 Semantic tags를 사용해 만들 때 의미적으로 명확한 차이가 있지만 만들어진 UI를 사용시 어떤 차이점이 있는지 궁금합니다.
 
-- 처음엔 Home Router에 렌더링을 직접 구현하려고 했지만 props전달 문제로 인해 App.jsx에 렌더링을 모두 처리한 후 Home은 App을 렌더링하는 용도로 사용했습니다. 라우터 관리 시에 이런 방식이 맞는지 궁금합니다. 
+- 처음엔 **Home Router에 렌더링**을 직접 구현하려고 했지만 props전달 문제로 인해 App.jsx에 렌더링을 모두 처리한 후 Home은 App을 렌더링하는 용도로 사용했습니다. 라우터 관리 시에 이런 방식이 맞는지 궁금합니다. 
+
+- 

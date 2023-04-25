@@ -7,7 +7,11 @@ const SearchBox = props => {
       <Input
         placeholder="Search"
         value={props.value}
-        onChange={event => props.setSearchValue(event.target.value)}></Input>
+        onKeyDown={event => {
+          if (event.key === 'Enter') {
+            props.setSearchValue(event.target.value)
+          }
+        }}></Input>
     </>
   )
 }

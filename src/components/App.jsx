@@ -21,7 +21,7 @@ const App = () => {
       setMovies(json.Search)
     }
   }
-  // ################################################################################################ INITIAL LOADING WITH USEEFFECT
+  // ################################################################################################  INITIAL LOADING WITH USEEFFECT
   useEffect(() => {
     getMovieRequest(searchValue)
   }, [searchValue])
@@ -31,12 +31,12 @@ const App = () => {
     setToWatch(loadList)
   }, [])
 
-  // ################################################################################################ LOCAL STORAGE
+  // ################################################################################################  LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
   }
 
-  // ################################################################################################ ADD & REMOVE
+  // ################################################################################################  ADD & REMOVE
   const addToWatch = movie => {
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
@@ -47,14 +47,17 @@ const App = () => {
     setToWatch(watchList)
     saveToLocalStorage(watchList)
   }
-  // ################################################################################################ RENDERING
+  // ################################################################################################  RENDERING  ###################################################
   return (
     <>
-      {/* ################################################################################################ HEADER */}
+      {/* ################################################################################################  HEADER */}
       <Stack
         direction="row"
         justifyContent="space-between"
-        mb={4}>
+        mb={4}
+        pb={2}
+        borderBottom={2}
+        borderColor="tertiary.main">
         <Stack direction="row">
           <Button startIcon={<TheatersOutlinedIcon />}>CineMap</Button>
           <Button>Search</Button>
@@ -70,15 +73,19 @@ const App = () => {
           setSearchValue={setSearchValue}></SearchBox>
       </Stack>
 
-      {/* ################################################################################################ MOVIELIST HEADING */}
-
+      {/* ################################################################################################  MOVIELIST HEADING */}
+      {/* 여기서 CSS 변경1!!!!! */}
       <Stack
         mr={6}
-        ml={6}>
+        ml={6}
+        mb={1}
+        sx={{
+          bgcolor: 'tertiary.main'
+        }}>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
 
-      {/* ################################################################################################ MOVIELIST */}
+      {/* ################################################################################################  MOVIELIST */}
 
       <Stack
         direction="row"
@@ -98,15 +105,20 @@ const App = () => {
         />
       </Stack>
 
-      {/*################################################################################################ WATCH LATER HEADING */}
-
+      {/*################################################################################################  WATCH LATER HEADING */}
+      {/* 여기서 CSS 변경2!!!!! */}
       <Stack
         mr={6}
-        ml={6}>
+        ml={6}
+        mt={1}
+        mb={1}
+        sx={{
+          bgcolor: 'tertiary.main'
+        }}>
         <MovieListHeading heading="Watch Later"></MovieListHeading>
       </Stack>
 
-      {/* ################################################################################################ WATCH LATER */}
+      {/* ################################################################################################  WATCH LATER */}
 
       <Stack
         direction="row"
@@ -114,7 +126,11 @@ const App = () => {
         spacing={2}
         mr={6}
         ml={6}
-        sx={{ bgcolor: 'tertiary.main', borderRadius: '16px' }}>
+        sx={{
+          bgcolor: 'tertiary.main',
+          borderRadius: '16px',
+          '&::-webkit-scrollbar': { display: 'none' }
+        }}>
         <MovieList
           movies={toWatch}
           handleToWatchClick={removeToWatch}
