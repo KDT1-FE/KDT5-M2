@@ -31,7 +31,7 @@ function Header({ category, onMenuSelect }) {
     if (window.scrollY > 70) {
       scrollRef.current.style.background = "rgba(0, 0, 0, 0.7)";
     } else if (window.scrollY === 0) {
-      scrollRef.current.style.background = colors.gray[9];
+      scrollRef.current.style.background = "transparent";
     }
   };
 
