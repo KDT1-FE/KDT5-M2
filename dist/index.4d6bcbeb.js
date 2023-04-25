@@ -562,23 +562,25 @@ const inputEl = document.querySelector(".search input");
 const typeEl = document.querySelector(".movie_type");
 const yearEl = document.querySelector(".movie_year");
 const countEl = document.querySelector(".movie_count");
+const butEl = document.querySelector(".submit");
 const ulEl = document.querySelector(".movies");
 let inputText = "";
 let inputType = "";
 let inputYear = "";
 let inputCount = "";
-inputEl.addEventListener("keydown", async (event)=>{
-    if (event.key === "Enter") {
-        inputText = inputEl.value;
-        inputType = typeEl.value;
-        inputYear = yearEl.value;
-        inputCount = countEl.value;
-        const movies = await (0, _movieJs.request)(inputText, inputType, inputYear, inputCount);
-        console.log(movies);
-        (0, _movieJs.renderMovies)(ulEl, movies);
-    }
+const movieSearch = async function() {
+    inputText = inputEl.value;
+    inputType = typeEl.value;
+    inputYear = yearEl.value;
+    inputCount = countEl.value;
+    const movies = await (0, _movieJs.request)(inputText, inputType, inputYear, inputCount);
+    console.log(movies);
+    (0, _movieJs.renderMovies)(ulEl, movies);
+};
+inputEl.addEventListener("keydown", (event)=>{
+    if (event.key === "Enter") movieSearch();
 });
-const aEl = document.querySelector();
+butEl.addEventListener("click", movieSearch);
 
 },{"./movie.js":"6LcGR"}],"6LcGR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

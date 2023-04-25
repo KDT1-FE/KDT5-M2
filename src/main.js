@@ -4,6 +4,7 @@ const inputEl = document.querySelector(".search input");
 const typeEl = document.querySelector(".movie_type");
 const yearEl = document.querySelector(".movie_year");
 const countEl = document.querySelector(".movie_count");
+const butEl = document.querySelector(".submit");
 const ulEl = document.querySelector(".movies");
 
 let inputText = "";
@@ -11,19 +12,21 @@ let inputType = "";
 let inputYear = "";
 let inputCount = "";
 
-inputEl.addEventListener("keydown", async (event) => {
-    if (event.key === "Enter") {
-        inputText = inputEl.value;
-        inputType = typeEl.value;
-        inputYear = yearEl.value;
-        inputCount = countEl.value;
+const movieSearch = async function () {
+    inputText = inputEl.value;
+    inputType = typeEl.value;
+    inputYear = yearEl.value;
+    inputCount = countEl.value;
 
-        const movies = await request(inputText, inputType, inputYear, inputCount);
+    const movies = await request(inputText, inputType, inputYear, inputCount);
 
-        console.log(movies);
+    console.log(movies);
 
-        renderMovies(ulEl, movies);
-    }
+    renderMovies(ulEl, movies);
+};
+
+inputEl.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") movieSearch();
 });
 
-const aEl = document.querySelector();
+butEl.addEventListener("click", movieSearch);

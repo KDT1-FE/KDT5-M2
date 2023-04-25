@@ -53,7 +53,7 @@ header {
   padding: 30px;
 }
 
-.search input, .search select {
+.search input, .search select, .submit {
   height: 50px;
   color: #fff;
   box-sizing: border-box;
@@ -66,16 +66,17 @@ header {
   font-size: 20px;
 }
 
-.search input:hover, .search select:hover {
+.search input:hover, .search select:hover, .submit:hover {
+  cursor: pointer;
   border: 1px solid #ffe600;
 }
 
-.search input {
+.movie_title {
   text-align: right;
-  width: 300px;
+  width: 310px;
 }
 
-.search select {
+.search select, .submit {
   width: 150px;
 }
 
