@@ -105,6 +105,7 @@ const SearchList = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+  padding: 20px;
   border-radius: 16px;
   background: ${colors.gray[8]};
   @media all and (min-width: 320px) and (max-width: 1024px) {
