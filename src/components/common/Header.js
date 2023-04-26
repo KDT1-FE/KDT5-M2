@@ -4,18 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { colors } from "src/lib/styles/colors";
 
-// Data
-const categories = [
-  {
-    name: "검색",
-    url: "/",
-  },
-  {
-    name: "영화",
-    url: "/movies",
-  },
-];
-
 // Component
 function Header() {
   // Hooks
@@ -93,34 +81,6 @@ const Logo = styled.h1`
   &:hover {
     animation: blink 1s infinite;
   }
-`;
-
-const StyledNav = styled.nav`
-  flex: 1;
-  padding: 0 40px;
-  display: flex;
-`;
-
-const StyledLink = styled(Link)`
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 18px;
-  color: ${colors.gray[6]};
-  transition: all 0.2s ease-in-out;
-  border-radius: 8px;
-  &:hover {
-    color: ${colors.lime[4]};
-  }
-  ${(props) =>
-    props.$active &&
-    css`
-      font-weight: 500;
-      background: ${colors.lime[4]};
-      color: ${colors.gray[9]};
-      &:hover {
-        color: ${colors.gray[9]};
-      }
-    `}
 `;
 
 const GithubButton = styled(FaGithub)`
