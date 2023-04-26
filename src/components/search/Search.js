@@ -9,6 +9,7 @@ import SearchItem from "src/components/search/SearchItem";
 function Search({ value, setValue, movies, setMovies }) {
   // Hooks
   const [loading, setLoading] = useState(null);
+  const [message, setMessage] = useState("");
 
   // Function
   const onInputChange = (event) => {
@@ -21,7 +22,7 @@ function Search({ value, setValue, movies, setMovies }) {
     setLoading(true);
     const movieData = await getMovies(value);
     setMovies(movieData.Search || []);
-    console.log(movieData.Search[0]);
+    movieData.Search ? setMessage("") : setMessage("검색결과가 없습니다.");
     setLoading(false);
   };
 
@@ -43,6 +44,7 @@ function Search({ value, setValue, movies, setMovies }) {
           <Loading />
         ) : (
           <SearchList>
+            <span>{message}</span>
             {movies.map((movie) => (
               <SearchItem key={movie.imdbID} movie={movie} />
             ))}
@@ -111,6 +113,10 @@ const SearchList = styled.ul`
   background: ${colors.gray[8]};
   padding: 20px;
   position: relative;
+  span {
+    font-size: 20px;
+    color: ${colors.gray[0]};
+  }
   @media all and (min-width: 320px) and (max-width: 1024px) {
     padding: 20px;
   }
