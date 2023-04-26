@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 import { FaGithub } from "react-icons/fa";
-import { colors } from "src/lib/styles/colors";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { colors } from "src/lib/styles/colors";
 
 // Data
 const categories = [
@@ -17,7 +17,7 @@ const categories = [
 ];
 
 // Component
-function Header({ category, onMenuSelect }) {
+function Header() {
   // Hooks
   const navigate = useNavigate();
   const scrollRef = useRef();
@@ -47,18 +47,6 @@ function Header({ category, onMenuSelect }) {
     <HeaderContainer ref={scrollRef}>
       <HeaderContent>
         <Logo onClick={goHome}>MovieApp</Logo>
-        <StyledNav>
-          {categories.map((c) => (
-            <StyledLink
-              to={c.url}
-              $active={category === c.name}
-              onClick={() => onMenuSelect(c.name)}
-              key={c.name}
-            >
-              {c.name}
-            </StyledLink>
-          ))}
-        </StyledNav>
         <Link to="https://github.com/KDT1-FE/KDT5-M2/tree/KDT5_KimPilJin">
           <GithubButton />
         </Link>
