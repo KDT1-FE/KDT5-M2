@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../lib/styles/colors";
+import { colors } from "src/lib/styles/colors";
 
 // Component
 function Main() {
