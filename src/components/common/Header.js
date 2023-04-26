@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
