@@ -2,7 +2,7 @@
 
 # 데모 보기
 
-[DEMO](http://100.24.31.25/)
+[DEMO](ec2-3-84-213-170.compute-1.amazonaws.com)
 
 # ❗ 필수
 
