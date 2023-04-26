@@ -1,22 +1,37 @@
-// import App from '~/App.js'
-import Header from '~/Header.js' 
-import Search from '~/Search.js'
-import Poster from '~/Poster.js'
+import { request, renderMovies, requestAll, renderPoster } from '~/core/resAPI.js'
+import Header from '~/Header.js'
 import '~/styles/reset.css'
 import '~/styles/style.scss'
 
-
-
-const header = document.querySelector('header')
+// ---------------header title----------------//
+const header = document.querySelector('#header')
 header.append(new Header().el)
+//el은 Header 클래스에서 생성된 HTML 요소를 의미합니다.
 
-const section = document.querySelector('main')
-section.append(new Search().el)
-console.log(new Search().el)
+// -----------------API실행함수-------------------//
+const inputEl = document.querySelector('input')
+const ulEl = document.querySelector('.movies')
+const buttonEl = document.querySelector('button')
 
+// INPUT TAG_영화 검색
+let title = ''
+const inputHandler = () => {
+  title = inputEl.value
+}
+inputEl.addEventListener('input', inputHandler)
 
-// const poster = document.querySelector('.movies')
-// poster.append(new Poster().el)
+//엔터키 눌렀을때 비동기 실행
+const keydownHandler = async event => {
+  if (event.key === 'Enter') {
+    const movies = await request(title)
+    renderMovies(ulEl, movies)
+  }
+}
+inputEl.addEventListener('keydown', keydownHandler)
 
-// const root = document.querySelector('.posters')
-// root.append(new App().el)
+// 검색 버튼
+const buttonHandler = async () => {
+  const movies = await request(title)
+  renderMovies(ulEl, movies)
+}
+buttonEl.addEventListener('click', buttonHandler)

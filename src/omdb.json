@@ -1,0 +1,20 @@
+{
+  "Search": [
+    {
+      "Title": "Frozen",
+      "Year": "2013",
+      "imdbID": "tt2294629",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Frozen II",
+      "Year": "2019",
+      "imdbID": "tt4520988",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMjA0YjYyZGMtN2U0Ni00YmY4LWJkZTItYTMyMjY3NGYyMTJkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "338",
+  "Response": "True"
+}
