@@ -12,6 +12,12 @@ module.exports = {
     filename: "js/[name].[hash:8].js",
     sourceMapFilename: "./js/[id].[hash:8].js.map",
   },
+  resolve: {
+    alias: {
+      'src': path.resolve(__dirname, "../src"),
+    },
+    extensions: ["", ".js", ".json", ".jsx"],
+  },
   module: {
     rules: [
       // Babel-Loader

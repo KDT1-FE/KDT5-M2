@@ -11,6 +11,12 @@ module.exports = {
     path: path.resolve(__dirname, "../build"),
     filename: "[name].js",
   },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, "../src"),
+    },
+    extensions: ["", ".js", ".json", ".jsx"],
+  },
   devServer: {
     static: {
       directory: path.resolve(__dirname, "../build"),
