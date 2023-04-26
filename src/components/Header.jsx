@@ -23,7 +23,13 @@ export default function NavBar() {
           </a>
         </nav>
       </div>
-      <div className="mr-24">profile image</div>
+      <div className="mr-6">
+        <img
+          src="https://avatars.githubusercontent.com/u/73880776?s=400&u=1ce40dd704a71a9f5ce3f80cbf19092032f2df14&v=4"
+          alt="writer profile"
+          className="w-[30px] h-[30px] rounded-[15px] "
+        />
+      </div>
     </header>
   )
 }

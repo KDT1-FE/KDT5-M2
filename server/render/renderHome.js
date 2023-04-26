@@ -2,17 +2,15 @@ import React from 'react'
 import { renderToPipeableStream } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import dotenv from 'dotenv'
-
 import { QueryClient, QueryClientProvider } from 'react-query'
+
 import App from '../../src/App'
 import { MovieProvider } from '../../src/context/movieContext'
-
+import { ABORT_DELAY } from '../delays'
 /**
- * * 서버에서 라우터 정보를 react-router-dom에게 보냅니다.
- * * StaticRouter가 없다면 SSR시 StaticRouter가 감싸는 컴포넌트 내에서 useRoutes context를 사용할 수 없습니다.
+ * * react-router-dom ssr, csr
  * * StaticRouter(서버 라우터) == BrowserRouter(클라이언트 라우터)
  */
-import { ABORT_DELAY } from '../delays'
 
 dotenv.config()
 

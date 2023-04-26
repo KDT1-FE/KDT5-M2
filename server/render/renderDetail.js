@@ -2,18 +2,11 @@ import React from 'react'
 import { renderToPipeableStream } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import dotenv from 'dotenv'
-
 import { QueryClient, QueryClientProvider } from 'react-query'
+
 import App from '../../src/App'
 import { MovieProvider } from '../../src/context/movieContext'
-
 import { getMovieDetailById } from '../../service/api'
-
-/**
- * * 서버에서 라우터 정보를 react-router-dom에게 보냅니다.
- * * StaticRouter가 없다면 SSR시 StaticRouter가 감싸는 컴포넌트 내에서 useRoutes context를 사용할 수 없습니다.
- * * StaticRouter(서버 라우터) == BrowserRouter(클라이언트 라우터)
- */
 import { ABORT_DELAY } from '../delays'
 
 dotenv.config()
@@ -87,15 +80,13 @@ export default async function renderDetail(url, req, res) {
             <StaticRouter location={url}>
               <App assets={assets} />
             </StaticRouter>
-            {/* NextJS 12버전에서 SSR시 html 최하단에 서버 데이터를 stringify해서 삽입하는 전략을 따라했습니다. */}
           </div>
           {data.data && (
             <script id="__SERVER_DATA__" type="application/json">
               {data.data}
             </script>
           )}
-          {/* // ? 이 부분에 삽입된 데이터는 HTML Entity가 되는데 변환시키지 않고 보낼 방법을 아직 못 찾았습니니다. 
-        (추가적으로 decode해줘야하기 떄문에 변환시키지 않아도 되는 방법이 필요할 것 같습니다.) */}
+
           <script
             dangerouslySetInnerHTML={{
               __html: `assetManifest = ${JSON.stringify(assets)};`,

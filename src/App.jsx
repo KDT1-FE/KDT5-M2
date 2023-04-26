@@ -23,7 +23,7 @@ export default function App() {
           </Suspense>
         }
       />
-      <Route path="/" element={<About />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   )
 }
