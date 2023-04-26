@@ -1,12 +1,13 @@
 import { React, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import MovieList from './MovieList'
-import SearchBox from './SearchBox'
-import MovieListHeading from '~/components/MovieListHeading'
 import { Button, Stack } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
-import WatchLater from './WatchLater'
-import RemoveToWatch from './RemoveToWatch'
+// ################################################################################################COMPONENTS BELOW
+import MovieList from '~/components/MovieList'
+import SearchBox from '~/components/SearchBox'
+import MovieListHeading from '~/components/MovieListHeading'
+import WatchLater from '~/components/WatchLater'
+import RemoveToWatch from '~/components/RemoveToWatch'
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -65,7 +66,7 @@ const App = () => {
           <Button
             startIcon={<TheatersOutlinedIcon />}
             sx={{
-              fontWeight: 'bold',
+              fontWeight: 900,
               mx: '30px',
               // textShadow: '0 5px 10px #42a5f5',
               letterSpacing: 13
@@ -83,6 +84,9 @@ const App = () => {
             sx={{
               fontWeight: 'light',
               letterSpacing: 3
+            }}
+            onClick={() => {
+              navigate('/movie')
             }}>
             Movie
           </Button>
