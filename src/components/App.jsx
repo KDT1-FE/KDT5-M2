@@ -68,7 +68,6 @@ const App = () => {
             sx={{
               fontWeight: 900,
               mx: '30px',
-              // textShadow: '0 5px 10px #42a5f5',
               letterSpacing: 13
             }}>
             CineMap
