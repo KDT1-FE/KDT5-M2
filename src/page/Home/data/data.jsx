@@ -1,17 +1,17 @@
 const CategoryBox = [
-    {
-      id:"1",
-      name:"movie"
-    },
-    {
-      id:"2",
-      name:"series"
-    },
-    {
-      id:"3",
-      name:"episode"
-    }
-  ]
+  {
+    id:"1",
+    name:"movie"
+  },
+  {
+    id:"2",
+    name:"series"
+  },
+  {
+    id:"3",
+    name:"episode"
+  }
+]
 
 const Number = [
   {
