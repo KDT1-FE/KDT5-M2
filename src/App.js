@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/common/Header";
-import ErrorPage from "./routes/ErrorPage";
-import MainPage from "./routes/MainPage";
-import MoviePage from "./routes/MoviePage";
+import Header from "src/components/common/Header";
+import ErrorPage from "src/routes/ErrorPage";
+import MainPage from "src/routes/MainPage";
+import MoviePage from "src/routes/MoviePage";
 
 function App() {
   // Hooks
@@ -18,7 +18,7 @@ function App() {
       <Header category={category} onMenuSelect={onMenuSelect} />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/movies" element={<MoviePage />} />
+        <Route path="/:movieId" element={<MoviePage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </Router>
