@@ -1,13 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { getMovies } from "../../lib/api/movieAPI";
-import { colors } from "../../lib/styles/colors";
-import Loading from "../common/Loading";
-import SearchItem from "./SearchItem";
+import { getMovies } from "src/lib/api/movieAPI";
+import { colors } from "src/lib/styles/colors";
+import Loading from "src/components/common/Loading";
+import SearchItem from "src/components/search/SearchItem";
 
 // Component
 function Search({ value, setValue, movies, setMovies }) {
+  // Hooks
   const [loading, setLoading] = useState(null);
+
   // Function
   const onInputChange = (event) => {
     setValue(event.target.value);
@@ -42,7 +44,10 @@ function Search({ value, setValue, movies, setMovies }) {
         ) : (
           <SearchList>
             {movies.map((movie) => (
-              <SearchItem key={movie.imdbID} movie={movie} />
+              <SearchItem
+                key={movie.imdbID}
+                movie={movie}
+              />
             ))}
           </SearchList>
         )}
@@ -108,6 +113,7 @@ const SearchList = styled.ul`
   border-radius: 16px;
   background: ${colors.gray[8]};
   padding: 20px;
+  position: relative;
   @media all and (min-width: 320px) and (max-width: 1024px) {
     padding: 20px;
   }
