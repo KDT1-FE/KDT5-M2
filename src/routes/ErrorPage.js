@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdOutlineWarningAmber } from "react-icons/md";
-import { colors } from "../lib/styles/colors";
+import { colors } from "src/lib/styles/colors";
 import { Link } from "react-router-dom";
 
 // Component

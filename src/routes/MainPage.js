@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Search from "../components/search/Search";
-import SearchMain from "../components/search/SearchMain";
+import Search from "src/components/search/Search";
+import SearchMain from "src/components/search/SearchMain";
 
 // Component
 function MainPage() {
