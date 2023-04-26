@@ -5,8 +5,7 @@
     "bundler:dev": "cross-env NODE_ENV=development watch --wait=3 \"node ./scripts/build.cjs\" src",
     "bundler:prod": "cross-env NODE_ENV=production node ./scripts/build.cjs",
     "start:dev": "cross-env NODE_ENV=development nodemon ./build-ssr/server.js",
-    "start:prod": "cross-env NODE_ENV=production nodemon ./build-ssr/server.js",
-    "webpack:dev": "cross-env NODE_ENV=production webpack serve --mode=production"
+    "start:prod": "cross-env NODE_ENV=production pm2 start ./build-ssr/server.js"
   },
   "keywords": [],
   "author": "",
