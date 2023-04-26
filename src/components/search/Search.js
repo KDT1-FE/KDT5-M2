@@ -44,10 +44,7 @@ function Search({ value, setValue, movies, setMovies }) {
         ) : (
           <SearchList>
             {movies.map((movie) => (
-              <SearchItem
-                key={movie.imdbID}
-                movie={movie}
-              />
+              <SearchItem key={movie.imdbID} movie={movie} />
             ))}
           </SearchList>
         )}
