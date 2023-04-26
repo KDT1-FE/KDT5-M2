@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Oswald', 'ui-sans-serif', 'sans-serif';
+}
+
+li {
+  list-style-type: none;
+}

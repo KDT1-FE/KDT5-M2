@@ -22,21 +22,21 @@ KDT기수번호_이름  |  E.g, KDT0_ParkYoungWoong
 
 ## 요구사항
 
-필수 요구사항은 꼭 달성해야 하는 목표로, 수정/삭제는 불가하고 추가는 가능합니다.    
+필수 요구사항은 꼭 달성해야 하는 목표로, 수정/삭제는 불가하고 추가는 가능합니다.  
 선택 요구사항은 단순 예시로, 자유롭게 추가/수정/삭제해서 구현해보세요.  
-각 요구사항은 달성 후 마크다운에서 `- [x]`로 표시하세요.  
+각 요구사항은 달성 후 마크다운에서 `- [x]`로 표시하세요.
 
 ### ❗ 필수
 
-- [ ] 영화 제목으로 검색이 가능해야 합니다!
-- [ ] 검색된 결과의 영화 목록이 출력돼야 합니다!
-- [ ] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
-- [ ] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
+- [x] 영화 제목으로 검색이 가능해야 합니다!
+- [x] 검색된 결과의 영화 목록이 출력돼야 합니다!
+- [x] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
+- [x] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
 
 ### ❔ 선택
 
-- [ ] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
-- [ ] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
+- [x] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
+- [x] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
 - [ ] 영화 목록을 검색하는 동안 로딩 애니메이션이 보이도록 만들어보세요.
 - [ ] 무한 스크롤 기능을 추가해서 추가 영화 목록을 볼 수 있도록 만들어보세요.
 - [ ] 영화 포스터가 없을 경우 대체 이미지를 출력하도록 만들어보세요.
@@ -53,14 +53,14 @@ curl https://omdbapi.com/?apikey=7035c60c
 ```
 
 ## 영화 목록 검색
- 
+
 영화 목록은 한 번에 최대 10개까지 검색할 수 있습니다.
 
-파라미터 | 설명                   | 기본값
----|----------------------|---
-`s` | 검색할 영화 제목(필수!)       | -
-`y` | 검색할 개봉연도, 빈 값은 전체 검색 | - 
-`page` | 검색할 페이지 번호           | `1`
+| 파라미터 | 설명                               | 기본값 |
+| -------- | ---------------------------------- | ------ |
+| `s`      | 검색할 영화 제목(필수!)            | -      |
+| `y`      | 검색할 개봉연도, 빈 값은 전체 검색 | -      |
+| `page`   | 검색할 페이지 번호                 | `1`    |
 
 요청 코드 예시:
 
@@ -130,16 +130,18 @@ interface Movie {
 
 단일 영화의 상제정보를 검색합니다.
 
-파라미터 | 설명 | 기본값
----|---|---
-`i` | 검색할 영화 ID(필수!) |
-`plot` | 줄거리 길이 | `short`
+| 파라미터 | 설명                  | 기본값  |
+| -------- | --------------------- | ------- |
+| `i`      | 검색할 영화 ID(필수!) |
+| `plot`   | 줄거리 길이           | `short` |
 
 요청 코드 예시:
 
 ```js
 async function getMovie(id) {
-  const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`)
+  const res = await fetch(
+    `https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`
+  )
   const json = await res.json()
   if (json.Response === 'True') {
     return json
@@ -178,7 +180,8 @@ interface ResponseValue {
   Website: string // 영화 공식 웹사이트
   Response: string // 요청 성공 여부
 }
-interface Rating { // 영화 평점 정보
+interface Rating {
+  // 영화 평점 정보
   Source: string // 평점 제공 사이트
   Value: string // 평점
 }
@@ -201,7 +204,7 @@ interface Rating { // 영화 평점 정보
   "Awards": "Won 2 Oscars. 82 wins & 60 nominations total",
   "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg",
   "Ratings": [
-    { "Source": "Internet Movie Database",  "Value": "7.4/10" },
+    { "Source": "Internet Movie Database", "Value": "7.4/10" },
     { "Source": "Rotten Tomatoes", "Value": "90%" },
     { "Source": "Metacritic", "Value": "75/100" }
   ],
