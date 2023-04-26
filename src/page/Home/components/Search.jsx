@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import '../../../scss/Search.scss'
-import { CategoryBox, Number, Year } from '../data/data';
-import CateBox from '../section/cate';
+import React, {useState} from 'react';
+import Category from '../section/category';
 import NumberBox from '../section/number';
 import YearBox from '../section/year';
+import { CategoryBox, Number, Year } from '../data/data';
+import '../../../scss/home/components/Search.scss'
 
 function SearchForm(props) {
 
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState([])
 
     const handleChange = (e) => {
         console.log()
@@ -23,13 +23,17 @@ function SearchForm(props) {
     };
 
   return(
-    <div className="SearchContainer">
-      <input name="title" type="text" placeholder="Search for Movies, Series more" onChange={handleChange}/>
-      <CateBox list={CategoryBox} event={handleChange}/>
-      <NumberBox list={Number} event={handleChange}/>  
-      <YearBox list={Year()} event={handleChange}/>
-      <button className="SearchButton" onClick={fnSearch}> Apply </button>
+    <>
+    <div className="Searchcontainer">
+      <div className='container-box'>
+        <input name="title" type="text" placeholder="Search for Movies, Series more" onChange={handleChange}/>
+        <Category list={CategoryBox} event={handleChange}/>
+        <NumberBox list={Number} event={handleChange}/>
+        <YearBox list={Year()} event={handleChange}/>
+        <button className="SearchButton" onClick={fnSearch}> Apply </button>
+      </div>
     </div>
+    </>
   )
 };
 export default SearchForm
