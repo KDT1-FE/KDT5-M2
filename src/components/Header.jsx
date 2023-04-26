@@ -4,7 +4,7 @@ export default function NavBar() {
   return (
     <header
       className={`h-20 mb-12 related flex justify-between items-center 
-      xl:pr-32 xl:pl-32 lg:pr-20 lg:pl-20 md:pr-12 md:pl-12 sm:pr-4 sm:pl-4 
+      xl:pr-28 xl:pl-28 lg:pr-14 lg:pl-14 md:pr-8 md:pl-8 sm:pr-4 sm:pl-4 
       shadow-md hover:shadow-lg transition delay-100 ease-in`}
     >
       <div className="flex justify-start items-center">
