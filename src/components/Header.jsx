@@ -3,7 +3,7 @@ import React from 'react'
 export default function NavBar() {
   return (
     <header
-      className={`h-20 mb-24 related flex justify-between items-center 
+      className={`h-20 mb-12 related flex justify-between items-center 
       xl:pr-32 xl:pl-32 lg:pr-20 lg:pl-20 md:pr-12 md:pl-12 sm:pr-4 sm:pl-4 
       shadow-md hover:shadow-lg transition delay-100 ease-in`}
     >

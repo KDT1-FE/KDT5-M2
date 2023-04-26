@@ -47,7 +47,7 @@ export default function Search({ onSearch }) {
         name="genre"
         onChange={setSelecedGenre}
         defaultValue={genre}
-        className={`mr-4 h-12 min-w-[100px] shadow-md rounded-md cursor-pointer outline-none tracking-widest
+        className={`mr-4 h-12 min-w-[120px] shadow-md rounded-md cursor-pointer outline-none tracking-widest
         hover:shadow-lg transition duration-150 ease-out`}
       >
         <option value="">no-choice</option>

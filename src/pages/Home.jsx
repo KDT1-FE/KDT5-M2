@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <Layout>
       <main>
-        <h1 className="text-4xl tracking-widest mb-10">
+        <h1 className="text-4xl text-c-tt tracking-widest mb-10">
           <p>OMDb API</p>
           <p>THE OPEN MOVIE DATABASE</p>
         </h1>
@@ -45,16 +45,16 @@ export default function Home() {
           </p>
         </div>
         <Search onSearch={handleOnSearch} />
-        <section>
-          <h2 className="text-2xl tracking-widest mb-10">Search List</h2>
+        <section className="min-h-[240px] shadow-md rounded-md p-2">
+          <h2 className="text-2xl text-c-tt tracking-widest mb-10">Search List</h2>
           {isLoading && <Spinner />}
-          {isSuccess ? <SearchList movies={movies} /> : <div>Search for the movie title</div>}
-          {isFetchingNextPage && (
-            <div className="h-screen">
-              <Spinner pos="fixed bottom-28 left-0 right-0" />
-            </div>
+          {isSuccess ? (
+            <SearchList movies={movies} />
+          ) : (
+            <div className="text-c-d mb-10 opacity-80">Search for the movie title</div>
           )}
-          <div className="h-56" />
+          {isFetchingNextPage && <Spinner pos="fixed left-0 right-0 bottom-[165px]" />}
+          {hasNextPage && <div className="h-[70px]" />}
         </section>
       </main>
     </Layout>

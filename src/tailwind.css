@@ -26,6 +26,19 @@ html {
   box-sizing: border-box;
 }
 
+/* .plot {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
+  요기 아래는 -webkit을 사용하지 않는 브라우저를 위한 속성
+  line-height: 1.2em; 
+  height: 6em;
+} */
+
 /* https://codepen.io/mandelid/pen/vwKoe */
 .spinner {
   display: inline-block;
