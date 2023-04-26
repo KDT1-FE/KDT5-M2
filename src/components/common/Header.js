@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { FaGithub } from "react-icons/fa";
-import { colors } from "../../lib/styles/colors";
+import { colors } from "src/lib/styles/colors";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
