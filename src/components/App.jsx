@@ -109,7 +109,6 @@ const App = () => {
       </Stack>
 
       {/* ################################################################################################  MOVIELIST HEADING */}
-      {/* 여기서 CSS 변경1!!!!! */}
       <Stack
         mr={6}
         ml={6}
@@ -139,12 +138,11 @@ const App = () => {
         <MovieList
           movies={movies}
           handleToWatchClick={addToWatch}
-          watchLater={WatchLater}
+          action={WatchLater}
         />
       </Stack>
 
       {/*################################################################################################  WATCH LATER HEADING */}
-      {/* 여기서 CSS 변경2!!!!! */}
       <Stack
         mr={6}
         ml={6}
@@ -175,7 +173,7 @@ const App = () => {
         <MovieList
           movies={toWatch}
           handleToWatchClick={removeToWatch}
-          watchLater={RemoveToWatch}
+          action={RemoveToWatch}
         />
       </Stack>
     </>

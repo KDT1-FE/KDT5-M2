@@ -1,7 +1,11 @@
 import { React, useEffect } from 'react'
 import { Stack } from '@mui/material'
+import { Image } from 'mui-image'
+import { useLocation } from 'react-router-dom'
 
 const Info = () => {
+  const location = useLocation()
+  console.log(location.state)
   return (
     <>
       <Stack
@@ -10,7 +14,7 @@ const Info = () => {
         <Stack
           flexGrow={1}
           ml={6}>
-          IMAGE
+          <Image></Image>
         </Stack>
         <Stack
           flexGrow={1}
