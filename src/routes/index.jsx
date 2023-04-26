@@ -6,14 +6,17 @@ import Movie from './Movie'
 export default createBrowserRouter([
   {
     path: '/',
-    element: <Home />
+    element: <Home />,
+    errorElement: <NotFound />
   },
   {
     path: '/movie',
-    element: <Movie />
+    element: <Movie />,
+    errorElement: <NotFound />
   },
   {
     path: '/about',
-    element: <About />
+    element: <About />,
+    errorElement: <NotFound />
   }
 ])

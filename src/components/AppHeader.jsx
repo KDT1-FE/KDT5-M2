@@ -23,6 +23,9 @@ const AppHeader = () => {
               fontWeight: 900,
               mx: '30px',
               letterSpacing: 13
+            }}
+            onClick={() => {
+              navigate('/')
             }}>
             CineMap
           </Button>
