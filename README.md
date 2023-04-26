@@ -3,6 +3,10 @@
 주어진 API를 활용해 '[완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!  
 과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
 
+#
+
+완성주소 링크: https://hwi-moviesearch.netlify.app/
+
 ## 과제 수행 및 제출 방법
 
 ```
@@ -65,23 +69,23 @@ curl https://omdbapi.com/?apikey=7035c60c
 요청 코드 예시:
 
 ```js
-async function getMovies(title, year = '', page = 1) {
-  const s = `&s=${title}`
-  const y = `&y=${year}`
-  const p = `&page=${page}`
+async function getMovies(title, year = "", page = 1) {
+  const s = `&s=${title}`;
+  const y = `&y=${year}`;
+  const p = `&page=${page}`;
   try {
-    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`)
-    const json = await res.json()
-    if (json.Response === 'True') {
-      const { Search: movies, totalResults } = json
+    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`);
+    const json = await res.json();
+    if (json.Response === "True") {
+      const { Search: movies, totalResults } = json;
       return {
         movies,
-        totalResults
-      }
+        totalResults,
+      };
     }
-    return json.Error
+    return json.Error;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 ```
@@ -90,16 +94,16 @@ async function getMovies(title, year = '', page = 1) {
 
 ```ts
 interface ResponseValue {
-  Search: Movie[] // 검색된 영화 목록, 최대 10개
-  totalResults: string // 검색된 영화 개수
-  Response: 'True' | 'False' // 요청 성공 여부
+  Search: Movie[]; // 검색된 영화 목록, 최대 10개
+  totalResults: string; // 검색된 영화 개수
+  Response: "True" | "False"; // 요청 성공 여부
 }
 interface Movie {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  Poster: string // 영화 포스터 이미지 URL
+  Title: string; // 영화 제목
+  Year: string; // 영화 개봉연도
+  imdbID: string; // 영화 고유 ID
+  Type: string; // 영화 타입
+  Poster: string; // 영화 포스터 이미지 URL
 }
 ```
 
@@ -141,12 +145,12 @@ interface Movie {
 async function getMovie(id) {
   const res = await fetch(
     `https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`
-  )
-  const json = await res.json()
-  if (json.Response === 'True') {
-    return json
+  );
+  const json = await res.json();
+  if (json.Response === "True") {
+    return json;
   }
-  return json.Error
+  return json.Error;
 }
 ```
 
@@ -154,36 +158,36 @@ async function getMovie(id) {
 
 ```ts
 interface ResponseValue {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  Rated: string // 영화 등급
-  Released: string // 영화 개봉일
-  Runtime: string // 영화 상영시간
-  Genre: string // 영화 장르
-  Director: string // 영화 감독
-  Writer: string // 영화 작가
-  Actors: string // 영화 출연진
-  Plot: string // 영화 줄거리
-  Language: string // 영화 언어
-  Country: string // 영화 제작 국가
-  Awards: string // 영화 수상 내역
-  Poster: string // 영화 포스터 이미지 URL
-  Ratings: Rating[] // 영화 평점 정보
-  Metascore: string // 영화 메타스코어
-  imdbRating: string // 영화 IMDB 평점
-  imdbVotes: string // 영화 IMDB 투표 수
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  DVD: string // 영화 DVD 출시일
-  BoxOffice: string // 영화 박스오피스
-  Production: string // 영화 제작사
-  Website: string // 영화 공식 웹사이트
-  Response: string // 요청 성공 여부
+  Title: string; // 영화 제목
+  Year: string; // 영화 개봉연도
+  Rated: string; // 영화 등급
+  Released: string; // 영화 개봉일
+  Runtime: string; // 영화 상영시간
+  Genre: string; // 영화 장르
+  Director: string; // 영화 감독
+  Writer: string; // 영화 작가
+  Actors: string; // 영화 출연진
+  Plot: string; // 영화 줄거리
+  Language: string; // 영화 언어
+  Country: string; // 영화 제작 국가
+  Awards: string; // 영화 수상 내역
+  Poster: string; // 영화 포스터 이미지 URL
+  Ratings: Rating[]; // 영화 평점 정보
+  Metascore: string; // 영화 메타스코어
+  imdbRating: string; // 영화 IMDB 평점
+  imdbVotes: string; // 영화 IMDB 투표 수
+  imdbID: string; // 영화 고유 ID
+  Type: string; // 영화 타입
+  DVD: string; // 영화 DVD 출시일
+  BoxOffice: string; // 영화 박스오피스
+  Production: string; // 영화 제작사
+  Website: string; // 영화 공식 웹사이트
+  Response: string; // 요청 성공 여부
 }
 interface Rating {
   // 영화 평점 정보
-  Source: string // 평점 제공 사이트
-  Value: string // 평점
+  Source: string; // 평점 제공 사이트
+  Value: string; // 평점
 }
 ```
 
