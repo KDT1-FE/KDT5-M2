@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 // Component
@@ -6,14 +7,19 @@ function SearchItem({ movie }) {
   const poster = movie.Poster.replace("SX300", "SX500");
   // Render
   return (
-    <MovieCard bgPhoto={poster}>
-      <h2>{movie.Title}</h2>
-    </MovieCard>
+    <>
+      <MovieCard
+        to={`/${movie.imdbID}`}
+        bgphoto={poster}
+      >
+        <h2>{movie.Title}</h2>
+      </MovieCard>
+    </>
   );
 }
 
 // Style
-const MovieCard = styled.li`
+const MovieCard = styled(Link)`
   cursor: pointer;
   background: #fff;
   width: 200px;
@@ -21,7 +27,7 @@ const MovieCard = styled.li`
   border-radius: 16px;
   transition: all 0.3s ease-in-out;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  background-image: url(${(props) => props.bgPhoto});
+  background-image: url(${(props) => props.bgphoto});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
