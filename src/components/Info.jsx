@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom'
 const Info = () => {
   const location = useLocation()
   console.log(location.state)
+  const movieinfo = location.state
+  console.log(location.state.Poster)
   return (
     <>
       <Stack
@@ -14,7 +16,7 @@ const Info = () => {
         <Stack
           flexGrow={1}
           ml={6}>
-          <Image></Image>
+          <Image src={movieinfo.Poster}></Image>
         </Stack>
         <Stack
           flexGrow={1}
