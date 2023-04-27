@@ -5,6 +5,8 @@ import navItems from '../constants/navItems';
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
+  const isMovieActive = window.location.href.includes('movie');
+
   return (
     <header className="flex justify-between items-center p-2 px-8">
       <div className="flex items-center gap-10">
@@ -21,7 +23,14 @@ export default function Navbar(): JSX.Element {
               <li key={item.href}>
                 <NavLink to={`${item.href}`}>
                   {({ isActive }) => {
-                    return <Button name={item.name} active={isActive} />;
+                    return (
+                      <Button
+                        name={item.name}
+                        active={
+                          isActive || (item.name === 'Movie' && isMovieActive)
+                        }
+                      />
+                    );
                   }}
                 </NavLink>
               </li>
