@@ -59,7 +59,7 @@
 - 예시의 기능과 동일하게 만듬
 - 추가적인 기능 없음
 - 디자인적으로 예시와 유사하나 디테일한 부분이 다르며 전환효과 추가
-- 영화 상세 페이지 ("/movie/[movieId]")에서 Navbar의 Movie 버튼을 눌렀을 때 URL은 변하지만 화면은 변하지 않음 >> 해결
+- 영화 상세 페이지 ("/movie/[movieId]")에서 Navbar의 Movie 버튼을 눌렀을 때 URL은 변하지만 화면은 변하지 않음 → useEffect dependancy추가
 
 ```js
 useEffect(() => {
@@ -67,7 +67,7 @@ useEffect(() => {
 }, [movieId]);
 ```
 
-- Frozen2를 제외한 영화 상세 페이지에서 Navbar의 Movie 버튼이 active되지 않음. NavLink태그의 isActive속성을 사용할 수 있는 방법에 대해 고민 >> 해결
+- Frozen2를 제외한 영화 상세 페이지에서 Navbar의 Movie 버튼이 active되지 않음. NavLink태그의 isActive속성을 사용할 수 있는 방법에 대해 고민 → url에서 movie가 있는지를 boolean값으로 return하고 Button 컴포넌트에 조건문 추가
 
 ```js
 const isMovieActive = window.location.href.includes('movie');
