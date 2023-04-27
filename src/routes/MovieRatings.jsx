@@ -1,12 +1,14 @@
 import React from "react";
 import TheHeader from "../components/Header/TheHeader";
-import RouteMain from "./RouteMain/RouteMain";
+import RouteRatings from "./RouteRatings/RouteRatings";
+import TheFooter from "../components/Footer/TheFooter";
 
 export default function Movie() {
   return (
     <>
       <TheHeader />
-      <RouteMain />
+      <RouteRatings />
+      <TheFooter />
     </>
   );
 }
