@@ -30,8 +30,9 @@ html {
   --color-pink: #ff0558;
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-background: #120000;
-  --color-gray: rgba(190, 188, 188, 0.676);
+  --color-background: #1c1c1c;
+  --color-gray: #242424;
+  --color-fontGray: #e6e6e6;
 }
 
 body {
