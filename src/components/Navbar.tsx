@@ -5,7 +5,7 @@ import navItems from '../constants/navItems';
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
-  const isMovieActive = window.location.href.includes('movie');
+  const isMovieActive = window.location.pathname.includes('movie');
 
   return (
     <header className="flex justify-between items-center p-2 px-8">
