@@ -1,0 +1,67 @@
+main {
+  background-color: var(--color-background);
+  .mainSection {
+    width: 1100px;
+    min-height: 500px;
+    margin: 0 auto;
+
+    .movieContainer {
+      display: flex;
+      position: relative;
+      margin: 0 auto;
+      padding: 70px 0 60px 0;
+
+      .moviePoster {
+        display: block;
+        position: relative;
+
+        width: 300px;
+        height: 440px;
+        margin-right: 70px;
+        border-radius: 10px;
+        flex-shrink: 0;
+
+        .zoomOutButton {
+          position: absolute;
+          bottom: 5%;
+          right: 0;
+
+          .zoomOutMapIcon {
+            position: absolute;
+            background-color: black;
+            color: white;
+            font-size: 2.2rem;
+          }
+        }
+      }
+      .movieTitle {
+        color: var(--color-white);
+      }
+      .movieInfo {
+        .movieDetail {
+          margin-top: 30px;
+          display: flex;
+          .movieDetailInner {
+            .movieDetailList {
+              display: flex;
+              padding: 5px 0;
+
+              .movieDetailGray {
+                min-width: 75px;
+                color: #98989c;
+                padding-right: 20px;
+              }
+              .movieDetailWhite {
+                color: var(--color-white);
+                max-width: 200px;
+              }
+            }
+          }
+          .movieDetailInner:nth-child(2) {
+            margin-left: 60px;
+          }
+        }
+      }
+    }
+  }
+}
