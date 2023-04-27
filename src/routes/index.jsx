@@ -1,9 +1,9 @@
 // index.jsx 파일을 통해 router 관리
-
 import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 import App from "../components/App";
-import Movie from "./Movie";
+import MovieMain from "./MovieMain";
+import MovieRatings from "./MovieRatings";
 
 export default createBrowserRouter([
   // path: '페이지 경로'
@@ -13,12 +13,22 @@ export default createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/movie",
-    element: <Movie />,
+    path: "/movie/main",
+    element: <MovieMain />,
     children: [
       {
         path: ":movieId",
-        element: <Movie />,
+        element: <MovieMain />,
+      },
+    ],
+  },
+  {
+    path: "/movie/ratings",
+    element: <MovieRatings />,
+    children: [
+      {
+        path: ":movieId",
+        element: <MovieRatings />,
       },
     ],
   },
