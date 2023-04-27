@@ -8,7 +8,7 @@ const TheHeader = () => {
       <NavLink to="/" className={styles.logo}>
         WUTCHA
       </NavLink>
-      <NavLink to="/movie" className={styles.movie}>
+      <NavLink to="/movie/main/tt2194499" className={styles.movie}>
         영화
       </NavLink>
     </header>
