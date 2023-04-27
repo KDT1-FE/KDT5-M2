@@ -67,7 +67,7 @@ useEffect(() => {
 }, [movieId]);
 ```
 
-- Frozen2를 제외한 영화 상세 페이지에서 Navbar의 Movie 버튼이 active되지 않음. NavLink태그의 isActive속성을 사용할 수 있는 방법에 대해 고민 → url에서 movie가 있는지를 boolean값으로 return하고 Button 컴포넌트에 조건문 추가
+- Frozen2를 제외한 영화 상세 페이지에서 Navbar의 Movie 버튼이 active되지 않음. NavLink태그의 isActive속성을 사용할 수 있는 방법에 대해 고민 → url에서 movie가 있는지를 boolean값으로 받고 Button 컴포넌트에 조건문 추가
 
 ```js
 const isMovieActive = window.location.href.includes('movie');
