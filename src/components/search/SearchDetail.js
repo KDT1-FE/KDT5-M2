@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { colors } from "src/lib/styles/colors";
 import ErrorPage from "src/routes/ErrorPage";
 import styled from "styled-components";
-import { MdStar, MdHideImage } from "react-icons/md";
+import { MdHideImage } from "react-icons/md";
+import Loading from "src/components/common/Loading";
+import { colors } from "src/lib/styles/colors";
+
+const imgData = [
+  "https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Internet%20Movie%20Database.png",
+  "https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Rotten%20Tomatoes.png",
+  "https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Metacritic.png",
+];
 
 function SearchDetail() {
   // Hooks
   const [movie, setMovie] = useState({});
+  const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
 
   // Function
@@ -20,6 +28,7 @@ function SearchDetail() {
   useEffect(() => {
     const getMovieDetail = async (movieId) => {
       try {
+        setLoading(true);
         const url = `http://omdbapi.com/?apikey=7035c60c&i=${movieId}&plot=full`;
         const response = await fetch(url);
         const result = await response.json();
@@ -29,6 +38,8 @@ function SearchDetail() {
         }
       } catch (e) {
         console.error(e, "API 요청에 실패했습니다.");
+      } finally {
+        setLoading(false);
       }
     };
     getMovieDetail(movieId);
@@ -37,6 +48,8 @@ function SearchDetail() {
   // etc
   const poster = movie.Poster ? movie.Poster.replace("SX300", "") : ""; // Image Resizing
   const genreSplit = movie.Genre ? movie.Genre.split(",") : []; // String -> Array
+  const actorSplit = movie.Actors ? movie.Actors.split(",") : []; // String -> Array
+  const ratings = movie.Ratings ? movie.Ratings : []; // map 오류 방어 코드
 
   if (!movie) {
     return <ErrorPage />;
@@ -44,12 +57,14 @@ function SearchDetail() {
 
   // Debug
   console.log(movie);
-  console.log(genreSplit);
+  console.log(ratings);
 
+  // Render
   return (
-    <>
-      <Space />
-      <MovieContainer>
+    <MovieContainer>
+      {loading ? (
+        <Loading />
+      ) : (
         <MovieContent>
           <MoviePoster poster={poster} onContextMenu={onDisableContextMenu}>
             {poster === "N/A" && (
@@ -59,138 +74,203 @@ function SearchDetail() {
               </>
             )}
           </MoviePoster>
-          <MovieInfo>
-            <h2>{movie.Title}</h2>
-            <Etc>
-              <EtcItem>
-                <MdStar />
-                {movie.imdbRating}
-              </EtcItem>
-              <EtcItem>{movie.Released}</EtcItem>
-            </Etc>
-            <Genre>
-              {genreSplit.map((genre, index) => (
-                <GenreItem key={index}>{genre}</GenreItem>
-              ))}
-            </Genre>
+          <MovieTitle>{movie.Title}</MovieTitle>
+          <MovieInfoDetail>
             <Description>{movie.Plot}</Description>
-          </MovieInfo>
+            <MovieGenre>
+              <h3>Genre</h3>
+              {genreSplit.map((genre, index) => (
+                <Genre key={index}>{genre}</Genre>
+              ))}
+            </MovieGenre>
+            <Actors>
+              <h3>Actor</h3>
+              {actorSplit.map((actor, index) => (
+                <Actor key={index}>{actor}</Actor>
+              ))}
+            </Actors>
+            <Director>
+              <h3>Director</h3>
+              <span>{movie.Director}</span>
+            </Director>
+            <Ratings>
+              <h3>Ratings</h3>
+              {ratings.map((rating, index) => (
+                <Rating key={index}>
+                  <img src={imgData[index]} alt="rating" />
+                  <span>{rating.Value}</span>
+                </Rating>
+              ))}
+            </Ratings>
+          </MovieInfoDetail>
         </MovieContent>
-      </MovieContainer>
-    </>
+      )}
+    </MovieContainer>
   );
 }
 
-const Space = styled.div`
-  margin-top: 60px;
-`;
-
+// Style
 const MovieContainer = styled.div`
   width: 100%;
-  padding: 0 60px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  padding: 0 60px;
 `;
 
 const MovieContent = styled.div`
   width: 1280px;
   max-width: 1280px;
-  display: flex;
-  gap: 30px;
   padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MoviePoster = styled.div`
   width: 400px;
-  height: 550px;
+  height: 580px;
+  background: ${colors.gray[8]};
+  background-image: url(${(props) => props.poster});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: ${colors.gray[2]};
-  background-image: url(${(props) => props.poster});
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
   svg {
     color: ${colors.red[5]};
-    font-size: 40px;
+    font-size: 80px;
   }
   span {
     font-weight: 700;
     font-size: 20px;
-  }
-`;
-
-const MovieInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  h2 {
-    font-size: 40px;
-    font-weight: 700;
     color: ${colors.gray[0]};
-    word-break: break-all;
-  }
-  span {
-    font-size: 12px;
-    padding: 8px 16px;
-    font-weight: 700;
-    border-radius: 8px;
-    user-select: none;
-    margin-right: 8px;
-  }
-  p {
-    word-break: normal;
-    color: ${colors.gray[0]};
-    margin-top: 30px;
   }
 `;
 
-const Etc = styled.div`
-  margin-top: 10px;
-  display: flex;
-`;
-
-const EtcItem = styled.div`
-  font-size: 16px;
-  padding: 8px 16px;
+const MovieTitle = styled.h2`
+  color: ${colors.gray[0]};
+  text-align: center;
+  font-size: 40px;
   font-weight: 700;
-  border-radius: 8px;
-  user-select: none;
-  margin-right: 8px;
-  background: ${colors.lime[4]};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  svg {
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
-    font-size: 16px;
-    color: ${colors.red[6]};
-  }
-`;
-
-const Genre = styled.div`
-  margin-top: 20px;
-`;
-
-const GenreItem = styled.span`
-  background: ${colors.gray[4]};
+  margin: 20px 0;
 `;
 
 const Description = styled.p`
-  width: 700px;
   padding: 16px;
   background: ${colors.gray[8]};
-  border-radius: 8px;
-  word-break: keep-all;
-  color: ${colors.gray[2]};
-  @media all and (min-width: 320px) and (max-width: 1024px) {
-    width: 300px;
+  color: ${colors.gray[4]};
+  border-radius: 20px;
+  word-wrap: break-word;
+`;
+
+const MovieGenre = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid ${colors.lime[4]};
+  h3 {
+    background: ${colors.lime[4]};
+    padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: ${colors.gray[9]};
+  }
+`;
+
+const Genre = styled.span`
+  color: ${colors.gray[0]};
+  font-weight: 700;
+  &::after {
+    content: ",";
+  }
+  &:last-child {
+    &::after {
+      content: "";
+    }
+  }
+`;
+
+const MovieInfoDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+const Actors = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid ${colors.lime[4]};
+  h3 {
+    background: ${colors.lime[4]};
+    padding: 8px 16px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: ${colors.gray[9]};
+  }
+`;
+
+const Actor = styled.span`
+  color: ${colors.gray[0]};
+  font-weight: 700;
+  &::after {
+    content: ",";
+  }
+  &:last-child {
+    &::after {
+      content: "";
+    }
+  }
+`;
+
+const Director = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid ${colors.lime[4]};
+  h3 {
+    background: ${colors.lime[4]};
+    padding: 8px 7px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: ${colors.gray[9]};
+  }
+  span {
+    color: ${colors.gray[0]};
+    font-weight: 700;
+  }
+`;
+
+const Ratings = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid ${colors.lime[4]};
+  h3 {
+    background: ${colors.lime[4]};
+    padding: 8px 10px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 700;
+    color: ${colors.gray[9]};
+  }
+`;
+
+const Rating = styled.div`
+  display: flex;
+  align-items: center;
+  img {
+    width: 20%;
+    margin-right: 8px;
+  }
+  span {
+    color: ${colors.gray[0]};
+    font-weight: 700;
   }
 `;
 
