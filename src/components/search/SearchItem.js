@@ -8,10 +8,7 @@ function SearchItem({ movie }) {
   // Render
   return (
     <>
-      <MovieCard
-        to={`/${movie.imdbID}`}
-        bgphoto={poster}
-      >
+      <MovieCard to={`/${movie.imdbID}`} bgphoto={poster}>
         <h2>{movie.Title}</h2>
       </MovieCard>
     </>
