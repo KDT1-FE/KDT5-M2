@@ -48,4 +48,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   },
+  mode: "development",
+  devtool: "source-map",
 };

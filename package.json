@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "source-map-loader": "^4.0.1",
     "webpack-cli": "^5.0.1"
   }
 }
