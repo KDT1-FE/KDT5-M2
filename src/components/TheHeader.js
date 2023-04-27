@@ -1,6 +1,11 @@
 import { Component } from '~/core/coreComps.js'
 
 export default class TheHeader extends Component {
+  constructor() {
+    super({
+      tagName: 'header'
+    })
+  }
   render() {
     this.el.classList.add('theheader')
     this.el.innerHTML = `
