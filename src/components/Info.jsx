@@ -1,15 +1,12 @@
 import { React, useEffect, useState } from 'react'
-import { Stack } from '@mui/material'
+import { Stack, Box } from '@mui/material'
 import { Image } from 'mui-image'
 import { useLocation } from 'react-router-dom'
 
 const Info = () => {
   const location = useLocation()
-  console.log(location)
   const movieinfo = location.state
-  console.log(movieinfo)
   const movieID = movieinfo.imdbID
-  console.log(movieID)
 
   const [film, setFilm] = useState([])
   const [rating, setRating] = useState([])
@@ -20,9 +17,7 @@ const Info = () => {
     )
     const json = await res.json()
     if (json.Response === 'True') {
-      console.log(json)
       setFilm(json)
-      console.log(json.Ratings[0].Value)
     }
     return json.Error
   }
@@ -34,12 +29,17 @@ const Info = () => {
       setRating()
     }
   }, [])
+
+  // ######################################################################## RENDERING
+
   return (
     <>
       <Stack
         direction="row"
-        spacing={1}
-        sx={{ height: 'calc(100vh - 120px)' }}>
+        spacing={12}
+        justifyContent="space-evenly"
+        sx={{ height: 'calc(100vh - 120px)' }}
+        mr={6}>
         <Stack
           sx={{ width: '40%' }}
           ml={6}>
@@ -53,36 +53,145 @@ const Info = () => {
               borderRadius: '16px'
             }}></Image>
         </Stack>
+
+        {/* ############################################################### IMAGE ON LEFT SIDE*/}
+
         <Stack
           sx={{ width: '60%' }}
-          mr={6}
+          spacing={2}
           justifyContent="space-evenly">
-          <Stack flexGrow={3}>{film.Title}</Stack>
-          <Stack flexGrow={1}>
-            {film.Released}
-            {film.Runtime}
-            {film.Country}
+          <Stack
+            flexGrow={3}
+            color="primary.main"
+            sx={{
+              fontWeight: '900',
+              fontSize: '60px',
+              letterSpacing: -4
+            }}>
+            {film.Title}
           </Stack>
           <Stack
-            flexGrow={8}
-            flexWrap="wrap">
+            flexGrow={1}
+            direction="row"
+            spacing={4}
+            color="secondary.main"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: -1
+            }}>
+            <Box>{film.Released}</Box>
+            <Box> {film.Runtime}</Box>
+            <Box> {film.Country}</Box>
+          </Stack>
+          <Stack
+            flexGrow={7}
+            flexWrap="wrap"
+            overflow="scroll"
+            sx={{
+              fontWeight: 'light',
+              letterSpacing: 1,
+              lineHeight: 1.6
+            }}>
             {film.Plot}
           </Stack>
-          <Stack flexGrow={1}>Rating</Stack>
-          <Stack flexGrow={1}>
-            {/* {film.Ratings[0].Source}
-            {film.Ratings[0].Value}
-            {film.Ratings[1].Source}
-            {film.Ratings[1].Value}
-            {film.Ratings[2].Source}
-            {film.Ratings[2].Value} */}
+          <Stack
+            flexGrow={1}
+            color="primary.main"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: -1
+            }}>
+            RATING
           </Stack>
-          <Stack flexGrow={1}>Cast</Stack>
-          <Stack flexGrow={1}>{film.Actors}</Stack>
-          <Stack flexGrow={1}>Director</Stack>
-          <Stack flexGrow={1}>{film.Director}</Stack>
-          <Stack flexGrow={1}>Genre</Stack>
-          <Stack flexGrow={1}>{film.Genre}</Stack>
+          <Stack
+            flexGrow={2}
+            direction="row"
+            spacing={3}
+            sx={{
+              fontWeight: 'light',
+              letterSpacing: 2
+            }}>
+            <Stack
+              direction="row"
+              alignItems="center">
+              <Image
+                fit="fill"
+                lineHeight=""
+                height="30px"
+                src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Internet%20Movie%20Database.png"></Image>
+
+              {film.Ratings?.[0]?.Value ?? ''}
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center">
+              <Image
+                fit="fill"
+                height="30px"
+                src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Rotten%20Tomatoes.png"></Image>
+              {film.Ratings?.[1]?.Value ?? ''}
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center">
+              <Image
+                fit="fill"
+                height="30px"
+                src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Metacritic.png"></Image>
+              {film.Ratings?.[2]?.Value ?? ''}
+            </Stack>
+          </Stack>
+          <Stack
+            flexGrow={1}
+            color="primary.main"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: -1
+            }}>
+            CAST
+          </Stack>
+          <Stack
+            flexGrow={1}
+            sx={{
+              fontWeight: 'light',
+              letterSpacing: 2
+            }}>
+            {film.Actors}
+          </Stack>
+          <Stack
+            flexGrow={1}
+            color="primary.main"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: -1
+            }}>
+            DIRECTOR
+          </Stack>
+          <Stack
+            flexGrow={1}
+            sx={{
+              fontWeight: 'light',
+              letterSpacing: 2
+            }}>
+            {film.Director}
+          </Stack>
+          <Stack
+            flexGrow={1}
+            color="primary.main"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: -1
+            }}>
+            GENRE
+          </Stack>
+          <Stack
+            flexGrow={1}
+            sx={{
+              fontWeight: 'light',
+              letterSpacing: 2
+            }}>
+            {film.Genre}
+          </Stack>
         </Stack>
       </Stack>
     </>
