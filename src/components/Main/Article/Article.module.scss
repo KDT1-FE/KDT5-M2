@@ -1,13 +1,14 @@
 .articleSection {
-  color: var(--color-white);
+  color: #e6e6e6;
   font-size: 50px;
-  background: url("~/src/assets/background-curtain.jpg");
 
   article {
     padding: 20px 100px;
+
     div {
       padding: 20px 0 20px;
       border-bottom: 2px solid #fff;
+      min-width: 410px;
     }
     .contentBig {
       font-size: 80px;
@@ -23,7 +24,7 @@
 
     p {
       font-size: 12px;
-      color: #848482;
+      color: var(--color-fontGray);
     }
   }
 }
