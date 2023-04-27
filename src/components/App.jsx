@@ -85,7 +85,16 @@ const App = () => {
               letterSpacing: 3
             }}
             onClick={() => {
-              navigate('/movie')
+              navigate('/movie', {
+                state: {
+                  Title: 'Midnight in Paris',
+                  Year: '2011',
+                  imdbID: 'tt1605783',
+                  Type: 'movie',
+                  Poster:
+                    'https://m.media-amazon.com/images/M/MV5BMTM4NjY1MDQwMl5BMl5BanBnXkFtZTcwNTI3Njg3NA@@._V1_SX300.jpg'
+                }
+              })
             }}>
             Movie
           </Button>
