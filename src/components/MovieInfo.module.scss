@@ -1,0 +1,35 @@
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  > div {
+    display: flex;
+
+    img {
+      width: 360px;
+      height: 540px;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+
+      span {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      span:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+}

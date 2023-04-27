@@ -2,6 +2,7 @@ import MovieSearch from '~/components/MovieSearch'
 import NavigationBar from '~/components/NavigationBar'
 import MovieList from '~/components/MovieList'
 import { useState } from 'react'
+import './App.scss'
 
 export default function App() {
   const [movies, setMovies] = useState([])
@@ -23,6 +24,7 @@ export default function App() {
     //onKeyDown이 Enter키 일 경우 해당 함수가 실행됨
     if (e.key === 'Enter') {
       const searchValue = e.target.value
+
       try {
         const searchResults = await getMovies(searchValue)
         // 검색한 결과가 나오면 해당 배열을 movies에 입력
