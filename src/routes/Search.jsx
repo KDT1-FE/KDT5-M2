@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import fetchMovies from '~/api/fetchMovies';
-import styles from './Search.module.scss';
+import './Search.module.scss';
 import { Link } from 'react-router-dom';
 
 export default function Search() {
@@ -9,21 +9,35 @@ export default function Search() {
   const [page, setPage] = useState(2);
 
   async function getList() {
-    const { Search } = await fetchMovies(`s=${title}`);
-    setLists(Search);
-    setPage(2);
-    console.log(lists);
+    try {
+      const data = await fetchMovies(`s=${title}`);
+      setLists(data.Search);
+      setPage(2);
+      console.log(lists);
+      if (data.Response === 'False') throw alert(new Error(data.Error));
+    } catch (err) {
+      console.log(err);
+    }
   }
   async function getMoreList() {
-    const { Search } = await fetchMovies(`s=${title}&page=${page}`);
-    setLists([...lists, ...Search]);
-    setPage(page + 1);
+    try {
+      const data = await fetchMovies(`s=${title}&page=${page}`);
+      setLists([...lists, ...data.Search]);
+      setPage(page + 1);
+      if (data.Response === 'False') throw alert(new Error(data.Error));
+    } catch (err) {
+      console.log(err);
+    }
     //console.log(...lists, ...newList);
   }
 
   return (
     <>
-      <div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
           type="text"
           value={title}
@@ -33,15 +47,21 @@ export default function Search() {
           }}
         />
         <button onClick={getList}>submit</button>
-      </div>
+      </form>
 
-      <ul className={`${styles} container`}>
+      <ul className={`container`}>
         {lists
           ? lists.map((list) => (
               <li key={list.imdbID}>
                 <div>{list.Title}</div>
                 <Link to={`/movie/${list.imdbID}`}>
-                  <img src={list.Poster} alt={list.Title} />
+                  <figure>
+                    <img src={list.Poster} alt={list.Title} />
+                    <figcaption>
+                      <div>{list.Year}</div>
+                      <div>{list.Title}</div>
+                    </figcaption>
+                  </figure>
                 </Link>
               </li>
             ))

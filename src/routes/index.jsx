@@ -1,15 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from './Home';
 import MovieInfos from './MovieInfos';
-//import Header from '~/components/Header'
+import Search from './Search';
 
 export default createBrowserRouter([
   {
     path: '/',
     element: <Home />,
-  },
-  {
-    path: '/movie/:id',
-    element: <MovieInfos />,
+    children: [
+      {
+        index: true,
+        element: <Search />,
+      },
+      {
+        path: 'movie/:id',
+        element: <MovieInfos />,
+      },
+    ],
   },
 ]);
