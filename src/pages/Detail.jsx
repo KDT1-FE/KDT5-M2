@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout'
  * @property {string} Director
  * @property {string} Writer
  * @property {string} Actors
- * @property {string} Plot
+ * @property {string} Plotd
  * @property {string} Language
  * @property {string} Country
  * @property {string} Awards
@@ -59,7 +59,6 @@ export default function Detail() {
                 src={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster}
                 alt={`${movie.Title} Poster`}
                 onError={(e) => {
-                  console.log(e)
                   e.target.src = '/noImage.png'
                 }}
                 className="inline-block max-h-[820px] rounded-2xl"
