@@ -11,7 +11,7 @@
 
 - 윈도우
 - 구글 크롬 브라우저
-- 1552 \* 856
+- 화면 크기: 1552 \* 856
 
 ---
 
@@ -21,6 +21,7 @@
 - Typescript
 - Vite
 - Tailwind CSS
+- React-router-dom
 - Eslint & Prettier
 
 ---
@@ -58,6 +59,7 @@
 
 - 예시의 기능과 동일하게 만듬
 - 추가적인 기능 없음
+- 반응형 x
 - 디자인적으로 예시와 유사하나 디테일한 부분이 다르며 전환효과 추가
 - 영화 상세 페이지 ("/movie/[movieId]")에서 Navbar의 Movie 버튼을 눌렀을 때 URL은 변하지만 화면은 변하지 않음 → useEffect dependancy추가
 

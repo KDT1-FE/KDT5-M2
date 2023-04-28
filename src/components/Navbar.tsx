@@ -1,11 +1,12 @@
 import Button from './Button';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import hprofile from '../assets/hprofile.jpg';
 import navItems from '../constants/navItems';
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
-  const isMovieActive = window.location.pathname.includes('movie');
+  const { pathname } = useLocation();
+  const isMovieActive = pathname.includes('movie');
 
   return (
     <header className="flex justify-between items-center p-2 px-8">
