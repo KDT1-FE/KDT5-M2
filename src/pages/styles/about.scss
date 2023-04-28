@@ -1,5 +1,44 @@
 .about {
-  background-color: #ff40cf;
+  background-color: #ececdc;
   padding: 50px 0;
-  color: white;
+  color: #424242;
+  .smile {
+    margin-top: 3rem;
+    width: 10rem;
+    border-radius: 50%;
+  }
+  h2 {
+    margin: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    span {
+      color: orange;
+    }
+    p {
+      font-size: 2rem;
+      span {
+        color: orange;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  a {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #424242;
+    font-weight: 800;
+    img {
+      width: 2.3rem;
+    }
+  }
+  a:hover {
+    transform: scale(1.1);
+  }
 }
