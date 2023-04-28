@@ -15,24 +15,23 @@
     margin-bottom: 3rem;
   }
   #searchForm {
+    display: flex;
+    justify-content: center;
     .selects {
-      display: flex;
-      margin: 0.5rem 32rem;
-      justify-content: space-between;
-      
-
+      margin-right: 0.3rem;
       .select {
-        margin: 0 .5rem;
+        margin: 0 0.1rem;
         border: 0.1rem solid black;
         border-radius: 0.3rem;
         background-color: rgb(244, 244, 227);
+        height: 2rem;
       }
     }
     .search {
       background-color: rgb(244, 244, 227);
       border: 0.1rem solid black;
       border-radius: 0.5rem;
-      width: 12rem;
+      width: 30rem;
       height: 1.7rem;
     }
     button {
@@ -45,13 +44,19 @@
 
 //Movie List
   #search__result {
+    background-color: #fff;
+    margin: 3rem 10rem;
+    border-radius: 4rem;
+    overflow-y: auto;
+    height: 30rem;
+    max-height: 30rem;
     .result__ul {
       margin: 2rem 4rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-
+      //loading
       .loading {
         display: flex;
         justify-content: center;
@@ -75,7 +80,7 @@
         }
       }
 
-
+      //movies
       .list__movie {
         margin: 1rem 1.5rem;
         color: white;

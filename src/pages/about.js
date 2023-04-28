@@ -1,6 +1,7 @@
+
 function About($container) {
   this.$container = $container;
-
+  
   this.setState = () => {
     this.render();
   };
@@ -12,6 +13,7 @@ function About($container) {
       </main>
     `;
   };
+  
 
   this.render();
 }

@@ -1,8 +1,3 @@
-// export default async function fetchMovies(inputText) {
-//   const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=${inputText}`)
-//   return (await res.json()).Search
-// }
-
 export default async function fetchMovies(title, year = '', type = 'movie', page = 1) {
   const s = `&s=${title}`
   const y = `&y=${year}`
@@ -19,7 +14,6 @@ export default async function fetchMovies(title, year = '', type = 'movie', page
         Response
       }
       // console.log(movies);
-      
     }
     else if (json.Response === 'False') {
       const { Response, Error } = json;

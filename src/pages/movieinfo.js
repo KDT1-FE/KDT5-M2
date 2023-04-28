@@ -1,3 +1,5 @@
+import { $ } from "~/utils/querySelector.js";
+
 function MovieInfo($container) {
   this.$container = $container;
 
@@ -11,9 +13,11 @@ function MovieInfo($container) {
         개별영화정보 페이지입니다.
       </main>
     `;
+    detailMovieInfo();
   };
+  function detailMovieInfo() {
 
+  }
   this.render();
 }
-
 export default MovieInfo;

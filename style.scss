@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Noto Sans', 'Noto Sans KR', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 
@@ -51,8 +52,6 @@ header {
       text-decoration: none;
       color: ivory;
       padding: 0.8rem 1.5rem;
-      box-sizing: border-box;
-      
     }
     
     .navbar > a:hover {

@@ -18,6 +18,5 @@ export default function App($container) {
 
     new Router($container);
   };
-
   init();
 }
