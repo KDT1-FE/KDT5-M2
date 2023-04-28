@@ -44,7 +44,7 @@ const Info = () => {
           sx={{ width: '40%' }}
           ml={6}>
           <Image
-            src={movieinfo.Poster}
+            src={movieinfo.Poster.replace('SX300', 'SX900')}
             fit="fill"
             duration={1000}
             sx={{
@@ -116,29 +116,30 @@ const Info = () => {
               alignItems="center">
               <Image
                 fit="fill"
-                lineHeight=""
+                duration={1000}
                 height="30px"
                 src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Internet%20Movie%20Database.png"></Image>
-
-              {film.Ratings?.[0]?.Value ?? ''}
+              {film.Ratings?.[0]?.Value ?? 'TBD'}
             </Stack>
             <Stack
               direction="row"
               alignItems="center">
               <Image
                 fit="fill"
+                duration={1000}
                 height="30px"
                 src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Rotten%20Tomatoes.png"></Image>
-              {film.Ratings?.[1]?.Value ?? ''}
+              {film.Ratings?.[1]?.Value ?? 'TBD'}
             </Stack>
             <Stack
               direction="row"
               alignItems="center">
               <Image
                 fit="fill"
+                duration={1000}
                 height="30px"
                 src="https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/Metacritic.png"></Image>
-              {film.Ratings?.[2]?.Value ?? ''}
+              {film.Ratings?.[2]?.Value ?? 'TBD'}
             </Stack>
           </Stack>
           <Stack
