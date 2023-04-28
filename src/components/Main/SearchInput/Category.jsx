@@ -1,5 +1,5 @@
 export const pages = ["10", "20", "30"];
-export const type = ["movie", "series", "episodes"];
+export const type = ["Movie", "Series", "Episodes"];
 
 const yearArr = [];
 for (let i = 1985; i <= new Date().getFullYear(); i++) {
