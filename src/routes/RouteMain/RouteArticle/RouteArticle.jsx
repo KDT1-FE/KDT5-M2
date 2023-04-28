@@ -39,7 +39,11 @@ const RouteArticle = () => {
             </li>
           </ul>
         </div>
-        <div className={styles.articleWrapper}>{movie.Plot}</div>
+        <div className={styles.articleWrapper}>
+          {movie.Plot === "N/A"
+            ? "⛔︎ 등록된 주요 정보가 없습니다."
+            : movie.Plot}
+        </div>
       </article>
     </>
   );
