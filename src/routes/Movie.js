@@ -1,6 +1,5 @@
 import { Component } from '~/core/coreComps.js'
 import movieStore, { getMovieDetails } from '~/store/movie.js'
-import styel from '~/styles/style_movie.scss'
 
 export default class Movie extends Component {
   constructor() {

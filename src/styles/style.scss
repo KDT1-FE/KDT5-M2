@@ -18,7 +18,7 @@
 }
 
 body {
-  background-color: $primary;
+  background-color: rgb(197, 138, 255);
   // .nav_bar {
   //   position: fixed;
   //   top: 0;
@@ -61,9 +61,69 @@ body {
   //     background-color: $black;
   //   }
   // }
+  nav {
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.354);
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    .logo {
+      font-size: 20px;
+      color: $primary;
+      text-decoration: none;
+      span {
+        color: $primary;
+      }
+    }
+    .nav_menu {
+      ul {
+        display: flex;
+        gap: 14px;
+        li {
+          a {
+            font-size: 14px;
+            font-weight: 700;
+            color: $white;
+            text-decoration: none;
+            &.active {
+              color: $primary;
+            }
+          }
+        }
+      }
+    }
+    // .movie {
+    // }
+    .user {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $black;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 40px;
+      margin: auto;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
   .container {
     header {
-      background-color: rgb(10, 9, 11);
+      width: 100vw;
+      height: 60%;
+      position: relative;
+      top: 0;
+      background-color: rgb(197, 138, 255);
       display: flex;
       flex-direction: column;
       justify-content: center;

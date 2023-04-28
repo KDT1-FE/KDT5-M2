@@ -1,10 +1,14 @@
 import { Component } from '~/core/coreComps.js'
-// import TheNav from './components/TheNav'
+import TheNav from '~/components/TheNav.js'
+
 
 export default class App extends Component {
   render() {
+    const theNav = new TheNav().el
     const routerView = document.createElement('router-view')
-    this.el.append(routerView)
+    this.el.append(
+      theNav,
+      routerView)
   }
 }
 //클래스인 TheHeader는 this.el에 바로 추가 못함. 생성자 함수 new와 함께 생성자 함수로 만들고 그 요소(.el)를 추가하게 한다.
