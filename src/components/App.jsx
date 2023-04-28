@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Stack } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
@@ -8,6 +8,7 @@ import SearchBox from '~/components/SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
 import WatchLater from '~/components/WatchLater'
 import RemoveToWatch from '~/components/RemoveToWatch'
+import { useAutoScroll } from './AutoScroll'
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -50,6 +51,11 @@ const App = () => {
     saveToLocalStorage(watchList)
   }
   const navigate = useNavigate()
+  const containerRef = useRef()
+
+  useAutoScroll({
+    containerRef
+  })
 
   // ################################################################################################  RENDERING  ###################################################
   return (
@@ -116,7 +122,6 @@ const App = () => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}></SearchBox>
       </Stack>
-
       {/* ################################################################################################  MOVIELIST HEADING */}
       <Stack
         mr={6}
@@ -130,12 +135,11 @@ const App = () => {
         }}>
         <MovieListHeading heading="MOVIE"></MovieListHeading>
       </Stack>
-
       {/* ################################################################################################  MOVIELIST */}
-
       <Stack
         direction="row"
-        overflow="scroll"
+        overflow="auto"
+        ref={containerRef}
         spacing={2}
         mr={6}
         ml={6}
@@ -150,7 +154,6 @@ const App = () => {
           action={WatchLater}
         />
       </Stack>
-
       {/*################################################################################################  WATCH LATER HEADING */}
       <Stack
         mr={6}
@@ -165,12 +168,10 @@ const App = () => {
         }}>
         <MovieListHeading heading="WATCH LATER"></MovieListHeading>
       </Stack>
-
       {/* ################################################################################################  WATCH LATER */}
-
       <Stack
         direction="row"
-        overflow="scroll"
+        overflow="auto"
         spacing={2}
         mr={6}
         ml={6}

@@ -1,9 +1,7 @@
-import React from 'react'
+import { React } from 'react'
 import { Box } from '@mui/material'
 import { Image } from 'mui-image'
 import { useNavigate } from 'react-router-dom'
-
-//??how to scroll by hover
 const MovieList = props => {
   const navigate = useNavigate()
   const WatchLater = props.action
