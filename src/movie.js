@@ -63,7 +63,7 @@ export function renderMovies(ulEl, movies) {
         movieTitleEl.textContent = `${movie.Title}`;
         movieYearEl.textContent = `${movie.Year}`;
 
-        ulEl.append(aEl); //ul에 메모리상의 li를 밀어넣기
+        ulEl.append(aEl);
     });
 }
 export async function movieDetail(movieId, divEl, movieDivEl) {

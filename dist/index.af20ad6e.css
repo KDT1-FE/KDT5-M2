@@ -175,8 +175,8 @@ footer {
 }
 
 .movie_detail_content {
-  width: 800px;
-  height: 600px;
+  width: 50%;
+  height: 70%;
   color: #cecece;
   background-color: #111;
   border: 3px solid #ffe600;
@@ -184,7 +184,7 @@ footer {
   margin: auto;
   padding: 30px;
   position: fixed;
-  top: 20%;
+  top: 10%;
   left: 0;
   right: 0;
   overflow: auto;
@@ -203,6 +203,7 @@ footer {
 
 .movie_detail_content_box img {
   width: auto;
+  max-width: 400px;
   height: 400px;
 }
 
