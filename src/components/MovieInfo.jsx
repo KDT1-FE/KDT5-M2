@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import NavigationBar from '~/components/NavigationBar'
-import MovieSearch from '~/components/MovieSearch'
+import MovieInfoTop from '~/components/MovieInfoTop'
 import LoadingPage from '~/components/Loading'
 import styles from './Movieinfo.module.scss'
 
@@ -11,6 +11,7 @@ export default function MovieInfo() {
   const [movies, setMovies] = useState({})
   const [loading, setLoading] = useState(false)
 
+  //movieId값을 감시하고 있다가 값이 변화하면 해당 Id를 가진 영화 정보를 가져옴
   useEffect(() => {
     async function getMovies() {
       setLoading(true)
@@ -26,13 +27,13 @@ export default function MovieInfo() {
 
   return (
     <>
-      <MovieSearch />
+      <MovieInfoTop movies={movies} />
       <NavigationBar />
+      {/* fetch하는동안 로딩페이지 render */}
       {loading ? (
         <LoadingPage />
       ) : (
         <div className={styles.movieInfo}>
-          <h1>{movies.Title}</h1>
           <div>
             <img
               src={movies.Poster}
