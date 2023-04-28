@@ -653,7 +653,7 @@ async function movieDetail(movieId, divEl, movieDivEl) {
     const genre = document.querySelector(".detail_genre");
     const ratings = document.querySelector(".detail_ratings");
     const director = document.querySelector(".detail_director");
-    const production = document.querySelector(".detail_production");
+    const runtime = document.querySelector(".detail_runtime");
     const plot = document.querySelector(".detail_plot");
     const poster = document.querySelector(".detail_poster");
     divEl.style.display = "block";
@@ -665,6 +665,7 @@ async function movieDetail(movieId, divEl, movieDivEl) {
     const { data  } = res;
     divEl.children[0].style.display = "none";
     movieDivEl.style.display = "block";
+    console.log(data);
     if (data.Poster === "N/A") poster.setAttribute("src", "https://i.ibb.co/R2sgJ1Q/noimg.jpg");
     else poster.setAttribute("src", data.Poster);
     title.textContent = data.Title;
@@ -672,7 +673,7 @@ async function movieDetail(movieId, divEl, movieDivEl) {
     genre.textContent = data.Genre;
     ratings.textContent = data.Ratings[0].Value;
     director.textContent = data.Director;
-    production.textContent = data.Production;
+    runtime.textContent = data.Runtime;
     plot.textContent = data.Plot;
     movieDivEl.addEventListener("click", (event)=>{
         event.stopPropagation();
