@@ -175,7 +175,7 @@ footer {
 }
 
 .movie_detail_content {
-  width: 50%;
+  width: 70%;
   height: 70%;
   color: #cecece;
   background-color: #111;
@@ -209,6 +209,12 @@ footer {
 
 .movie_detail_content_box {
   display: flex;
+}
+
+@media (width <= 500px) {
+  .movie_detail_content_box {
+    display: block;
+  }
 }
 
 .movie_detail_content_box p {
