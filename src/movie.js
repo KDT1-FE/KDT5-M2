@@ -46,7 +46,7 @@ export function renderMovies(ulEl, movies) {
 
         if (movie.Poster === "N/A") {
             // liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
-            liEl.style.backgroundImage = `src(./img/noimg.jpg)`;
+            liEl.style.backgroundImage = `src(/src/img/noimg.jpg)`;
         } else {
             liEl.style.backgroundImage = `url(${movie.Poster})`;
         }
@@ -89,7 +89,7 @@ export async function movieDetail(movieId, divEl, movieDivEl) {
     movieDivEl.style.display = "block";
 
     if (data.Poster === "N/A") {
-        poster.setAttribute("src", "./img/noimg.jpg");
+        poster.setAttribute("src", "/src/img/noimg.jpg");
     } else {
         poster.setAttribute("src", data.Poster);
     }
