@@ -26,7 +26,8 @@ const SearchInput = () => {
 
   // 비동기 처리 함수 pressEnterKey: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리, 결과 값(movieData.Search)을 setMovies로 동적으로 다룬다.
   async function pressEnterKey(event) {
-    if (event.key === "Enter") {
+    // onKeyDown === Enter or OnClick === click
+    if (event.key === "Enter" || event.type === "click") {
       // Search Movie
       if (!inputText.trim()) return;
       // movieData의 기본값은 page: 1
@@ -76,33 +77,32 @@ const SearchInput = () => {
     }
   }
 
-  // SearchButton 클릭 시 동일하게 async function으로 movieList 출력 && 추후에 pressEnterKey 함수와 병합 작업 예정
-  async function pressSearchButton() {
-    if (!inputText.trim()) return;
-    const movieData = await axiosMovies(inputText).Search;
-    setMovies(movieData.Search || []);
-
-    // 결과값이 없으면 Message 출력
-    movieData.Search ? setMessage("") : setMessage("검색 결과가 없습니다.");
-  }
   return (
     <>
       <section className={styles.mainSection}>
-        <div className={styles.inputContainer}>
-          <input
-            type="text"
-            value={inputText}
-            onChange={TitleSearchHandler}
-            onKeyDown={pressEnterKey}
-            placeholder="검색어를 입력해주세요."
-            className={styles}
-          ></input>
-          <button className={styles.searchButton} onClick={pressSearchButton}>
-            <SearchIcon className={styles.searchIcon} />
-          </button>
-          <Select onChange={CategoryHandler} options={pages} category="page" />
-          <Select onChange={CategoryHandler} options={type} category="type" />
-          <Select onChange={CategoryHandler} options={year} category="year" />
+        <div className={styles.mainWrapper}>
+          <div className={styles.inputContainer}>
+            <input
+              type="text"
+              value={inputText}
+              onChange={TitleSearchHandler}
+              onKeyDown={pressEnterKey}
+              placeholder="검색어를 입력해주세요."
+              className={styles}
+            ></input>
+            <button className={styles.searchButton} onClick={pressEnterKey}>
+              <SearchIcon className={styles.searchIcon} />
+            </button>
+          </div>
+          <div className={styles.selectContainer}>
+            <Select
+              onChange={CategoryHandler}
+              options={pages}
+              category="page"
+            />
+            <Select onChange={CategoryHandler} options={type} category="type" />
+            <Select onChange={CategoryHandler} options={year} category="year" />
+          </div>
         </div>
         <div className={styles.searchedMovies}>
           <ul className={styles.moviesWrapper}>
