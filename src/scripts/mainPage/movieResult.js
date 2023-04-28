@@ -1,5 +1,4 @@
 import { $ } from '~/utils/querySelector';
-import { infoRoute } from '~/scripts/infoPage/infoRoute'
 
 export function movieResult (movie) {
   //create List
@@ -35,6 +34,4 @@ export function movieResult (movie) {
   year.classList.add('list__year');
   year.textContent = movie.Year;
   container.appendChild(year);
-
-  infoRoute();
   }

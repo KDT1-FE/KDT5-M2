@@ -15,9 +15,6 @@ function MovieInfo($container) {
     `;
     detailMovieInfo();
   };
-  function detailMovieInfo() {
-
-  }
   this.render();
 }
 export default MovieInfo;

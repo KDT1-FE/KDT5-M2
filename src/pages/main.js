@@ -1,6 +1,7 @@
 import createMovieList from '~/scripts/mainPage/createMovieList'
 import { $ } from '~/utils/querySelector'
 
+
 function Main($container) {
   this.$container = $container;
   this.setState = () => {
@@ -50,6 +51,7 @@ function Main($container) {
   }
 
   this.render();
+
 }
 
 export default Main;

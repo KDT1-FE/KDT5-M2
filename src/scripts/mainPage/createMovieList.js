@@ -1,7 +1,7 @@
 import fetchMovies from '~/core/movieFetch';
 import { $ } from '~/utils/querySelector';
 import { movieResult } from './movieResult.js';
-
+import infoRoute from '~/scripts/infoPage/infoRoute'
 
 function createMovieList() {
   const searchInput = $('.search');
@@ -19,8 +19,9 @@ function createMovieList() {
 
     
     try {
-      const moviesRes = await fetchMovieList();
+      await fetchMovieList();
       resultBox.addEventListener('scroll', () => debouncedHandleScroll(resultBox));
+      infoRoute();
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +29,7 @@ function createMovieList() {
 
   //fetchMovieList 및 movieResult로 화면에 response 띄우기.
   async function fetchMovieList() {
-    const inputText = searchInput.value;
+    const inputText = $('.search').value;
     const t = $('.select:first-child').value;
     const y = $('.select:nth-child(2)').value;
     resultList.appendChild(loading);
@@ -42,10 +43,7 @@ function createMovieList() {
       resultList.appendChild(error);
     } else {
       moviesRes.movies.forEach(movie => movieResult(movie));
-
     }
-    
-    return moviesRes;
   }
 
   //handleScroll 이벤트
@@ -71,6 +69,7 @@ function createMovieList() {
           resultList.appendChild(error);
         } else {
           nextPageRes.movies.forEach(movie => movieResult(movie));
+          infoRoute
         }        
       } catch (error) {
         console.log(error);

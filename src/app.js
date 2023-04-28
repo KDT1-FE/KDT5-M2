@@ -15,7 +15,6 @@ export default function App($container) {
       const targetURL = e.target.href.replace(BASE_URL, "");
       navigate(targetURL);
     });
-
     new Router($container);
   };
   init();
