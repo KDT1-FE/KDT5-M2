@@ -1,5 +1,5 @@
-5937
-32D:\bootcamp\KDT5-M2\package.json133270457167013309 0
+5942
+32D:\bootcamp\KDT5-M2\package.json133271546016116786 0
 76D:\bootcamp\KDT5-M2\node_modules\caniuse-lite\data\features\localecompare.js133269036283438432 0
 57D:\bootcamp\KDT5-M2\node_modules\css-tree\dist\csstree.js133269036238627937 0
 89D:\bootcamp\KDT5-M2\node_modules\csso\lib\restructure\prepare\createDeclarationIndexer.js133269036215695059 0
@@ -33,7 +33,7 @@
 55D:\bootcamp\KDT5-M2\node_modules\react-refresh\babel.js133269036045204346 0
 64D:\bootcamp\KDT5-M2\node_modules\htmlnano\docs\package-lock.json133269036193030683 0
 57D:\bootcamp\KDT5-M2\node_modules\abortcontroller-polyfill133269036135259560 1
-24D:\bootcamp\KDT5-M2\dist133271536831478291 1
+24D:\bootcamp\KDT5-M2\dist133271559717011000 1
 51D:\bootcamp\KDT5-M2\node_modules\delayed-stream\lib133269036089888704 1
 53D:\bootcamp\KDT5-M2\node_modules\weak-lru-cache\tests133269036091366085 1
 71D:\bootcamp\KDT5-M2\node_modules\@swc\helpers\lib\_non_iterable_rest.js133269036212068482 0
@@ -140,7 +140,7 @@
 64D:\bootcamp\KDT5-M2\node_modules\caniuse-lite\data\regions\MW.js133269036284096677 0
 41D:\bootcamp\KDT5-M2\node_modules\boolbase133269036052198668 1
 95D:\bootcamp\KDT5-M2\node_modules\posthtml\node_modules\posthtml-parser\dist\location-tracker.js133269036067801246 0
-32D:\bootcamp\KDT5-M2\src\movie.js133271511155774916 0
+32D:\bootcamp\KDT5-M2\src\movie.js133271559709478161 0
 55D:\bootcamp\KDT5-M2\node_modules\svgo\lib\svgo\tools.js133269036218268297 0
 50D:\bootcamp\KDT5-M2\node_modules\svgo\package.json133269036218677285 0
 55D:\bootcamp\KDT5-M2\node_modules\css-select\lib\sort.js133269036162374112 0
@@ -716,7 +716,7 @@
 91D:\bootcamp\KDT5-M2\node_modules\css-select\node_modules\domutils\lib\esm\querying.d.ts.map133269036188352237 0
 75D:\bootcamp\KDT5-M2\node_modules\svgo\plugins\removeUselessStrokeAndFill.js133269036199370279 0
 84D:\bootcamp\KDT5-M2\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mdb_drop.1133269036164376733 0
-43D:\bootcamp\KDT5-M2\dist\index.af20ad6e.css133271536831458342 0
+43D:\bootcamp\KDT5-M2\dist\index.af20ad6e.css133271559716811529 0
 58D:\bootcamp\KDT5-M2\node_modules\domutils\lib\helpers.d.ts133269036160317136 0
 48D:\bootcamp\KDT5-M2\node_modules\xxhash-wasm\esm133269036095926090 1
 103D:\bootcamp\KDT5-M2\node_modules\msgpackr-extract\node_modules\node-gyp-build-optional-packages\LICENSE133269036043817180 0
@@ -2621,7 +2621,7 @@
 54D:\bootcamp\KDT5-M2\node_modules\domutils\package.json133269036121709763 0
 49D:\bootcamp\KDT5-M2\node_modules\asynckit\LICENSE133269036055343452 0
 62D:\bootcamp\KDT5-M2\node_modules\css-tree\cjs\parser\index.cjs133269036215984320 0
-47D:\bootcamp\KDT5-M2\dist\index.af20ad6e.css.map133271536831478291 0
+47D:\bootcamp\KDT5-M2\dist\index.af20ad6e.css.map133271559716821622 0
 62D:\bootcamp\KDT5-M2\node_modules\domutils\lib\helpers.d.ts.map133269036129936913 0
 56D:\bootcamp\KDT5-M2\node_modules\domutils\lib\helpers.js133269036056717046 0
 81D:\bootcamp\KDT5-M2\node_modules\csso\node_modules\css-tree\lib\definition-syntax133269036279229644 1
@@ -5090,6 +5090,7 @@
 98D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeDoctype.js133269036194297440 0
 105D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeElementsByAttr.js133269036195221874 0
 101D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeEmptyAttrs.js133269036195680669 0
+42D:\bootcamp\KDT5-M2\dist\index.06ad7d3e.js133271546201748412 0
 69D:\bootcamp\KDT5-M2\node_modules\@parcel\core\src\summarizeRequest.js133269036235901054 0
 99D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeMetadata.js133269036198018000 0
 103D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeRasterImages.js133269036212088412 0
@@ -5463,6 +5464,7 @@
 109D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\config\parser.js133269036224621086 0
 92D:\bootcamp\KDT5-M2\node_modules\@msgpackr-extract\msgpackr-extract-win32-x64\node.napi.node133269036110682779 0
 109D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\config\walker.js133269036234305329 0
+47D:\bootcamp\KDT5-M2\dist\index.7fa3d67b.css.map133271546201788291 0
 112D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\atrule\font-face.js133269036195511099 0
 108D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\atrule\index.js133269036216393224 0
 101D:\bootcamp\KDT5-M2\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\parser\index.js133269036216223663 0
@@ -5932,7 +5934,10 @@
 48D:\bootcamp\KDT5-M2\node_modules\.bin\semver.cmd133269036288423411 0
 42D:\bootcamp\KDT5-M2\node_modules\.bin\svgo133269036288433401 0
 48D:\bootcamp\KDT5-M2\node_modules\.bin\terser.ps1133269036288433401 0
-42D:\bootcamp\KDT5-M2\dist\index.4d6bcbeb.js133271514922296790 0
-46D:\bootcamp\KDT5-M2\dist\index.4d6bcbeb.js.map133271514922316735 0
-35D:\bootcamp\KDT5-M2\dist\index.html133271514922187094 0
-43D:\bootcamp\KDT5-M2\dist\noimg.6d2bfebd.jpg133271514922097345 0
+46D:\bootcamp\KDT5-M2\dist\index.06ad7d3e.js.map133271546201958538 0
+42D:\bootcamp\KDT5-M2\dist\index.4d6bcbeb.js133271559716592116 0
+46D:\bootcamp\KDT5-M2\dist\index.4d6bcbeb.js.map133271559716612075 0
+43D:\bootcamp\KDT5-M2\dist\index.7fa3d67b.css133271546201748412 0
+35D:\bootcamp\KDT5-M2\dist\index.html133271559717011000 0
+43D:\bootcamp\KDT5-M2\dist\noimg.6d2bfebd.jpg133271559716186420 0
+43D:\bootcamp\KDT5-M2\dist\noimg.ef9ab787.jpg133271546140941463 0

@@ -602,7 +602,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 async function request(movieName, movieType, year, pageCount) {
     let res = await (0, _axiosDefault.default)({
-        url: `http://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=1`
+        url: `https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=1`
     });
     const { Search , totalResults  } = res.data;
     let totalSearch = Search;
@@ -611,7 +611,7 @@ async function request(movieName, movieType, year, pageCount) {
     const total = parseInt(totalResults);
     if (total > 10 && maxCount > 1) for(let i = 2; i <= maxCount; i = i + 1){
         res = await (0, _axiosDefault.default)({
-            url: `http://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=${i}`
+            url: `https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=${i}`
         });
         totalSearch = totalSearch.concat(res.data.Search);
     }
@@ -633,7 +633,8 @@ function renderMovies(ulEl, movies) {
         const liDevEl = document.createElement("div");
         const movieTitleEl = document.createElement("span");
         const movieYearEl = document.createElement("span");
-        if (movie.Poster === "N/A") liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
+        if (movie.Poster === "N/A") // liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
+        liEl.style.backgroundImage = `src(./img/noimg.jpg)`;
         else liEl.style.backgroundImage = `url(${movie.Poster})`;
         aEl.setAttribute("href", `javascript:void(0)`);
         aEl.dataset.id = `${movie.imdbID}`;
@@ -665,7 +666,7 @@ async function movieDetail(movieId, divEl, movieDivEl) {
     const { data  } = res;
     divEl.children[0].style.display = "none";
     movieDivEl.style.display = "block";
-    if (data.Poster === "N/A") poster.setAttribute("src", "https://i.ibb.co/R2sgJ1Q/noimg.jpg");
+    if (data.Poster === "N/A") poster.setAttribute("src", "./img/noimg.jpg");
     else poster.setAttribute("src", data.Poster);
     title.textContent = data.Title;
     released.textContent = data.Released;

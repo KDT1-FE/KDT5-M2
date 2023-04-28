@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function request(movieName, movieType, year, pageCount) {
     let res = await axios({
-        url: `http://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=1`,
+        url: `https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=1`,
     });
 
     const { Search, totalResults } = res.data;
@@ -16,7 +16,7 @@ export async function request(movieName, movieType, year, pageCount) {
     if (total > 10 && maxCount > 1) {
         for (let i = 2; i <= maxCount; i = i + 1) {
             res = await axios({
-                url: `http://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=${i}`,
+                url: `https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}&type=${movieType}&y=${year}&page=${i}`,
             });
             totalSearch = totalSearch.concat(res.data.Search);
         }
@@ -45,7 +45,8 @@ export function renderMovies(ulEl, movies) {
         const movieYearEl = document.createElement("span");
 
         if (movie.Poster === "N/A") {
-            liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
+            // liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
+            liEl.style.backgroundImage = `src(./img/noimg.jpg)`;
         } else {
             liEl.style.backgroundImage = `url(${movie.Poster})`;
         }
@@ -88,7 +89,7 @@ export async function movieDetail(movieId, divEl, movieDivEl) {
     movieDivEl.style.display = "block";
 
     if (data.Poster === "N/A") {
-        poster.setAttribute("src", "https://i.ibb.co/R2sgJ1Q/noimg.jpg");
+        poster.setAttribute("src", "./img/noimg.jpg");
     } else {
         poster.setAttribute("src", data.Poster);
     }
