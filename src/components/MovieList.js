@@ -6,7 +6,7 @@ export default class MovieList extends Component {
     super({
       tagName: 'main'
     })
-    // this.render() 
+    // this.render()
     movieStore.subscribe('movies', () => {
       this.render()
     })
@@ -19,12 +19,13 @@ export default class MovieList extends Component {
     const moviesEl = this.el.querySelector('.movies')
     moviesEl.innerHTML = ''
     movieStore.state.movies.forEach(movie => {
-      const movieEl = document.createElement('div')
+      const movieEl = document.createElement('a')
       movieEl.classList.add('movie')
+      movieEl.href = `#/movie?id=${movie.imdbID}`
       movieEl.innerHTML = `
-      <h3>${movie.title}</h3>
-      <img src="${movie.poster}" alt="${movie.title}">
-    `
+    <a>${movie.title}</a>
+    <img src="${movie.poster}" alt="${movie.title}">
+  `
       moviesEl.append(movieEl)
     })
   }

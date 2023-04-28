@@ -5,6 +5,7 @@ const store = new Store({
   searchText: '',
   page: 1,
   year: '',
+  movie: {},
   movies: []
 })
 
@@ -23,9 +24,19 @@ export async function requestAll(searchText, year = '', page = 1) {
   })
   if (data.Response === 'True') {
     const movies = data.Search.map(movie => {
-      return { title: movie.Title, poster: movie.Poster }
+      return { imdbID: movie.imdbID, title: movie.Title, poster: movie.Poster }
     })
     store.state.movies = [...store.state.movies, ...movies]
+  }
+}
+
+export async function getMovieDetails(id) {
+  const i = `&i=${id}`
+  try {
+    const res = await axios(`https://omdbapi.com/?apikey=7035c60c${i}&plot=full`)
+    store.state.movie = res.data
+  } catch (error) {
+    console.log('getNovieDetails:', error)
   }
 }
 

@@ -16,6 +16,7 @@ export default class Search extends Component {
     const inputEl = this.el.querySelector('input')
     //// INPUT TAG_영화 검색 ////
     const inputHandler = () => {
+      inputEl.innerText = ''
       movieStore.state.searchText = inputEl.value
       console.log(movieStore.state.searchText)
     }
