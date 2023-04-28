@@ -1,0 +1,9 @@
+select {
+  width: calc(32vw / 3);
+  background-color: black;
+  border: none;
+  border-bottom: 3px solid #fff;
+  border-radius: 7px;
+  color: var(--color-fontGray);
+  padding-left: 10px;
+}
