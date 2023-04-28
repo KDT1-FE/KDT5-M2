@@ -49,15 +49,22 @@ export default function Detail() {
     <Layout>
       <main className="flex justify-center">
         <div className="min-w-[50%]">
-          <div className="mr-8 ">
-            <img
-              src={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster}
-              alt={`${movie.Title} Poster`}
-              onError={(e) => {
-                e.target.src = '/noImage.png'
-              }}
-              className="w-full rounded-2xl"
-            />
+          <div className="mr-8 text-right">
+            <picture>
+              <source
+                srcSet={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster.replace('._V1_SX300.', '._V1_SX700.')}
+                media="(min-width: 768px)"
+              />
+              <img
+                src={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster}
+                alt={`${movie.Title} Poster`}
+                onError={(e) => {
+                  console.log(e)
+                  e.target.src = '/noImage.png'
+                }}
+                className="inline-block max-h-[820px] rounded-2xl"
+              />
+            </picture>
           </div>
         </div>
         <div className="min-w-[50%]">
@@ -80,6 +87,9 @@ export default function Detail() {
                       src={rating.SourceImage === 'N/A' ? '/noImage.png' : rating.SourceImage}
                       alt={rating.Source}
                       className="mr-3 h-[27px]"
+                      onError={(e) => {
+                        e.target.src = '/noImage.png'
+                      }}
                     />
                   </span>
                   <span>{rating.Value}</span>
