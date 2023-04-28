@@ -2,28 +2,18 @@
 
 .mainPage {
   width: 100%;
-  background-color: #4a4b43;
+  background-color: #ececdc;
   padding: 3rem 0;
   height: 100%;
-  h2 {
-    font-size: 2rem;
-    color: white;
-    font-weight: 700;
-    line-height: 3rem;
-    span {
-      font-size: 3rem;
-      color: orange;
-    }
-    margin-bottom: 3rem;
-  }
+
   #searchForm {
+    margin-top: 4rem;
     display: flex;
     justify-content: center;
     .selects {
       margin-right: 0.3rem;
       .select {
         margin: 0 0.1rem;
-        border: 0.1rem solid black;
         border-radius: 0.3rem;
         background-color: rgb(244, 244, 227);
         height: 2rem;
@@ -31,7 +21,6 @@
     }
     .search {
       background-color: rgb(244, 244, 227);
-      border: 0.1rem solid black;
       border-radius: 0.5rem;
       width: 30rem;
       height: 1.7rem;
@@ -68,8 +57,8 @@
       
       .loading::before {
         content: '';
-        width: 30px;
-        height: 30px;
+        width: 2rem;
+        height: 2rem;
         border-radius: 50%;
         border: 2px solid #fff;
         border-top-color: #777;
@@ -91,12 +80,14 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          border-radius: 1rem;
           cursor: pointer;
           .list__poster {
             display: block;
             box-shadow: 1px 1px 3px rgb(2, 2, 2);
             width: 160px;
             height: 218px;
+            border-radius: 1rem;
           }
           .list__title, .list__year {
             position: absolute;
@@ -107,15 +98,15 @@
             color:rgb(244, 244, 227)
           }
           .list__year {
-            bottom: 0.1rem;
-            right: 0.2rem;
+            bottom: 0.3rem;
+            right: 0.4rem;
             color:rgb(240, 240, 220);
-            font-size: 0.6rem;
+            font-size: 0.8rem;
           }
         }
         .list__container:hover {
           background-color: black;
-          .list__poster {
+          .list__poster:hover {
             opacity: 0.5;
           }
           .list__title, .list__year {

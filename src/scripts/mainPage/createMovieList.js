@@ -69,7 +69,7 @@ function createMovieList() {
           resultList.appendChild(error);
         } else {
           nextPageRes.movies.forEach(movie => movieResult(movie));
-          infoRoute
+          infoRoute();
         }        
       } catch (error) {
         console.log(error);

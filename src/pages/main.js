@@ -11,8 +11,6 @@ function Main($container) {
   this.render = () => {
     this.$container.innerHTML = `
       <main class="mainPage">
-        <h2>
-        <span>OMDB API</span><br/> 영화검색 사이트</h2>
 
         <form id="searchForm">
           <div class="selects">

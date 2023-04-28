@@ -16,7 +16,7 @@ export function movieResult (movie) {
   const po = document.createElement('img');
   po.classList.add('list__poster');
   if (movie.Poster === "N/A") {  // 포스터가 없는 경우
-    po.setAttribute('src', '/src/public/xboxdog.jpg');
+    po.setAttribute('src', '/public/xboxdog.jpg');
   } else {  // 포스터가 있는 경우
     po.setAttribute('src', movie.Poster);
   }
