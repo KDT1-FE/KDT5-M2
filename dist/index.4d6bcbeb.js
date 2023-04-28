@@ -564,6 +564,9 @@ const yearEl = document.querySelector(".movie_year");
 const countEl = document.querySelector(".movie_count");
 const butEl = document.querySelector(".submit");
 const ulEl = document.querySelector(".movies");
+const movieDivEl = document.querySelector(".movie_detail");
+const movieDetailDivEl = document.querySelector(".movie_detail_content");
+let aEls = null;
 let inputText = "";
 let inputType = "";
 let inputYear = "";
@@ -573,9 +576,16 @@ const movieSearch = async function() {
     inputType = typeEl.value;
     inputYear = yearEl.value;
     inputCount = countEl.value;
+    const loadingEl = document.querySelector(".loading");
+    loadingEl.style.display = "inline";
     const movies = await (0, _movieJs.request)(inputText, inputType, inputYear, inputCount);
+    loadingEl.style.display = "none";
     console.log(movies);
     (0, _movieJs.renderMovies)(ulEl, movies);
+    aEls = document.querySelectorAll(".movies_link");
+    aEls.forEach((movie)=>{
+        movie.addEventListener("click", ()=>(0, _movieJs.movieDetail)(movie.getAttribute("data-id"), movieDivEl, movieDetailDivEl));
+    });
 };
 inputEl.addEventListener("keydown", (event)=>{
     if (event.key === "Enter") movieSearch();
@@ -587,8 +597,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "request", ()=>request);
 parcelHelpers.export(exports, "renderMovies", ()=>renderMovies);
-// -----------------------------------------------------------
-parcelHelpers.export(exports, "fetchMovies", ()=>fetchMovies);
+parcelHelpers.export(exports, "movieDetail", ()=>movieDetail);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 async function request(movieName, movieType, year, pageCount) {
@@ -626,26 +635,51 @@ function renderMovies(ulEl, movies) {
         const movieYearEl = document.createElement("span");
         if (movie.Poster === "N/A") liEl.style.backgroundImage = `url(https://i.ibb.co/R2sgJ1Q/noimg.jpg)`;
         else liEl.style.backgroundImage = `url(${movie.Poster})`;
-        console.log(movie.imdbID);
-        aEl.setAttribute("href", `#/${movie.imdbID}`);
+        aEl.setAttribute("href", `javascript:void(0)`);
+        aEl.dataset.id = `${movie.imdbID}`;
         aEl.classList.add("movies_link");
         aEl.append(liEl);
         liEl.append(liDevEl);
         liDevEl.append(movieTitleEl);
         liDevEl.append(movieYearEl);
-        console.log(aEl);
-        console.log(liEl);
         movieTitleEl.textContent = `${movie.Title}`;
         movieYearEl.textContent = `${movie.Year}`;
         ulEl.append(aEl); //ul에 메모리상의 li를 밀어넣기
     });
 }
-async function fetchMovies() {
-    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=frozen`, {
-        method: "GET"
+async function movieDetail(movieId, divEl, movieDivEl) {
+    const title = document.querySelector(".detail_title");
+    const released = document.querySelector(".detail_labels");
+    const genre = document.querySelector(".detail_genre");
+    const ratings = document.querySelector(".detail_ratings");
+    const director = document.querySelector(".detail_director");
+    const production = document.querySelector(".detail_production");
+    const plot = document.querySelector(".detail_plot");
+    const poster = document.querySelector(".detail_poster");
+    divEl.style.display = "block";
+    divEl.children[0].style.display = "inline";
+    movieDivEl.style.display = "none";
+    let res = await (0, _axiosDefault.default)({
+        url: `http://www.omdbapi.com/?apikey=7035c60c&i=${movieId}&plot=full`
     });
-    const json = await res.json();
-    console.log(json);
+    const { data  } = res;
+    divEl.children[0].style.display = "none";
+    movieDivEl.style.display = "block";
+    if (data.Poster === "N/A") poster.setAttribute("src", "https://i.ibb.co/R2sgJ1Q/noimg.jpg");
+    else poster.setAttribute("src", data.Poster);
+    title.textContent = data.Title;
+    released.textContent = data.Released;
+    genre.textContent = data.Genre;
+    ratings.textContent = data.Ratings[0].Value;
+    director.textContent = data.Director;
+    production.textContent = data.Production;
+    plot.textContent = data.Plot;
+    movieDivEl.addEventListener("click", (event)=>{
+        event.stopPropagation();
+    });
+    divEl.addEventListener("click", ()=>{
+        divEl.style.display = "none";
+    });
 }
 
 },{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {

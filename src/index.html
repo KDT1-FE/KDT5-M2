@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <title>movie</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
         <script type="module" defer src="main.js"></script>
@@ -82,10 +83,43 @@
             </select>
             <button class="submit">완료</button>
         </div>
+
         <div class="content">
             <ul class="movies">
                 <div class="not_data">목록이 없습니다</div>
             </ul>
+            <span class="loading">loading...</span>
+        </div>
+
+        <div class="movie_detail">
+            <span class="loading">loading...</span>
+            <div class="movie_detail_content">
+                <div class="movie_detail_content_box">
+                    <!-- 포스터 제목, 개봉연도, 줄거리, 평점,  감독, 장르, 배우, ,  -->
+                    <img class="detail_poster" src="./img/noimg.jpg" alt="포스터" />
+                    <div>
+                        Title
+                        <p class="detail_title">title</p>
+                        <br />
+                        Labels
+                        <p class="detail_labels">labels</p>
+                        <br />
+                        Ratings
+                        <p class="detail_ratings">ratings</p>
+                        <br />
+                        Director
+                        <p class="detail_director">director</p>
+                        <br />
+                        Production
+                        <p class="detail_production">production</p>
+                        <br />
+                        Genre
+                        <p class="detail_genre">genre</p>
+                    </div>
+                </div>
+
+                <p class="detail_plot">plot...</p>
+            </div>
         </div>
 
         <footer>
