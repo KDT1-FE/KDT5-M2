@@ -37,14 +37,14 @@ header {
 }
 
 .benner_omdb {
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 800;
     color: #fff;
 }
 
 .benner_omdb_sub {
-    font-size: 24px;
-    color: #fff;
+    font-size: 16px;
+    color: #727272;
     line-height: 1.3;
 }
 

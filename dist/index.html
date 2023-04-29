@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-            <div>영화 목록</div>
+            <div>영화 검색 사이트 과제</div>
             <div>KDT5 김진우</div>
         </header>
         <img class="test">
@@ -20,13 +20,14 @@
             <div class="benner_title">MOVIE SEARCH</div>
             <div class="benner_omdb">OMDb API</div>
             <div class="benner_omdb_sub">
-                OMDb API는 영화 정보를 얻기 위한 RESTful 웹 서비스이며<br>
-                사이트의 모든 콘텐츠와 이미지는 사용자가 기여하고 유지 관리합니다.
+                The Open Movie Database <br><br>
+                The OMDb API is a RESTful web service to obtain movie information,<br>
+                all content and images on the site are contributed and maintained by our users.
             </div>
         </div>
 
         <div class="search">
-            <input class="movie_title" type="text" name="movie_title" placeholder="영화이름">
+            <input class="movie_title" type="text" name="movie_title" placeholder="Movie Title">
 
             <select class="movie_type">
                 <option value="">All</option>
@@ -83,12 +84,12 @@
                 <option value="4">40</option>
                 <option value="5">50</option>
             </select>
-            <button class="submit">완료</button>
+            <button class="submit">OK</button>
         </div>
 
         <div class="content">
             <ul class="movies">
-                <div class="not_data">목록이 없습니다</div>
+                <div class="not_data">No Data</div>
             </ul>
             <span class="loading">loading...</span>
         </div>
