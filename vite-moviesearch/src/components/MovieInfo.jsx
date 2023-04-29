@@ -1,27 +1,39 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import InternetMovieDatabase from '../assets/InternetMovieDatabase.png'
-import RottenTomatoes from '../assets/RottenTomatoes.png'
-import Metacritic from '../assets/Metacritic.png'
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import InternetMovieDatabase from "../assets/InternetMovieDatabase.png";
+import RottenTomatoes from "../assets/RottenTomatoes.png";
+import Metacritic from "../assets/Metacritic.png";
+import { Oval } from "react-loader-spinner";
+import noimages from "../assets/noimages.png";
 
 export default function MovieInfo() {
-  const [movie, setMovie] = useState({})
-  const params = useParams()
+  const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const params = useParams();
 
   async function fetchDetailMovie() {
     const res = await fetch(
       `https://omdbapi.com/?apikey=7035c60c&i=${
-        params.movieId || 'tt4520988'
+        params.movieId || "tt4520988"
       }&plot=full`
-    )
-    return await res.json()
+    );
+    return await res.json();
   }
 
   useEffect(() => {
-    ;(async () => {
-      setMovie(await fetchDetailMovie())
-    })()
-  }, [])
+    (async () => {
+      setMovie(await fetchDetailMovie());
+      setIsLoading(false);
+    })();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Oval color="yellow" height={100} width={100} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -30,7 +42,7 @@ export default function MovieInfo() {
           <li className="mr-8">
             <img
               className="lg:w-[18rem] lg:h-[27rem] xl:w-[31.5rem] xl:h-[50rem]"
-              src={movie.Poster}
+              src={movie.Poster !== "N/A" ? movie.Poster : noimages}
               alt={movie.Title}
             />
           </li>
@@ -46,21 +58,22 @@ export default function MovieInfo() {
 
                 <div className="flex flex-wrap">
                   {movie.Ratings
-                    ? movie.Ratings.map(rating => (
+                    ? movie.Ratings.map((rating) => (
                         <div
                           className=" flex flex-wrap text-regal-gray mr-4"
-                          key={rating.Source}>
+                          key={rating.Source}
+                        >
                           <img
                             className="w-12
                             h-6 mr-2"
                             src={
-                              rating.Source === 'Internet Movie Database'
+                              rating.Source === "Internet Movie Database"
                                 ? InternetMovieDatabase
-                                : rating.Source === 'Rotten Tomatoes'
+                                : rating.Source === "Rotten Tomatoes"
                                 ? RottenTomatoes
-                                : rating.Source === 'Metacritic'
+                                : rating.Source === "Metacritic"
                                 ? Metacritic
-                                : ''
+                                : ""
                             }
                             alt={rating.Source}
                           />
@@ -91,5 +104,5 @@ export default function MovieInfo() {
         </ul>
       </div>
     </>
-  )
+  );
 }
