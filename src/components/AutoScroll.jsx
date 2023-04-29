@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+//영화 목록 좌/우 커서 이동 시 자동 스크롤
 const clamp = (x, min, max) => Math.min(Math.max(x, min), max)
 const between = (x, from, to) => x > from && x < to
 export const useAutoScroll = ({

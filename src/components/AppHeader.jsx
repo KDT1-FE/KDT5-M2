@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
-
+//검색영역 제외 App.jsx내의 헤더와 동일
 const AppHeader = () => {
   const navigate = useNavigate()
 

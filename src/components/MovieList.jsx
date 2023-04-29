@@ -4,7 +4,7 @@ import { Image } from 'mui-image'
 import { useNavigate } from 'react-router-dom'
 const MovieList = props => {
   const navigate = useNavigate()
-  const WatchLater = props.action
+  const Icon = props.action
 
   return (
     <>
@@ -47,7 +47,7 @@ const MovieList = props => {
                 bottom: 0,
                 right: 0
               }}>
-              <WatchLater />
+              <Icon />
             </Box>
           </Box>
         ))}

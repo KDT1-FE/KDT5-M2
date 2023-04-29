@@ -2,14 +2,14 @@ import { React, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Stack } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
-// ################################################################################################COMPONENTS BELOW
+// ################################################################################################  COMPONENTS BELOW
 import MovieList from '~/components/MovieList'
 import SearchBox from '~/components/SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
 import WatchLater from '~/components/WatchLater'
 import RemoveToWatch from '~/components/RemoveToWatch'
 import { useAutoScroll } from '~/components/AutoScroll'
-import { useInView } from 'react-intersection-observer'
+
 const App = () => {
   const [movies, setMovies] = useState([])
   const [toWatch, setToWatch] = useState([])
@@ -40,6 +40,7 @@ const App = () => {
   }
 
   // ################################################################################################  ADD & REMOVE
+  // ################################################################################################  MovieList의 props로 넘어가 사용될 함수들
   const addToWatch = movie => {
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
@@ -56,13 +57,8 @@ const App = () => {
   useAutoScroll({
     containerRef
   })
-  const { ref, inView, entry } = useInView()
 
-  useEffect(() => {
-    console.log('ongoing')
-  }, [inView])
-
-  // ################################################################################################  RENDERING  ###################################################
+  // ################################################################################################  사용자 화면  ###################################################
   return (
     <>
       {/* ################################################################################################  HEADER */}
@@ -90,6 +86,7 @@ const App = () => {
             }}>
             Search
           </Button>
+          {/* ################################################################################################ 헤더 내 MOVIE 선택시 로딩 정보 */}
           <Button
             sx={{
               fontWeight: 'light',
@@ -121,7 +118,7 @@ const App = () => {
           </Button>
         </Stack>
 
-        {/*################################################################################################  SEARCHBOX */}
+        {/*################################################################################################  검색영역 */}
 
         <SearchBox
           searchValue={searchValue}
@@ -158,7 +155,6 @@ const App = () => {
           handleToWatchClick={addToWatch}
           action={WatchLater}
         />
-        <div ref={ref}></div>
       </Stack>
       {/*################################################################################################  WATCH LATER HEADING */}
       <Stack

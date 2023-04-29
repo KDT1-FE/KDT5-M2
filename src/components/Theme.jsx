@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles'
-
+//웹사이트 전체 색상
 export const theme = createTheme({
   palette: {
     primary: {

@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react'
 import { Stack, Box } from '@mui/material'
 import { Image } from 'mui-image'
 import { useLocation } from 'react-router-dom'
-
+//영화목록/저장소에서 포스터 클릭시 상세 페이지, useNavigate에서 객체 전달 후 useLocation으로 객체 수신
 const Info = () => {
   const location = useLocation()
   const movieinfo = location.state
