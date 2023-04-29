@@ -66,9 +66,20 @@ header {
   font-size: 20px;
 }
 
-.search input:hover, .search select:hover, .submit:hover {
+.submit {
+  color: #111;
+  background-color: #ffe600;
+  transition: all .2s;
+}
+
+.search input:hover, .search select:hover {
   cursor: pointer;
   border: 1px solid #ffe600;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: #fff;
 }
 
 .movie_title {

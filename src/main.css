@@ -70,10 +70,19 @@ header {
     margin-bottom: 5px;
 }
 
+.submit {
+    background-color: #ffe600;
+    color: #111;
+    transition: 0.2s;
+}
+
 .search input:hover,
-.search select:hover,
-.submit:hover {
+.search select:hover {
     border: 1px solid #ffe600;
+    cursor: pointer;
+}
+.submit:hover {
+    background-color: #ffffff;
     cursor: pointer;
 }
 
