@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from './MovieInfos.module.scss';
+import styles from '~/styles/MovieInfos.module.scss';
 import fetchMovies from '~/api/fetchMovies';
-import context from '~/api/MyContext';
-import { useContext } from 'react';
+import context from '~/store/MyContext';
 
 export default function MovieInfos() {
   const [infos, setInfos] = useState({});
@@ -12,7 +11,7 @@ export default function MovieInfos() {
 
   useEffect(() => {
     (async () => {
-      setInfos(await fetchMovies(`i=${id}`));
+      setInfos(await fetchMovies(`i=${id}&plot=full`));
       setValue(id);
     })();
   }, []);
@@ -26,18 +25,42 @@ export default function MovieInfos() {
       <div className={`container ${styles.wrapper}`}>
         {infos.Poster ? (
           <>
-            <img
-              src={infos.Poster.replace(/SX300/, 'SX700')}
-              alt={infos.Title}
-            />
+            <div className={styles.poster}>
+              <img
+                src={infos.Poster.replace(/SX300/, 'SX700')}
+                alt={infos.Title}
+              />
+            </div>
             <div>
-              <h1>{infos.Title}</h1>
-              <div>{`${infos.Released} / ${infos.Runtime} / ${infos.Country}`}</div>
-              {infos.Ratings.map((info, idx) => (
-                <div key={idx}>
-                  {info.Source}, {info.Value}
+              <h1 className="omdb">{infos.Title}</h1>
+              <div className="yellow">{`${infos.Released} / ${infos.Runtime} / ${infos.Country}`}</div>
+              <div>{infos.Plot}</div>
+              <div>
+                <h4 className="omdb">Ratings</h4>
+                <div className={styles.ratings}>
+                  {infos.Ratings.map((info, idx) => (
+                    <div key={idx}>
+                      {info.Source}, {info.Value}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div>
+                <h4 className="omdb">Actors</h4>
+                {infos.Actors}
+              </div>
+              <div>
+                <h4 className="omdb">Director</h4>
+                {infos.Director}
+              </div>
+              <div>
+                <h4 className="omdb">Production</h4>
+                {infos.Production}
+              </div>
+              <div>
+                <h4 className="omdb">Genre</h4>
+                {infos.Genre}
+              </div>
             </div>
           </>
         ) : (

@@ -1,19 +1,41 @@
-$omdb-yellow: #fdc000;
-$gray: #6c757d;
+@import '~/common/vars.scss';
 
-body {
+* {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-}
-.container {
-  margin: auto;
-  width: 1240px;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-.omdb {
-  font-family: 'Oswald', sans-serif;
+  list-style: none;
+  .title,
+  .title * {
+    font-size: 80px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .container {
+    margin: 100px auto 0;
+    width: 1340px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .omdb,
+  .omdb * {
+    font-family: 'Oswald', sans-serif;
+  }
+  .active {
+    background-color: $omdb-yellow;
+    border-radius: 0.25rem;
+    padding: 8px 16px;
+    color: white;
+  }
+  .yellow {
+    color: $omdb-yellow;
+  }
+  .btn {
+    border-radius: 0.25rem;
+    padding: 8px 16px;
+    letter-spacing: 0.5;
+    font-size: 16px;
+  }
 }
