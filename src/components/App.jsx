@@ -9,7 +9,7 @@ import MovieListHeading from '~/components/MovieListHeading'
 import WatchLater from '~/components/WatchLater'
 import RemoveToWatch from '~/components/RemoveToWatch'
 import { useAutoScroll } from '~/components/AutoScroll'
-
+import { useInView } from 'react-intersection-observer'
 const App = () => {
   const [movies, setMovies] = useState([])
   const [toWatch, setToWatch] = useState([])
@@ -56,6 +56,11 @@ const App = () => {
   useAutoScroll({
     containerRef
   })
+  const { ref, inView, entry } = useInView()
+
+  useEffect(() => {
+    console.log('ongoing')
+  }, [inView])
 
   // ################################################################################################  RENDERING  ###################################################
   return (
@@ -153,6 +158,7 @@ const App = () => {
           handleToWatchClick={addToWatch}
           action={WatchLater}
         />
+        <div ref={ref}></div>
       </Stack>
       {/*################################################################################################  WATCH LATER HEADING */}
       <Stack

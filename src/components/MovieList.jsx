@@ -8,7 +8,7 @@ const MovieList = props => {
 
   return (
     <>
-      {props.movie &&
+      {props.movies &&
         props.movies.map((movie, index) => (
           <Box
             key={index}
