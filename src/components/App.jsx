@@ -8,7 +8,7 @@ import SearchBox from '~/components/SearchBox'
 import MovieListHeading from '~/components/MovieListHeading'
 import WatchLater from '~/components/WatchLater'
 import RemoveToWatch from '~/components/RemoveToWatch'
-import { useAutoScroll } from './AutoScroll'
+import { useAutoScroll } from '~/components/AutoScroll'
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -98,7 +98,7 @@ const App = () => {
                   imdbID: 'tt1605783',
                   Type: 'movie',
                   Poster:
-                    'https://m.media-amazon.com/images/M/MV5BMTM4NjY1MDQwMl5BMl5BanBnXkFtZTcwNTI3Njg3NA@@._V1_SX300.jpg'
+                    'https://m.media-amazon.com/images/M/MV5BMTM4NjY1MDQwMl5BMl5BanBnXkFtZTcwNTI3Njg3NA@@._V1_SX700.jpg'
                 }
               })
             }}>

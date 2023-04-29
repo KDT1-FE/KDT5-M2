@@ -5,7 +5,7 @@ export const useAutoScroll = ({
   containerRef,
   skip = false,
   threshold = 50,
-  maxSpeed = 30
+  maxSpeed = 50
 }) => {
   const [scrollingFactorX, setScrollingFactorX] = useState(0)
   const [direction, setDirection] = useState()

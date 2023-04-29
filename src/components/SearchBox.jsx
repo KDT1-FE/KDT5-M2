@@ -1,5 +1,5 @@
 import { React } from 'react'
-import { InputBase, Box, Stack, InputAdornment } from '@mui/material'
+import { InputBase, Stack, InputAdornment } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
 const SearchBox = props => {
