@@ -3,13 +3,36 @@ import NavigationBar from '~/components/NavigationBar'
 import MovieList from '~/components/MovieList'
 import LoadingPage from '~/components/Loading'
 import { useState } from 'react'
-import { getMovies } from '~/components/FetchMovieFunc'
 import './App.scss'
 
 export default function App() {
   const [movies, setMovies] = useState([])
   //로딩화면을 구현하기 위한 state 선언
   const [loading, setLoading] = useState(false)
+  // 가져올 영화의 수를 지정하는 state 선언
+  const [viewNumber, setViewNumber] = useState('1')
+  let saveMovieCallNumber = null
+
+  async function getMovies(searchValue, setLoading) {
+    // viewNumber에 따라 반복 호출되는 영화 목록을 저장할 배열 선언
+    let results = []
+    // viewNumber는 문자열이므로 숫자로 변환한 후 1부터 viewNumber까지 인수로 넣어 반복호출
+    for (let i = 1; i <= parseInt(viewNumber); i++) {
+      const res = await fetch(
+        `https://omdbapi.com/?apikey=7035c60c&s=${searchValue}&page=${i}`,
+        {
+          method: 'GET'
+        }
+      )
+      const { Search } = await res.json()
+      console.log(Search)
+      // 빈 배열과 호출한 내용의 배열을 concat 메소드로 병합
+      results = results.concat(Search)
+    }
+    //fetch가 끝나면 로딩 화면 대신 MovieList를 표시함
+    setLoading(false)
+    return results
+  }
 
   // 검색된 value를 searchValue라는 변수에 저장해 getMovies라는 비동기 함수에 인수로 전달
   // App.jsx에서 setMovies를 사용하기 위해 파라미터로 추가
@@ -41,7 +64,11 @@ export default function App() {
   return (
     <>
       <header>
-        <MovieSearch handleSearch={handleSearch} />
+        <MovieSearch
+          handleSearch={handleSearch}
+          viewNumber={viewNumber}
+          setViewNumber={setViewNumber}
+        />
       </header>
       <nav>
         <NavigationBar />

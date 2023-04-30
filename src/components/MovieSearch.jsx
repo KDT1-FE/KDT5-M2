@@ -1,4 +1,5 @@
 import styles from './MovieSearch.module.scss'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function MovieSearch(props) {
@@ -15,7 +16,17 @@ export default function MovieSearch(props) {
           onKeyDown={props.handleSearch}
         />
       </div>
-      <div>icon</div>
+      <div>
+        <select
+          //App에서 받은 setViewNumber에 value를 저장하는 이벤트 핸들링
+          onChange={e => props.setViewNumber(e.target.value)}>
+          <option value="1">10개</option>
+          <option value="2">20개</option>
+          <option value="3">30개</option>
+          <option value="4">40개</option>
+          <option value="5">50개</option>
+        </select>
+      </div>
     </div>
   )
 }
