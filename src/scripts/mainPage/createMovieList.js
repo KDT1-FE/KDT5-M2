@@ -16,7 +16,6 @@ function createMovieList() {
     event.preventDefault();
     searchPage = 1;
     resultList.innerHTML = '';
-
     
     try {
       await fetchMovieList();
