@@ -20,53 +20,54 @@ export default function MovieInfos() {
   //MyContext(id);
 
   return (
-    <>
-      <h2>info test</h2>
-      <div className={`container ${styles.wrapper}`}>
-        {infos.Poster ? (
-          <>
-            <div className={styles.poster}>
-              <img
-                src={infos.Poster.replace(/SX300/, 'SX700')}
-                alt={infos.Title}
-              />
+    <div className={`container ${styles.wrapper}`}>
+      {infos.Poster ? (
+        <>
+          <div className={styles.poster}>
+            <img
+              src={infos.Poster.replace(/SX300/, 'SX700')}
+              alt={infos.Title}
+            />
+          </div>
+          <div className={styles.details}>
+            <h1 className="omdb">{infos.Title}</h1>
+            <div className="yellow">{`${infos.Released} / ${infos.Runtime} / ${infos.Country}`}</div>
+            <div className="gray">{infos.Plot}</div>
+            <div>
+              <h4 className="omdb">Ratings</h4>
+              <div className={styles.ratings}>
+                {infos.Ratings.map((info, idx) => (
+                  <div key={idx} className={styles.rating}>
+                    <img
+                      src={`/src/assets/${info.Source}.png`}
+                      alt={info.Source}
+                    />
+                    <span className="gray">{info.Value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             <div>
-              <h1 className="omdb">{infos.Title}</h1>
-              <div className="yellow">{`${infos.Released} / ${infos.Runtime} / ${infos.Country}`}</div>
-              <div>{infos.Plot}</div>
-              <div>
-                <h4 className="omdb">Ratings</h4>
-                <div className={styles.ratings}>
-                  {infos.Ratings.map((info, idx) => (
-                    <div key={idx}>
-                      {info.Source}, {info.Value}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="omdb">Actors</h4>
-                {infos.Actors}
-              </div>
-              <div>
-                <h4 className="omdb">Director</h4>
-                {infos.Director}
-              </div>
-              <div>
-                <h4 className="omdb">Production</h4>
-                {infos.Production}
-              </div>
-              <div>
-                <h4 className="omdb">Genre</h4>
-                {infos.Genre}
-              </div>
+              <h4 className="omdb">Actors</h4>
+              <p className="gray">{infos.Actors}</p>
             </div>
-          </>
-        ) : (
-          'Loading...'
-        )}
-      </div>
-    </>
+            <div>
+              <h4 className="omdb">Director</h4>
+              <p className="gray">{infos.Director}</p>
+            </div>
+            <div>
+              <h4 className="omdb">Production</h4>
+              <p className="gray">{infos.Production}</p>
+            </div>
+            <div>
+              <h4 className="omdb">Genre</h4>
+              <p className="gray">{infos.Genre}</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        'Loading...'
+      )}
+    </div>
   );
 }

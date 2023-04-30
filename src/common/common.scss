@@ -5,6 +5,9 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   list-style: none;
+  .gray {
+    color: #6c757d;
+  }
   .title,
   .title * {
     font-size: 80px;
@@ -23,15 +26,19 @@
   .omdb * {
     font-family: 'Oswald', sans-serif;
   }
-  .active {
+  .yellow {
+    color: $omdb-yellow;
+  }
+  a.btn.active {
     background-color: $omdb-yellow;
     border-radius: 0.25rem;
     padding: 8px 16px;
     color: white;
+    &:hover {
+      color: white;
+    }
   }
-  .yellow {
-    color: $omdb-yellow;
-  }
+
   .btn {
     border-radius: 0.25rem;
     padding: 8px 16px;

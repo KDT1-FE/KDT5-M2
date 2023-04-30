@@ -39,7 +39,7 @@ ul {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  background-color: #e9ecef;
+  background-color: $light-gray;
   padding: 15px 0;
   li {
     flex-shrink: 0;
@@ -68,7 +68,7 @@ ul {
           visibility: visible;
           //border: 3px solid;
           backdrop-filter: blur(10px);
-          color: white;
+          color: #fff;
           -webkit-backdrop-filter: blur(10px);
           background-color: rgba(0, 0, 0, 0.3);
           opacity: 1;

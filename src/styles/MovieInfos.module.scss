@@ -23,7 +23,19 @@
       object-fit: cover;
     }
   }
-  .ratings {
-    display: flex;
+  .details > * {
+    margin-bottom: 20px;
+    .ratings {
+      display: flex;
+      gap: 10px;
+      .rating {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      img {
+        height: 30px;
+      }
+    }
   }
 }

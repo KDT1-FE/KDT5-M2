@@ -11,13 +11,13 @@ export default function Header() {
         <Link to="/" className={`omdb ${styles.logo}`}>
           <span className="yellow">OMDbAPI</span>.COM
         </Link>
-        <NavLink to="/" className="btn">
+        <NavLink to="/" className="btn yellow">
           Search
         </NavLink>
-        <NavLink to={`/movie/${value}`} className="btn">
+        <NavLink to={`/movie/${value}`} className="btn yellow">
           Movie
         </NavLink>
-        <NavLink to="/about" className="btn">
+        <NavLink to="/about" className="btn yellow">
           About
         </NavLink>
       </nav>

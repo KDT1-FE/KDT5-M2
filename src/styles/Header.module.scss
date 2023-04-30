@@ -1,14 +1,17 @@
 header {
-  position: absolute;
+  position: fixed;
   display: flex;
   top: 0;
   width: 100vw;
   height: 70px;
   padding: 10px 20px;
-  background-color: green;
+  background-color: #fff;
   justify-content: space-between;
   align-items: center;
-
+  z-index: 999;
+  div[data-gray='true'] {
+    color: #6c757d;
+  }
   nav {
     display: flex;
     gap: 5px;
@@ -17,6 +20,10 @@ header {
       width: max-content;
       margin-right: 20px;
       line-height: 1.7;
+      font-weight: 500;
+    }
+    a:not(:first-child):hover {
+      color: #ca9a00;
     }
     .omdb {
       font-size: 20px;
