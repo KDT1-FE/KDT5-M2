@@ -4,6 +4,7 @@ import { axiosMovies } from "~/core/movieData";
 import SearchIcon from "@mui/icons-material/Search";
 import Select from "./Select";
 import { type, pages, year } from "./Category";
+import altImage from "../../../assets/alt-image.jpeg";
 
 const SearchInput = () => {
   const [inputText, setInputText] = useState("");
@@ -112,7 +113,11 @@ const SearchInput = () => {
                 <a
                   className={styles.movie}
                   href={`/movie/main/${movie.imdbID}`}
-                  style={{ background: `url(${movie.Poster})` }}
+                  style={{
+                    background: `url(${
+                      movie.Poster === "N/A" ? altImage : movie.Poster
+                    })`,
+                  }}
                 >
                   {" "}
                 </a>
