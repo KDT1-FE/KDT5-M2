@@ -6,8 +6,8 @@ const TheFooter = () => {
     <>
       <footer>
         <div className={styles.footerDiv}>
-          <a href="/">
-            <span>WUTCHA</span> PEDIA
+          <a href="/" className={styles.noUnderLine}>
+            <span className={styles.pinkSpan}>WUTCHA</span> PEDIA
           </a>
           <a href="/"> (c)2023 Kled </a>
         </div>
