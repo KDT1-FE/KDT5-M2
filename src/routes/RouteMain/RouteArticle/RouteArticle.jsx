@@ -9,10 +9,11 @@ const RouteArticle = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    async function detailMovies(e) {
+    async function detailMovies() {
       const detail = await axiosDetailMovies(movieId);
       setMovie(detail);
     }
+
     detailMovies(movieId);
   }, [movieId]);
 
