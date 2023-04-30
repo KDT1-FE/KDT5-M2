@@ -21,10 +21,10 @@ export default function Header() {
           About
         </NavLink>
       </nav>
-      <div>
+      <Link to="about">
         image
         <img src="" alt="" />
-      </div>
+      </Link>
     </header>
   );
 }

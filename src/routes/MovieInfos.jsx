@@ -3,16 +3,26 @@ import { useParams } from 'react-router-dom';
 import styles from '~/styles/MovieInfos.module.scss';
 import fetchMovies from '~/api/fetchMovies';
 import context from '~/store/MyContext';
+import SkeletonMovie from '../components/SkeletonMovie';
 
 export default function MovieInfos() {
   const [infos, setInfos] = useState({});
   const { id } = useParams();
   const { setValue } = useContext(context);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setInfos(await fetchMovies(`i=${id}&plot=full`));
-      setValue(id);
+      try {
+        setIsLoading(true);
+        const data = await fetchMovies(`i=${id}&plot=full`);
+        setInfos(data);
+        setValue(id);
+      } catch (err) {
+        alert(err);
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, []);
 
@@ -21,7 +31,7 @@ export default function MovieInfos() {
 
   return (
     <div className={`container ${styles.wrapper}`}>
-      {infos.Poster ? (
+      {!isLoading ? (
         <>
           <div className={styles.poster}>
             <img
@@ -66,7 +76,7 @@ export default function MovieInfos() {
           </div>
         </>
       ) : (
-        'Loading...'
+        <SkeletonMovie />
       )}
     </div>
   );

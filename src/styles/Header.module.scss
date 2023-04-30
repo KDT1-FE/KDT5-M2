@@ -9,9 +9,6 @@ header {
   justify-content: space-between;
   align-items: center;
   z-index: 999;
-  div[data-gray='true'] {
-    color: #6c757d;
-  }
   nav {
     display: flex;
     gap: 5px;

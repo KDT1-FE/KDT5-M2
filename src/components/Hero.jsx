@@ -1,14 +1,14 @@
 export default function Hero() {
   return (
     <>
-      <div>
-        <h1 className="title omdb">
+      <div className="bottom">
+        <h1 className="title omdb bottom">
           <span className="yellow">OMDb API</span>
           <br />
           THE OPEN
           <br /> MOVIE DATABASE
         </h1>
-        <p>
+        <p className="gray">
           The OMDb API is a RESTful web service to obtain movie information, all
           content and images on the site are contributed and maintained by our
           users.

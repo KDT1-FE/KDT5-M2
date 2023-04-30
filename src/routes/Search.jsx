@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import fetchMovies from '~/api/fetchMovies';
 import styles from '~/styles/Search.module.scss';
-import Hero from '~/components/Hero';
 import { NavLink } from 'react-router-dom';
+import fetchMovies from '~/api/fetchMovies';
+import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
+import SkeletonSearch from '../components/SkeletonSearch';
 
 export default function Search() {
   const [title, setTitle] = useState('');
@@ -15,6 +16,9 @@ export default function Search() {
     page: '10',
     years: null,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isClick, setIsClick] = useState(false);
+  console.log(lists == false);
 
   async function getList(e) {
     e.preventDefault();
@@ -23,11 +27,12 @@ export default function Search() {
       page,
       years = years === 'All years' ? null : years,
     } = options;
+
     let movies = [];
     let num = parseInt(page) / 10;
     try {
+      setIsLoading(true);
       for (let i = 1; i <= num; i++) {
-        console.log(i);
         const data = await fetchMovies(
           `s=${title}&type=${type}&page=${i}&y=${years}`
         );
@@ -35,41 +40,47 @@ export default function Search() {
         movies = [...movies, ...data.Search];
       }
       setLists(movies);
-      //console.log(type, page, years);
       setMore(num + 1);
     } catch (err) {
       alert(err);
+    } finally {
+      setIsLoading(false);
     }
   }
   async function getMoreList() {
     try {
+      setIsClick(true);
       const data = await fetchMovies(`s=${title}&page=${more}`);
       setLists([...lists, ...data.Search]);
       setMore(more + 1);
       if (data.Response === 'False') throw new Error(data.Error);
     } catch (err) {
       alert(err);
+    } finally {
+      setIsClick(false);
     }
-    //console.log(...lists, ...newList);
   }
 
   function getSearchOption(e) {
     setOptions({ ...options, [e.target.name]: e.target.value });
-    console.log(options);
   }
 
   return (
     <div className="container">
       <Hero />
       <div>
-        <form onSubmit={getList} className={styles.searchBar}>
+        <form
+          onSubmit={getList}
+          className={`${!isLoading ? '' : styles.wait} bottom ${
+            styles.searchBar
+          }`}
+        >
           <input
             type="text"
             value={title}
             placeholder="Search for Movies, Series & more"
             onChange={(e) => {
               setTitle(e.target.value);
-              //console.log(title);
             }}
           />
           <Select
@@ -87,27 +98,48 @@ export default function Search() {
             values={selectItems.years}
             onChange={getSearchOption}
           />
-          <button className="btn">Apply</button>
+          <button className={`btn`}>
+            {!isLoading ? 'Apply' : 'wating...'}
+          </button>
         </form>
 
         <ul>
-          {lists
-            ? lists.map((list) => (
-                <li key={list.imdbID}>
-                  <NavLink to={`/movie/${list.imdbID}`}>
-                    <figure>
-                      <img src={list.Poster} alt={list.Title} />
-                      <figcaption>
-                        <div className="yellow">{list.Year}</div>
-                        <div>{list.Title}</div>
-                      </figcaption>
-                    </figure>
-                  </NavLink>
-                </li>
-              ))
-            : ''}
+          {!isLoading ? (
+            lists.map((list) => (
+              <li key={list.imdbID}>
+                <NavLink to={`/movie/${list.imdbID}`}>
+                  <figure>
+                    <img src={list.Poster} alt={list.Title} />
+                    <figcaption>
+                      <div className="yellow">{list.Year}</div>
+                      <div>{list.Title}</div>
+                    </figcaption>
+                  </figure>
+                </NavLink>
+              </li>
+            ))
+          ) : (
+            <SkeletonSearch />
+          )}
+          {lists == false ? (
+            <p style={{ color: '#ced4da', fontSize: 20 + 'px' }}>
+              Search for movies title!
+            </p>
+          ) : (
+            ''
+          )}
         </ul>
-        <button onClick={getMoreList}>more</button>
+        {isClick ? (
+          <ul style={{ paddingTop: 0, paddingBottom: 15 + 'px' }}>
+            <SkeletonSearch />
+          </ul>
+        ) : (
+          ''
+        )}
+
+        <button className="btn" onClick={getMoreList}>
+          more
+        </button>
       </div>
     </div>
   );
