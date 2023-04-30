@@ -6,7 +6,10 @@ const TheFooter = () => {
     <>
       <footer>
         <div className={styles.footerDiv}>
-          <h3>Footer</h3>
+          <a href="/">
+            <span>WUTCHA</span> PEDIA
+          </a>
+          <a href="/"> (c)2023 Kled </a>
         </div>
       </footer>
     </>
