@@ -2,6 +2,7 @@ import styles from "./SearchInput.module.scss";
 import React, { useState } from "react";
 import { axiosMovies } from "~/core/movieData";
 import SearchIcon from "@mui/icons-material/Search";
+import CircularProgress from "@mui/material/CircularProgress";
 import Select from "./Select";
 import { type, pages, year } from "./Category";
 import altImage from "../../../assets/alt-image.jpeg";
@@ -9,7 +10,10 @@ import altImage from "../../../assets/alt-image.jpeg";
 const SearchInput = () => {
   const [inputText, setInputText] = useState("");
   const [movies, setMovies] = useState([]);
-  const [message, setMessage] = useState("🎬 검색 준비 완료!");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(
+    "🎬 검색어를 입력 후 엔터 ⏎ 또는 돋보기 🔍 를 눌러 검색해주세요!"
+  );
   const [category, setCategory] = useState({
     page: "10",
     year: "All Years",
@@ -27,55 +31,61 @@ const SearchInput = () => {
 
   // 비동기 처리 함수 pressEnterKey: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리, 결과 값(movieData.Search)을 setMovies로 동적으로 다룬다.
   async function pressEnterKey(event) {
-    // onKeyDown === Enter or OnClick === click
-    if (event.key === "Enter" || event.type === "click") {
-      // Search Movie
-      if (!inputText.trim()) return;
-      // movieData의 기본값은 page: 1
-      const movieData = await axiosMovies(
-        inputText,
-        category.year,
-        category.type,
-        1
-      );
-      // selected가 20이면, page: 1 Array에 page: 2 Array 요소 push
-      if (category.page === "20") {
-        const twoData = await axiosMovies(
+    setLoading(true);
+    try {
+      // onKeyDown === Enter or OnClick === click
+      if (event.key === "Enter" || event.type === "click") {
+        // Search Movie
+        if (!inputText.trim()) return;
+        // movieData의 기본값은 page: 1
+        const movieData = await axiosMovies(
           inputText,
           category.year,
           category.type,
-          2
+          1
         );
-        // selected가 20이면, page: 2 data 호출
-        twoData.Search.map((v) => movieData.Search.push(v));
-      }
-      // selected가 30이면, page: 1 Array에 page: 2, page: 3 Array 요소 push
-      else if (category.page === "30") {
-        const twoData = await axiosMovies(
-          inputText,
-          category.year,
-          category.type,
-          2
-        );
-        const threeData = await axiosMovies(
-          inputText,
-          category.year,
-          category.type,
-          3
-        );
-        // selected가 20이면, page: 2 data 호출
-        twoData.Search.map((v) => movieData.Search.push(v));
-        // selected가 30이면, page: 3 data 호출
-        threeData.Search.map((v) => movieData.Search.push(v));
-      }
-      // ` || [] `:  array.map 오류 방지
-      setMovies(movieData.Search || []);
+        // selected가 20이면, page: 1 Array에 page: 2 Array 요소 push
+        if (category.page === "20") {
+          const twoData = await axiosMovies(
+            inputText,
+            category.year,
+            category.type,
+            2
+          );
+          // selected가 20이면, page: 2 data 호출
+          twoData.Search.map((v) => movieData.Search.push(v));
+        }
+        // selected가 30이면, page: 1 Array에 page: 2, page: 3 Array 요소 push
+        else if (category.page === "30") {
+          const twoData = await axiosMovies(
+            inputText,
+            category.year,
+            category.type,
+            2
+          );
+          const threeData = await axiosMovies(
+            inputText,
+            category.year,
+            category.type,
+            3
+          );
+          // selected가 20이면, page: 2 data 호출
+          twoData.Search.map((v) => movieData.Search.push(v));
+          // selected가 30이면, page: 3 data 호출
+          threeData.Search.map((v) => movieData.Search.push(v));
+        }
+        // ` || [] `:  array.map 오류 방지
+        setMovies(movieData.Search || []);
 
-      // 검색 결과가 Truthy면 message를 빈 문자열화, Falsy(= 검색결과 없음)면 검색 결과가 없다는 문자열 출력!
-      movieData.Search
-        ? setMessage("")
-        : setMessage("⚠️ 검색 결과가 없습니다.");
+        // 검색 결과가 Truthy면 message를 빈 문자열화, Falsy(= 검색결과 없음)면 검색 결과가 없다는 문자열 출력!
+        movieData.Search
+          ? setMessage("")
+          : setMessage("⚠️ 검색 결과가 없습니다.");
+      }
+    } catch (error) {
+      console.error(error);
     }
+    setLoading(false);
   }
 
   return (
@@ -117,6 +127,7 @@ const SearchInput = () => {
                     background: `url(${
                       movie.Poster === "N/A" ? altImage : movie.Poster
                     })`,
+                    backgroundSize: `100%`,
                   }}
                 >
                   {" "}
@@ -127,6 +138,7 @@ const SearchInput = () => {
           </ul>
         </div>
       </section>
+      {loading && <CircularProgress />}
     </>
   );
 };
