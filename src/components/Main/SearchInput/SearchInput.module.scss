@@ -38,6 +38,7 @@
         .searchIcon {
           fill: var(--color-white);
           font-size: 36px;
+          background-color: var(--color-black);
         }
       }
     }
@@ -57,30 +58,28 @@
       margin: 0;
       gap: 71px;
       justify-content: center;
-      padding: 70px 15px 170px;
+      padding: 70px 15px 78px;
       font-size: 24px;
       color: var(--color-fontGray);
       .movies {
         text-align: center;
-      }
-      .movie {
-        display: block;
-        --width: 300px;
-        width: var(--width);
-        height: calc(var(--width) * 3 / 2.1);
-        border-radius: 10px;
-        background-color: #ced4da;
-        background-size: cover;
-        background-repeat: no-repeat;
-        overflow: hidden;
-        position: relative;
-      }
-      .movieInfo {
-        color: white;
-        font-size: 1rem;
-        font-family: 양진체;
-        max-width: 300px;
-        margin-top: 16px;
+
+        .movie {
+          display: block;
+          width: 300px;
+          height: calc(300px * 3 / 2.1);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          background-size: 100%;
+        }
+        .movieInfo {
+          color: white;
+          font-size: 1rem;
+          // font-family: 양진체;
+          max-width: 300px;
+          margin-top: 16px;
+        }
       }
     }
   }
