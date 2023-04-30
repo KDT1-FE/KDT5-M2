@@ -2,6 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 import App from "../components/App";
+import About from "../components/About/About";
 import MovieMain from "./MovieMain";
 import MovieRatings from "./MovieRatings";
 
@@ -11,6 +12,10 @@ export default createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
   {
     path: "/movie/main",
