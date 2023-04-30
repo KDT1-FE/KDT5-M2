@@ -1,4 +1,4 @@
-데모페이지(1차): [https://papaya-gingersnap-d5d90c.netlify.app/]
+데모페이지(1차): [https://644e8d9b847cab6579ed17ce--frolicking-trifle-07d151.netlify.app/]
 # 🎬 영화 검색
 
 주어진 API를 활용해 '[완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!  
@@ -33,3 +33,5 @@ KDT기수번호_이름  |  E.g, KDT0_ParkYoungWoong
 - [ ] 영화 상세정보 포스터를 고해상도로 출력해보세요. (실시간 이미지 리사이징)
 - [x] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
 - [ ] 영화와 관련된 기타 기능도 고려해보세요.
+
+
