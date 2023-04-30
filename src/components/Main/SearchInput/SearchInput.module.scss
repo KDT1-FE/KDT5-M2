@@ -1,6 +1,7 @@
 .mainSection {
   background-color: var(--color-background);
   .mainWrapper {
+    justify-content: center;
     display: flex;
     margin: 0 100px;
     padding-top: 50px;
@@ -54,9 +55,9 @@
       display: flex;
       flex-wrap: wrap;
       margin: 0;
-      gap: 20px;
+      gap: 71px;
       justify-content: center;
-      padding: 70px 15px;
+      padding: 70px 15px 170px;
       font-size: 24px;
       color: var(--color-fontGray);
       .movies {
@@ -67,15 +68,16 @@
         --width: 300px;
         width: var(--width);
         height: calc(var(--width) * 3 / 2.1);
-        border-radius: 4px;
+        border-radius: 10px;
         background-color: #ced4da;
         background-size: cover;
+        background-repeat: no-repeat;
         overflow: hidden;
         position: relative;
       }
       .movieInfo {
         color: white;
-        font-size: 1.3rem;
+        font-size: 1rem;
         font-family: 양진체;
         max-width: 300px;
         margin-top: 16px;
