@@ -82,6 +82,10 @@ const RouteSection = () => {
                 <div className={styles.movieDetailGray}>러닝타임</div>
                 <div className={styles.movieDetailWhite}>{movie.Runtime}</div>
               </div>
+              <div className={styles.movieDetailList}>
+                <div className={styles.movieDetailGray}>수상</div>
+                <div className={styles.movieDetailWhite}>{movie.Awards}</div>
+              </div>
             </div>
             <div className={styles.movieDetailInner}>
               <div className={styles.movieDetailList}>
