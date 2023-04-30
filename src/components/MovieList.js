@@ -12,7 +12,7 @@ export default class MovieList extends Component {
     })
   }
   render() {
-    this.el.classList.add('movie-list')
+    this.el.classList.add('movie_list')
     this.el.innerHTML = `
       <div class="movies"></div>
     `

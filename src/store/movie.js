@@ -4,6 +4,7 @@ import axios from 'axios'
 const store = new Store({
   searchText: '',
   page: 1,
+  pageMax: 1,
   year: '',
   movie: {},
   movies: []
@@ -14,12 +15,12 @@ export async function requestAll(searchText, year = '', page = 1) {
   const s = `&s=${searchText}`
   const y = `&y=${year}`
   const p = `&page=${page}`
+  store.state.page = page
   if (page === 1) {
-    store.state.page = 1
     store.state.movies = []
   }
   const { data } = await axios({
-    url: `https://omdbapi.com/?apikey=7035c60c&s=${s}${y}${p}`,
+    url: `https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`,
     method: 'GET'
   })
   if (data.Response === 'True') {
@@ -27,7 +28,13 @@ export async function requestAll(searchText, year = '', page = 1) {
       return { imdbID: movie.imdbID, title: movie.Title, poster: movie.Poster }
     })
     store.state.movies = [...store.state.movies, ...movies]
+    
   }
+}
+
+export async function totalPages(page) {
+  await requestAll(store.state.searchText, store.state.year, page)
+  Math.state.pageMax.ceil(totalResults / 10)
 }
 
 export async function getMovieDetails(id) {

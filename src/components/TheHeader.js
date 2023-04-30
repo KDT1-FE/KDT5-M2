@@ -7,7 +7,7 @@ export default class TheHeader extends Component {
     })
   }
   render() {
-    this.el.classList.add('theheader')
+    this.el.classList.add('the_header')
     this.el.innerHTML = `
     <h1>OMDb API</h1>
     <h2>THE OPEN MOVIE DATABASE</h2>

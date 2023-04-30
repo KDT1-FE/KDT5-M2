@@ -9,17 +9,18 @@ export default class Movie extends Component {
   }
   async render() {
     await getMovieDetails(history.state.id)
-    console.log(movieStore.state.movie)
+    // console.log(movieStore.state.movie)
     const { movie } = movieStore.state
 
-    this.el.classList.add('container', 'the-movie')
+    this.el.classList.add('container', 'the_movie')
     this.el.innerHTML = `
-      <div style="background-image: url(${movie.Poster})"class="poster"></div>
+      <div style="background-image: url(${movie.Poster})"
+      class="poster"></div>
       <div class="specs">
-        <div class"title">
+        <div class="title">
           ${movie.Title}
         </div>
-        <div class="label">
+        <div class="labels">
           <span>${movie.Released}</span>
           &nbsp;/&nbsp;
           <span>${movie.Runtime}</span>
@@ -30,7 +31,7 @@ export default class Movie extends Component {
         <div>
           <h3>Ratings</h3>
           ${movie.Ratings.map(rating => {
-            return `<>${rating.Source} - ${rating.Value}</p>`
+            return `<p>${rating.Source} - ${rating.Value}</p>`
           }).join('')}
         </div>
         <div>
@@ -49,7 +50,6 @@ export default class Movie extends Component {
           <h3>Genre</h3>
           <p><${movie.Genre}/p>
         </div>
-        
       </div>
     `
   }

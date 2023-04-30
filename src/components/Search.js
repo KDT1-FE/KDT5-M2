@@ -13,6 +13,7 @@ export default class Search extends Component {
       <input class="search_bar" type="text" placeholder="스즈메의 문단속 보고싶당" />
       <button class="btn btn_main">검색</button>
     `
+    
     const inputEl = this.el.querySelector('input')
     //// INPUT TAG_영화 검색 ////
     const inputHandler = () => {

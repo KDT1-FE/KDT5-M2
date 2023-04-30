@@ -21,20 +21,25 @@ export default class TheNav extends Component {
         ]
       }
     })
+    window.addEventListener('popstate', () => { 
+      this.render()
+    })
   }
   render() {
     this.el.innerHTML = `
       <a href="#/" class="logo">OMDbAPI<sapn>.com</span></a>
       <div class="nav_menu">
         <ul>
-          ${this.state.menus
-            .map(menu => {
+          ${this.state.menus.map(menu => {
+            const href = menu.href.split('?')[0]
+            const hash = location.hash.split('?')[0]
+            const isActive = href === hash
               return `
               <li>
-                <a href="${menu.href}">${menu.name}</a>
+                <a class = "${isActive ? 'active' : '' }" href="${menu.href}">${menu.name}</a>
               </li>
             `
-            })
+          })
             .join('')}
         </ul>
       </div>
