@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout'
  * @property {string} Director
  * @property {string} Writer
  * @property {string} Actors
- * @property {string} Plot
+ * @property {string} Plotd
  * @property {string} Language
  * @property {string} Country
  * @property {string} Awards
@@ -47,21 +47,27 @@ export default function Detail() {
 
   return (
     <Layout>
-      <main className="flex justify-center">
-        <div className="min-w-[50%]">
-          <div className="mr-8 ">
-            <img
-              src={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster}
-              alt={`${movie.Title} Poster`}
-              onError={(e) => {
-                e.target.src = '/noImage.png'
-              }}
-              className="w-full rounded-2xl"
-            />
+      <main className="flex md:flex-row md:justify-center md:items-stretch flex-col items-center">
+        <div className="min-w-[50%] mb-12 md:mb-0">
+          <div className="md:mr-8 text-right">
+            <picture>
+              <source
+                srcSet={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster.replace('._V1_SX300.', '._V1_SX700.')}
+                media="(min-width: 768px)"
+              />
+              <img
+                src={movie.Poster === 'N/A' ? '/noImage.png' : movie.Poster}
+                alt={`${movie.Title} Poster`}
+                onError={(e) => {
+                  e.target.src = '/noImage.png'
+                }}
+                className="inline-block max-h-[820px] rounded-2xl"
+              />
+            </picture>
           </div>
         </div>
         <div className="min-w-[50%]">
-          <h1 className="text-4xl text-c-tt tracking-widest mb-10">{movie.Title}</h1>
+          <h1 className="md:text-left text-center text-4xl text-c-tt tracking-widest mb-10">{movie.Title}</h1>
           <div>
             <div className="text-c-h mb-4">
               <span className="after:content-['-'] after:ml-2 after:mr-2 after:text-[#000]">{movie.Released}</span>
@@ -80,6 +86,9 @@ export default function Detail() {
                       src={rating.SourceImage === 'N/A' ? '/noImage.png' : rating.SourceImage}
                       alt={rating.Source}
                       className="mr-3 h-[27px]"
+                      onError={(e) => {
+                        e.target.src = '/noImage.png'
+                      }}
                     />
                   </span>
                   <span>{rating.Value}</span>

@@ -4,15 +4,20 @@ const path = require('path')
 const rimraf = require('rimraf')
 const webpack = require('webpack')
 const webpackNodeExternals = require('webpack-node-externals')
-// * js는 차후 optimization할 예정입니다.
-// const TerserPlugin = require('terser-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 function bundleFrontApp(callback) {
   console.log('start bundling')
-  rimraf.sync(path.resolve(__dirname, '../build'))
+  if (process.env.NODE_ENV === 'production') {
+    // production 모드일 경우 build파일을 삭제합니다. (webpack의 clean옵션이랑 같습니다.)
+    rimraf.sync(path.resolve(__dirname, '../build'))
+    rimraf.sync(path.resolve(__dirname, '../build-ssr'))
+  }
   const config = {
+    // https://webpack.kr/configuration/mode/
     mode: process.env.NODE_ENV,
+    // https://webpack.kr/configuration/devtool/
     devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'cheap-module-source-map',
     resolve: {
       extensions: ['.js', '.jsx'],
@@ -49,10 +54,15 @@ function bundleFrontApp(callback) {
     optimization: {
       minimize: true,
       minimizer: [
-        new CssMinimizerPlugin(), // 따로 옵션을 제공하지 않아도 주석 및 공백 제거를 해줍니다.
+        // css를 최적화 해줍니다. 대부분 필요한 기능은 default값에 포함되어 있습니다.
+        new CssMinimizerPlugin(),
+        //js를 최적화 해줍니다. 대부분 필요한 기능은 default값에 포함되어 있습니다.
+        // https://www.npmjs.com/package/terser-webpack-plugin
+        new TerserPlugin(),
       ],
     },
   }
+
   webpack(config, (err, stats) => {
     if (stats.hasErrors()) {
       console.error(err)
