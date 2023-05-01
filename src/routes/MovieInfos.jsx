@@ -4,7 +4,6 @@ import styles from '~/styles/MovieInfos.module.scss';
 import fetchMovies from '~/api/fetchMovies';
 import context from '~/store/MyContext';
 import SkeletonMovie from '../components/SkeletonMovie';
-
 export default function MovieInfos() {
   const [infos, setInfos] = useState({});
   const { id } = useParams();
