@@ -1,6 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Stack } from '@mui/material'
+import { Button, Stack, Box } from '@mui/material'
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined'
 // ################################################################################################  COMPONENTS BELOW
 import MovieList from '~/components/MovieList'
@@ -9,12 +9,19 @@ import MovieListHeading from '~/components/MovieListHeading'
 import WatchLater from '~/components/WatchLater'
 import RemoveToWatch from '~/components/RemoveToWatch'
 import { useAutoScroll } from '~/components/AutoScroll'
+import { useInView } from 'react-intersection-observer'
 
 const App = () => {
   const [movies, setMovies] = useState([])
   const [toWatch, setToWatch] = useState([])
   const [searchValue, setSearchValue] = useState('')
+  const [page, setPage] = useState(2)
+  const [moreMovies, setMoreMovies] = useState([])
+  const { ref, inView } = useInView()
+  // ref - Observing Target
+  // inView - Target meets the condition(isIntersecting)
 
+  //  ################################################################################################ API FETCH
   const getMovieRequest = async () => {
     const url = `https://omdbapi.com/?s=${searchValue}&apikey=7035c60c`
     const res = await fetch(url)
@@ -24,6 +31,27 @@ const App = () => {
       setMovies(json.Search)
     }
   }
+
+  const getMoreMovieRequest = async () => {
+    const url = `https://omdbapi.com/?s=${searchValue}&page=${page}&apikey=7035c60c`
+    const res = await fetch(url)
+    const json = await res.json()
+
+    if (
+      json.Response === 'True' &&
+      page <= Math.ceil(Number(json.totalResults) / 10)
+    ) {
+      const additionalList = json.Search
+      console.log(additionalList)
+      console.log(...additionalList)
+      setMoreMovies(moreMovies => [...moreMovies, ...additionalList])
+      console.log(moreMovies)
+      console.log(...moreMovies)
+      // const additionalList = [...moreMovies, json.Search]
+      // setMoreMovies(additionalList)
+    }
+  }
+
   // ################################################################################################  INITIAL LOADING WITH USEEFFECT
   useEffect(() => {
     getMovieRequest(searchValue)
@@ -33,7 +61,12 @@ const App = () => {
     const loadList = JSON.parse(localStorage.getItem('WatchList'))
     setToWatch(loadList)
   }, [])
-
+  useEffect(() => {
+    if (inView && searchValue) {
+      getMoreMovieRequest()
+      setPage(page + 1)
+    }
+  }, [inView])
   // ################################################################################################  LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
@@ -155,6 +188,12 @@ const App = () => {
           handleToWatchClick={addToWatch}
           action={WatchLater}
         />
+        <MovieList
+          movies={moreMovies}
+          handleToWatchClick={addToWatch}
+          action={WatchLater}
+        />
+        <Stack ref={ref}></Stack>
       </Stack>
       {/*################################################################################################  WATCH LATER HEADING */}
       <Stack
