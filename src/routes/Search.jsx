@@ -107,7 +107,7 @@ export default function Search() {
               const img =
                 list.Poster !== 'N/A'
                   ? list.Poster
-                  : '/src/assets/no-poster-available.webp';
+                  : '/public/assets/no-poster-available.webp';
               return (
                 <li key={list.imdbID}>
                   <NavLink to={`/movie/${list.imdbID}`}>

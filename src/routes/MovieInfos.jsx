@@ -49,7 +49,7 @@ export default function MovieInfos() {
                 {infos.Ratings.map((info, idx) => (
                   <div key={idx} className={styles.rating}>
                     <img
-                      src={`/src/assets/${info.Source}.png`}
+                      src={`/public/assets/${info.Source}.png`}
                       alt={info.Source}
                     />
                     <span className="gray">{info.Value}</span>
