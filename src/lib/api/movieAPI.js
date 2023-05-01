@@ -1,14 +1,32 @@
-/*
-  검색된 영화 API 가져오기
-  method: 'GET'
-*/
+import axios from "axios";
+
 export async function getMovies(title) {
-  try {
-    const url = `http://omdbapi.com/?apikey=7035c60c&s=${title}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    return result;
-  } catch (e) {
-    console.error(e, "API 요청에 실패했습니다.");
-  }
+  const pageOne = await axios
+    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=1`)
+    .then((res) => res.data)
+    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
+
+  const pageTwo = await axios
+    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=2`)
+    .then((res) => res.data)
+    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
+
+  const pageThree = await axios
+    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=3`)
+    .then((res) => res.data)
+    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
+
+  const pageFour = await axios
+    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=3`)
+    .then((res) => res.data)
+    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
+
+  return {
+    Search: [
+      ...pageOne.Search,
+      ...pageTwo.Search,
+      ...pageThree.Search,
+      ...pageFour.Search,
+    ],
+  };
 }
