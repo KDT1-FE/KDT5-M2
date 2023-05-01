@@ -22,7 +22,7 @@ export default function Header() {
         </NavLink>
       </nav>
       <Link to="about">
-        <img src="/public/assets/pic1.jpg" alt="" />
+        <img src="/assets/pic1.jpg" alt="" />
       </Link>
     </header>
   );
