@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import styled from "styled-components";
 import { getMovies } from "src/lib/api/movieAPI";
 import { colors } from "src/lib/styles/colors";
 import Loading from "src/components/common/Loading";
 import SearchItem from "src/components/search/SearchItem";
+import SearchSelect from "./SearchSelect";
 
 // Component
 function Search({ value, setValue, movies, setMovies }) {
@@ -21,6 +22,7 @@ function Search({ value, setValue, movies, setMovies }) {
     setValue("");
     setLoading(true);
     const movieData = await getMovies(value);
+    console.log(movieData);
     setMovies(movieData.Search || []);
     movieData.Search ? setMessage(null) : setMessage("검색결과가 없습니다.");
     setLoading(false);
@@ -36,6 +38,7 @@ function Search({ value, setValue, movies, setMovies }) {
             onChange={onInputChange}
             value={value}
           />
+          <SearchSelect />
           <SearchButton type="submit">검색</SearchButton>
         </SearchForm>
       </SearchContainer>
@@ -45,9 +48,10 @@ function Search({ value, setValue, movies, setMovies }) {
         ) : (
           <SearchList>
             {message}
-            {movies.map((movie) => (
-              <SearchItem key={movie.imdbID} movie={movie} />
-            ))}
+            {movies &&
+              movies.map((movie, index) => (
+                <SearchItem key={index} movie={movie} />
+              ))}
           </SearchList>
         )}
       </SearchResult>
@@ -120,4 +124,4 @@ const SearchList = styled.ul`
   }
 `;
 
-export default Search;
+export default memo(Search);
