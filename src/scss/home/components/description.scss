@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.container{
+  @include ContainerStyle;
+}
+
+.Desciption{
+  padding-top: 40px;
+  width: 90%;
+  max-width:1364px;
+  margin: auto;
+};
+
+.Desciption-container__text {
+  max-width: 600px;
+  line-height: 1;
+ 
+  h1{
+    font-size: 80px;
+    color: var(--white);
+    
+    span{
+      color: var(--red);
+    }
+  }
+};
+
+.Desciption-container__bottomtext{
+  max-width: 1100px;
+  margin-top: 10px;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: $fontW600;
+  margin-top: 30px;
+  color: var(--gray);
+}

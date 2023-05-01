@@ -1,0 +1,105 @@
+@import '../variables';
+
+.Load{
+  max-width:1364px;
+  height: 80vh;
+  position: relative;
+  margin: auto;
+}
+
+.Detail-Container{
+
+  .Detail-Container_box{
+    padding-top: 40px;
+    width: 90%;
+    max-width:1364px;
+    margin: auto;
+
+    .Detail-Container_inner{
+      width: inherit;
+      margin: inherit;
+      padding-bottom: 750px;
+    }
+  }
+
+  .Detail-Container__moviebox{
+    width: 500px;
+    height: 800px;
+    float: left;
+    box-sizing: border-box;
+
+    .Detail-Container__movieimg{
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      background-image: var(--props-image);
+    }
+  }
+
+  .Detail-Container__infobox {
+    width: 700px;
+    height: 800px;
+    float: right;
+    box-sizing: border-box;
+    font-family: $fontOswald;
+    
+    .Detail-infobox__title {
+      width: 400px;
+      margin-top: 20px;
+      line-height: 1;
+      margin-bottom: 30px;
+
+      span{
+        font-size: 50px;
+        color: var(--white);  
+      }
+    }
+
+    .Detail-infobox__label {
+      width: 400px;
+      font-weight: $fontW600;
+      
+      span{
+        color: var(--yellow);
+      }  
+    }
+
+    .Detail-infobox__plot{
+      width: 800px;
+      margin-top: 20px;
+
+      span{
+        color: var(--gray);
+      }
+    }
+
+    @mixin ContentBox{
+      margin: 20px 0 6px;
+      color: var(--white)
+    }
+
+    .Detail-infobox__ratings{
+      @include ContentBox;
+
+      .Detail-Database__box{
+        display: flex;  
+      }
+    }
+
+    .Detail-Movie__Database{
+      display: flex;
+      align-items:center;
+      margin-right:40px;
+    }
+
+    .Detail-Movie__Database img{
+      height: 30px;
+      flex-shrink: 0;
+      margin-right: 6px;
+    }
+
+    .Detail-infobox__actors {
+      @include ContentBox;
+    }
+  }
+};

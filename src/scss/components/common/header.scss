@@ -1,0 +1,52 @@
+@import '../../variables';
+
+
+@mixin Item {
+  background-color: var(--red);
+  position: relative;
+  top: 2px;
+  padding: 10px 15px 33px 10px;
+  border-radius: 0.25rem;  
+};
+ 
+
+.header {
+    background-color: var(--darkgray);
+}
+
+.header-category__box {
+  width: 500px;
+  padding-bottom: 65px;
+}
+
+.header__logo{
+  position: absolute;
+  color: var(--white);
+  margin-left: 40px;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: $fontW800;
+
+  span {
+    color:var(--red);
+  }
+}
+
+.header-category__nave {
+  width: 300px;
+  height: 50px;
+  @include flexAbsolute;
+  margin-left: 200px;
+  margin-top: 5px;
+  gap: 40px;
+
+  .active {
+    @include Item;
+  }
+
+  a {
+    color: var(--white);
+    top: 13px;
+    position: relative;
+  }
+}
