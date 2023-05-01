@@ -10,10 +10,10 @@ export default class Search extends Component {
   render() {
     this.el.classList.add('search')
     this.el.innerHTML = `
-      <input class="search_bar" type="text" placeholder="스즈메의 문단속 보고싶당" />
+      <input value="${movieStore.state.searchText}" class="search_bar" type="text" placeholder="영화 제목을 입력해보세요 :-p" />
       <button class="btn btn_main">검색</button>
     `
-    
+
     const inputEl = this.el.querySelector('input')
     //// INPUT TAG_영화 검색 ////
     const inputHandler = () => {

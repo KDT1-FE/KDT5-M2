@@ -7,14 +7,17 @@ const store = new Store({
   pageMax: 1,
   year: '',
   movie: {},
-  movies: []
+  movies: [],
+  loading: false
 })
 
+//영화 정보 이것저것
 export default store
 export async function requestAll(searchText, year = '', page = 1) {
   const s = `&s=${searchText}`
   const y = `&y=${year}`
   const p = `&page=${page}`
+  store.state.loading = true
   store.state.page = page
   if (page === 1) {
     store.state.movies = []
@@ -25,18 +28,21 @@ export async function requestAll(searchText, year = '', page = 1) {
   })
   if (data.Response === 'True') {
     const movies = data.Search.map(movie => {
-      return { imdbID: movie.imdbID, title: movie.Title, poster: movie.Poster }
+      return { imdbID: movie.imdbID, title: movie.Title, year: movie.year, poster: movie.Poster }
     })
     store.state.movies = [...store.state.movies, ...movies]
     
   }
 }
 
+//영화 전체 페이지 계산
 export async function totalPages(page) {
   await requestAll(store.state.searchText, store.state.year, page)
   Math.state.pageMax.ceil(totalResults / 10)
+  store.state.loading = false
 }
 
+//영화 상세 페이지 정보
 export async function getMovieDetails(id) {
   const i = `&i=${id}`
   try {
