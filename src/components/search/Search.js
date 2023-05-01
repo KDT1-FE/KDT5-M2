@@ -4,7 +4,6 @@ import { getMovies } from "src/lib/api/movieAPI";
 import { colors } from "src/lib/styles/colors";
 import Loading from "src/components/common/Loading";
 import SearchItem from "src/components/search/SearchItem";
-import SearchSelect from "./SearchSelect";
 
 // Component
 function Search({ value, setValue, movies, setMovies }) {
@@ -38,7 +37,6 @@ function Search({ value, setValue, movies, setMovies }) {
             onChange={onInputChange}
             value={value}
           />
-          <SearchSelect />
           <SearchButton type="submit">검색</SearchButton>
         </SearchForm>
       </SearchContainer>
