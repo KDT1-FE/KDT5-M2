@@ -37,6 +37,7 @@
     border-radius: 0.25rem;
     padding: 8px 16px;
     color: white;
+    pointer-events: none;
     &:hover {
       color: white;
     }
@@ -47,5 +48,12 @@
     padding: 8px 16px;
     letter-spacing: 0.5;
     font-size: 16px;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+    background-size: 13px;
   }
 }

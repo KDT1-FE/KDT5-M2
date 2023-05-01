@@ -1,9 +1,9 @@
+import styles from '~/styles/About.module.scss';
 export default function About() {
   return (
-    <div className="container">
-      <div>
-        img
-        <img src="" alt="" />
+    <div className={`container ${styles.wrap}`}>
+      <div className={styles.profile}>
+        <img src="/src/assets/pic1.jpg" alt="" />
       </div>
       <div>tjehddnr997@gmail.com</div>
       <a href="https://github.com/foodeco" target="_blank" rel="noreferrer">

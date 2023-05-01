@@ -18,7 +18,6 @@ export default function Search() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
-  console.log(lists == false);
 
   async function getList(e) {
     e.preventDefault();
@@ -82,6 +81,7 @@ export default function Search() {
             onChange={(e) => {
               setTitle(e.target.value);
             }}
+            autoFocus
           />
           <Select
             category="type"
@@ -98,26 +98,30 @@ export default function Search() {
             values={selectItems.years}
             onChange={getSearchOption}
           />
-          <button className={`btn`}>
-            {!isLoading ? 'Apply' : 'wating...'}
-          </button>
+          <button className="btn">{!isLoading ? 'Apply' : 'wating...'}</button>
         </form>
 
         <ul>
           {!isLoading ? (
-            lists.map((list) => (
-              <li key={list.imdbID}>
-                <NavLink to={`/movie/${list.imdbID}`}>
-                  <figure>
-                    <img src={list.Poster} alt={list.Title} />
-                    <figcaption>
-                      <div className="yellow">{list.Year}</div>
-                      <div>{list.Title}</div>
-                    </figcaption>
-                  </figure>
-                </NavLink>
-              </li>
-            ))
+            lists.map((list) => {
+              const img =
+                list.Poster !== 'N/A'
+                  ? list.Poster
+                  : '/src/assets/no-poster-available.webp';
+              return (
+                <li key={list.imdbID}>
+                  <NavLink to={`/movie/${list.imdbID}`}>
+                    <figure>
+                      <img src={img} alt={list.Title} />
+                      <figcaption>
+                        <div className="yellow">{list.Year}</div>
+                        <div>{list.Title}</div>
+                      </figcaption>
+                    </figure>
+                  </NavLink>
+                </li>
+              );
+            })
           ) : (
             <SkeletonSearch />
           )}
@@ -137,9 +141,13 @@ export default function Search() {
           ''
         )}
 
-        <button className="btn" onClick={getMoreList}>
-          more
-        </button>
+        {lists.length ? (
+          <button className={`btn ${styles.btn}`} onClick={getMoreList}>
+            more
+          </button>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

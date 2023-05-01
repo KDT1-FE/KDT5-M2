@@ -12,8 +12,6 @@ export default function SkeletonSearch() {
       <div className={styles.item}></div>
       <div className={styles.item}></div>
       <div className={styles.item}></div>
-      <div className={styles.item}></div>
-      <div className={styles.item}></div>
     </>
   );
 }
