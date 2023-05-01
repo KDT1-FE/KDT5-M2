@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Category from '../section/category';
-import NumberBox from '../section/number';
 import YearBox from '../section/year';
-import { CategoryBox, Number, Year } from '../data/data';
+import { CategoryBox,  Year } from '../data/data';
 import '../../../scss/home/components/Search.scss'
 
 function SearchForm(props) {
@@ -22,13 +21,23 @@ function SearchForm(props) {
         console.log(info)
     };
 
+    const handleEnter = (e) => {
+      if (e.key === 'Enter') {
+        if(!e.shiftKey){
+          fnSearch();
+        }
+      }
+    };
+
   return(
     <>
     <div className="Searchcontainer">
       <div className='container-box'>
-        <input name="title" type="text" placeholder="Search for Movies, Series more" onChange={handleChange}/>
+        <input name="title" type="text" placeholder="Search for Movies, Series more" 
+        onChange={handleChange}
+        onKeyDown={handleEnter} 
+        />
         <Category list={CategoryBox} event={handleChange}/>
-        <NumberBox list={Number} event={handleChange}/>
         <YearBox list={Year()} event={handleChange}/>
         <button className="SearchButton" onClick={fnSearch}> Apply </button>
       </div>

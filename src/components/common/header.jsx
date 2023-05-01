@@ -1,8 +1,13 @@
-import React  from "react"
+import React, { useContext }  from "react"
 import { Link, NavLink } from 'react-router-dom';
 import '../../scss/components/common/header.scss'
-import CustomNavLink from './customNavLink2';
+import PageContext from "../../store/context";
+
+
 function Header() {
+
+  const { value } = useContext(PageContext);
+
   return(
     <>
     <div className="header">
@@ -12,7 +17,7 @@ function Header() {
         </Link>
         <div className="header-category__nave">
           <NavLink exact to="/" activeClassName="active">Search</NavLink>
-          <CustomNavLink to="/movie/tt0978759" childeren={"Movie"}></CustomNavLink>
+          <NavLink to={`/movie/${value}`}>Movie</NavLink>
           <NavLink to="/about" activeClassName="active">About</NavLink>            
         </div> 
       </div>
