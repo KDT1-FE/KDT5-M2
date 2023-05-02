@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Home from '~/Home'
-import About from '~/About'
-import Movie from '~/Movie'
+import Home from '~/routes/Home'
+import About from '~/routes/About'
+import Movie from '~/routes/Movie'
 
 export default createBrowserRouter([
   {
