@@ -93,8 +93,8 @@ $ npm run dev
 #### ⭐️ 1) 영화 검색 기능 
 -> input창에 검색 정보를 입력할때 handleChange 의 함수가 실행되고 button 을 클릭하면 props.setData 를 사용해 info 정보를 SearchResult 의 컴포넌트에 데이터를 받아오게 됩니다.
 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235608457-0b04464b-19b5-4a77-b354-14c6b98767ea.png">
-<img width="482" alt="image" src="https://user-images.githubusercontent.com/101441685/235608980-000b77c9-144c-491c-adda-e7772627d8b1.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/235754239-24891567-3697-4239-bb3c-833ce5887838.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/101441685/235608980-000b77c9-144c-491c-adda-e7772627d8b1.png">
 
 
 #### ⭐️ 2) 검색조건에 따른 영화 목록 출력
@@ -134,7 +134,7 @@ useData 에는 평점내용을 각각 보관하는 부분 입니다.
  <br/> L components
  <br/>   L search.jsx
   
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235646133-0c6e18be-1b6a-4ec3-a2fb-c28f2f4749f4.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235752984-d90be5b1-96b2-45f7-85e8-7a8e68ed5a2f.png">
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235646388-de9c17aa-25d6-4a26-b231-151d4f622020.png">
  
 📁Home<br/>
@@ -160,7 +160,7 @@ useData 에는 평점내용을 각각 보관하는 부분 입니다.
 
 <b> 1) 영화 검색 결과 노출 (SearchResult)</b>
 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235713663-a606b8a8-5c5a-401b-8b6d-815f11a672f7.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/101441685/235753381-7c11e14a-b070-41a2-a86a-c8c2f86bc2fe.png">
 
 -> 스켈레톤의 UI는 로딩중일때 적용이 되야 합니다. 영화데이터를 최대 10개씩 가져오기 때문에 new Array(10) 새로운 10개의 배열을 만들어 map으로 반복하게 만들어 주었습니다.
 그후 movie? 의 데이터가 있을때와, 없을때 조건으로 나누었습니다. 
