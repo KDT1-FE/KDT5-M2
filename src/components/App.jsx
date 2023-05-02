@@ -61,6 +61,11 @@ const App = () => {
       setPage(page + 1)
     }
   }, [inView])
+  useEffect(() => {
+    if (toWatch) {
+      setToWatch(toWatch)
+    }
+  })
   // ################################################################################################  LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
