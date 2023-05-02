@@ -30,22 +30,22 @@ export default class TheNav extends Component {
       <a href="#/" class="logo">OMDbAPI<sapn>.com</span></a>
       <div class="nav_menu">
         <ul>
-          ${this.state.menus.map(menu => {
-            const href = menu.href.split('?')[0]
-            const hash = location.hash.split('?')[0]
-            const isActive = href === hash
+          ${this.state.menus
+            .map(menu => {
+              const href = menu.href.split('?')[0]
+              const hash = location.hash.split('?')[0]
+              const isActive = href === hash
               return `
               <li>
-                <a class = "${isActive ? 'active' : '' }" href="${menu.href}">${menu.name}</a>
+                <a class = "${isActive ? 'active' : ''}" href="${menu.href}">${menu.name}</a>
               </li>
             `
-          })
+            })
             .join('')}
         </ul>
       </div>
-      <a href="#/Movie" class ="Movie"></a>
-      <a href="#/About"class="user">
-        <img src="https://cdn.iconscout.com/icon/free/png-256/user-370-456322.png" alt="user">
+      <a href="#/about"class="user">
+        <img src="https://i.postimg.cc/xj7w6Mt7/image.png" alt="user">
       </a>
     `
   }

@@ -17,5 +17,4 @@ export default class Home extends Component {
     this.el.append(theHeader, search, movieList, movieListMore)
   }
 }
-//console.log(theHeader) // <div class="theheader">…</div>
-// console.log(TheHeader) // ƒ TheHeader() {_classCallCheck(this, TheHeader);return _super.apply(this, arguments);}
+

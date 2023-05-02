@@ -351,6 +351,38 @@ body {
       }
     }
   }
+  .about {
+    font-family: 'Kanit', sans-serif;
+    .photo {
+      width: 230px;
+      height: 230px;
+      margin: 0 auto 20px;
+      border-radius: 100%;
+      background-size: cover;
+      transition: .5s;
+      &:hover {
+        border: 2px solid $primary2;
+        border-radius: 100%;
+      }
+    }
+    .name {
+      color: $white;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    p {
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    a {
+      color: $primary2;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  //브라우저 하단 푸터 영약
   footer {
     padding: 40px 40px 60px;
     text-align: center;

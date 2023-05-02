@@ -11,7 +11,7 @@ export default class MovieListMore extends Component {
     })
   }
   render() {
-    this.el.classList.add()
+    this.el.classList.add('movie_list_More')
     this.el.innerHTML = `
       <button class="btn view_more hide">View more..</button>
     `

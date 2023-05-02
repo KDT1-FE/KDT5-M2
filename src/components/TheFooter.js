@@ -1,4 +1,7 @@
 import { Component } from '~/core/coreComps.js'
+import aboutStore from '~/store/about.js'
+
+
 
 export default class TheFooter extends Component {
   constructor() {
@@ -7,14 +10,15 @@ export default class TheFooter extends Component {
     })
   }
   render() {
+    const { github, repository } = aboutStore.state
     this.el.innerHTML = `
       <div>
-        <a href="https://github.com/kse-seong-eun/valnillaJs_SearchMovieSite">
+        <a href="${github}">
           GitHub Repository
         </a>
       </div>
       <div>
-        <a href="https://github.com/kse-seong-eun">
+        <a href="${repository}">
           ${new Date().getFullYear()}
           💻 Seong-eun Kim
         </a>
