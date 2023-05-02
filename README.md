@@ -1,219 +1,96 @@
-# 🎬 영화 검색
+# 영화 검색 사이트
 
-주어진 API를 활용해 '[완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!  
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
+<p align="center">
+  <img src='public/logo.png' alt="LOGO">
+</p>
 
-## 과제 수행 및 제출 방법
+<p align="center">
+<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FEungBug%2Fmovie-search-project&count_bg=%236A60AF&title_bg=%231C1A29&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+</p>
 
-```
-KDT기수번호_이름  |  E.g, KDT0_ParkYoungWoong
-```
+<br>
 
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-1. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, `git branch KDT0_ParkYoungWoong`)
-1. 자신의 본명 브랜치에서 과제를 수행합니다.
-1. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(`main` 브랜치에 푸시하지 않도록 꼭 주의하세요, `git push origin KDT0_ParkYoungWoong`)
-1. 저장소에서 `main` 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, `main` <== `KDT0_ParkYoungWoong`)
+## 프로젝트 설명
 
-- `main` 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-- Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-- Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-- 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+OMDB API를 연동하여 영화 검색 사이트를 구현했습니다.
 
-## 요구사항
+[🎬 완성페이지](https://movie-search-project-b4ha-j7cb6p3ov-eungbug.vercel.app/)
 
-필수 요구사항은 꼭 달성해야 하는 목표로, 수정/삭제는 불가하고 추가는 가능합니다.    
-선택 요구사항은 단순 예시로, 자유롭게 추가/수정/삭제해서 구현해보세요.  
-각 요구사항은 달성 후 마크다운에서 `- [x]`로 표시하세요.  
+<br>
 
-### ❗ 필수
+### 🏠 Home
 
-- [ ] 영화 제목으로 검색이 가능해야 합니다!
-- [ ] 검색된 결과의 영화 목록이 출력돼야 합니다!
-- [ ] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
-- [ ] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
+`영화 제목`을 `키워드`로 검색하면, 키워드에 해당하는 영화를 목록으로 노출합니다.
 
-### ❔ 선택
+검색 시 총 검색 결과 건수와 함께 목록에는 `영화 포스터`와 `개봉 연도`, `영화 제목`의 정보를 포함하고 있으며, 자세히보기 클릭 시 `상세 화면`으로 이동합니다.
 
-- [ ] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
-- [ ] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
-- [ ] 영화 목록을 검색하는 동안 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 무한 스크롤 기능을 추가해서 추가 영화 목록을 볼 수 있도록 만들어보세요.
-- [ ] 영화 포스터가 없을 경우 대체 이미지를 출력하도록 만들어보세요.
-- [ ] 영화 상세정보가 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 영화 상세정보 포스터를 고해상도로 출력해보세요. (실시간 이미지 리사이징)
-- [ ] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
-- [ ] 영화와 관련된 기타 기능도 고려해보세요.
+검색 결과가 없는 경우 `검색 결과 없음 UI`를 노출합니다.
 
-## API 기본 사용법
+검색 결과 오류 또는 네트워크 오류 발생 시 `에러 팝업`이 노출되고, 확인 버튼을 클릭하면 Home 화면으로 돌아갑니다.
 
-```curl
-curl https://omdbapi.com/?apikey=7035c60c
-  \ -X 'GET'
-```
+#### 🎞️ 영화 상세화면
 
-## 영화 목록 검색
- 
-영화 목록은 한 번에 최대 10개까지 검색할 수 있습니다.
+영화 ID 값으로 영화 상세 조회 API를 호출하여 상세 정보를 화면에 노출합니다.  
+영화 상세 정보를 불러올 때 스켈레톤 UI를 적용하여 로딩 UI를 구현했습니다.
 
-파라미터 | 설명                   | 기본값
----|----------------------|---
-`s` | 검색할 영화 제목(필수!)       | -
-`y` | 검색할 개봉연도, 빈 값은 전체 검색 | - 
-`page` | 검색할 페이지 번호           | `1`
+### ⭐️ My Movies
 
-요청 코드 예시:
+영화 상세 정보 화면의 우측 상단 별모양 버튼을 클릭 시 My Movies에 저장되고, My Movies 메뉴에서는 사용자가 저장한 영화 목록을 노출합니다.
+⭐️ 버튼 `토글` 시 영화를 `저장`하거나, `삭제`하는 기능을 하며 저장은 `Local Storage`에 저장합니다.
 
-```js
-async function getMovies(title, year = '', page = 1) {
-  const s = `&s=${title}`
-  const y = `&y=${year}`
-  const p = `&page=${page}`
-  try {
-    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`)
-    const json = await res.json()
-    if (json.Response === 'True') {
-      const { Search: movies, totalResults } = json
-      return {
-        movies,
-        totalResults
-      }
-    }
-    return json.Error
-  } catch (error) {
-    console.log(error)
-  }
-}
-```
+### 👩🏻‍💻 About
 
-응답 데이터 타입 및 예시:
+영화 검색 사이트 만든이에 대한 정보를 노출하는 페이지입니다.
 
-```ts
-interface ResponseValue {
-  Search: Movie[] // 검색된 영화 목록, 최대 10개
-  totalResults: string // 검색된 영화 개수
-  Response: 'True' | 'False' // 요청 성공 여부
-}
-interface Movie {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  Poster: string // 영화 포스터 이미지 URL
-}
-```
+<br>
 
-```json
-{
-  "Search": [
-    {
-      "Title": "Frozen",
-      "Year": "2013",
-      "imdbID": "tt2294629",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Frozen II",
-      "Year": "2019",
-      "imdbID": "tt4520988",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjA0YjYyZGMtN2U0Ni00YmY4LWJkZTItYTMyMjY3NGYyMTJkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX300.jpg"
-    }
-  ],
-  "totalResults": "338",
-  "Response": "True"
-}
-```
+## 요구사항 Check
 
-## 영화 상제정보 검색
+### 필수 요구사항
 
-단일 영화의 상제정보를 검색합니다.
+- [x] 영화 제목으로 검색이 가능해야 합니다!
+- [x] 검색된 결과의 영화 목록이 출력돼야 합니다!
+- [x] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
+- [x] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
 
-파라미터 | 설명 | 기본값
----|---|---
-`i` | 검색할 영화 ID(필수!) |
-`plot` | 줄거리 길이 | `short`
+### 선택 요구사항
 
-요청 코드 예시:
+- [x] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
+- [x] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
+- [x] 영화 목록을 검색하는 동안 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 무한 스크롤 기능을 추가해서 추가 영화 목록을 볼 수 있도록 만들어보세요.
+- [x] 영화 포스터가 없을 경우 대체 이미지를 출력하도록 만들어보세요.
+- [x] 영화 상세정보가 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 영화 상세정보 포스터를 고해상도로 출력해보세요. (실시간 이미지 리사이징)
+- [x] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
+- [x] 영화와 관련된 기타 기능도 고려해보세요.
 
-```js
-async function getMovie(id) {
-  const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`)
-  const json = await res.json()
-  if (json.Response === 'True') {
-    return json
-  }
-  return json.Error
-}
-```
+<br>
 
-응답 데이터 타입 및 예시:
+## 기술 스택
 
-```ts
-interface ResponseValue {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  Rated: string // 영화 등급
-  Released: string // 영화 개봉일
-  Runtime: string // 영화 상영시간
-  Genre: string // 영화 장르
-  Director: string // 영화 감독
-  Writer: string // 영화 작가
-  Actors: string // 영화 출연진
-  Plot: string // 영화 줄거리
-  Language: string // 영화 언어
-  Country: string // 영화 제작 국가
-  Awards: string // 영화 수상 내역
-  Poster: string // 영화 포스터 이미지 URL
-  Ratings: Rating[] // 영화 평점 정보
-  Metascore: string // 영화 메타스코어
-  imdbRating: string // 영화 IMDB 평점
-  imdbVotes: string // 영화 IMDB 투표 수
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  DVD: string // 영화 DVD 출시일
-  BoxOffice: string // 영화 박스오피스
-  Production: string // 영화 제작사
-  Website: string // 영화 공식 웹사이트
-  Response: string // 요청 성공 여부
-}
-interface Rating { // 영화 평점 정보
-  Source: string // 평점 제공 사이트
-  Value: string // 평점
-}
-```
+### Environment
 
-```json
-{
-  "Title": "Frozen",
-  "Year": "2013",
-  "Rated": "PG",
-  "Released": "27 Nov 2013",
-  "Runtime": "102 min",
-  "Genre": "Animation, Adventure, Comedy",
-  "Director": "Chris Buck, Jennifer Lee",
-  "Writer": "Jennifer Lee, Hans Christian Andersen, Chris Buck",
-  "Actors": "Kristen Bell, Idina Menzel, Jonathan Groff",
-  "Plot": "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather co...",
-  "Language": "English, Norwegian",
-  "Country": "United States",
-  "Awards": "Won 2 Oscars. 82 wins & 60 nominations total",
-  "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg",
-  "Ratings": [
-    { "Source": "Internet Movie Database",  "Value": "7.4/10" },
-    { "Source": "Rotten Tomatoes", "Value": "90%" },
-    { "Source": "Metacritic", "Value": "75/100" }
-  ],
-  "Metascore": "75",
-  "imdbRating": "7.4",
-  "imdbVotes": "620,489",
-  "imdbID": "tt2294629",
-  "Type": "movie",
-  "DVD": "18 Mar 2014",
-  "BoxOffice": "$400,953,009",
-  "Production": "N/A",
-  "Website": "N/A",
-  "Response": "True"
-}
-```
+<img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+
+### Config
+
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+
+### Development
+
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+
+## 어려웠던 점 & 아쉬웠던 점
+
+1. useState를 통해 데이터와 상태 값을 관리하도록 구현했는데, useState(setState)가 비동기로 동작하는 부분때문에
+   동기적으로 동작해야 할 부분들이 정상적으로 동작하지 않아 동기적으로 처리 하는 부분이 어려웠습니다.
+2. Component별로 별도의 CSS 파일을 작성하고 스타일을 적용하는데 스타일과 클래스를 관리하는데 어려움을 느꼈으며,
+   공통으로 사용할 수 있는 CSS를 Common CSS 파일로 관리하지 못한 점이 아쉬웠습니다.
+3. Vercel을 통해 배포 시 이미지 파일 경로 및 파일 이름으로 인한 오류로 인해 배포가 원활하게 되지 않아서 어려웠습니다. 배포 시 경로 체크를 꼼꼼하게 해야겠다고 느꼈습니다.
+
+## 재밌었던 점
+
+1. 막무가내로 리액트를 배우자마자 과제에서 리액트를 활용했는데, 어려웠던 점도 많지만 Component를 만들고
+   API에서 받은 데이터를 각각의 Component와 연결하여 화면에 노출시키며 완성해나가는 재미가 있었습니다.
+2. 사용자 입장에서 예외처리 관련 UI를 추가하면서 원하는 동작이 결과로 나왔을 때 재밌었습니다.

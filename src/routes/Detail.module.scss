@@ -1,0 +1,216 @@
+.detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.4;
+
+  .container {
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: var(--area);
+    margin: 40px 0;
+    position: relative;
+
+    input[type='checkbox'] {
+      display: none;
+    }
+
+    input[type='checkbox'] + label {
+      display: block;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-repeat: no-repeat;
+      background-image: url('/public/my_movie_star.svg');
+      background-size: cover;
+    }
+    input[id='my-movies']:checked + label::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 80px;
+      background-repeat: no-repeat;
+      background-image: url('/public/my_movie_star_checked.svg');
+      background-size: cover;
+    }
+
+    // 제목
+    h1 {
+      color: var(--white);
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1.skeleton {
+      width: 80%;
+      height: 46px;
+    }
+
+    // 개봉일
+    .released {
+      color: #75c77f;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .released.skeleton {
+      width: 300px;
+      height: 36px;
+    }
+
+    // 스펙
+    .specs {
+      display: flex;
+      // flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+
+      .poster {
+        flex-shrink: 0;
+        width: 450px;
+        height: calc(450px * 3 / 2);
+        background-size: 450px calc(450px * 3 / 2);
+        background-repeat: no-repeat;
+        border-radius: 8px;
+      }
+
+      .poster.no-image {
+        background-color: var(--button-active);
+        background-image: url('/public/no_image.png') !important;
+        background-size: 100px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .skeleton {
+        width: 450px;
+        height: calc(450px * 3 / 2);
+      }
+
+      .infos {
+        min-width: 600px;
+
+        h4 {
+          font-size: 24px;
+          font-weight: 500;
+          margin-bottom: 12px;
+          color: var(--detail-font);
+        }
+
+        p {
+          font-size: 20px;
+          color: var(--font);
+          margin-bottom: 40px;
+          line-height: 1.4;
+        }
+      }
+    }
+
+    // 줄거리
+    .plot {
+      margin-bottom: 40px;
+
+      h4 {
+        color: var(--detail-font);
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 22px;
+        color: var(--font);
+        line-height: 1.5;
+      }
+
+      .skeleton {
+        width: 100%;
+        height: 200px;
+      }
+    }
+
+    // 평점
+    .ratings {
+      h4 {
+        color: var(--detail-font);
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .skeleton {
+        width: 50%;
+        height: 30px;
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          img {
+            width: 40px;
+          }
+
+          img.imdb {
+            width: 50px;
+          }
+
+          img.rotten {
+            width: 86px;
+          }
+
+          img.metacritic {
+            width: 30px;
+          }
+        }
+      }
+    }
+
+    .skeleton {
+      background: linear-gradient(
+        120deg,
+        #2f2c44 30%,
+        #4c4867 36%,
+        #4c4867 40%,
+        #2f2c44 48%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      animation: load 1s infinite;
+      border-radius: 8px;
+    }
+
+    .skeleton-description {
+      background: linear-gradient(
+        120deg,
+        #3f3b5b 30%,
+        #595478 36%,
+        #595478 40%,
+        #3f3b5b 48%
+      );
+      width: 60%;
+      height: 32px;
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      animation: load 1s infinite;
+      border-radius: 8px;
+    }
+  }
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
+}
