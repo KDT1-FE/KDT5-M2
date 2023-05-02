@@ -41,6 +41,10 @@
     overflow-y: scroll;
     height: 30rem;
     max-height: 30rem;
+    .result__title {
+      color:#777;
+      margin-top: 12rem;
+    }
     .result__ul {
       margin: 2rem 4rem;
       display: flex;

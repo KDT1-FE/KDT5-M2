@@ -27,7 +27,8 @@ export default async function createEl () {
     container.querySelector('.detail__poster').appendChild(err);
   }
   else {
-    po.setAttribute('src', details.Poster);
+    const bigPoster = details.Poster.replace("SX300", "SX700");
+    po.setAttribute('src', bigPoster);
   }
   po.alt = "포스터를 못찾았어요.";
   container.querySelector('.detail__poster').appendChild(po);
