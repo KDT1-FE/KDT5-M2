@@ -20,6 +20,9 @@ function createMovieList() {
     try {
       await fetchMovieList();
       resultBox.addEventListener('scroll', () => debouncedHandleScroll(resultBox));
+      if(resultBox.Response === "False") {
+        resultBox.removeEventListener('scroll', handleScroll(resultBox));
+      }s
       infoRoute();
     } catch (error) {
       console.log(error);
@@ -62,7 +65,6 @@ function createMovieList() {
         const nextPageRes = await fetchMovies(inputText, y, t, searchPage);
         loading.remove()
         if(nextPageRes.Response === "False"){
-          resultBox.removeEventListener('scroll', handleScroll(resultBox));
           const error = document.createElement('p');
           error.textContent = nextPageRes.Error;
           resultList.appendChild(error);
