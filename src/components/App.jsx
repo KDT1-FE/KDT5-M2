@@ -53,7 +53,9 @@ const App = () => {
 
   useEffect(() => {
     const loadList = JSON.parse(localStorage.getItem('WatchList'))
-    setToWatch(loadList)
+    if (loadList) {
+      setToWatch(loadList)
+    }
   }, [])
   useEffect(() => {
     if (inView && searchValue) {
@@ -61,11 +63,11 @@ const App = () => {
       setPage(page + 1)
     }
   }, [inView])
-  useEffect(() => {
-    if (toWatch) {
-      setToWatch(toWatch)
-    }
-  })
+  // useEffect(() => {
+  //   if (toWatch) {
+  //     setToWatch(toWatch)
+  //   }
+  // }, [toWatch])
   // ################################################################################################  LOCAL STORAGE
   const saveToLocalStorage = items => {
     localStorage.setItem('WatchList', JSON.stringify(items))
@@ -74,7 +76,6 @@ const App = () => {
   // ################################################################################################  ADD & REMOVE
   // ################################################################################################  MovieList의 props로 넘어가 사용될 함수들
   const addToWatch = movie => {
-    console.log(toWatch)
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
     saveToLocalStorage(watchList)
