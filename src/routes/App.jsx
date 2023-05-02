@@ -2,6 +2,7 @@ import MovieSearch from '~/components/MovieSearch'
 import NavigationBar from '~/components/NavigationBar'
 import MovieList from '~/components/MovieList'
 import LoadingPage from '~/components/Loading'
+import AppTop from '~/components/AppTop'
 import { useState } from 'react'
 import './App.scss'
 
@@ -11,6 +12,8 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   // 가져올 영화의 수를 지정하는 state 선언
   const [viewNumber, setViewNumber] = useState('1')
+  const [viewYear, setViewYear] = useState('')
+  const [searchMarginTop, setSearchMarginTop] = useState({ marginTop: '200px' })
 
   async function getMovies(searchValue, setLoading) {
     // viewNumber에 따라 반복 호출되는 영화 목록을 저장할 배열 선언
@@ -18,7 +21,7 @@ export default function App() {
     // viewNumber는 문자열이므로 숫자로 변환한 후 1부터 viewNumber까지 인수로 넣어 반복호출
     for (let i = 1; i <= parseInt(viewNumber); i++) {
       const res = await fetch(
-        `https://omdbapi.com/?apikey=7035c60c&s=${searchValue}&page=${i}`,
+        `https://omdbapi.com/?apikey=7035c60c&s=${searchValue}&y=${viewYear}&page=${i}`,
         {
           method: 'GET'
         }
@@ -30,6 +33,7 @@ export default function App() {
     }
     //fetch가 끝나면 로딩 화면 대신 MovieList를 표시함
     setLoading(false)
+    setSearchMarginTop({ marginTop: '20px' })
     return results
   }
 
@@ -40,8 +44,8 @@ export default function App() {
     if (e.key === 'Enter') {
       const searchValue = e.target.value
       //Enter키를 입력하는 순간 로딩화면을 보여줌
-      setLoading(true)
       try {
+        setLoading(true)
         // getMovies 함수 내에 setLoading을 전달해 fetch가 끝난 시점에 로딩화면을 끝내도록 함
         const searchResults = await getMovies(searchValue, setLoading)
         // 검색한 결과가 나오면 해당 배열을 movies에 입력
@@ -63,17 +67,21 @@ export default function App() {
   return (
     <>
       <header>
-        <MovieSearch
-          handleSearch={handleSearch}
-          viewNumber={viewNumber}
-          setViewNumber={setViewNumber}
-        />
+        <AppTop />
       </header>
       <nav>
         <NavigationBar />
       </nav>
       {/* loading의 값이 참이면 로딩화면을, 거짓이면 MovieList를 보여줌 */}
-      <main>{loading ? <LoadingPage /> : <MovieList movies={movies} />}</main>
+      <main>
+        <MovieSearch
+          handleSearch={handleSearch}
+          setViewNumber={setViewNumber}
+          setViewYear={setViewYear}
+          searchMarginTop={searchMarginTop}
+        />
+        {loading ? <LoadingPage /> : <MovieList movies={movies} />}
+      </main>
     </>
   )
 }

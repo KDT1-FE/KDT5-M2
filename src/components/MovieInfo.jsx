@@ -43,7 +43,7 @@ export default function MovieInfo() {
           <div className={styles.details}>
             <div>
               <span className={styles.info}>
-                {movies.DVD} | {movies.Country}
+                {movies.Year} | {movies.Country}
               </span>
               <span className={styles.info}>
                 {movies.Rated} | {movies.Runtime} | {movies.Genre}

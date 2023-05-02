@@ -1,11 +1,11 @@
 import styles from './AppTop.module.scss'
 import Logo from '~/components/Logo'
 
-export default function MovieInfoTop(props) {
+export default function AboutTop() {
   return (
     <div className={styles.AppTop}>
       <Logo />
-      <span>{props.movies.Title}</span>
+      <span>Dong Min</span>
       <div>icon</div>
     </div>
   )

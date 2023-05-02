@@ -22,7 +22,7 @@ export default function NavigationBar() {
           <NavLink to={movieUrl()}>Movie</NavLink>
         </li>
         <li>
-          <NavLink>About</NavLink>
+          <NavLink to="/About">About</NavLink>
         </li>
       </ul>
     </div>

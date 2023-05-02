@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '~/routes/App'
 import MovieInfo from '~/components/MovieInfo'
+import About from '~/components/About'
 // import MovieList from '~/components/MovieList'
 
 export default createBrowserRouter([
@@ -16,5 +17,9 @@ export default createBrowserRouter([
   {
     path: '/MovieInfo/:movieId',
     element: <MovieInfo />
+  },
+  {
+    path: '/About',
+    element: <About />
   }
 ])

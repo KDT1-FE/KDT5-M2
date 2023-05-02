@@ -1,21 +1,10 @@
-.MovieInfoTop { 
+.AppTop { 
   position: relative;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 30px;
- 
-  h1 {
-    font-size: 25px;
-    font-weight: 700;
-    margin-right: 20px;
-      
-    a {       
-      text-decoration: none;
-      color: #7c58df;       
-    }
-  }
     
   span {
     display: block;
