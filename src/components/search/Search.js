@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { getMovies } from "src/lib/api/movieAPI";
 import { colors } from "src/lib/styles/colors";
@@ -6,7 +6,7 @@ import Loading from "src/components/common/Loading";
 import SearchItem from "src/components/search/SearchItem";
 
 // Component
-function Search({ value, setValue, movies, setMovies }) {
+function Search({ value, setValue, setMovies, movies }) {
   // Hooks
   const [loading, setLoading] = useState(null);
   const [message, setMessage] = useState(null);
@@ -20,12 +20,27 @@ function Search({ value, setValue, movies, setMovies }) {
     event.preventDefault();
     setValue("");
     setLoading(true);
-    const movieData = await getMovies(value);
-    console.log(movieData);
+    const movieData = await getMovies(value, 1);
     setMovies(movieData.Search || []);
     movieData.Search ? setMessage(null) : setMessage("검색결과가 없습니다.");
     setLoading(false);
   };
+
+  const onScroll = async () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      const movieData = await getMovies(value, 1);
+      setMovies(movieData.Search || []);
+      console.log(movieData.Search);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Render
   return (
@@ -37,6 +52,7 @@ function Search({ value, setValue, movies, setMovies }) {
             onChange={onInputChange}
             value={value}
           />
+          {/* <SearchSelect onPage={onPage} page={page} /> */}
           <SearchButton type="submit">검색</SearchButton>
         </SearchForm>
       </SearchContainer>
