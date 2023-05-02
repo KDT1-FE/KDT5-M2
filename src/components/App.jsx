@@ -13,7 +13,7 @@ import { useInView } from 'react-intersection-observer'
 
 const App = () => {
   const [movies, setMovies] = useState([])
-  const [toWatch, setToWatch] = useState([])
+  const [toWatch, setToWatch] = useState([[]])
   const [searchValue, setSearchValue] = useState('')
   const [page, setPage] = useState(2)
   const [moreMovies, setMoreMovies] = useState([])
@@ -26,7 +26,6 @@ const App = () => {
     const url = `https://omdbapi.com/?s=${searchValue}&apikey=7035c60c`
     const res = await fetch(url)
     const json = await res.json()
-    console.log(json)
 
     if (json.Response === 'True') {
       setMovies(json.Search)
@@ -42,13 +41,8 @@ const App = () => {
       json.Response === 'True' &&
       page <= Math.ceil(Number(json.totalResults) / 10)
     ) {
-      console.log(Math.ceil(Number(json.totalResults)))
       const additionalList = json.Search
-      console.log(additionalList)
-      console.log(...additionalList)
       setMoreMovies(moreMovies => [...moreMovies, ...additionalList])
-      console.log(moreMovies)
-      console.log(...moreMovies)
     }
   }
 
@@ -75,6 +69,7 @@ const App = () => {
   // ################################################################################################  ADD & REMOVE
   // ################################################################################################  MovieList의 props로 넘어가 사용될 함수들
   const addToWatch = movie => {
+    console.log(toWatch)
     const watchList = [...toWatch, movie]
     setToWatch(watchList)
     saveToLocalStorage(watchList)
