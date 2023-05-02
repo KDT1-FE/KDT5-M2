@@ -1,7 +1,9 @@
 # 🎬 영화 검색
 
+[결과물1](https://comfy-sunshine-439aa0.netlify.app/)
 
-[결과물](https://comfy-sunshine-439aa0.netlify.app/)
+[결과물2](OMDb API 영화 검색 (aquamarine-croissant-729199.netlify.app))
+[결과물2 저장소](hwanginseung/kdt5-m2-2 (github.com))
 
 ---
 
@@ -11,7 +13,6 @@
 - 단일 영화의 상세정보 볼 수 있음
 - main page에서 주제별로 구분하여 대표작 몇 출력
 
-
 ## 문제점
 
 - main page 로딩이 느림 
@@ -19,4 +20,6 @@
   focus가 풀려서 다시 검색창을 눌러야 함 
 - 오래된 영화들 중 제대로 정보가 출력되지 않는 경우 존재
 
----ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+---
+
+결과물 2는 강의를 참고하여 예시 사이트의 기능과 모양을 따라 만듦
