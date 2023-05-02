@@ -117,7 +117,25 @@ header .search-wrap #num-pages {
     outline: none;
 }
 header .search-wrap #num-pages:hover {
-    border: 3px solid rgb(255, 3, 3);
+    border: 3px solid rgb(43, 41, 41);
+}
+header .search-wrap .year-view {
+    height: var(--header-height);
+    position: absolute;
+    top: 0;
+    left: -130px;
+    display: flex;
+    align-items: center;
+}
+header .search-wrap #years {
+    width: 70px;
+    text-align: center;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+}
+header .search-wrap #years:hover {
+    border: 3px solid rgb(43, 41, 41);
 }
 header .search-wrap .search .text .close {
     width: 50px;

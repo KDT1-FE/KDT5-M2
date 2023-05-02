@@ -2,6 +2,7 @@ const header = document.querySelector('header')
 const searchContainer = document.querySelector('.search-container')
 const close = document.querySelector('.close')
 const shadow = document.querySelector('.shadow')
+const searchInput = document.querySelector('.search-input')
 
 searchContainer.addEventListener('click', addSearching)
 close.addEventListener('click', removeSearching)
@@ -9,38 +10,53 @@ shadow.addEventListener('click', removeSearching)
 
 function addSearching() {
   header.classList.add('searching')
+  setTimeout(() => {
+    searchInput.focus()
+  }, 500)
 }
 function removeSearching() {
   header.classList.remove('searching')
 }
 
+const select = document.querySelector('#years')
+const now = new Date()
+const thisYear = now.getFullYear()
+for (let year = 1950; year <= thisYear; year++) {
+  const option = document.createElement('option')
+  option.value = year
+  option.textContent = year
+  select.appendChild(option)
+}
+
 const apiKey = '7035c60c'
-const input = document.querySelector('input')
 const movieList = document.querySelector('#movie-list')
 
-async function fetchMovies(inputVal, page) {
+async function fetchMovies(searchInputVal, page, year) {
   const response = await fetch(
-    `https://www.omdbapi.com/?apikey=${apiKey}&s=${inputVal}&page=${page}`
+    `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchInputVal}&page=${page}&y=${year}`
   )
   const data = await response.json()
   return data.Search
-}
-input.addEventListener('keydown', async e => {
+  }
+
+searchInput.addEventListener('keydown', async e => {
   if (e.key === 'Enter') {
     removeSearching()
-    const inputVal = input.value
-    if (inputVal.trim() === '') {
+    const searchInputVal = searchInput.value
+    if (searchInputVal.trim() === '') {
       alert('검색어를 입력해주세요.')
       return
     }
     try {
+      const year = select.value
       const page = parseInt(document.querySelector('#num-pages').value)
-      const data = await fetchMovies(inputVal, page)
+      const data = await fetchMovies(searchInputVal, page, year)
       const movieItems = data.map(({ Title, Year, imdbID, Poster }) => {
         return `
           <div class="swiper-slide">
             <h2>${Title} (${Year})</h2>
-            <p><img class="poster" src=${Poster} onclick="getDetails('${imdbID}')" alt="${Title}"/></p>
+            <p><img class="poster" src=${Poster} alt="${Title}" onerror=" this.src='./static/No-image-available.jpg';" onclick="getDetails('${imdbID}')">
+            </p>
             <div class="movie-data" style="display: none;"></div>
           </div>
         `
