@@ -1,5 +1,7 @@
 # 🎬 영화 검색
 
+<a href="https://kdt5-chadongmin--omdbapi-movie-search.netlify.app/">영화 검색 배포 사이트</a>
+
 ### ❗ 필수
 
 - [x] 영화 제목으로 검색이 가능해야 합니다!
