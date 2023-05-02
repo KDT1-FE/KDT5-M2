@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800&family=Roboto:wght@100;300;500;900&display=swap');
 @import '~/styles/reset.css';
 @import '~/styles/_variables';
-@import '~/styles/_mixins';
-// font-family: 'Kanit', sans-serif;
-// font-family: 'Roboto', sans-serif;
-// @include button($dark_green)
-// $color
+
 .btn {
   height: 50px;
   width: 100px;

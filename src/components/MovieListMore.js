@@ -16,7 +16,7 @@ export default class MovieListMore extends Component {
       <button class="btn view_more hide">View more..</button>
     `
 
-    const btnClickHandler = async () => {
+    const btnClickHandler = async(page) => {
       await totalPages(movieStore.state.page + 1)
     }
     this.el.addEventListener('click', btnClickHandler)
