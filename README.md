@@ -1,4 +1,4 @@
-데모페이지(1차): [https://644e8d9b847cab6579ed17ce--frolicking-trifle-07d151.netlify.app/]
+데모페이지(2차): [https://frolicking-trifle-07d151.netlify.app/]
 # 🎬 영화 검색
 
 주어진 API를 활용해 '[완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!  
