@@ -1,5 +1,4 @@
-.MovieInfoTop {
-  
+.MovieInfoTop { 
   position: relative;
   box-sizing: border-box;
   display: flex;
@@ -7,30 +6,25 @@
   align-items: center;
   padding: 25px 30px;
  
-    h1 {
-
-      font-size: 25px;
-      font-weight: 700;
-      margin-right: 20px;
+  h1 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-right: 20px;
       
-      a {
-        
-        text-decoration: none;
-        color: #7c58df;
-        
-      }
-    }
-    
-    span {
-
-      display: block;
-      position: absolute;
-      font-size: 40px;
-      font-weight: 700;
-      color: #7c58df;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
+    a {       
+      text-decoration: none;
+      color: #7c58df;       
     }
   }
+    
+  span {
+    display: block;
+    position: absolute;
+    font-size: 40px;
+    font-weight: 700;
+    color: #7c58df;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

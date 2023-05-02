@@ -1,5 +1,4 @@
 .movieSearch {
-  
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -11,7 +10,6 @@
     align-items: center;
 
     h1 {
-
       font-size: 25px;
       font-weight: 700;
       margin-right: 20px;
@@ -23,7 +21,6 @@
     }
 
     input {
-
       width: 100px;
       height: 25px;
       padding-left: 15px;
@@ -38,7 +35,6 @@
         color: #7c58df;
         font-weight: 500;
         opacity: 0;
-
       }
       
       &:focus {
@@ -50,4 +46,33 @@
     }
   }
 
+  div:last-child {
+    select {
+      //기본 스타일 제거
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 60px;
+      height: 30px;
+      font-weight: 500;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+      color: #7c58df;
+      border: 3px solid #7c58df;
+
+      // option 태그는 특이하게도 css로 스타일 지정 불가능. ul, li로 직접 드롭다운을 만들거나 JS로 스타일링 해야함
+      // option {
+      //   background-color: transparent;
+      //   color: #7c58df;
+      //   font-weight: 500;
+      //   padding: 5px 10px;
+      //   cursor: pointer;
+        
+      //   &:hover {
+      //     background-color: #f5f5f5;
+      //   }
+      // }
+    }
   }
+}

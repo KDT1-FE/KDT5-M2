@@ -1,32 +1,57 @@
 .movieInfo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   margin: 20px;
-  background-color: antiquewhite;
+}
 
-  > div {
-    display: flex;
+.poster {
+  display: flex;
+  justify-content: start;
+  margin-right: 40px;
 
-    img {
-      width: 360px;
-      height: 540px;
+  img {
+    width: 360px;
+    height: 540px;
+  }
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  .info {
+    color: #7C58DF;
+    display: block;
+    font-size: 14px;
+
+    &:first-child {
+      margin-bottom: 10px;
     }
+  }
 
-    > div {
-      display: flex;
-      flex-direction: column;
-      margin-left: 20px;
+  .title {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
 
-      span {
-        display: block;
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
+  .heading {
+    color: #7C58DF;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
 
-      span:first-child {
-        font-weight: bold;
-      }
-    }
+  .plot,
+  .actors,
+  .director {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    color: #333;
+    font-size: 20px;
   }
 }

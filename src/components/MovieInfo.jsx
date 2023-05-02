@@ -34,18 +34,36 @@ export default function MovieInfo() {
         <LoadingPage />
       ) : (
         <div className={styles.movieInfo}>
-          <div>
+          <div className={styles.poster}>
             <img
               src={movies.Poster}
               alt={movies.Title}
             />
+          </div>
+          <div className={styles.details}>
             <div>
-              <span>{movies.DVD}</span>
-              <span>{movies.Country}</span>
-              <span>{movies.Actors}</span>
-              <span>{movies.Director}</span>
-              <span>{movies.Plot}</span>
-              <span>{movies.imdbRating}</span>
+              <span className={styles.info}>
+                {movies.DVD} | {movies.Country}
+              </span>
+              <span className={styles.info}>
+                {movies.Rated} | {movies.Runtime} | {movies.Genre}
+              </span>
+            </div>
+            <div>
+              <h2 className={styles.heading}>Plot</h2>
+              <p className={styles.plot}>{movies.Plot}</p>
+            </div>
+            <div>
+              <h2 className={styles.heading}>Actors</h2>
+              <p className={styles.actors}>{movies.Actors}</p>
+            </div>
+            <div>
+              <h2 className={styles.heading}>Director</h2>
+              <p className={styles.director}>{movies.Director}</p>
+            </div>
+            <div>
+              <h2 className={styles.heading}>IMDb Rating</h2>
+              <p className={styles.rating}>{movies.imdbRating}/10</p>
             </div>
           </div>
         </div>

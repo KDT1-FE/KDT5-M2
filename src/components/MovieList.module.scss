@@ -1,20 +1,18 @@
 .movieList {
-
   background-color: #E9ECEF;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
+  margin: 30px 20px 30px;
+  padding: 20px 0;
 
   li {
-
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px 10px;
 
     img {
-      
       box-sizing: border-box;
       width: 200px;
       height: 300px;
@@ -22,13 +20,7 @@
       &:hover {
         cursor: pointer;
         border: 5px solid #7C58DF;
-
       }
-      
     }
-
-    // span {
-    //   font-size: 20px;
-    // }
   }
 }

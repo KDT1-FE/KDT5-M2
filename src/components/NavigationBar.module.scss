@@ -1,5 +1,4 @@
 .navigationBar {
-
   display: flex;
   justify-content: center;
   background-color: aliceblue;
@@ -14,7 +13,6 @@
     height: 100%;
     
     li {
-
       a {
         text-decoration: none;
         color: #333;
@@ -30,8 +28,7 @@
         &:hover {
           background-color: rgba(0, 0, 0, 0.05);
         }
-
-        }
       }
     }
+  }
 }

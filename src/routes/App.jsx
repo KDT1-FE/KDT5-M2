@@ -11,7 +11,6 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   // 가져올 영화의 수를 지정하는 state 선언
   const [viewNumber, setViewNumber] = useState('1')
-  let saveMovieCallNumber = null
 
   async function getMovies(searchValue, setLoading) {
     // viewNumber에 따라 반복 호출되는 영화 목록을 저장할 배열 선언
