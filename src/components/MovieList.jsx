@@ -19,7 +19,6 @@ export default function MovieList(props) {
               alt={movie.Title}
               onClick={() => handleMovieInfo(movie.imdbID)}
             />
-            {/* <span>{movie.Title}</span> */}
           </li>
         ))}
       </ul>
