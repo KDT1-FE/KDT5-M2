@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { Stack, Avatar, Link, Tooltip, Box, Button } from '@mui/material'
 
 const Profile = () => {

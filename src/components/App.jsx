@@ -26,6 +26,7 @@ const App = () => {
     const url = `https://omdbapi.com/?s=${searchValue}&apikey=7035c60c`
     const res = await fetch(url)
     const json = await res.json()
+    console.log(json)
 
     if (json.Response === 'True') {
       setMovies(json.Search)
@@ -41,14 +42,13 @@ const App = () => {
       json.Response === 'True' &&
       page <= Math.ceil(Number(json.totalResults) / 10)
     ) {
+      console.log(Math.ceil(Number(json.totalResults)))
       const additionalList = json.Search
       console.log(additionalList)
       console.log(...additionalList)
       setMoreMovies(moreMovies => [...moreMovies, ...additionalList])
       console.log(moreMovies)
       console.log(...moreMovies)
-      // const additionalList = [...moreMovies, json.Search]
-      // setMoreMovies(additionalList)
     }
   }
 
