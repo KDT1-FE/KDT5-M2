@@ -13,7 +13,7 @@ import { useInView } from 'react-intersection-observer'
 
 const App = () => {
   const [movies, setMovies] = useState([])
-  const [toWatch, setToWatch] = useState([[]])
+  const [toWatch, setToWatch] = useState([])
   const [searchValue, setSearchValue] = useState('')
   const [page, setPage] = useState(2)
   const [moreMovies, setMoreMovies] = useState([])
