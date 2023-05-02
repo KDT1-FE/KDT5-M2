@@ -1,32 +1,23 @@
 import axios from "axios";
-
-export async function getMovies(title) {
-  const pageOne = await axios
-    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=1`)
-    .then((res) => res.data)
-    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
-
-  const pageTwo = await axios
-    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=2`)
-    .then((res) => res.data)
-    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
-
-  const pageThree = await axios
-    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=3`)
-    .then((res) => res.data)
-    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
-
-  const pageFour = await axios
-    .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=3`)
-    .then((res) => res.data)
-    .catch((e) => console.error(e, "API 요청에 실패했습니다."));
-
-  return {
-    Search: [
-      ...pageOne.Search,
-      ...pageTwo.Search,
-      ...pageThree.Search,
-      ...pageFour.Search,
-    ],
-  };
+/*
+  검색된 영화 API 가져오기
+  method: 'GET'
+*/
+export async function getMovies(title, page, year) {
+  try {
+    const { data } = await axios({
+      url: `http://omdbapi.com/?apikey=7035c60c&s=${title}&y=${year}&page=${page}`,
+      method: "GET",
+    });
+    return data;
+  } catch (e) {
+    console.error(e, "API 요청에 실패했습니다.");
+  }
+  // const result = await axios
+  //   .get(`http://omdbapi.com/?apikey=7035c60c&s=${title}&page=${page}`)
+  //   .then((res) => res.data)
+  //   .catch();
+  // return {
+  //   Search: [...result.Search],
+  // };
 }
