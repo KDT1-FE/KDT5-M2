@@ -26,7 +26,8 @@ function Search({ value, setValue, setMovies, movies }) {
     setLoading(false);
   };
 
-  const onScroll = async () => {
+  const onScroll = async (event) => {
+    event.preventDefault(); // event.preventDefault()를 넣어줘도 새로고침 발생
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
