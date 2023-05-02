@@ -8,7 +8,8 @@ const store = new Store({
   year: '',
   movie: {},
   movies: [],
-  loading: false
+  loading: false,
+  message: 'Search for th movie title!'
 })
 
 //영화 정보 이것저것
@@ -18,7 +19,7 @@ export async function requestAll(searchText, year = '', page = 1) {
   const y = `&y=${year}`
   const p = `&page=${page}`
   store.state.loading = true
-  store.state.page = page
+
   if (page === 1) {
     store.state.movies = []
   }

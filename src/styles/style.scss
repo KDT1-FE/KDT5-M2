@@ -286,7 +286,6 @@ body {
   .the_movie {
     color: $white-80;
     display: flex;
-
     gap: 70px;
     .poster {
       flex-shrink: 0;
@@ -359,7 +358,7 @@ body {
       margin: 0 auto 20px;
       border-radius: 100%;
       background-size: cover;
-      transition: .5s;
+      transition: 0.5s;
       &:hover {
         border: 2px solid $primary2;
         border-radius: 100%;
