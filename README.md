@@ -3,7 +3,7 @@
 [결과물1](https://comfy-sunshine-439aa0.netlify.app/)
 
 [결과물2](https://aquamarine-croissant-729199.netlify.app/)
->[결과물2 저장소](hwanginseung/kdt5-m2-2 (github.com))
+>[결과물2 저장소](https://github.com/hwanginseung/kdt5-m2-2)
 
 ---
 
