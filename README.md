@@ -35,25 +35,16 @@ KDT기수번호_이름  |  E.g, KDT0_ParkYoungWoong
 - [ ] 영화와 관련된 기타 기능도 고려해보세요.
 ---
 파일 구조
+```
 C:.
-│|  index.html
-│|  main.js :: 각 페이지가 #app 요소 안에 렌더링 되도록 DOMContentLoaded 이벤트를 추가합니다.
-│|  package-lock.json
-│|  package.json
-│|  README.md
-│|  style.scss
-│|
-├|─public
-│|      github-mark.png
-│|      imdb.png
-│|      metacritic.png
-│|      movietour_logong.svg
-│|      movietour_logo_smile.ico
-│|      movietour_logo_smile.svg
-│|      rotten.png
-│|      xboxdog.jpg
-│|
-└|─src
+│  index.html
+│  main.js :: 각 페이지가 #app 요소 안에 렌더링 되도록 DOMContentLoaded 이벤트를 추가합니다.
+│  package-lock.json
+│  package.json
+│  README.md
+│  style.scss
+│
+└─src
     │  app.js :: header 요소에 클릭 이벤트를 추가하고, 최초 실행 시 랜딩페이지를 불러옵니다.
     │  router.js :: route주소를 받아와 SPA 기능을 제어합니다.
     │
@@ -88,8 +79,9 @@ C:.
     └─utils
             navigate.js      :: URL주소가 바뀔 때 이벤트를 발송합니다.
             querySelector.js :: querySelector 메서드를 `$`로 단축합니다. 찾을 수 없을 시 오류처리도 포함합니다.
-
+```
 ---
+```
 package :
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
@@ -97,8 +89,7 @@ package :
     "prettier": "^2.8.7",
     "sass": "^1.62.0",
     "vite": "^4.3.0"
+```
 ---
 문제점 :
 + info페이지에서 뒤로가기 시, 메인 페이지가 초기화 됩니다. 검색 내역과 데이터가 그대로 남아있어야 사용자도 편하고, 데이터 처리량도 줄어들 것 같습니다. route이벤트 관련된 문제인 것 같은데, 해당 문제점 관련해 서칭중입니다.
-
----
