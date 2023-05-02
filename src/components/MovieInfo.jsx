@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import NavigationBar from '~/components/NavigationBar'
 import MovieInfoTop from '~/components/MovieInfoTop'
 import LoadingPage from '~/components/Loading'
-import styles from '~/Movieinfo.module.scss'
+import styles from '~/MovieInfo.module.scss'
 
 export default function MovieInfo() {
   // useParams를 이용해 URL params 값 가져오기
