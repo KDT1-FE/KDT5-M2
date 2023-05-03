@@ -34,6 +34,7 @@ export default function MovieInfos() {
             <img
               src={infos.Poster.replace(/SX300/, 'SX700')}
               alt={infos.Title}
+              className="card-img"
             />
           </div>
           <div className={styles.details}>
@@ -45,7 +46,11 @@ export default function MovieInfos() {
               <div className={styles.ratings}>
                 {infos.Ratings.map((info, idx) => (
                   <div key={idx} className={styles.rating}>
-                    <img src={`/assets/${info.Source}.png`} alt={info.Source} />
+                    <img
+                      src={`/assets/${info.Source}.png`}
+                      alt={info.Source}
+                      className={styles.img}
+                    />
                     <span className="gray">{info.Value}</span>
                   </div>
                 ))}

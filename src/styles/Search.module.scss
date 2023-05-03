@@ -1,9 +1,5 @@
 @import '~/common/vars';
 
-.wait {
-  opacity: 0.3;
-  pointer-events: none;
-}
 .searchBar {
   display: flex;
   gap: 10px;
@@ -31,10 +27,14 @@
     color: #212529;
     padding: 10px;
     background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+    background-size: 13px;
     cursor: pointer;
   }
+
   button {
-    letter-spacing: 0.5;
     font-weight: 700;
     background-color: $omdb-yellow;
     border: none;
@@ -87,23 +87,12 @@ ul {
         }
         figcaption {
           visibility: visible;
-          //border: 3px solid;
           backdrop-filter: blur(10px);
           color: #fff;
           -webkit-backdrop-filter: blur(10px);
           background-color: rgba(0, 0, 0, 0.3);
           opacity: 1;
         }
-      }
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.3s;
       }
     }
   }

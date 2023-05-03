@@ -18,15 +18,15 @@ export default function Search() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
+  let hasNext = true;
 
   const { type, page, years = years === 'All years' ? null : years } = options;
   async function getList(e) {
     e.preventDefault();
-
-    //let movies = [];
     let num = parseInt(page) / 10;
     try {
       setIsLoading(true);
+      hasNext = true;
       const movies = await fetchMovies(title, type, years, num);
       setLists(movies);
       setMore(num + 1);
@@ -50,7 +50,9 @@ export default function Search() {
       setLists([...lists, ...movies]);
       setMore(more + num);
     } catch (err) {
+      hasNext = false;
       alert(err);
+      console.log(hasNext);
     } finally {
       setIsClick(false);
     }
@@ -66,7 +68,7 @@ export default function Search() {
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting && more > 1) {
+        if (entry.isIntersecting && more > 1 && hasNext) {
           getMoreList();
         }
       },
@@ -86,9 +88,7 @@ export default function Search() {
       <div>
         <form
           onSubmit={getList}
-          className={`${!isLoading ? '' : styles.wait} bottom ${
-            styles.searchBar
-          }`}
+          className={`${!isLoading ? '' : 'wait'} bottom ${styles.searchBar}`}
         >
           <input
             type="text"
@@ -128,7 +128,7 @@ export default function Search() {
                 <li key={list.imdbID}>
                   <NavLink to={`/movie/${list.imdbID}`}>
                     <figure>
-                      <img src={img} alt={list.Title} />
+                      <img src={img} alt={list.Title} className="card-img" />
                       <figcaption>
                         <div className="yellow">{list.Year}</div>
                         <div>{list.Title}</div>

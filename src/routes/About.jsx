@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className={styles.wrap}>
       <div className={styles.profile}>
-        <img src="/assets/pic1.jpg" alt="" />
+        <img src="/assets/pic1.jpg" alt="profile pic" className="card-img" />
       </div>
       <div>tjehddnr997@gmail.com</div>
       <a href="https://github.com/foodeco" target="_blank" rel="noreferrer">
