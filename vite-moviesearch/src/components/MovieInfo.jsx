@@ -10,6 +10,7 @@ export default function MovieInfo() {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
+  const [bigPoster, setBigPoster] = useState();
 
   async function fetchDetailMovie() {
     const res = await fetch(
@@ -22,7 +23,9 @@ export default function MovieInfo() {
 
   useEffect(() => {
     (async () => {
-      setMovie(await fetchDetailMovie());
+      const result = await fetchDetailMovie();
+      setMovie(result);
+      setBigPoster(result.Poster.replace("SX300", "SX700"));
       setIsLoading(false);
     })();
   }, []);
@@ -42,7 +45,7 @@ export default function MovieInfo() {
           <li className="mr-8">
             <img
               className="lg:w-[18rem] lg:h-[27rem] xl:w-[31.5rem] xl:h-[50rem]"
-              src={movie.Poster !== "N/A" ? movie.Poster : noimages}
+              src={bigPoster !== "N/A" ? bigPoster : noimages}
               alt={movie.Title}
             />
           </li>
