@@ -72,52 +72,79 @@ const RouteSection = () => {
             height={440}
           />
         )}
+
         <div className={styles.movieInfo}>
-          <h1 className={styles.movieTitle}>{movie.Title}</h1>
-          <div className={styles.movieDetail}>
-            <div className={styles.movieDetailInner}>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>개봉</div>
-                <div className={styles.movieDetailWhite}>{movie.Released}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>장르</div>
-                <div className={styles.movieDetailWhite}>{movie.Genre}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>국가</div>
-                <div className={styles.movieDetailWhite}>{movie.Country}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>러닝타임</div>
-                <div className={styles.movieDetailWhite}>{movie.Runtime}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>수상</div>
-                <div className={styles.movieDetailWhite}>{movie.Awards}</div>
-              </div>
-            </div>
-            <div className={styles.movieDetailInner}>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>평점</div>
-                <div className={styles.movieDetailWhite}>
-                  {movie.imdbRating}
+          {movie.Title ? (
+            <>
+              <h1 className={styles.movieTitle}>{movie.Title}</h1>
+              <div className={styles.movieDetail}>
+                <div className={styles.movieDetailInner}>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>개봉</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Released}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>장르</div>
+                    <div className={styles.movieDetailWhite}>{movie.Genre}</div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>국가</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Country}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>러닝타임</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Runtime}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>수상</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Awards}
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.movieDetailInner}>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>평점</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.imdbRating}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>누적수입</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.BoxOffice}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>배우</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Actors}
+                    </div>
+                  </div>
+                  <div className={styles.movieDetailList}>
+                    <div className={styles.movieDetailGray}>감독</div>
+                    <div className={styles.movieDetailWhite}>
+                      {movie.Director}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>누적수입</div>
-                <div className={styles.movieDetailWhite}>{movie.BoxOffice}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>배우</div>
-                <div className={styles.movieDetailWhite}>{movie.Actors}</div>
-              </div>
-              <div className={styles.movieDetailList}>
-                <div className={styles.movieDetailGray}>감독</div>
-                <div className={styles.movieDetailWhite}>{movie.Director}</div>
-              </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <Skeleton
+              className={styles.detailSkeleton}
+              variant="rounded"
+              sx={{ bgcolor: "grey.900" }}
+              width={610}
+              height={440}
+            />
+          )}
         </div>
       </div>
     </section>
