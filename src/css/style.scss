@@ -246,6 +246,70 @@ header {
 }
 
 
+/* MovieItem */
+.movies {
+  .movie {
+    position: relative;
+    --width: 190px;
+    width: var(--width);
+    height: calc(var(--width) * 3 / 2);
+    border-radius: 6px;
+    background-size: cover;
+    overflow: hidden;
+    transition: .3s;
+    img {
+      --width: 200px;
+      width: var(--width);
+      height: calc(var(--width) * 3 / 2);
+    }
+    .info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      padding-top: 40%;
+      font-size: 14px;
+      text-align: center;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.96);
+      transform: translateX(-200px);
+      .year {
+        color: #b80a0a;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .title {
+        color: #f1f1f1;
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+      .type {
+        color: #ddd11e;
+      }
+    }
+  }
+  :hover {
+    transform: scale(1.1);
+    .info {
+      transform: translateX(0);
+      transition: .3s;
+    }
+  }
+  :hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid #b80a0a;
+  }
+}
+
+
 /* MoviePage */
 .the-movie {
   position: absolute;
