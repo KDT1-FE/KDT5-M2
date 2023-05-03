@@ -1,7 +1,7 @@
 {
   "name": "kdt5-m2",
   "version": "1.0.0",
-  "description": "OMdb API를 활용한 영화 검색 사이트",
+  "description": "KDT5_YangJunYong OMdb API를 활용한 영화 검색 사이트",
   "scripts": {
     "dev": "parcel ./index.html",
     "build": "parcel build ./index.html"
