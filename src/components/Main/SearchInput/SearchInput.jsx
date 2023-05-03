@@ -93,11 +93,11 @@ const SearchInput = () => {
       const { data } = await axios.get(
         `https://omdbapi.com/?apikey=7035c60c&s=${category.title}&y=${category.year}&type=${category.type}&page=${page.current}`
       );
+      setHasNextPage(data.Response);
 
-      setPosts((prevPosts) => [...prevPosts, ...data.Search]);
-      setHasNextPage(data.Search.length === 10);
-      if (data.Search.length) {
+      if (data.Response !== "False") {
         page++;
+        setPosts((prevPosts) => [...prevPosts, ...data.Search]);
       }
     } catch (err) {
       console.error(err);
