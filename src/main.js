@@ -21,12 +21,13 @@ function removeSearching() {
 const select = document.querySelector('#years')
 const now = new Date()
 const thisYear = now.getFullYear()
-for (let year = 1950; year <= thisYear; year++) {
+for (let year = thisYear; year >= 1950; year--) {
   const option = document.createElement('option')
   option.value = year
   option.textContent = year
   select.appendChild(option)
 }
+
 
 const apiKey = '7035c60c'
 const movieList = document.querySelector('#movie-list')
