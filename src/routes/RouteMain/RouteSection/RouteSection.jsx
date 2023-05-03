@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
+import Skeleton from "@mui/material/Skeleton";
 
 const RouteSection = () => {
   const [movie, setMovie] = useState({});
@@ -32,11 +33,12 @@ const RouteSection = () => {
     p: 4,
     borderRadius: 5,
   };
+
   useEffect(() => {
-    async function detailMovies(e) {
+    const detailMovies = async function () {
       const detail = await axiosDetailMovies(movieId);
       setMovie(detail);
-    }
+    };
     detailMovies(movieId);
   }, [movieId]);
 
@@ -45,23 +47,31 @@ const RouteSection = () => {
   return (
     <section className={styles.mainSection}>
       <div className={styles.movieContainer}>
-        <div
-          className={styles.moviePoster}
-          style={{ background: `url(${movie.Poster})` }}
-        >
-          <Button onClick={handleOpen} className={styles.zoomOutButton}>
-            <ZoomOutMapIcon className={styles.zoomOutMapIcon} />
-          </Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+        {bigPoster ? (
+          <div
+            className={styles.moviePoster}
+            style={{ background: `url(${movie.Poster})` }}
           >
-            <Box sx={style} style={{ background: `url(${bigPoster})` }}></Box>
-          </Modal>
-        </div>
-
+            <Button onClick={handleOpen} className={styles.zoomOutButton}>
+              <ZoomOutMapIcon className={styles.zoomOutMapIcon} />
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style} style={{ background: `url(${bigPoster})` }}></Box>
+            </Modal>
+          </div>
+        ) : (
+          <Skeleton
+            variant="rounded"
+            sx={{ bgcolor: "grey.900" }}
+            width={300}
+            height={440}
+          />
+        )}
         <div className={styles.movieInfo}>
           <h1 className={styles.movieTitle}>{movie.Title}</h1>
           <div className={styles.movieDetail}>

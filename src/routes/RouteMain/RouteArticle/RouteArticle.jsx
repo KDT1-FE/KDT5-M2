@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { axiosDetailMovies } from "../../../core/movieDetailData";
 import { NavLink } from "react-router-dom";
+import Skeleton from "@mui/material/Skeleton";
 
 const RouteArticle = () => {
   const [movie, setMovie] = useState({});
@@ -17,6 +18,8 @@ const RouteArticle = () => {
     detailMovies(movieId);
   }, [movieId]);
 
+  const tempSk = movie.Plot ? movie.Plot.length : "";
+  console.log(tempSk);
   return (
     <>
       <article className={styles.mainArticle}>
@@ -41,6 +44,16 @@ const RouteArticle = () => {
           </ul>
         </div>
         <div className={styles.articleWrapper}>
+          {tempSk.length === 0 ? (
+            <Skeleton
+              variant="rounded"
+              sx={{ bgcolor: "grey.900" }}
+              width={940}
+              height={440}
+            />
+          ) : (
+            movie.Plot
+          )}
           {movie.Plot === "N/A"
             ? "⛔︎ 등록된 주요 정보가 없습니다."
             : movie.Plot}
