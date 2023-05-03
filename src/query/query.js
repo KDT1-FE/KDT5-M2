@@ -16,12 +16,12 @@ export const getMovieDetailById = (id) =>
       }
       return data
     } catch (err) {
-      console.error('getSearchMovies ERROR : ', err)
+      console.error('getMovieDetailById ERROR : ', err)
       return []
     }
   })
 
-export const getSearchInfitieMovies = (query) =>
+export const getMoviesUsingInfiteQuery = (query) =>
   useInfiniteQuery(
     [`2${query}`],
     async ({ pageParam = 1 }) => {
