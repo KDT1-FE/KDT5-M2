@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { getMovies } from "src/lib/api/movieAPI";
 import { colors } from "src/lib/styles/colors";
@@ -6,42 +6,86 @@ import Loading from "src/components/common/Loading";
 import SearchItem from "src/components/search/SearchItem";
 
 // Component
-function Search({ value, setValue, setMovies, movies }) {
+function Search() {
   // Hooks
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [isMoreLoading, setIsMoreLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [title, setTitle] = useState("");
+  const [more, setMore] = useState(0);
+  const [options, setOptions] = useState({
+    type: null,
+    page: "10",
+    year: null,
+  });
+  const targetRef = useRef(null);
+
+  const { type, page, year = year === "All years" ? null : year } = options;
 
   // Function
   const onInputChange = (event) => {
-    setValue(event.target.value);
+    event.preventDefault();
+    setTitle(event.target.value);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setValue("");
-    setLoading(true);
-    const movieData = await getMovies(value, 1);
-    setMovies(movieData.Search || []);
-    movieData.Search ? setMessage(null) : setMessage("검색결과가 없습니다.");
-    setLoading(false);
-  };
-
-  const onScroll = async (event) => {
-    event.preventDefault(); // event.preventDefault()를 넣어줘도 새로고침 발생
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-    if (scrollTop + clientHeight >= scrollHeight) {
-      const movieData = await getMovies(value, 1);
-      setMovies(movieData.Search || []);
-      console.log(movieData.Search);
+    let pagination = parseInt(page) / 10;
+    try {
+      setLoading(true);
+      const movieData = await getMovies(title, type, year, pagination);
+      setMovies(movieData);
+      setMore(pagination + 1);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
     }
   };
 
+  const onScroll = async () => {
+    let pagination = parseInt(page) / 10;
+    try {
+      setIsMoreLoading(true);
+      const movieData = await getMovies(
+        title,
+        type,
+        year,
+        more + pagination,
+        more + 1,
+      );
+      setMovies([...movies, ...movieData]);
+      setMore(more + pagination);
+      console.log("done");
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsMoreLoading(false);
+    }
+  };
+
+  const onSearchOption = (event) => {
+    setOptions({ ...options, [event.target.name]: event.target.value });
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const IO = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && more > 1) {
+          onScroll();
+        }
+      },
+      { threshold: 1 },
+    );
+    if (targetRef.current) {
+      IO.observe(targetRef.current);
+    }
+    return () => {
+      IO.disconnect();
+    };
+  }, [more]);
 
   // Render
   return (
@@ -51,9 +95,8 @@ function Search({ value, setValue, setMovies, movies }) {
           <SearchInput
             placeholder="영화를 입력하세요"
             onChange={onInputChange}
-            value={value}
+            value={title}
           />
-          {/* <SearchSelect onPage={onPage} page={page} /> */}
           <SearchButton type="submit">검색</SearchButton>
         </SearchForm>
       </SearchContainer>
@@ -63,13 +106,15 @@ function Search({ value, setValue, setMovies, movies }) {
         ) : (
           <SearchList>
             {message}
-            {movies &&
-              movies.map((movie, index) => (
+            {movies.map((movie, index) => (
+              <>
                 <SearchItem key={index} movie={movie} />
-              ))}
+              </>
+            ))}
           </SearchList>
         )}
       </SearchResult>
+      <div ref={targetRef} />
     </>
   );
 }
