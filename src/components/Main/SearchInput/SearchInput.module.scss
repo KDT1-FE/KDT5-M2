@@ -9,7 +9,6 @@
     .inputContainer {
       position: relative;
       width: 50vw;
-      border-bottom: 3px solid #fff;
 
       input {
         width: 100%;
@@ -20,10 +19,13 @@
         border: 0 none;
         font-size: 1.3rem;
         padding: 0 50px 0 20px;
+        border-bottom: 3px solid var(--color-white);
       }
-      input:focus {
+      input:focus,
+      input:hover {
+        transition: 0.2s;
+        border-bottom: 3px solid var(--color-pink);
         outline: none;
-        border-color: var(--color-pink);
       }
       input::placeholder {
         color: var(--color-fontGray);
@@ -42,15 +44,29 @@
         }
       }
     }
+
     .selectContainer {
       display: flex;
       margin-left: 30px;
       gap: 20px;
+
+      select:focus,
+      select:hover {
+        transition: 0.2s;
+        border-bottom: 3px solid var(--color-pink);
+        outline: none;
+      }
     }
   }
   .searchedMovies {
     width: 100%;
     margin: 30px auto 0;
+
+    .circularProress {
+      display: block;
+      margin: 0 auto;
+      color: var(--color-fontGray);
+    }
 
     .moviesWrapper {
       display: flex;
@@ -58,7 +74,7 @@
       margin: 0;
       gap: 71px;
       justify-content: center;
-      padding: 70px 15px 78px;
+      padding: 70px 15px 200px;
       font-size: 24px;
       color: var(--color-fontGray);
       .movies {
@@ -83,4 +99,10 @@
       }
     }
   }
+}
+
+.finishMessage {
+  color: var(--color-fontGray);
+  text-align: center;
+  font-size: 1.5rem;
 }
