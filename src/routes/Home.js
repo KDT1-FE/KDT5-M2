@@ -112,6 +112,26 @@ export default class Home extends Component {
             </li>
           </ul>
         </section>
+        <!-- Section : Best Scene -->
+        <section class="movie-related">
+          <h3>BEST SCENE</h3>
+          <div class="best-scene">
+            <div class="scene-left">
+              <img src="https://cdn.vox-cdn.com/thumbor/yZbehTL0rIqZTJc99zUJDBJAel0=/0x0:5760x3840/1200x800/filters:focal(2659x35:3579x955)/cdn.vox-cdn.com/uploads/chorus_image/image/59536283/InfinityWar5aa86b72864fc.0.jpg" />
+            </div>
+            <ul class="scene-right">
+              <li>
+                <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000080/80585/80585154126_727.jpg" />
+              </li>
+              <li>
+                <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000080/80585/80585154122_727.jpg" />
+              </li>
+              <li>
+                <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000080/80585/80585154128_727.jpg" />
+            </li>
+            </ul>
+          </div>
+        </section>
       </div>
     `
   }
