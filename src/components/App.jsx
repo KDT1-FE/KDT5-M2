@@ -2,7 +2,7 @@ import React from "react";
 import TheHeader from "~/components/Header/TheHeader";
 import TheMain from "./Main/TheMain/TheMain";
 import TheFooter from "~/components/Footer/TheFooter";
-import "../index.css";
+import "~/index.css";
 
 const App = () => {
   return (
