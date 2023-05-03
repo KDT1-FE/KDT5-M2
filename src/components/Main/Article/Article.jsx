@@ -5,7 +5,9 @@ const Article = () => {
   return (
     <section className={styles.articleSection}>
       <article>
-        <div className={styles.contentBig}>발견의 기쁨!</div>
+        <div>
+          <h1 className={styles.contentBig}>웃차, 발견의 기쁨!</h1>
+        </div>
         <div className={styles.contentMedium}>영화 검색을 무제한으로!</div>
         <div className={styles.contentSmall}>모든 영화 정보를 내 손 안에</div>
         <p>
