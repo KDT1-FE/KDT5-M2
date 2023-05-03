@@ -1,13 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '~/styles/Search.module.scss';
 import { NavLink } from 'react-router-dom';
 import fetchMovies from '~/api/fetchMovies';
 import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
-import SkeletonSearch from '../components/SkeletonSearch';
-import { useRef } from 'react';
-import { useEffect } from 'react';
+import SkeletonSearch from '~/components/SkeletonSearch';
 
 export default function Search() {
   const [title, setTitle] = useState('');
