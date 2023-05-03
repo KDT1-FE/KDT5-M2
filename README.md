@@ -14,7 +14,7 @@
 
 OMDB API를 연동하여 영화 검색 사이트를 구현했습니다.
 
-[🎬 완성페이지](https://movie-search-project-b4ha-j7cb6p3ov-eungbug.vercel.app/)
+[🎬 완성페이지](https://movie-search-project-b4ha.vercel.app/)
 
 <br>
 
