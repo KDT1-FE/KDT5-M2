@@ -14,10 +14,8 @@ main {
       .moviePoster {
         display: block;
         position: relative;
-
         width: 300px;
-        height: 440px;
-        margin-right: 70px;
+        height: calc(300px * 1.48);
         border-radius: 10px;
         flex-shrink: 0;
 
@@ -33,11 +31,15 @@ main {
             font-size: 2.2rem;
           }
         }
+        .zoomOutButton > span {
+          display: none;
+        }
       }
       .movieTitle {
         color: var(--color-white);
       }
       .movieInfo {
+        margin-left: 70px;
         .movieDetail {
           margin-top: 30px;
           display: flex;
