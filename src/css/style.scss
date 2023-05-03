@@ -110,4 +110,75 @@ header {
       }
     }
   }
+  // Section : Movie-related
+  .movie-related {
+    margin: 50px 0;
+    padding: 20px 0;
+    h3 {
+      position: relative;
+      font-size: 20px;
+      margin-bottom: 30px;
+      padding-left: 32px;
+    }
+    h3::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: #b80a0a;
+    }
+    .related-movies {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      li {
+        width: 210px;
+        .related-poster {
+          border-radius: 12px;
+          overflow: hidden;
+        }
+        img {
+          transition: .3s;
+        }
+        img:hover {
+          transform: scale(1.1);
+        }
+        .related-info {
+          padding: 20px 0;
+          box-sizing: border-box;
+          h4 {
+            margin-bottom: 10px;
+          }
+          span {
+            font-size: 14px;
+            color: #b80a0a;
+          }
+        }
+      }
+    }
+    .best-scene {
+      height: 560px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      .scene-left {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .scene-right {
+        display: grid;
+        justify-content: space-between;
+        gap: 20px;
+        li {
+          width: 320px;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
 }
