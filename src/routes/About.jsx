@@ -2,7 +2,7 @@ import styles from '~/styles/About.module.scss';
 
 export default function About() {
   return (
-    <div className={`container ${styles.wrap}`}>
+    <div className={styles.wrap}>
       <div className={styles.profile}>
         <img src="/assets/pic1.jpg" alt="" />
       </div>
