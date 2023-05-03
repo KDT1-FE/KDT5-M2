@@ -1,9 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from '~/styles/MovieInfos.module.scss';
-import fetchMovies from '~/api/fetchMovies';
+import fetchMovieDetail from '~/api/fetchMovieDetail';
 import context from '~/store/MyContext';
 import SkeletonMovie from '../components/SkeletonMovie';
+
 export default function MovieInfos() {
   const [infos, setInfos] = useState({});
   const { id } = useParams();
@@ -14,7 +15,7 @@ export default function MovieInfos() {
     (async () => {
       try {
         setIsLoading(true);
-        const data = await fetchMovies(`i=${id}&plot=full`);
+        const data = await fetchMovieDetail(`i=${id}&plot=full`);
         setInfos(data);
         setValue(id);
       } catch (err) {
@@ -24,9 +25,6 @@ export default function MovieInfos() {
       }
     })();
   }, []);
-
-  //console.log(value);
-  //MyContext(id);
 
   return (
     <div className={`container ${styles.wrapper}`}>

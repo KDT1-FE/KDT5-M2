@@ -6,11 +6,13 @@ import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
 import SkeletonSearch from '../components/SkeletonSearch';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 export default function Search() {
   const [title, setTitle] = useState('');
   const [lists, setLists] = useState([]);
-  const [more, setMore] = useState(2);
+  const [more, setMore] = useState(0);
   const [options, setOptions] = useState({
     type: null,
     page: '10',
@@ -19,25 +21,15 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
 
+  const { type, page, years = years === 'All years' ? null : years } = options;
   async function getList(e) {
     e.preventDefault();
-    const {
-      type,
-      page,
-      years = years === 'All years' ? null : years,
-    } = options;
 
-    let movies = [];
+    //let movies = [];
     let num = parseInt(page) / 10;
     try {
       setIsLoading(true);
-      for (let i = 1; i <= num; i++) {
-        const data = await fetchMovies(
-          `s=${title}&type=${type}&page=${i}&y=${years}`
-        );
-        if (data.Response === 'False') throw new Error(data.Error);
-        movies = [...movies, ...data.Search];
-      }
+      const movies = await fetchMovies(title, type, years, num);
       setLists(movies);
       setMore(num + 1);
     } catch (err) {
@@ -47,12 +39,18 @@ export default function Search() {
     }
   }
   async function getMoreList() {
+    let num = parseInt(page / 10);
     try {
       setIsClick(true);
-      const data = await fetchMovies(`s=${title}&page=${more}`);
-      setLists([...lists, ...data.Search]);
-      setMore(more + 1);
-      if (data.Response === 'False') throw new Error(data.Error);
+      const movies = await fetchMovies(
+        title,
+        type,
+        years,
+        more + num,
+        more + 1
+      );
+      setLists([...lists, ...movies]);
+      setMore(more + num);
     } catch (err) {
       alert(err);
     } finally {
@@ -63,6 +61,26 @@ export default function Search() {
   function getSearchOption(e) {
     setOptions({ ...options, [e.target.name]: e.target.value });
   }
+
+  const target = useRef(null);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && more > 1) {
+          getMoreList();
+        }
+      },
+      { threshold: 1 }
+    );
+    if (target.current) {
+      io.observe(target.current);
+    }
+    return () => {
+      io.disconnect();
+    };
+  }, [more]);
 
   return (
     <div className="container">
@@ -141,13 +159,7 @@ export default function Search() {
           ''
         )}
 
-        {lists.length ? (
-          <button className={`btn ${styles.btn}`} onClick={getMoreList}>
-            more
-          </button>
-        ) : (
-          ''
-        )}
+        <div ref={target}></div>
       </div>
     </div>
   );

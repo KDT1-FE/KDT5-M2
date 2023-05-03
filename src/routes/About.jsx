@@ -10,7 +10,7 @@ export default function About() {
       <a href="https://github.com/foodeco" target="_blank" rel="noreferrer">
         github.com/foodeco
       </a>
-      <div>+82-01-7126-6578</div>
+      <div>+82-10-7126-6578</div>
     </div>
   );
 }
