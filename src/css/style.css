@@ -129,3 +129,18 @@ img {
 .more.hide {
   display: none;
 }
+
+
+/* toTop */
+.to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+  border-radius: 50%;
+  color: #b80a0a;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
