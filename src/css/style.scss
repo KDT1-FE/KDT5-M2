@@ -228,6 +228,24 @@ header {
 }
 
 
+/* MovieItems */
+.movie-items {
+  padding: 60px 0 30px 0;
+  box-sizing: border-box;
+  .message {
+    color: rgba(255, 255, 255, .3);
+    font-size: 20px;
+    text-align: center;
+  }
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 26px;
+  }
+}
+
+
 /* MoviePage */
 .the-movie {
   position: absolute;
