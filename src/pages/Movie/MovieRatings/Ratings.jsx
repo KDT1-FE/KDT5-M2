@@ -1,17 +1,16 @@
 import React from "react";
 import TheHeader from "~/components/Header/TheHeader";
-import TheMain from "./Main/TheMain";
+import RatingsMain from "./RatingsMain";
 import TheFooter from "~/components/Footer/TheFooter";
-import "~/index.css";
 
-const App = () => {
+const Ratings = () => {
   return (
     <>
       <TheHeader />
-      <TheMain />
+      <RatingsMain />
       <TheFooter />
     </>
   );
 };
 
-export default App;
+export default Ratings;
