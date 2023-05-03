@@ -1,0 +1,62 @@
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(2px);
+  background-color: rgba(12, 12, 12, 0.3);
+  z-index: 9;
+  .inner {
+    width: 200px;
+    height: 100vh;
+    padding: 50px 0;
+    box-sizing: border-box;
+    div {
+      display: block;
+      text-align: center;
+      .logo {
+        font-family: 'Oswald', sans-serif;
+        font-size: 24px;
+        color: rgba(255, 255, 255, .5);
+        text-decoration: none;
+        span {
+          color: #b80a0a;
+        }
+      }
+    }
+    nav ul {
+      margin-top: 100px;
+      text-align: center;
+      li {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      li.active::after {
+        background-color: #b80a0a;
+        visibility: visible;
+      }
+      li::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 4px;
+        height: 100%;
+        border-radius: 6px;
+        background-color: #fff;
+        visibility: hidden;
+      }
+      li:last-child {
+        margin-bottom: 0px;
+      }
+      li a {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, .5);
+        text-decoration: none;
+      }
+      li a.active {
+        color: #b80a0a;
+      }
+    }
+  }
+}
