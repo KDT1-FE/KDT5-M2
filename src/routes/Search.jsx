@@ -74,9 +74,7 @@ export default function Search() {
       },
       { threshold: 1 }
     );
-    if (target.current) {
-      io.observe(target.current);
-    }
+    io.observe(target.current);
     return () => {
       io.disconnect();
     };
