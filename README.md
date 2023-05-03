@@ -2,7 +2,7 @@
 # "Movie Search Website"
 ***
 과제예시 : https://stupefied-hodgkin-d9d350.netlify.app </br></br>
-결과물 :
+결과물 : https://unrivaled-hamster-0b1f69.netlify.app
 ***
 ## 1. 프로젝트 소개
 ### 필수 항목
