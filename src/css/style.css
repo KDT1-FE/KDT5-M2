@@ -84,3 +84,29 @@ img {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+
+
+/* SearchPage */
+.searchpage {
+  width: 1200px;
+  margin-left: 260px;
+  box-sizing: border-box;
+}
+
+
+/* MovieItemsMore(button) */
+.more {
+  display: block;
+  width: 120px;
+  max-width: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 200px;
+}
+.more:hover {
+  width: 200px;
+  border-radius: 30px;
+}
+.more.hide {
+  display: none;
+}
