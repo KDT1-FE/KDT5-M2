@@ -9,7 +9,7 @@ export async function getMovies(title, type, years, num) {
       const url = `https://omdbapi.com/?apikey=7035c60c&s=${title}&type=${type}&page=${page}&y=${years}`;
       const response = await fetch(url);
       const result = await response.json();
-      movies = [...movies, ...result.Search];
+      movies = [...result.Search];
     }
     return movies;
   } catch (e) {
