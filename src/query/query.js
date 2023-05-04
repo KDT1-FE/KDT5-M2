@@ -43,6 +43,7 @@ export const getMoviesUsingInfiteQuery = (query) =>
     },
     {
       enabled: !!query,
+      staleTime: 1000 * 60 * 5,
       getNextPageParam: (lastPage, allPages) => {
         if (!lastPage.length) return undefined
         return allPages.length + 1
