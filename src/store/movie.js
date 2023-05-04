@@ -29,7 +29,7 @@ export async function requestAll(searchText, year = '', page = 1) {
   })
   if (data.Response === 'True') {
     const movies = data.Search.map(movie => {
-      return { imdbID: movie.imdbID, title: movie.Title, year: movie.year, poster: movie.Poster }
+      return { imdbID: movie.imdbID, title: movie.Title, year: movie.Year, poster: movie.Poster }
     })
     store.state.movies = [...store.state.movies, ...movies]
     
