@@ -19,30 +19,30 @@ const SearchInput = () => {
     "🎬 검색어를 입력 후 엔터 ⏎ 또는 돋보기 🔍 를 눌러 검색해주세요!"
   );
   const [category, setCategory] = useState({
-    title: "",
     page: 10,
     year: "All Years",
     type: "movie",
   });
-  ///
+
   const [posts, setPosts] = useState([]);
   const [hasNextPage, setHasNextPage] = useState(true);
   const page = useRef(1);
   const [ref, inView] = useInView();
 
-  ///
-  // TitleSearchHandler: input의 value로 들어오는 값을 setInputText로 동적으로 다룬다.movies
+  // TitleSearchHandler: input의 value로 들어오는 값을 setInputText로 동적으로 다룬다.
   const TitleSearchHandler = (event) => {
     setInputText(event.target.value);
   };
 
+  // CategoryHandler: category state 값과 병합되는 새로운 객체를 전달, name 속성의 value값 변경 handling
   const CategoryHandler = (event) => {
     const { name, value } = event.target;
     setCategory({ ...category, [name]: value });
   };
 
-  // 비동기 처리 함수 apiHandler: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리, 결과 값(movieData.Search)을 setMovies로 동적으로 다룬다.
+  // 비동기 처리 함수 apiHandler: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리, 결과 값(movieData)을 setMovies로 동적으로 다룬다.
   const apiHandler = async (event) => {
+    // 로딩 스피너 시작
     setLoading(true);
 
     try {
@@ -54,9 +54,10 @@ const SearchInput = () => {
 
         // movieData의 기본값은 page: 1
         const movieData = [];
+        // inputText의 값을 category의 title에 저장, axios 통신 때 다루기 위함
         category.title = inputText;
 
-        // selected가 20이면, Array에 page: 2 Array 요소를 push
+        // selected가 20이면, Array에 page: 2 Array 요소를 movieData 배열에 push
         for (let pageNum = 1; pageNum <= category.page / 10; pageNum++) {
           const movieObj = await axiosMovies(
             category.title,
@@ -71,32 +72,34 @@ const SearchInput = () => {
         // ` || [] `:  array.map 오류 방지
         setMovies(movieData || []);
 
-        // 검색 결과가 Truthy면 message를 빈 문자열화, Falsy(= 검색결과 없음)면 검색 결과가 없다는 문자열 출력!
-        movieData
-          ? setSearchMessage("")
-          : setSearchMessage("⚠️ 검색 결과가 없습니다.");
-
+        // 최하단에 검색 완료 메시지 출력 (무한 스크롤이 끝났을 때)
         movieData
           ? setFinishMessage("🎁 검색이 완료되었습니다!")
           : setFinishMessage("");
       }
     } catch (error) {
-      console.error(error);
+      // 오타 등 검색 결과가 없는 검색어를 입력 시
+      setSearchMessage("⚠️ 검색 결과가 없습니다.");
     }
 
     // API 통신을 마친 후, setLoading(false)로 로딩 스피너 off
     setLoading(false);
   };
 
+  // 무한 스크롤 시 fetch
   const fetch = useCallback(async (page) => {
     try {
       const { data } = await axios.get(
         `https://omdbapi.com/?apikey=7035c60c&s=${category.title}&y=${category.year}&type=${category.type}&page=${page.current}`
       );
+
+      // Response는 True or False 값을 갖기 때문에, 이에 따라 다음 페이지의 유무 확인을 동적으로 다룬다.
       setHasNextPage(data.Response);
 
+      // 서버에서 응답이 정상적으로 오면 다음 페이지로 이동하고, 현재 페이지에 검색 결과를 추가
       if (data.Response !== "False") {
         page++;
+        // 이전 state 값인 prevPosts와 서버에서 반환된 검색 결과 data.Search를 합쳐서 새로운 post 배열을 만든다.
         setPosts((prevPosts) => [...prevPosts, ...data.Search]);
       }
     } catch (err) {
@@ -105,6 +108,7 @@ const SearchInput = () => {
   }, []);
 
   useEffect(() => {
+    // target이 View에 들어오고, 다음 페이지가 존재하며, searchMessage 즉, 검색어 입력 전에 볼 수 있는 message가 존재하지 않으면 무한 스크롤 진행
     if (inView && hasNextPage && !searchMessage.length) {
       page.current++;
       fetch(page);
