@@ -40,7 +40,8 @@ const SearchInput = () => {
     setCategory({ ...category, [name]: value });
   };
 
-  // 비동기 처리 함수 apiHandler: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리, 결과 값(movieData)을 setMovies로 동적으로 다룬다.
+  // 비동기 처리 함수 apiHandler: Enter keydown시 inputText의 값을 axiosMovies의 input값으로 처리,
+  // 결과 값(movies)을 setMovies로 동적으로 다룬다.
   const apiHandler = async (event) => {
     // 로딩 스피너 시작
     setLoading(true);
@@ -48,16 +49,17 @@ const SearchInput = () => {
     try {
       // onKeyDown === Enter or OnClick === click
       if (event.key === "Enter" || event.type === "click") {
+        // 로딩 중이면, SearchMessage를 빈 문자열로 처리
         if (setLoading) setSearchMessage("");
         // 불필요한 input 공백 체크
         if (!inputText.trim()) return;
 
-        // movieData의 기본값은 page: 1
-        const movieData = [];
+        // movies의 기본값은 page: 1
+        const movies = [];
         // inputText의 값을 category의 title에 저장, axios 통신 때 다루기 위함
         category.title = inputText;
 
-        // selected가 20이면, Array에 page: 2 Array 요소를 movieData 배열에 push
+        // selected가 20이면, Array에 page: 2 Array 요소를 movies 배열에 push
         for (let pageNum = 1; pageNum <= category.page / 10; pageNum++) {
           const movieObj = await axiosMovies(
             category.title,
@@ -66,14 +68,13 @@ const SearchInput = () => {
             pageNum
           );
 
-          movieObj.Search.map((v) => movieData.push(v));
+          movieObj.Search.map((v) => movies.push(v));
         }
-
         // ` || [] `:  array.map 오류 방지
-        setMovies(movieData || []);
+        setMovies(movies || []);
 
         // 최하단에 검색 완료 메시지 출력 (무한 스크롤이 끝났을 때)
-        movieData
+        movies
           ? setFinishMessage("🎁 검색이 완료되었습니다!")
           : setFinishMessage("");
       }
