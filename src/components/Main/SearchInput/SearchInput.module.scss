@@ -1,0 +1,114 @@
+.mainSection {
+  background-color: var(--color-background);
+  .mainWrapper {
+    justify-content: center;
+    display: flex;
+    margin: 0 100px;
+    padding-top: 50px;
+
+    .inputContainer {
+      position: relative;
+      width: 50vw;
+
+      input {
+        width: 100%;
+        height: 55px;
+        border-radius: 7px;
+        background: var(--color-black);
+        color: var(--color-fontGray);
+        border: 0 none;
+        font-size: 1.3rem;
+        padding: 0 50px 0 20px;
+        border-bottom: 3px solid var(--color-white);
+      }
+      input:focus,
+      input:hover {
+        transition: 0.2s;
+        border-bottom: 3px solid var(--color-pink);
+        outline: none;
+      }
+      input::placeholder {
+        color: var(--color-fontGray);
+      }
+
+      .searchButton {
+        position: absolute;
+        right: 0;
+        top: 8px;
+        background-color: transparent;
+        border: 0;
+        .searchIcon {
+          fill: var(--color-white);
+          font-size: 36px;
+          background-color: var(--color-black);
+        }
+      }
+    }
+
+    .selectContainer {
+      display: flex;
+      margin-left: 30px;
+      gap: 20px;
+
+      select:focus,
+      select:hover {
+        transition: 0.2s;
+        border-bottom: 3px solid var(--color-pink);
+        outline: none;
+      }
+    }
+  }
+  .searchedMovies {
+    width: 100%;
+    margin: 30px auto 0;
+
+    .circularProress {
+      display: block;
+      margin: 0 auto;
+      color: var(--color-fontGray);
+    }
+
+    .moviesWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      gap: 71px;
+      justify-content: center;
+      padding: 70px 50px 200px;
+      font-size: 24px;
+      color: var(--color-fontGray);
+      .movies {
+        text-align: center;
+
+        .movie {
+          display: block;
+          width: 300px;
+          height: calc(300px * 3 / 2.1);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          background-size: 100%;
+        }
+
+        .movie:hover {
+          border-bottom: 3px solid var(--color-pink);
+          border-right: 3px solid var(--color-pink);
+        }
+
+        .movieInfo {
+          color: white;
+          font-size: 1rem;
+          // font-family: 양진체;
+          max-width: 300px;
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+.finishMessage {
+  color: var(--color-fontGray);
+  text-align: center;
+  font-size: 1.5rem;
+}

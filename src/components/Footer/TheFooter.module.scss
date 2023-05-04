@@ -1,0 +1,27 @@
+footer {
+  display: flex;
+  height: 100px;
+  position: relative;
+  transform: translateY(-10%);
+
+  .footerDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    a {
+      color: var(--color-fontGray);
+
+      .pinkSpan {
+        color: var(--color-pink);
+      }
+    }
+
+    .noUnderLine {
+      text-decoration: none;
+    }
+  }
+}

@@ -1,219 +1,241 @@
-# 🎬 영화 검색
+# 🎬 Movie API Search Page
 
-주어진 API를 활용해 '[완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!  
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
+## 👉🏻 [영화 검색은 Wutcha!]('')
 
-## 과제 수행 및 제출 방법
+<br />
 
-```
-KDT기수번호_이름  |  E.g, KDT0_ParkYoungWoong
-```
+---
 
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-1. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, `git branch KDT0_ParkYoungWoong`)
-1. 자신의 본명 브랜치에서 과제를 수행합니다.
-1. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(`main` 브랜치에 푸시하지 않도록 꼭 주의하세요, `git push origin KDT0_ParkYoungWoong`)
-1. 저장소에서 `main` 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, `main` <== `KDT0_ParkYoungWoong`)
+## ⚒️ 프로젝트 소개
 
-- `main` 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-- Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-- Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-- 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+### OMdb Api를 활용한 영화 검색 페이지 제작을 하였습니다.
 
-## 요구사항
+### 영화 검색과 정보는 영문으로만 지원됩니다.
 
-필수 요구사항은 꼭 달성해야 하는 목표로, 수정/삭제는 불가하고 추가는 가능합니다.    
-선택 요구사항은 단순 예시로, 자유롭게 추가/수정/삭제해서 구현해보세요.  
-각 요구사항은 달성 후 마크다운에서 `- [x]`로 표시하세요.  
+  <br />
+
+---
+
+## ⚙️ Stacks
+
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)
+
+### Config
+
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)  
+![WebPack](https://img.shields.io/badge/webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=white)
+
+### Development
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
+![React](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=React&logoColor=white)
+
+### Style
+
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+
+<br />
+
+---
+
+## 🖥️ 화면 구성
+
+|                                                                 메인 페이지                                                                 |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: |
+| <img width="600" alt="image" src="https://user-images.githubusercontent.com/83483378/236198695-961389e1-e950-40c3-bc32-5b39a20d7464.png" /> |
+|                                                                  검색 결과                                                                  |
+| <img width="600" alt="image" src="https://user-images.githubusercontent.com/83483378/236198453-1381e4ff-3d34-4c24-baae-e3d08bd19c01.png" /> |
+|                                                          상세 페이지 About 페이지                                                           |
+|  <img width="600" alt="image" src="https://user-images.githubusercontent.com/83483378/236199819-c4db1c99-d867-4f9e-8d3a-15cb7b645a90.png">  |
+
+<br />
+
+---
 
 ### ❗ 필수
 
-- [ ] 영화 제목으로 검색이 가능해야 합니다!
-- [ ] 검색된 결과의 영화 목록이 출력돼야 합니다!
-- [ ] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
-- [ ] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
+- [x] 영화 제목으로 검색이 가능해야 합니다!
+- [x] 검색된 결과의 영화 목록이 출력돼야 합니다!
+- [x] 단일 영화의 상세정보(제목, 개봉연도, 평점, 장르, 감독, 배우, 줄거리, 포스터 등)를 볼 수 있어야 합니다!
+- [x] 실제 서비스로 배포하고 접근 가능한 링크를 추가해야 합니다.
 
 ### ❔ 선택
 
-- [ ] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
-- [ ] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
-- [ ] 영화 목록을 검색하는 동안 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 무한 스크롤 기능을 추가해서 추가 영화 목록을 볼 수 있도록 만들어보세요.
-- [ ] 영화 포스터가 없을 경우 대체 이미지를 출력하도록 만들어보세요.
-- [ ] 영화 상세정보가 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- [ ] 영화 상세정보 포스터를 고해상도로 출력해보세요. (실시간 이미지 리사이징)
-- [ ] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
-- [ ] 영화와 관련된 기타 기능도 고려해보세요.
+- [x] 한 번의 검색으로 영화 목록이 20개 이상 검색되도록 만들어보세요.
+- [x] 영화 개봉연도로 검색할 수 있도록 만들어보세요.
+- [x] 영화 목록을 검색하는 동안 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 무한 스크롤 기능을 추가해서 추가 영화 목록을 볼 수 있도록 만들어보세요.
+- [x] 영화 포스터가 없을 경우 대체 이미지를 출력하도록 만들어보세요.
+- [x] 영화 상세정보가 출력되기 전에 로딩 애니메이션이 보이도록 만들어보세요.
+- [x] 영화 상세정보 포스터를 고해상도로 출력해보세요. (실시간 이미지 리사이징)
+- [x] 차별화가 가능하도록 프로젝트를 최대한 예쁘게 만들어보세요.
+- [x] 영화와 관련된 기타 기능도 고려해보세요.
 
-## API 기본 사용법
+<br />
 
-```curl
-curl https://omdbapi.com/?apikey=7035c60c
-  \ -X 'GET'
+---
+
+## 🔥 주요 기능 피드백
+
+<br />
+
+### 1. 영화 제목으로 검색
+
+```
+영화 정보 input 후, Enter나 Click을 통해 검색을 시도하면, apiHandler()를 실행하여 데이터 수신
+이는 setMovies를 통해 동적으로 관리
 ```
 
-## 영화 목록 검색
- 
-영화 목록은 한 번에 최대 10개까지 검색할 수 있습니다.
+<img width="515" alt="image" src="https://user-images.githubusercontent.com/83483378/236204350-12b4d717-73e7-4a32-810c-0c57af531901.png">
 
-파라미터 | 설명                   | 기본값
----|----------------------|---
-`s` | 검색할 영화 제목(필수!)       | -
-`y` | 검색할 개봉연도, 빈 값은 전체 검색 | - 
-`page` | 검색할 페이지 번호           | `1`
+<br />
 
-요청 코드 예시:
+---
 
-```js
-async function getMovies(title, year = '', page = 1) {
-  const s = `&s=${title}`
-  const y = `&y=${year}`
-  const p = `&page=${page}`
-  try {
-    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`)
-    const json = await res.json()
-    if (json.Response === 'True') {
-      const { Search: movies, totalResults } = json
-      return {
-        movies,
-        totalResults
-      }
-    }
-    return json.Error
-  } catch (error) {
-    console.log(error)
-  }
-}
+### 2. 검색된 영화 목록 출력
+
+```
+Category.jsx에서 설정해둔 조건에 따라 axios 통신으로 영화를 검색
 ```
 
-응답 데이터 타입 및 예시:
+<img width="380" alt="image" src="https://user-images.githubusercontent.com/83483378/236205426-2b2c7857-3bf1-417a-a069-8e25c7e7d3e8.png">
 
-```ts
-interface ResponseValue {
-  Search: Movie[] // 검색된 영화 목록, 최대 10개
-  totalResults: string // 검색된 영화 개수
-  Response: 'True' | 'False' // 요청 성공 여부
-}
-interface Movie {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  Poster: string // 영화 포스터 이미지 URL
-}
+<br />
+<br />
+
+<img width="421" alt="image" src="https://user-images.githubusercontent.com/83483378/236204811-80e13ee3-d83b-4305-aa45-22c1e2fc46ae.png">
+
+<br />
+
+---
+
+### 3. 영화 상세 정보
+
+```
+useParams를 통해 movieId 값을 받아와 movieId 값에 따른 axios 통신, data 객체로 반환하여 상세 정보를 반환
 ```
 
-```json
-{
-  "Search": [
-    {
-      "Title": "Frozen",
-      "Year": "2013",
-      "imdbID": "tt2294629",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Frozen II",
-      "Year": "2019",
-      "imdbID": "tt4520988",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjA0YjYyZGMtN2U0Ni00YmY4LWJkZTItYTMyMjY3NGYyMTJkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX300.jpg"
-    }
-  ],
-  "totalResults": "338",
-  "Response": "True"
-}
+<img width="518" alt="image" src="https://user-images.githubusercontent.com/83483378/236206551-4a370e38-3821-45c7-9122-65f21c3cffeb.png">
+
+<br />
+
+---
+
+### 4. 한 번의 검색으로 20개 이상의 영화 정보 가져오기
+
+```
+불러올 영화의 개수를 page, 연도를 year, 유형을 type으로 정리하고
+이 조건들을 useState()를 통해 동적으로 관리
+page 개수에 따라 for문을 통해 movies 배열에 push하여 불러올 개수를 조절
 ```
 
-## 영화 상제정보 검색
+<br />
 
-단일 영화의 상제정보를 검색합니다.
+<img width="292" alt="image" src="https://user-images.githubusercontent.com/83483378/236209005-b89a2b7a-c26d-4823-8176-8fc79ce53af4.png">
+<img width="567" alt="image" src="https://user-images.githubusercontent.com/83483378/236208444-298ccb0a-5687-4f30-af58-4388dd83f5e9.png">
 
-파라미터 | 설명 | 기본값
----|---|---
-`i` | 검색할 영화 ID(필수!) |
-`plot` | 줄거리 길이 | `short`
+<br />
+<br />
 
-요청 코드 예시:
+<img width="412" alt="image" src="https://user-images.githubusercontent.com/83483378/236208569-35a4fb10-863f-475d-93c1-f264ca6fbb6d.png">
 
-```js
-async function getMovie(id) {
-  const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`)
-  const json = await res.json()
-  if (json.Response === 'True') {
-    return json
-  }
-  return json.Error
-}
+<br />
+
+---
+
+### 5. 영화 목록을 검색하는 동안 로딩 애니메이션 구현
+
+```
+useState를 통해 loading을 동적으로 관리, 기본 값은 false
+검색 결과를 받아오는 중에는 로딩 스피너를 유지해야 하므로 setLoading(true)를 유지
+그러나 try-catch문을 벗어나게 되면 따라서 setLoading(false)로 로딩 스피너를 종료
+
+const [loading, setLoading] = useState(false);
 ```
 
-응답 데이터 타입 및 예시:
+<br />
 
-```ts
-interface ResponseValue {
-  Title: string // 영화 제목
-  Year: string // 영화 개봉연도
-  Rated: string // 영화 등급
-  Released: string // 영화 개봉일
-  Runtime: string // 영화 상영시간
-  Genre: string // 영화 장르
-  Director: string // 영화 감독
-  Writer: string // 영화 작가
-  Actors: string // 영화 출연진
-  Plot: string // 영화 줄거리
-  Language: string // 영화 언어
-  Country: string // 영화 제작 국가
-  Awards: string // 영화 수상 내역
-  Poster: string // 영화 포스터 이미지 URL
-  Ratings: Rating[] // 영화 평점 정보
-  Metascore: string // 영화 메타스코어
-  imdbRating: string // 영화 IMDB 평점
-  imdbVotes: string // 영화 IMDB 투표 수
-  imdbID: string // 영화 고유 ID
-  Type: string // 영화 타입
-  DVD: string // 영화 DVD 출시일
-  BoxOffice: string // 영화 박스오피스
-  Production: string // 영화 제작사
-  Website: string // 영화 공식 웹사이트
-  Response: string // 요청 성공 여부
-}
-interface Rating { // 영화 평점 정보
-  Source: string // 평점 제공 사이트
-  Value: string // 평점
-}
+---
+
+### 6. 무한 스크롤 기능 추가
+
+<img width="919" alt="image" src="https://im5.ezgif.com/tmp/ezgif-5-fab64b550c.gif">
+
+<br />
+
+사용한 라이브러리 [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer)
+
+```
+검색 결과가 있으면(data.Response가 Truty면) setPosts 함수를 사용하여 현재 페이지의 검색 결과를 posts 배열에 추가.
+이전 posts 배열과 서버에서 반환된 data.Search 배열을 합함.
 ```
 
-```json
-{
-  "Title": "Frozen",
-  "Year": "2013",
-  "Rated": "PG",
-  "Released": "27 Nov 2013",
-  "Runtime": "102 min",
-  "Genre": "Animation, Adventure, Comedy",
-  "Director": "Chris Buck, Jennifer Lee",
-  "Writer": "Jennifer Lee, Hans Christian Andersen, Chris Buck",
-  "Actors": "Kristen Bell, Idina Menzel, Jonathan Groff",
-  "Plot": "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather co...",
-  "Language": "English, Norwegian",
-  "Country": "United States",
-  "Awards": "Won 2 Oscars. 82 wins & 60 nominations total",
-  "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg",
-  "Ratings": [
-    { "Source": "Internet Movie Database",  "Value": "7.4/10" },
-    { "Source": "Rotten Tomatoes", "Value": "90%" },
-    { "Source": "Metacritic", "Value": "75/100" }
-  ],
-  "Metascore": "75",
-  "imdbRating": "7.4",
-  "imdbVotes": "620,489",
-  "imdbID": "tt2294629",
-  "Type": "movie",
-  "DVD": "18 Mar 2014",
-  "BoxOffice": "$400,953,009",
-  "Production": "N/A",
-  "Website": "N/A",
-  "Response": "True"
-}
+<img width="919" alt="image" src="https://user-images.githubusercontent.com/83483378/236242060-1821b68c-ea30-4288-931d-5934ae7443a4.png">
+
+<br />
+
+---
+
+### 7. 영화 포스터가 없을 경우 대체 이미지를 출력
+
 ```
+altImage는 movie.Poster의 값이 "N/A"일 때 대체 이미지로 사용.
+즉, 만약 movie.Poster의 값이 "N/A"라면, 대신 altImage의 이미지를 background로 사용
+```
+
+<img width="919" alt="image" src="https://user-images.githubusercontent.com/83483378/236248666-158109e5-b9fc-463e-a2f4-88751c39fab7.png">
+
+<br />
+
+---
+
+### 8. 영화 상세정보가 출력되기 전에 로딩 애니메이션 구현
+
+<img width="919" alt="image" src="https://im5.ezgif.com/tmp/ezgif-5-d9e36df229.gif">
+
+```
+axios 통신 전에 보여질 스켈레톤을 구현해야 하므로, bigPoster에 조건을 걸었다.
+Poster가 Falsy면 Skelton을 랜딩하고, Truthy면 상세정보가 출력될 준비가 되었으므로 정상적으로 Poster를 출력함.
+```
+
+<img width="919" alt="image" src="https://user-images.githubusercontent.com/83483378/236250431-9f5691a3-9534-4571-bb69-64f046837080.png
+">
+
+<br />
+
+---
+
+### 9. 영화 상세정보 포스터를 고해상도로 출력
+
+<br />
+
+- replace 메소드를 통해 Poster 리사이징
+
+```
+const bigPoster = movie.Poster ? movie.Poster.replace("SX300", "SX500") : "";
+```
+
+<br />
+
+---
+
+## 🌵 셀프 피드백
+
+- 제시된 예제가 있어 큰 틀을 벗어나진 않았지만, 최대한 직접 만들어보려 노력하였습니다.
+- 처음으로 scss를 이용해 스타일링을 해보았고, 모듈화 또한 처음 경험해보았습니다.
+- 비록 라이브러리를 이용하였지만, 무한 스크롤을 구현하면서 리액트를 더 공부할 수 있었습니다.
+- 더욱이 React 학습을 심도있게 해야함을 느꼈습니다.
+- 상세한 README 작성을 통해 다시 회고하며 복습할 수 있도록 정리하였습니다.
+
+<br />
+
+---
+
+## 💧 아쉬운 점
+
+- 비교적 동적인 페이지를 만들 지 못했습니다.
+- API 호출을 다루는 방식이 서툴렀다고 생각합니다.
+- 세세하게 컴포넌트를 나누지 못한 것 같아, 다소 난잡하게 보이는 JSX가 있습니다.
+- props를 더 적극적으로 활용하지 못한 아쉬움이 있습니다.
