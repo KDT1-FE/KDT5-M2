@@ -86,7 +86,7 @@ const Info = () => {
           <Stack
             flexGrow={7}
             flexWrap="wrap"
-            overflow="scroll"
+            overflow="auto"
             sx={{
               fontWeight: 'light',
               letterSpacing: 1,
