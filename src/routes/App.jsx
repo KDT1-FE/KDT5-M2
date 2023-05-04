@@ -27,7 +27,6 @@ export default function App() {
         }
       )
       const { Search } = await res.json()
-      console.log(Search)
       // 빈 배열과 호출한 내용의 배열을 concat 메소드로 병합
       results = results.concat(Search)
     }
@@ -48,12 +47,12 @@ export default function App() {
         setLoading(true)
         // getMovies 함수 내에 setLoading을 전달해 fetch가 끝난 시점에 로딩화면을 끝내도록 함
         const searchResults = await getMovies(searchValue, setLoading)
-        // 검색한 결과가 나오면 해당 배열을 movies에 입력
-        if (searchResults && searchResults.length > 0) {
-          setMovies(searchResults)
-          // 검색한 결과가 나오지 않으면 movies에 빈 배열 입력
-        } else {
+        // 검색한 결과가 나오지 않으면 movies에 빈 배열 입력
+        if (searchResults.includes(undefined)) {
           setMovies([])
+          // 검색한 결과가 나오면 해당 배열을 movies에 입력
+        } else {
+          setMovies(searchResults)
         }
         //catch 구문으로 에러가 날 경우 빈 배열을 반환하고 에러문구를 콘솔창에 띄움
         //상기 else 구문으로 인에 검색에서 에러가 나는 상황은 나오지 않을것으로 예상

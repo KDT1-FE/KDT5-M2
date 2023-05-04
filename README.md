@@ -57,4 +57,3 @@
 1. App 내에 fetch 함수가 있음에도 MovieInfo 내에도 별도의 fetch 함수를 중복 작성한 점
 1. MovieSearch의 select를 분리하려 했으나 Props Drilling으로 인해 데이터 관리가 복잡해지는 문제로 못한 점
 1. Top 컴포넌트들이 대부분 비슷하게 생겼음에도 여러개로 나누어 관리하는 점
-1. 검색 결과가 없을 시 MovieList가 빈 배열에서 데이터를 찾다가 에러가 나는걸 해결 못한 점
