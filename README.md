@@ -1,9 +1,8 @@
 # 영화 검색 프로젝트
-[결과물](https://pildrum-movie-app.netlify.app/)
+[결과물](https://pildrum-movie-app.netlify.app/)  
 [Github](https://github.com/pildrums/KDT5-M2)
 
 ### 아쉬운 점
-- 무한 스크롤 시 첫번째로 렌더링된 영화 리스트가 중복되서 렌더링된 점
 - 연도 검색 구현하지 못한 점
 - 영화 정보를 눌렀을 때 라우팅을 조금 더 구체적으로 찾아가게 하지 못한 점
 
