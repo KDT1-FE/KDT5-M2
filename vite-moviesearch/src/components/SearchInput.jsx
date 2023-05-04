@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 export default function SearchInput(props) {
-  const { inputText, setInputText, pressEnterKey } = props
+  const { inputText, setInputText, pressEnterKey } = props;
 
   return (
     <>
@@ -10,9 +10,9 @@ export default function SearchInput(props) {
         type="text"
         placeholder="Search for Movies, series & more"
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
-        onKeyDown={e => e.key === 'Enter' && pressEnterKey()}
+        onChange={(e) => setInputText(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && pressEnterKey()}
       />
     </>
-  )
+  );
 }

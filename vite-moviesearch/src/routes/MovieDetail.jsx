@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom'
-import MovieInfo from '~/components/MovieInfo'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { useParams } from "react-router-dom";
+import MovieInfo from "~/components/MovieInfo";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function MovieDetail() {
-  const { movieId } = useParams()
+  const { movieId } = useParams();
 
   return (
     <>
@@ -14,5 +14,5 @@ export default function MovieDetail() {
 
       <Footer />
     </>
-  )
+  );
 }
