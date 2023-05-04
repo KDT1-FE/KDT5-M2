@@ -1,6 +1,6 @@
 # 🎬 Movie API Search Page
 
-## 👉🏻 [영화 검색은 Wutcha!]('https://wutcha.netlify.app/')
+## 👉🏻  [영화 검색은 Wutcha!](https://wutcha.netlify.app/)
 
 <br />
 
