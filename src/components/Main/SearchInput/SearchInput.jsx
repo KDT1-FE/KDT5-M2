@@ -45,7 +45,6 @@ const SearchInput = () => {
   const apiHandler = async (event) => {
     // 로딩 스피너 시작
     setLoading(true);
-
     try {
       // onKeyDown === Enter or OnClick === click
       if (event.key === "Enter" || event.type === "click") {
