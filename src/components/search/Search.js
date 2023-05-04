@@ -35,8 +35,11 @@ function Search() {
     try {
       setLoading(true);
       const movieData = await getMovies(title, type, year, pagination);
-      setMovies(movieData);
+      setMovies(movieData || []);
       setMore(pagination + 1);
+      if (movieData === undefined) {
+        setMessage("검색결과가 없습니다.");
+      }
     } catch (e) {
       console.error(e);
     } finally {
@@ -106,11 +109,14 @@ function Search() {
         ) : (
           <SearchList>
             {message}
-            {movies.map((movie, index) => (
-              <>
-                <SearchItem key={index} movie={movie} />
-              </>
+            {movies.map((movie) => (
+              <SearchItem key={movie.imdbID} movie={movie} />
             ))}
+            {isMoreLoading && (
+              <LoadingLayout>
+                <Loading />
+              </LoadingLayout>
+            )}
           </SearchList>
         )}
       </SearchResult>
@@ -182,6 +188,11 @@ const SearchList = styled.ul`
   @media all and (min-width: 320px) and (max-width: 1024px) {
     padding: 20px;
   }
+`;
+
+const LoadingLayout = styled.div`
+  width: inherit;
+  margin: 20px auto;
 `;
 
 export default memo(Search);
