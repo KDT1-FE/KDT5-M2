@@ -42,6 +42,7 @@ const MovieDetail = () => {
     detailMovies(movieId);
   }, [movieId]);
 
+  // 포스터 사진 리사이징
   const bigPoster = movie.Poster ? movie.Poster.replace("SX300", "SX500") : "";
 
   return (

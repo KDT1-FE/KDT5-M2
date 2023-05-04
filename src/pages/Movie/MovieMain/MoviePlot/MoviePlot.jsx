@@ -18,13 +18,14 @@ const MoviePlot = () => {
     detailMovies(movieId);
   }, [movieId]);
 
-  const tempSk = movie.Plot ? movie.Plot.length : "";
+  // api 호출 전이라면 삼항연산자의 값은 false이기 때문에, isPlot 변수에 false boolean값을 저장
+  const isPlot = movie.Plot ? movie.Plot.length : "";
 
   return (
     <>
       <article className={styles.mainArticle}>
         <div className={styles.detailInfo}>
-          {tempSk.length === 0 ? (
+          {isPlot.length === 0 ? (
             <Skeleton
               variant="rounded"
               sx={{ bgcolor: "grey.900" }}
@@ -53,7 +54,7 @@ const MoviePlot = () => {
           )}
         </div>
         <div className={styles.articleWrapper}>
-          {tempSk.length === 0 ? (
+          {isPlot.length === 0 ? (
             <Skeleton
               variant="rounded"
               sx={{ bgcolor: "grey.900" }}
