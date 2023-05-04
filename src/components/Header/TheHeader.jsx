@@ -9,20 +9,24 @@ const TheHeader = () => {
         <NavLink to="/" className={styles.navWutcha}>
           WUTCHA
         </NavLink>
-      </nav>
-      <nav>
+
         <a href="/" className={styles.navHome}>
           홈
         </a>
-      </nav>
-      <nav>
+
         <NavLink to="/movie/main/tt2194499" className={styles.navMovie}>
           영화
         </NavLink>
-      </nav>
-      <nav>
+
         <NavLink to="/about" className={styles.navAbout}>
-          더보기
+          나의 정보
+        </NavLink>
+
+        <NavLink to="/about" className={styles.navAccount}>
+          <img
+            src="https://avatars.githubusercontent.com/u/83483378?v=4"
+            alt="user "
+          />
         </NavLink>
       </nav>
     </header>
