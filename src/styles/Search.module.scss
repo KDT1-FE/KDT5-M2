@@ -48,6 +48,7 @@
 }
 
 ul {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -56,6 +57,7 @@ ul {
   background-color: $light-gray;
   min-height: 150px;
   padding: 20px 30px;
+  overflow: hidden;
 
   li {
     flex-shrink: 0;

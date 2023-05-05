@@ -63,3 +63,42 @@ a.btn.active {
   object-fit: cover;
   transition: 0.3s;
 }
+
+.intersection {
+  position: absolute;
+  top: 1000px;
+  bottom: 0;
+  right: 50px;
+  height: 100%;
+  z-index: 9;
+}
+.topBtn {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 100px;
+  right: 30px;
+  width: 100px;
+  transform: translateX(150px);
+  transition: 0.3s;
+  margin-bottom: 10px;
+  button {
+    outline: none;
+    border: none;
+    height: 80px;
+    width: 80px;
+    font-size: 25px;
+    line-height: 1;
+    border-radius: 50%;
+    background-color: $omdb-yellow;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  .total {
+    font-size: 20px;
+  }
+}

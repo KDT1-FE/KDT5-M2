@@ -6,6 +6,7 @@ import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
 import SkeletonSearch from '~/components/SkeletonSearch';
+import TopBtn from '../components/TopBtn';
 
 export default function Search() {
   const [title, setTitle] = useState('');
@@ -18,6 +19,7 @@ export default function Search() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
+  const [total, setTotal] = useState(0);
   let hasNext = true;
 
   const { type, page, years = years === 'All years' ? null : years } = options;
@@ -27,8 +29,9 @@ export default function Search() {
     try {
       setIsLoading(true);
       hasNext = true;
-      const movies = await fetchMovies(title, type, years, num);
+      const [movies, total] = await fetchMovies(title, type, years, num);
       setLists(movies);
+      setTotal(total);
       setMore(num + 1);
     } catch (err) {
       alert(err);
@@ -40,7 +43,7 @@ export default function Search() {
     let num = parseInt(page / 10);
     try {
       setIsClick(true);
-      const movies = await fetchMovies(
+      const [movies] = await fetchMovies(
         title,
         type,
         years,
@@ -116,6 +119,7 @@ export default function Search() {
         </form>
 
         <ul>
+          {lists.length ? <TopBtn total={total} page={lists.length} /> : null}
           {!isLoading ? (
             lists.map((list) => {
               const img =
