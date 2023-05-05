@@ -1,0 +1,19 @@
+.material-symbols-outlined {
+  font-size: 40px;
+}
+.flip {
+  width: 400px;
+  height: 400px;
+  perspective: 1100px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+.flip:hover .card {
+  transform: rotateY(180deg);
+}
