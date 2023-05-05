@@ -1,8 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Main.css";
+import axios from "axios";
+import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 
 const Main = () => {
-  const fetchMovie = () => {};
+  const [movie, setMovie] = useState([]);
+  const [title, setTitle] = useState("");
+  const navigate = useNavigate();
+  const { id } = useParams(movie.imdbID);
+
+  const changeText = (e) => {
+    // console.log("e:", e);
+    setTitle(e.target.value);
+  };
+  // const getMovie = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .get(`https://omdbapi.com/?apikey=7035c60c&s=${text}`)
+  //     .then((response) => {
+  //       console.log("response:", response);
+  //       setMovie(response.data.Search);
+  //     });
+  // };
+
+  // async function getMovies(title, year = '', page = 1) {
+  //   const s = `&s=${title}`
+  //   const y = `&y=${year}`
+  //   const p = `&page=${page}`
+  //   try {
+  //     const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`)
+  //     const json = await res.json()
+  //     if (json.Response === 'True') {
+  //       const { Search: movies, totalResults } = json
+  //       return {
+  //         movies,
+  //         totalResults
+  //       }
+  //     }
+  //     return json.Error
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  async function getMovie() {
+    try {
+      const res = await fetch(
+        `https://omdbapi.com/?apikey=7035c60c&s=${title}`
+      );
+      const json = await res.json();
+
+      console.log("json:", json);
+      setMovie(json.Search);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -24,7 +78,9 @@ const Main = () => {
           <input
             className="search"
             type="search"
-            placeholder="Search for Movies, 1086 & more"
+            placeholder="Search for Movies, Series & more"
+            value={title}
+            onChange={changeText}
           />
           <select name="option" id="" className="option">
             <option value="movie">movie</option>
@@ -78,10 +134,22 @@ const Main = () => {
             <option value="2022">2022</option>
             <option value="2023">2023</option>
           </select>
-          <button className="apply">Apply</button>
+          <button className="apply" onClick={getMovie}>
+            Apply
+          </button>
         </div>
         <div className="shows">
           <p>Search for the movie title!</p>
+          {movie?.map((value, index) => {
+            return (
+              <img
+                src={value.Poster}
+                alt="movie poster"
+                key={index}
+                onClick={() => navigate(`/detail/${value.imdbID}`)}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
