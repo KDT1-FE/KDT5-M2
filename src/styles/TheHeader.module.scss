@@ -1,0 +1,13 @@
+@import 'Common.scss';
+
+.active {
+  color: var(--white);
+  background-color: var(--orange);
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
