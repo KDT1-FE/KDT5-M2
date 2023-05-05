@@ -217,3 +217,4 @@ interface Rating { // 영화 평점 정보
   "Response": "True"
 }
 ```
+js 부분이 아직 많이 부족해서 최대한 강의 보면서 만들었습니다 !
