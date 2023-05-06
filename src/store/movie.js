@@ -23,24 +23,27 @@ export async function requestAll(searchText, year = '', page = 1) {
   if (page === 1) {
     store.state.movies = []
   }
+
   const { data } = await axios({
     url: `https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`,
     method: 'GET'
   })
+  //로딩끝
+  store.state.loading = false
+
   if (data.Response === 'True') {
+    store.state.pageMax = data.totalResults < 20 ? 1 : Math.ceil(data.totalResults / 10)
+
     const movies = data.Search.map(movie => {
       return { imdbID: movie.imdbID, title: movie.Title, year: movie.Year, poster: movie.Poster }
     })
     store.state.movies = [...store.state.movies, ...movies]
-    
   }
 }
 
 //영화 전체 페이지 계산
 export async function totalPages(page) {
   await requestAll(store.state.searchText, store.state.year, page)
-  Math.state.pageMax.ceil(totalResults / 10)
-  store.state.loading = false
 }
 
 //영화 상세 페이지 정보
@@ -50,7 +53,7 @@ export async function getMovieDetails(id) {
     const res = await axios(`https://omdbapi.com/?apikey=7035c60c${i}&plot=full`)
     store.state.movie = res.data
   } catch (error) {
-    console.log('getNovieDetails:', error)
+    console.log('getMovieDetails:', error)
   }
 }
 
