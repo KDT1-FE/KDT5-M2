@@ -29,7 +29,7 @@ export default class MovieList extends Component {
     <a class="movie_title">${movie.title}</a>
     <a class="movie_year">${movie.year}</a>
     </span>
-    <img src="${movie.poster}" alt="${movie.title}">
+    <img src="${movie.poster}" alt="이미지를 불러올 수 없습니다.">
   `
       moviesEl.append(movieEl)
     })

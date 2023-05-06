@@ -23,21 +23,24 @@ export async function requestAll(searchText, year = '', page = 1) {
   if (page === 1) {
     store.state.movies = []
   }
-
-  const { data } = await axios({
-    url: `https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`,
-    method: 'GET'
-  })
-  //로딩끝
-  store.state.loading = false
-
-  if (data.Response === 'True') {
-    store.state.pageMax = data.totalResults < 20 ? 1 : Math.ceil(data.totalResults / 10)
-
-    const movies = data.Search.map(movie => {
-      return { imdbID: movie.imdbID, title: movie.Title, year: movie.Year, poster: movie.Poster }
+  try {
+    const { data } = await axios({
+      url: `https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`,
+      method: 'GET'
     })
-    store.state.movies = [...store.state.movies, ...movies]
+    //로딩끝
+    store.state.loading = false
+
+    if (data.Response === 'True') {
+      store.state.pageMax = data.totalResults < 20 ? 1 : Math.ceil(data.totalResults / 10)
+
+      const movies = data.Search.map(movie => {
+        return { imdbID: movie.imdbID, title: movie.Title, year: movie.Year, poster: movie.Poster }
+      })
+      store.state.movies = [...store.state.movies, ...movies]
+    }
+  } catch (error) {
+    console.log('requestAll:', error)
   }
 }
 

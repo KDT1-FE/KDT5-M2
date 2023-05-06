@@ -4,10 +4,10 @@ import movieStore, { totalPages } from '~/store/movie.js'
 export default class MovieListMore extends Component {
   constructor() {
     super({})
-    //동작안함
     movieStore.subscribe('pageMax', () => {
       const { page, pageMax } = movieStore.state
-      pageMax > page ? this.el.classList.remove('hide') : this.el.classList.add('hide')
+      pageMax <= page ? this.el.classList.remove('hide') : this.el.classList.add('hide')
+      console.log(pageMax, page)
     })
   }
   render() {
@@ -16,8 +16,9 @@ export default class MovieListMore extends Component {
       <button class="btn view_more hide">View more..</button>
     `
 
-    const btnClickHandler = async(page) => {
-      await totalPages(movieStore.state.page + 1)
+    const btnClickHandler = async (page) => {
+      movieStore.state.page += 1
+      await totalPages(movieStore.state.page)
     }
     this.el.addEventListener('click', btnClickHandler)
   }
