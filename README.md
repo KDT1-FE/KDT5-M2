@@ -1,7 +1,7 @@
 # 🎬 영화 검색
 
 [완성 예시](https://stupefied-hodgkin-d9d350.netlify.app/)<br>
-[결과물]
+[결과물](https://movie-m2.vercel.app/#/)
 
 ### ❗ 필수
 
