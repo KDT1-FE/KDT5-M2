@@ -221,7 +221,7 @@ body {
           width: $width;
           height: calc($width * 3 / 2);
           border-radius: 5px;
-          background-color: $dark_green;
+          background-color: #cccccc;
           background-size: cover;
           overflow: hidden;
           position: relative;
@@ -255,8 +255,14 @@ body {
               font-weight: 500;
             }
             .movie_year {
-              color: $primary1;
+              color: $primary2;
+              font-weight: 500;
             }
+          }
+          img {
+            width: 100%;
+            background-size: 200px 100px;
+            background-repeat: repeat;
           }
         }
       }
@@ -336,16 +342,24 @@ body {
             font-size: 20px;
             font-family: 'Kanit', sans-serif;
             margin: 24px 0 6px;
+
             border-bottom: 0.5px solid $primary1;
             line-height: 1.6;
           }
-          p {
-            font-weight: 100;
+          div {
+            p {
+              font-weight: 500;
+            }
+            img {
+              height: 20px;
+              padding-top: 10px;
+            }
           }
         }
       }
     }
   }
+  //About page container랑 같은 뎁스
   .about {
     font-family: 'Kanit', sans-serif;
     .photo {

@@ -1,5 +1,6 @@
 import { Component } from '~/core/coreComps.js'
 import movieStore, { getMovieDetails } from '~/store/movie.js'
+import noImage from '/static/noimages.png'
 
 export default class Movie extends Component {
   constructor() {
@@ -19,12 +20,19 @@ export default class Movie extends Component {
     `
 
     await getMovieDetails(history.state.id)
-    // console.log(movieStore.state.movie)
+    console.log(movieStore.state.movie)
     const { movie } = movieStore.state
-    const bigPoster = movie.Poster.replace('SX300', 'SX700')
+    let bigPoster = ''
+
+    if (movie.Poster === 'N/A') {
+      bigPoster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/No_Preview_image_2.png/1200px-No_Preview_image_2.png?20200726064257' 
+    } else {
+      bigPoster = movie.Poster.replace('SX300', 'SX700')
+    }
+
     this.el.innerHTML = `
       <div style="background-image: url(${bigPoster})"
-      class="poster"></div>
+      class="poster" ></div>
       <div class="specs">
         <div class="title ">
           ${movie.Title}
@@ -41,7 +49,25 @@ export default class Movie extends Component {
           <div class="info">
             <h3>Ratings</h3>
             ${movie.Ratings.map(rating => {
-              return `<p>${rating.Source} - ${rating.Value}</p>`
+              let imageUrl = ''
+              switch (rating.Source) {
+                case 'Internet Movie Database':
+                  imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg'
+                  break
+                case 'Rotten Tomatoes':
+                  imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/6/6f/Rotten_Tomatoes_logo.svg'
+                  break
+                case 'Metacritic':
+                  imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/c/ce/Metacritic_logo_original.svg'
+                  break
+                default:
+                  imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/No_Preview_image_2.png/1200px-No_Preview_image_2.png?20200726064257'
+              }
+              return `<div>
+              <img src="${imageUrl}" alt="${rating.Source}">
+              <p>${rating.Source} : ${rating.Value}</p>
+              </div>
+              `
             }).join('')}
           </div>
           <div class="info">
@@ -54,11 +80,11 @@ export default class Movie extends Component {
           </div>
           <div class="info">
             <h3>Production</h3>
-            <p><${movie.Production}/p>
+            <p>${movie.Production}</p>
           </div>
           <div class="info">
             <h3>Genre</h3>
-            <p><${movie.Genre}/p>
+            <p>${movie.Genre}</p>
           </div>
       </section>    
       </div>
