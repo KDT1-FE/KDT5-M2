@@ -1,6 +1,6 @@
 # 🎬 영화 검색
 
-'[완성 사이트](https://warm-bienenstitch-18f568.netlify.app/#/)'
+'[완성 사이트](https://omdbapikse.netlify.app)'
 
 ## 사용한 프로그램
 

@@ -25,7 +25,7 @@ export default class Movie extends Component {
     let bigPoster = ''
 
     if (movie.Poster === 'N/A') {
-      bigPoster = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/No_Preview_image_2.png/1200px-No_Preview_image_2.png?20200726064257' 
+      bigPoster = 'https://example.com/default-poster.jpg' 
     } else {
       bigPoster = movie.Poster.replace('SX300', 'SX700')
     }
