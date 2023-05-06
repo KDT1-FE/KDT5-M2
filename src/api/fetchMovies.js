@@ -8,6 +8,7 @@ export default async function fetchMovies(title, type, years, num, i = 1) {
     );
     const json = await res.json();
     if (json.Response === 'False') throw new Error(json.Error);
+
     movies = [...movies, ...json.Search];
     total = json.totalResults;
   }

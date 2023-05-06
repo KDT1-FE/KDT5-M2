@@ -6,21 +6,21 @@ import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
 import SkeletonSearch from '~/components/SkeletonSearch';
-import TopBtn from '../components/TopBtn';
+import TopBtn from '~/components/TopBtn';
 
 export default function Search() {
   const [title, setTitle] = useState('');
-  const [lists, setLists] = useState([]);
-  const [more, setMore] = useState(0);
   const [options, setOptions] = useState({
     type: null,
     page: '10',
     years: null,
   });
+  const [lists, setLists] = useState([]);
+  const [more, setMore] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const [total, setTotal] = useState(0);
-  let hasNext = true;
+  const [hasNext, setHasNext] = useState(true);
 
   const { type, page, years = years === 'All years' ? null : years } = options;
   async function getList(e) {
@@ -28,12 +28,14 @@ export default function Search() {
     let num = parseInt(page) / 10;
     try {
       setIsLoading(true);
-      hasNext = true;
+      setMore(0);
+      setHasNext(true);
       const [movies, total] = await fetchMovies(title, type, years, num);
       setLists(movies);
       setTotal(total);
       setMore(num + 1);
     } catch (err) {
+      setHasNext(false);
       alert(err);
     } finally {
       setIsLoading(false);
@@ -53,9 +55,8 @@ export default function Search() {
       setLists([...lists, ...movies]);
       setMore(more + num);
     } catch (err) {
-      hasNext = false;
+      setHasNext(false);
       alert(err);
-      console.log(hasNext);
     } finally {
       setIsClick(false);
     }
@@ -81,7 +82,7 @@ export default function Search() {
     return () => {
       io.disconnect();
     };
-  }, [more]);
+  }, [more, hasNext]);
 
   return (
     <div className="container">
@@ -121,25 +122,27 @@ export default function Search() {
         <ul>
           {lists.length ? <TopBtn total={total} page={lists.length} /> : null}
           {!isLoading ? (
-            lists.map((list) => {
-              const img =
-                list.Poster !== 'N/A'
-                  ? list.Poster
-                  : '/assets/no-poster-available.webp';
-              return (
-                <li key={list.imdbID}>
-                  <NavLink to={`/movie/${list.imdbID}`}>
-                    <figure>
-                      <img src={img} alt={list.Title} className="card-img" />
-                      <figcaption>
-                        <div className="yellow">{list.Year}</div>
-                        <div>{list.Title}</div>
-                      </figcaption>
-                    </figure>
-                  </NavLink>
-                </li>
-              );
-            })
+            <>
+              {lists.map((list) => {
+                const img =
+                  list.Poster !== 'N/A'
+                    ? list.Poster
+                    : '/assets/no-poster-available.webp';
+                return (
+                  <li key={list.imdbID}>
+                    <NavLink to={`/movie/${list.imdbID}`}>
+                      <figure>
+                        <img src={img} alt={list.Title} className="card-img" />
+                        <figcaption>
+                          <div className="yellow">{list.Year}</div>
+                          <div>{list.Title}</div>
+                        </figcaption>
+                      </figure>
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </>
           ) : (
             <SkeletonSearch />
           )}

@@ -6,14 +6,11 @@ export default function TopBtn({ total, page }) {
     const io = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log('hi');
         entry.target.children[0].style.transform = 'translate(0)';
       } else {
-        console.log('bye');
         entry.target.children[0].style.transform = 'translate(150px)';
       }
     }, {});
-    console.log(total);
     io.observe(target.current);
   }, []);
   return (
