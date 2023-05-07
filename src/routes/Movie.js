@@ -21,14 +21,14 @@ export default class Movie extends Component {
     const bigPoster = movie.Poster.replace('SX300', 'SX700')
 
 
-    // <!-- 상세 페이지 내에서의 대체 이미지 -->
+     <!-- 상세 페이지 내에서의 대체 이미지 -->
     this.el.innerHTML = /* html */`
       <div 
       style="background-image: url(${bigPoster}), 
       url('https://www.freeiconspng.com/uploads/no-image-icon-8.png')" 
       class="poster">
       </div>
-    // <!-- 상세 페이지 내에서의 대체 이미지 -->
+     <!-- 상세 페이지 내에서의 대체 이미지 -->
 
 
 
