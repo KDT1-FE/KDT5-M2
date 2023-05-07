@@ -4,14 +4,7 @@ import movieStore, { getMovieDetails } from '../store/movie'
 export default class Movie extends Component {
   async render() {
     this.el.classList.add('container', 'the-movie')
-    this.el.innerHTML = `
-      <div class="poster skeleton"></div>
-      <div class="specs">
-        <div class="title skeleton"></div>
-        <div class="skeleton"></div>
-        <div class="plot skeleton"></div>
-      </div>
-    `
+    
     await getMovieDetails(history.state.id)
     console.log(movieStore.state.movie)
     const { movie } = movieStore.state
