@@ -1,6 +1,6 @@
 # 🎬 영화 검색
 
-주어진 API를 활용해 '[완성본](https://amdb-movie-3448pes1r-saeyeonkim.vercel.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!
+주어진 API를 활용해 '[완성본](https://amdb-movie-bp5dp881b-saeyeonkim.vercel.app/)' 처럼 자유롭게 영화 검색 기능을 구현해보세요!
 
 ### ❗ 필수
 
