@@ -1,7 +1,7 @@
 # 🎬 OMDb API 영화 검색
 [OMDb API](https://www.omdbapi.com/)를 활용하여 영화 검색 페이지를 구현하였습니다.
 
-<br />https://www.omdbapi.com/
+<br />
 
 ## 프로젝트 소개
 > **패스트캠퍼스 프론트엔드 개발 부트캠프 5기**<br />
