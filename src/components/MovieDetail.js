@@ -24,7 +24,11 @@ export default class Movie extends Component {
 
     this.el.innerHTML = /*HTML*/ `
       <div class="modal">
-        <button class="btn-close">X</button>
+        <button class="btn-close">
+          <span class="material-symbols-outlined">
+            close
+          </span>
+        </button>
         <div class="wrap hide">
           <div class="poster-wrap"></div>
           <div class="specs">
@@ -80,9 +84,8 @@ export default class Movie extends Component {
         wrap.classList.remove('hide')
 
         const ratingsWrap = this.el.querySelector('.ratings-wrap')
-        console.log('에러', movie.Ratings)
         ratingsWrap.innerHTML = `
-          ${movie.Ratings.map(rating => {
+          ${movie.Ratings?.map(rating => {
             return /*HTML*/ `
               <div class="ratings">
                 <div class="ratings-logo">

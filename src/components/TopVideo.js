@@ -1,26 +1,20 @@
 import { Component } from '../core/core'
-import { register } from 'swiper/element/bundle'
 import movieStore, { getMovieDetails } from '../store/movie'
 import recommendStore from '../store/recommend'
 
-export default class BigSlide extends Component {
+export default class TopVideo extends Component {
   render() {
-    this.el.classList.add('big-slide')
+    this.el.classList.add('video-container')
 
-    this.el.innerHTML = /*HTML*/ `
-      <swiper-container loop="true" autoplay-disable-on-interaction="false" autoplay-delay="2000" >
-      </swiper-container>
-    `
+    const fetchData = async () => {
+      const newmovie = { ...recommendStore.state.newmovies }
 
-    const swipercontainer = this.el.querySelector('swiper-container')
-
-    recommendStore.state.newmovies.forEach(async newmovie => {
-      await getMovieDetails(newmovie.id)
+      await getMovieDetails(newmovie[2].id)
       const { movie } = movieStore.state
-      const slide = document.createElement('swiper-slide')
-      slide.innerHTML = /*HTML*/ `
+
+      this.el.innerHTML = /*HTML*/ `
         <div class="player">
-          <video autoplay muted >
+          <video autoplay loop muted>
             <source src="./resource/${movie.imdbID}.mp4" />
           </video>
           <div class="player-controls">
@@ -40,8 +34,15 @@ export default class BigSlide extends Component {
           </div>
         </div>
       `
-      swipercontainer.append(slide)
-      register()
-    })
+      const moreButton = this.el.querySelector('.btn-more')
+      moreButton.addEventListener('click', () => {
+        movieStore.state.movie = {}
+        movieStore.state.contents = false
+        movieStore.state.modal = true
+        movieStore.state.movie = movie
+        movieStore.state.contents = true
+      })
+    }
+    fetchData()
   }
 }

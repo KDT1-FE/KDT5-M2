@@ -26,7 +26,7 @@ export const searchMovies = async page => {
   }
   try {
     const res = await fetch(
-      `https://omdbapi.com?apikey=14c167f8&s=${store.state.searchText}&y=${store.state.searchYear}&page=${page}`
+      `https://omdbapi.com?apikey=14c167f8&s=${store.state.searchText}&y=${store.state.searchYear}&page=${store.state.page}`
     )
     const { Search, totalResults, Response, Error } = await res.json()
     if (Response === 'True') {
@@ -34,6 +34,7 @@ export const searchMovies = async page => {
       store.state.pageMax = Math.ceil(Number(totalResults) / 10)
     } else {
       store.state.message = Error
+      store.state.pageMax = 1
     }
   } catch (error) {
     console.log('searchMovies error:', error)
