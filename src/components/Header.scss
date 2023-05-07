@@ -1,0 +1,71 @@
+.Header-container {
+  background-color: rgba(0, 0, 0, 0.533);
+  backdrop-filter: blur(5px);
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #323232;
+  position: fixed;
+  z-index: 3;
+  .logo {
+    background-image: url("../../src/static/MBASE_logo.png");
+    background-size: cover;
+    height: 40px;
+    width: 100px;
+    display: flex;
+    margin-left: 200px;
+    cursor: pointer;
+  }
+  // Link 링크에 텍스트 값이 없는 상태에서 div를 걸어도 링크 이동이 되지 않음
+  // 해당 부분은 Link로 등록되어 있는데 a가 선택됨
+  // a가 선택되어 해당 요소에 알파값을 주고 마우스가 잘 선택되도록 너비값을 지정함
+  .logo a {
+    color: rgba(255, 255, 255, 0);
+    font-size: 20px;
+    width: 200px;
+  }
+  .toggle-menu {
+    width: 35px;
+    height: 35px;
+    margin-right: 150px;
+    margin-left: 110px;
+    border-radius: 30px;
+    background-image: url("../../src/static/notion-avatar.png");
+    background-size: 36px;
+    background-repeat: no-repeat;
+    background-position: -90% 100%;
+    background-color: white;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .toggle-menu:hover {
+    transform: scale(1.1);
+  }
+  .menu {
+    display: flex;
+  }
+  .menu-btn {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #323232;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 28px;
+    margin: 0 18px;
+    color: rgb(167, 167, 167);
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .menu-btn a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  .menu-btn:hover {
+    background-color: rgb(0, 140, 255);
+    transform: scale(1.1);
+  }
+}

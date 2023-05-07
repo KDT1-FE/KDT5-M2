@@ -1,0 +1,138 @@
+.AboutPage {
+  background-color: rgb(38, 38, 38);
+  background-image: url(../../static/About_img.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+  position: relative;
+  .AboutPage-blurBg {
+    background-color: rgba(40, 40, 40, 0.517);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  .half-block {
+    height: 33%;
+    width: 100vw;
+    bottom: 0;
+    background-color: rgb(38, 38, 38);
+    box-shadow: 0px -80px 80px 20px rgb(38, 38, 38);
+    position: absolute;
+  }
+  .profile-img {
+    background-color: rgb(255, 255, 255);
+    background-image: url(../../static/notion-avatar.png);
+    background-position: 90% 16%;
+    background-repeat: no-repeat;
+    background-size: 94%;
+    box-shadow: 0px 0px 20px 5px #000000bd;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    top: -100px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    transition: 0.3s;
+  }
+  .profile-img:hover{
+    transform: scale(1.05);
+  }
+  .profile-textBox {
+    background-color: rgba(0, 0, 0, 0.653);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    border: 1px solid #ffffff2a;
+    box-shadow: 0px 0px 20px 5px #ffffff19;
+    position: absolute;
+    display: flex;
+    width: 800px;
+    height: 450px;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .text-container {
+      top: 70px;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+      display: flex;
+      margin: auto;
+      position: relative;
+      .text-name {
+        font-size: 70px;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        color: rgb(0, 140, 255);
+        display: flex;
+        z-index: 5;
+        justify-content: center;
+        font-style: italic;
+        padding-right: 10px;
+      }
+      hr {
+        width: 55%;
+        margin: 12px auto;
+        border: 0;
+        height: 1px;
+        background-color: #ffffff7d;
+      }
+      .text-info {
+        line-height: 24px;
+      }
+      .icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        .github-icon {
+          display: flex;
+          width: 40px;
+          height: 40px;
+          margin-right: 10px;
+          border-radius: 50%;
+          background-color: rgb(0, 0, 0);
+          background-image: url('../../static/github-icon.png');
+          background-size: cover;
+          transition: 0.3s;
+        }
+        .github-icon:hover {
+          transform: scale(1.1);
+        }
+        .blog-icon {
+          display: flex;
+          width: 40px;
+          height: 40px;
+          margin-left: 10px;
+          border-radius: 50%;
+          background-color: rgb(255, 255, 255);
+          background-image: url('../../static/blog-icon.jpeg');
+          background-size: cover;
+          transition: 0.3s;
+        }
+        .blog-icon:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .Home-info {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    height: 150px;
+    width: 400px;
+  }
+}

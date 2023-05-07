@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.426015a0.css",
+    "main.js": "/static/js/main.896d8666.js",
+    "static/js/787.84d07a2d.chunk.js": "/static/js/787.84d07a2d.chunk.js",
+    "static/media/About_img.png": "/static/media/About_img.54d847ecc3321508e934.png",
+    "static/media/video.mp4": "/static/media/video.54c97030e3798a7a447c.mp4",
+    "static/media/notion-avatar.png": "/static/media/notion-avatar.611972574399c6071971.png",
+    "static/media/github-icon.png": "/static/media/github-icon.0f2c24f04680f81134aa.png",
+    "index.html": "/index.html",
+    "main.426015a0.css.map": "/static/css/main.426015a0.css.map",
+    "main.896d8666.js.map": "/static/js/main.896d8666.js.map",
+    "787.84d07a2d.chunk.js.map": "/static/js/787.84d07a2d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.426015a0.css",
+    "static/js/main.896d8666.js"
+  ]
+}
