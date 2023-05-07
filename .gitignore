@@ -1,0 +1,6 @@
+.DS_Store
+dist
+.parcel-cashe
+node_modules
+.vscode
+
