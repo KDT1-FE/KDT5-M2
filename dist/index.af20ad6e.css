@@ -1,0 +1,22 @@
+html {
+  --color-black: #0d0d0d;
+  --color-white: #fff;
+  --color-white-50: #ffffff80;
+  --color-white-30: #ffffff4d;
+  --color-white-20: #fff3;
+  --color-white-10: #ffffff1a;
+  --color-white-5: #ffffff0d;
+  --color-primary: #5e90f2;
+  --color-hover: #447ef2;
+  --color-highlight: #f24b59;
+  --color-area: #2c2c2c;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: articulat-cf, sans-serif;
+  line-height: 1.4;
+}
+
+/*# sourceMappingURL=index.af20ad6e.css.map */

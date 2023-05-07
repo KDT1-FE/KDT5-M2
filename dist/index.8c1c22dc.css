@@ -1,0 +1,143 @@
+html {
+  --color-black: #0d0d0d;
+  --color-white: #fff;
+  --color-white-50: #ffffff80;
+  --color-white-30: #ffffff4d;
+  --color-white-20: #fff3;
+  --color-white-10: #ffffff1a;
+  --color-white-5: #ffffff0d;
+  --color-primary: #5e90f2;
+  --color-hover: #2460da;
+  --color-highlight: #f24b59;
+  --color-area: #2c2c2c;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: articulat-cf, sans-serif;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.btn {
+  height: 50px;
+  color: var(--color-white);
+  background-color: var(--color-area);
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all .4s;
+}
+
+.btn:hover {
+  background-color: var(--color-white-20);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-hover);
+}
+
+.headline {
+  margin-bottom: 40px;
+}
+
+.headline h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: eight, sans-serif;
+  font-size: 50px;
+  line-height: 1;
+}
+
+.headline h1 span {
+  color: var(--color-highlight);
+  font-size: 70px;
+}
+
+.headline p {
+  color: var(--color-white-50);
+}
+
+.search {
+  gap: 10px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.search input {
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid var(--color-white-50);
+  color: var(--color-white);
+  background-color: #0000;
+  outline: none;
+  flex-grow: 1;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.search input::placeholder {
+  color: var(--color-white-30);
+}
+
+.search .btn {
+  max-width: 150px;
+  flex-grow: 1;
+}
+
+.movie-List {
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.movie-List .movies {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  display: flex;
+}
+
+.movie-List .movies .movie {
+  --width: 200px;
+  width: var(--width);
+  height: calc(var(--width) * 3 / 2);
+  background-color: var(--color-black);
+  background-size: cover;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.movie-List .movies .movie .info {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: #003cff66;
+  padding: 14px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.movie-List .movies .movie .info .year, .movie-List .movies .movie .info .title {
+  color: var(--color-white);
+}
+
+/*# sourceMappingURL=index.8c1c22dc.css.map */
