@@ -21,6 +21,7 @@ export default class Search extends Component {
     btnEl.addEventListener('click', () => {
       if (movieStore.state.searchText.trim()) {
         searchMovies(1)
+        searchMovies(2)
       }
     })
   }
