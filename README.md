@@ -1,5 +1,7 @@
 # 🎬 영화 검색
 
+배포링크: https://roaring-dolphin-d6dd06.netlify.app
+
 ✅ HTML, JS 사용
 
 ### ❗ 필수
