@@ -1,12 +1,12 @@
 # 🎬 OMDb API 영화 검색
-[OMDb API](https://stupefied-hodgkin-d9d350.netlify.app/)를 활용하여 영화 검색 페이지를 구현하였습니다.
+[OMDb API](https://www.omdbapi.com/)를 활용하여 영화 검색 페이지를 구현하였습니다.
 
-<br />
+<br />https://www.omdbapi.com/
 
 ## 프로젝트 소개
 > **패스트캠퍼스 프론트엔드 개발 부트캠프 5기**<br />
 **개발 기간** : 2023. 04. 20 ~ 2023. 05. 05<br />
-**배포 주소** : [DEMO](https://zippy-sunflower-7a4e25.netlify.app/)
+**배포 주소** : [DEMO](https://omdb-api-movie-search.netlify.app/)
 
 <br />
 
