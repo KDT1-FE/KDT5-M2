@@ -27,7 +27,7 @@ export default class Search extends Component {
         const btnEl = this.el.querySelector('.btn')
         btnEl.addEventListener('click', () => {
             searchMovies(1)
-
+            searchMovies(2)
             // search 버튼을 click 했을 때 20개의 목록이 나오게 요청을 2번 한다.
         })
     }
