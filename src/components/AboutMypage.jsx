@@ -1,17 +1,13 @@
-import '../styles/AboutMypage.scss'
-import myimg from '../assets/sewoo.jpeg'
+import "../styles/AboutMypage.scss";
+import myimg from "../assets/sewoo.jpeg";
 
 export default function AboutMypage() {
   return (
     <>
       <ul className="myinfo">
-        <li className="myinfo__intro">Wellcome Home!</li>
+        <li className="myinfo__intro">Welcome Home!</li>
         <li className="myinfo__profile">
-          <img
-            className="myinfo__img"
-            src={myimg}
-            alt="Profile img!"
-          />
+          <img className="myinfo__img" src={myimg} alt="Profile img!" />
         </li>
         <li className="myinfo__name">SEWOO</li>
         <li className="myinfo__more">
@@ -21,5 +17,5 @@ export default function AboutMypage() {
         </li>
       </ul>
     </>
-  )
+  );
 }

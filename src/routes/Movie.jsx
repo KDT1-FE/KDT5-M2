@@ -1,24 +1,29 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import TheHeader from '~/components/TheHeader'
-import '../styles/Movie.scss'
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import TheHeader from "~/components/TheHeader";
+import "../styles/Movie.scss";
+import xboxImg from "../assets/xbox.png";
 
 export default function Movie() {
-  const [movie, setMovie] = useState({})
-  const params = useParams()
+  const [movie, setMovie] = useState({});
+  const params = useParams();
+
+  const onErrorImg = (e) => {
+    e.target.src = xboxImg;
+  };
 
   async function fetchDetailsMovie() {
     const res = await fetch(
       `https://omdbapi.com/?apikey=7035c60c&i=${params.movieID}&plot=full`
-    )
-    return await res.json()
+    );
+    return await res.json();
   }
 
   useEffect(() => {
-    ;(async () => {
-      setMovie(await fetchDetailsMovie())
-    })()
-  }, [])
+    (async () => {
+      setMovie(await fetchDetailsMovie());
+    })();
+  }, []);
 
   return (
     <>
@@ -43,7 +48,8 @@ export default function Movie() {
           <img
             className="movie__poster"
             src={movie.Poster}
-            alt={movie.Title}
+            alt=""
+            onError={onErrorImg}
           />
           <div className="movie__add-container">
             <div className="movie__add">
@@ -67,5 +73,5 @@ export default function Movie() {
         </div>
       </main>
     </>
-  )
+  );
 }

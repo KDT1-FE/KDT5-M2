@@ -1,10 +1,10 @@
-@import 'Common.scss';
+@import "Common.scss";
 
 .movie {
   height: 1500px;
   padding: 50px;
   justify-content: left;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
   &__inner {
     display: flex;
     position: relative;
@@ -17,7 +17,7 @@
     overflow: hidden;
   }
   &::before {
-    content: '';
+    content: "";
     width: 1400px;
     height: 1400px;
     position: absolute;
@@ -28,7 +28,7 @@
     box-shadow: inset -2px -5px 10px rgba(96, 76, 88, 0.205);
   }
   &::after {
-    content: '';
+    content: "";
     display: block;
     width: 170px;
     height: 170px;
@@ -48,7 +48,7 @@
     font: {
       size: 45px;
       weight: 700;
-      family: 'Oleo Script', cursive;
+      family: "Oleo Script", cursive;
     }
   }
   &__category {
@@ -127,7 +127,8 @@
     flex-direction: column;
     position: relative;
     margin-top: 30px;
-    padding: 0;
+    border-radius: 20px;
+    padding-top: 0;
     color: var(--darkblue);
     font: {
       size: 18px;
@@ -136,7 +137,7 @@
     overflow: hidden;
   }
   &__add-container::before {
-    content: '';
+    content: "";
     width: 500px;
     height: 500px;
     position: absolute;
@@ -154,10 +155,10 @@
     position: absolute;
     margin-bottom: 20px;
     bottom: 0;
-    font-family: 'Oleo Script', cursive;
+    font-family: "Oleo Script", cursive;
     span {
       margin-left: 20px;
-      font-family: 'Nanum Myeongjo', serif;
+      font-family: "Nanum Myeongjo", serif;
     }
   }
 }
