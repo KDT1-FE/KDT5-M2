@@ -38,9 +38,11 @@ export default function MovieDetail() {
   const ratingSource = (source: string) => {
     if (source === 'Internet Movie Database') {
       return imdb;
-    } else if (source === 'Rotten Tomatoes') {
+    }
+    if (source === 'Rotten Tomatoes') {
       return rottenTomatoes;
-    } else if (source === 'Metacritic') {
+    }
+    if (source === 'Metacritic') {
       return matacritic;
     }
   };
