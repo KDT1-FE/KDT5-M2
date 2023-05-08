@@ -24,18 +24,3 @@ export default class MovieListMore extends Component {
     })
   }
 }
-
-// 더보기 버튼에 대한 내용들
-// movieStore.subscribe('pageMax', () => {
-//   // movieStore.state.page
-//   // movieStore.state.pageMax
-//   const { page, pageMax } = movieStore.state //객체구조분해할당
-
-//   if (pageMax > page) {
-//     this.el.classList.remove('hide')  // 더보기 버튼을 하이드(숨김)를 제거해서 보여주고
-//   } else {
-//     this.el.classList.add('hide') // 그렇지 않다면 하이드 추가해서 화면에 보이지 않게 하겠다
-//   }
-//   // if조건을 삼항연산자로 작성하면 코드의 수가 조금 줄어든다, 원하는 방법 사용하자
-//   // pageMax > page ? A : B //삼항연산자
-// })

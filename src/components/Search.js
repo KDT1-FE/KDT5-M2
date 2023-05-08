@@ -55,6 +55,3 @@ export default class Search extends Component {
     })
   }
 }
-
-// Search와 Movie list
-// 서로 다른 컴포넌트에서 같은 데이터를 취급해야 하는 스토어 개념이 필요
