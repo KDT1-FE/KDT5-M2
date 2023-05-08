@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { allYears, PAGE, SHOWS } from '@/constants/selectItems';
 import Select from '@/components/Select';
 import MovieList from '@/components/MovieList';
+import fetchMovies from '@/api/fetchMovies';
 
 export default function Search() {
   const [title, setTitle] = useState('');
@@ -32,7 +33,7 @@ export default function Search() {
     try {
       setMessage('');
       setIsLoading(true);
-      const res = await getMovies(
+      const res = await fetchMovies(
         title,
         searchCategory.year,
         searchCategory.show,
@@ -50,37 +51,6 @@ export default function Search() {
       setIsLoading(false);
     }
   };
-
-  // 영화 정보 요청
-  async function getMovies(
-    title: string,
-    year: string,
-    type: string,
-    page: string
-  ) {
-    const s = `&s=${title.trim()}`;
-    const y = year === 'All Years' ? '' : `&y=${year}`;
-    const t = `&type=${type}`;
-    let movies: Movie[] = [];
-    let errorMsg: string = '';
-    try {
-      for (let i = 1; i <= parseInt(page) / 10; i++) {
-        const res = await fetch(
-          `https://omdbapi.com/?apikey=7035c60c${s}${y}${t}&page=${i}`
-        );
-        const json = await res.json();
-        if (json.Response === 'True') {
-          movies = [...movies, ...json.Search];
-        } else {
-          errorMsg = json.Error || 'Fetch Failed';
-        }
-      }
-      return { movies, errorMsg };
-    } catch (error) {
-      console.log(error);
-      setMessage('Failed to fetch');
-    }
-  }
 
   return (
     <>

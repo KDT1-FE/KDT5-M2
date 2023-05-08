@@ -1,37 +1,13 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import defaultImg from '@/assets/defaultImg.jpg';
 import NotFound from '@/routes/NotFound';
 import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
 import RATING_SOURCE from '@/constants/ratingSource';
+import getMovie from '@/api/getMovie';
 
 export default function MovieDetail() {
-  const [movie, setMovie] = useState<MovieDetail>();
-  const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
-
-  async function getMovie(movieId: string | undefined) {
-    try {
-      setIsLoading(true);
-      const res = await fetch(
-        `https://omdbapi.com/?apikey=7035c60c&i=${movieId}&plot=full`
-      );
-      const json = await res.json();
-      if (json.Response === 'True') {
-        setMovie(json);
-        return;
-      }
-      return json.Error;
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    getMovie(movieId);
-  }, [movieId]);
+  const { isLoading, movie } = getMovie(movieId);
 
   if (isLoading) {
     return <MovieDetailSkeleton />;
