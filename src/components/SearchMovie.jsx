@@ -49,7 +49,7 @@ export default function SearchMovie() {
     const nextPage = await fetchMovieList(
       searchQuery,
       '',
-      Math.ceil(movieList.length / 10) + 1
+      Math.ceil(movieList.length / 20) + 1
     )
     setMovieList(prevMovies => [...prevMovies, ...nextPage.movies])
   }
@@ -86,6 +86,11 @@ export default function SearchMovie() {
                 <img
                   src={movie.Poster}
                   alt={movie.Title}
+                  onError={e => {
+                    e.target.src =
+                      'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'
+                    e.target.alt = '이미지를 불러올 수 없습니다.'
+                  }}
                 />
                 <h2 className={styles.movieTitle}>{movie.Title}</h2>
               </div>
