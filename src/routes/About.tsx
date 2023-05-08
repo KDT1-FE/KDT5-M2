@@ -1,4 +1,4 @@
-import hprofile from '../assets/hprofile.jpg';
+import hprofile from '@/assets/hprofile.jpg';
 
 export default function About() {
   return (
