@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import { allYears, page, shows } from '../constants/selectItems';
-import Select from './Select';
-import MovieList from './MovieList';
+import { allYears, page, shows } from '@/constants/selectItems';
+import Select from '@/components/Select';
+import MovieList from '@/components/MovieList';
 
 export default function Search() {
   const [title, setTitle] = useState('');

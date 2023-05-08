@@ -1,5 +1,5 @@
-import LoadingSpinner from './LoadingSpinner';
-import MovieCard from './MovieCard';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import MovieCard from '@/components/MovieCard';
 
 interface MovieListProps {
   movies: Movie[];

@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './routes/Home';
-import About from './routes/About';
-import NotFound from './routes/NotFound';
-import MovieDetail from './components/MovieDetail';
+import Home from '@/routes/Home';
+import NotFound from '@/routes/NotFound';
+import MovieDetail from '@/components/MovieDetail';
+import About from '@/routes/About';
+import Layout from '@/components/Layout';
 
 export default function App(): JSX.Element {
   return (

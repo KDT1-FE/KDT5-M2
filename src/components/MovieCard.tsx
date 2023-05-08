@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import defaultImg from '../assets/defaultImg.jpg';
+import defaultImg from '@/assets/defaultImg.jpg';
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   return (

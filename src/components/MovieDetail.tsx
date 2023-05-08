@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import defaultImg from '../assets/defaultImg.jpg';
-import imdb from '../assets/imdb.png';
-import matacritic from '../assets/metacritic.png';
-import rottenTomatoes from '../assets/rottenTomatoes.png';
-import MovieDetailSkeleton from './MovieDetailSkeleton';
-import NotFound from '../routes/NotFound';
+import defaultImg from '@/assets/defaultImg.jpg';
+import imdb from '@/assets/imdb.png';
+import matacritic from '@/assets/metacritic.png';
+import rottenTomatoes from '@/assets/rottenTomatoes.png';
+import NotFound from '@/routes/NotFound';
+import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetail>();
