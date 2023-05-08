@@ -1,7 +1,8 @@
-import { Store } from '../core/heropy'
+import { Store } from '../core/CoreMovie'
 
 const store = new Store({
   searchText: '',
+  searchYear: '',
   page: 1,
   pageMax: 1,
   movies: [],
@@ -10,7 +11,12 @@ const store = new Store({
   message: 'Search for the movie title!'
 })
 
+
+// 기본 이미지, 대체 이미지
+const DEFAULT_POSTER = 'https://i.pinimg.com/originals/11/1d/23/111d23592fb84abc7a45b8c87588ba88.jpg'
+
 export default store
+
 export const searchMovies = async page => {
   store.state.loading = true    // loading 시작
   store.state.page = page   // 매개변수로 받은 페이지의 값을 할당(다음페이지)
@@ -28,9 +34,16 @@ export const searchMovies = async page => {
     })
     const { Search, totalResults, Response, Error } = await res.json()
     if (Response === 'True') {
+      const movie = Search.map(movie => {
+        return {
+          ...movie,
+          Poster: movie.Poster === 'N/A' ? DEFAULT_POSTER : movie.Poster
+        }
+      })
       store.state.movies = [
         ...store.state.movies,
-        ...Search
+        ...movie
+        //...Search
       ]
       store.state.pageMax = Math.ceil(Number(totalResults) / 10)
     } else {

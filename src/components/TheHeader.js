@@ -1,4 +1,4 @@
-import { Component } from '../core/heropy'
+import { Component } from '../core/CoreMovie'
 
 export default class TheHeader extends Component {
   constructor() {
@@ -12,7 +12,7 @@ export default class TheHeader extends Component {
           },
           {
             name: 'Movie',
-            href: '#/movie?id=tt4520988'
+            href: '#/movie?id=tt10872600'
           },
           {
             name: 'About',
@@ -52,7 +52,7 @@ export default class TheHeader extends Component {
         </ul>
       </nav>
       <a href="#/about" class="user">
-        <img src="https://heropy.blog/css/images/logo.png" alt="User" />
+        <img src="https://velog.velcdn.com/images/0299bang/profile/bf3c0ca7-574e-4117-a6e1-b03dbebdcc24/social_profile.png" alt="User" />
       </a>
     `
   }

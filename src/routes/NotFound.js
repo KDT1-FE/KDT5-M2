@@ -1,4 +1,4 @@
-import { Component } from '../core/heropy'
+import { Component } from '../core/CoreMovie'
 
 export default class NotFound extends Component {
   render() {

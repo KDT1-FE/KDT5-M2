@@ -1,10 +1,10 @@
-import { Store } from '../core/heropy'
+import { Store } from '../core/CoreMovie'
 
 export default new Store({
-  photo: 'https://heropy.blog/css/images/logo.png',
-  name: 'BANG / BangMiSun',
+  photo: 'https://velog.velcdn.com/images/0299bang/profile/bf3c0ca7-574e-4117-a6e1-b03dbebdcc24/social_profile.png',
+  name: 'BangMiSun',
   email: '0299bang@gmail.com',
-  blog: 'https://heropy.blog',
+  blog: 'https://velog.io/@0299bang',
   github: 'https://github.com/0299bang',
   repository: 'https://github.com/0299bang/Search-Movies-API'
 })

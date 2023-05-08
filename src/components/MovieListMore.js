@@ -1,4 +1,4 @@
-import { Component } from '../core/heropy'
+import { Component } from '../core/CoreMovie'
 import movieStore, { searchMovies } from '../store/movie'
 
 export default class MovieListMore extends Component {

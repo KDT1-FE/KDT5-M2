@@ -1,4 +1,4 @@
-import { Component } from '../core/heropy'
+import { Component } from '../core/CoreMovie'
 import aboutStore from '../store/about'
 
 export default class TheFooter extends Component {

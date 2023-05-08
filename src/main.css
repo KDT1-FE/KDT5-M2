@@ -1,14 +1,14 @@
 /* 프로젝트에서 사용할 색상 변수 */
 html {
-  --color-black: #0E111B;
+  --color-black: #02001a;
   --color-white: #FFF;
   --color-white-50:rgba(225,225,225,.5);
   --color-white-30:rgba(225,225,225,.3);
   --color-white-20:rgba(225,225,225,.2);
   --color-white-10:rgba(225,225,225,.1);
   --color-white-5:rgba(225,225,225,.05);
-  --color-primary: #FDC000;
-  --color-hover: #F86A05;
+  --color-primary: #D2FF58;
+  --color-hover: #B0E212;
   --color-area: #1C212E;
 }
 body {
@@ -114,7 +114,7 @@ body {
 
 header {
   padding: 20px 40px;
-  background-color: rgba(14,17,27,.9);
+  background-color: rgba(125, 140, 94, 0.5);
   position: sticky;
   top: 0;
   z-index: 9;
@@ -136,7 +136,7 @@ header nav ul {
   gap: 14px;
 }
 header nav ul li a {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-white-50);
   text-decoration: none;
@@ -198,12 +198,10 @@ footer a:hover {
   font-size: 80px;
   line-height: 1;
   margin-bottom: 40px;
+  text-align: center;
 }
 .headline h1 span {
   color: var(--color-primary);
-}
-.headline p {
-  color:var(--color-white-30)
 }
 @media (max-width: 600px) {
   .headline h1 {
@@ -222,7 +220,7 @@ footer a:hover {
   flex-grow: 1;
   height: 50px;
   padding: 0 20px;
-  border-radius: 4px;
+  border-radius: 25px;
   border: none;
   outline: none;
   font-size: 14px;
@@ -240,7 +238,7 @@ footer a:hover {
 
 .movie-list {
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 15px;
   background-color: var(--color-area);
 }
 .movie-list .message {
