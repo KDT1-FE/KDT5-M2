@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import defaultImg from '@/assets/defaultImg.jpg';
-import imdb from '@/assets/imdb.png';
-import matacritic from '@/assets/metacritic.png';
-import rottenTomatoes from '@/assets/rottenTomatoes.png';
 import NotFound from '@/routes/NotFound';
 import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
+import RatingSource from '@/constants/ratingSource';
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetail>();
@@ -34,18 +32,6 @@ export default function MovieDetail() {
   useEffect(() => {
     getMovie(movieId);
   }, [movieId]);
-
-  const ratingSource = (source: string) => {
-    if (source === 'Internet Movie Database') {
-      return imdb;
-    }
-    if (source === 'Rotten Tomatoes') {
-      return rottenTomatoes;
-    }
-    if (source === 'Metacritic') {
-      return matacritic;
-    }
-  };
 
   if (isLoading) {
     return <MovieDetailSkeleton />;
@@ -81,7 +67,7 @@ export default function MovieDetail() {
             {movie?.Ratings.map((rating) => (
               <div className="flex items-center gap-2" key={rating.Source}>
                 <img
-                  src={ratingSource(rating.Source)}
+                  src={RatingSource[rating.Source]}
                   alt="rating source"
                   className="h-8"
                 />
