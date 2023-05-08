@@ -1,7 +1,7 @@
 import Button from '@/components/Button';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import hprofile from '@/assets/hprofile.jpg';
-import navItems from '@/constants/navItems';
+import NAV_ITEMS from '@/constants/navItems';
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Navbar(): JSX.Element {
 
         <nav>
           <ul className="flex gap-4">
-            {navItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <li key={item.href}>
                 <NavLink to={`${item.href}`}>
                   {({ isActive }) => {

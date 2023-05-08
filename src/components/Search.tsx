@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { allYears, page, shows } from '@/constants/selectItems';
+import { allYears, PAGE, SHOWS } from '@/constants/selectItems';
 import Select from '@/components/Select';
 import MovieList from '@/components/MovieList';
 
@@ -95,12 +95,12 @@ export default function Search() {
         />
         <Select
           category="show"
-          options={shows}
+          options={SHOWS}
           onChange={handleSearchCategories}
         />
         <Select
           category="page"
-          options={page}
+          options={PAGE}
           onChange={handleSearchCategories}
         />
         <Select

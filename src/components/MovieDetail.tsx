@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import defaultImg from '@/assets/defaultImg.jpg';
 import NotFound from '@/routes/NotFound';
 import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
-import RatingSource from '@/constants/ratingSource';
+import RATING_SOURCE from '@/constants/ratingSource';
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState<MovieDetail>();
@@ -67,7 +67,7 @@ export default function MovieDetail() {
             {movie?.Ratings.map((rating) => (
               <div className="flex items-center gap-2" key={rating.Source}>
                 <img
-                  src={RatingSource[rating.Source]}
+                  src={RATING_SOURCE[rating.Source]}
                   alt="rating source"
                   className="h-8"
                 />

@@ -6,10 +6,10 @@ interface RatingSource {
   [key: string]: '*.png';
 }
 
-const RatingSource: RatingSource = {
+const RATING_SOURCE: RatingSource = {
   'Internet Movie Database': imdb,
   'Rotten Tomatoes': rottenTomatoes,
   Metacritic: matacritic,
 };
 
-export default RatingSource;
+export default RATING_SOURCE;
