@@ -1,5 +1,5 @@
 # 🎬 영화 검색
-
+배포링크: <https://movie-api-black.vercel.app/>
 
 ## ❗ 필수
 
