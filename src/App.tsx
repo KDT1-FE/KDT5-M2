@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '@/routes/Home';
-import NotFound from '@/routes/NotFound';
+import Home from 'routes/Home';
+import NotFound from 'routes/NotFound';
 import MovieDetail from '@/components/MovieDetail';
-import About from '@/routes/About';
+import About from 'routes/About';
 import Layout from '@/components/Layout';
 
 export default function App(): JSX.Element {
