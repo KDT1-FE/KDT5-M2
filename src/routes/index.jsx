@@ -3,6 +3,7 @@ import Home from './Home';
 import MovieInfos from './MovieInfos';
 import Search from './Search';
 import About from './About';
+import NotFound from './NotFound';
 
 export default createBrowserRouter([
   {
@@ -22,5 +23,6 @@ export default createBrowserRouter([
         element: <MovieInfos />,
       },
     ],
+    errorElement: <NotFound />,
   },
 ]);
