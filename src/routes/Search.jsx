@@ -7,6 +7,7 @@ import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
 import SkeletonSearch from '~/components/SkeletonSearch';
 import TopBtn from '~/components/TopBtn';
+import { useCallback } from 'react';
 
 export default function Search() {
   const [title, setTitle] = useState('');
@@ -23,6 +24,7 @@ export default function Search() {
   const [hasNext, setHasNext] = useState(true);
 
   const { type, page, years = years === 'All years' ? null : years } = options;
+
   async function getList(e) {
     e.preventDefault();
     let num = parseInt(page) / 10;
@@ -33,7 +35,7 @@ export default function Search() {
       const [movies, total] = await fetchMovies(title, type, years, num);
       setLists(movies);
       setTotal(total);
-      setMore(num + 1);
+      setMore(num);
     } catch (err) {
       setHasNext(false);
       alert(err);
@@ -41,8 +43,9 @@ export default function Search() {
       setIsLoading(false);
     }
   }
-  async function getMoreList() {
-    let num = parseInt(page / 10);
+
+  const getMoreList = useCallback(async () => {
+    let num = parseInt(page / 10) + 1;
     try {
       setIsClick(true);
       const [movies] = await fetchMovies(
@@ -60,7 +63,7 @@ export default function Search() {
     } finally {
       setIsClick(false);
     }
-  }
+  }, [more]);
 
   function getSearchOption(e) {
     setOptions({ ...options, [e.target.name]: e.target.value });
@@ -72,7 +75,7 @@ export default function Search() {
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting && more > 1 && hasNext) {
+        if (entry.isIntersecting && more > 0 && hasNext) {
           getMoreList();
         }
       },
