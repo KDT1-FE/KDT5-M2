@@ -1,0 +1,37 @@
+@import './color.module.scss';
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  width: 100%;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px 0;
+}
+
+.header {
+  margin: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    li {
+      width: 100px;
+    }
+  }
+  a {
+    color: $text-color;
+    text-decoration: none;
+    outline: none;
+  }
+  .active {
+    color: $point-color;
+  }
+}
+
+.user {
+  img {
+    width: 50px;
+    border-radius: 100%;
+  }
+}

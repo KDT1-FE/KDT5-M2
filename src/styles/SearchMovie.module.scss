@@ -1,0 +1,75 @@
+@import './color.module.scss';
+
+.searchMovie {
+  margin: 0 2rem;
+}
+form {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  input {
+    width: 80%;
+    height: 50px;
+    margin-right: 1rem;
+    font-size: 20px;
+  }
+  button {
+    width: 20%;
+    background-color: $point-color;
+    border-style: none;
+    font-size: 20px;
+  }
+}
+.searchView {
+  display: grid;
+  justify-items: center;
+}
+#movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .movieItem {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px transparent;
+
+    &:hover {
+      box-shadow: 0 0 0 3px $point-color;
+    }
+    .movieTitle {
+      width: 300px;
+      height: 30px;
+      font-size: 25px;
+      margin-top: 10px;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    img {
+      width: 300px;
+      height: 450px;
+    }
+  }
+}
+.headerText {
+  font-size: 80px;
+  font-weight: 700;
+  strong {
+    color: $point-color;
+  }
+}
+.viewMore {
+  border: 0;
+  outline: 0;
+  box-shadow: 0;
+  color: #fff;
+  background-color: $point-color;
+  width: 200px;
+  height: 40px;
+}
