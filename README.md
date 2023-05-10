@@ -43,3 +43,10 @@
     => Scroll event와 IntersectionObserver API의 차이점 정리 + 다음에 사용해보기
   - SCSS에서 변수 적용, 메인·변수 파일 분리 X => 다음 프로젝트에서 사용해보기
   - Component, Router, Store 및 디렉토리 구조에 대해 정리하고 조원들과 나눠보기
+
+# 1차 리팩토링(23.05.10)
+
+- 영화 검색 시 개봉년도, 타이틀을 출력하는 container 높이
+  - container의 height를 설정, 타이틀이 두 줄을 넘어갈 경우 한 줄로 출력
+- MovieItem, TheFooter, About, NotFound 등 전체적인 html 태그 수정
+- TheHeader에 있는 메뉴 중 Recommended가 영화 상세정보 출력 시 활성화되지 않도록 수정
