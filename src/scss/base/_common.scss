@@ -1,0 +1,32 @@
+@use './variable';
+
+body {
+  background-color: variable.$color--black;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/*scroll*/
+body::-webkit-scrollbar{
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: variable.$color--primary;
+}
+
+body::-webkit-scrollbar-track{
+  background-color: variable.$color--black;
+  border: 2px solid variable.$color--white;
+}
+
+.btn {
+  width: 100px;
+  height: 45px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
