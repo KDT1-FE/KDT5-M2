@@ -1,0 +1,38 @@
+
+@mixin flexAbsolute {
+  display: flex;
+  position: absolute;
+};
+
+@mixin flexRelative {
+  display: flex;
+  position: relative;
+};
+
+@mixin selectStyle{
+  width: 120px;
+  display: block;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 12px 23px 18px 14px;
+  border-radius: 0.25rem;
+  margin-left: 20px;
+};
+
+@mixin ContainerStyle{
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  position: relative;
+  font-family: $fontOswald;
+}
+
+$fontW600: 600;
+$fontW800: 800; 
+
+$font15: 15px;
+$font20: 20px; 
+$font50: 50px; 
+$font80: 80px; 
+
+$fontOswald: "Oswald",sans-serif;

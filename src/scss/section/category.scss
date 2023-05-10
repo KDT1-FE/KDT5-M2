@@ -1,0 +1,7 @@
+@import '../variables';
+
+.SearchContainer-input__selects{
+  .form-select{
+     @include selectStyle;
+  }
+};

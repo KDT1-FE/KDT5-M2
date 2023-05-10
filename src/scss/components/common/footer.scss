@@ -1,0 +1,31 @@
+@import'../../variables';
+
+footer{
+  padding:60px 0;
+  text-align:center;
+  opacity:.5;
+  margin-top: 50px;
+
+  .Link-box{
+    display: block;
+    
+    .Link-box__text{
+      color: var(--white);
+      margin: auto;
+      left: 0;
+      right: 0;
+      width: 100px;
+      font-size: 20px;
+      font-weight: $fontW800;
+    }
+    
+    span {
+      color:var(--red);
+    }
+
+    .link-button{
+      color: var(--white); 
+    }
+  }
+};
+      
