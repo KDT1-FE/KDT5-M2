@@ -1,0 +1,399 @@
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(2px);
+  background-color: rgba(12, 12, 12, 0.3);
+  z-index: 9;
+  .inner {
+    width: 200px;
+    height: 100vh;
+    padding: 50px 0;
+    box-sizing: border-box;
+    div {
+      display: block;
+      text-align: center;
+      .logo {
+        font-family: 'Oswald', sans-serif;
+        font-size: 24px;
+        color: rgba(255, 255, 255, .5);
+        text-decoration: none;
+        span {
+          color: #b80a0a;
+        }
+      }
+    }
+    nav ul {
+      margin-top: 100px;
+      text-align: center;
+      li {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      li.active::after {
+        background-color: #b80a0a;
+        visibility: visible;
+      }
+      li::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 4px;
+        height: 100%;
+        border-radius: 6px;
+        background-color: #fff;
+        visibility: hidden;
+      }
+      li:last-child {
+        margin-bottom: 0px;
+      }
+      li a {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, .5);
+        text-decoration: none;
+      }
+      li a.active {
+        color: #b80a0a;
+      }
+    }
+  }
+}
+
+
+/* MainContents */
+.main-co .co-detail {
+  width: 1230px;
+  margin: 30px 0 0 240px;
+  // Section : Trail-info
+  .trail-info {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 100px;
+    border-radius: 20px;
+    background: url("https://play-lh.googleusercontent.com/proxy/nNG_QKR3gQB9BnkSFXQay-4YCz1QmxyHzYftlDn0aXY8OSqtydiqm7WX-DTHRBgW_EpaNSjHz7_41O3-pTrvN6B6kn0e9BKURuRe-l0hfvI9JDKWyJhC6Rsn=s3840-w3840-h2160") no-repeat;
+    background-size: cover;
+    background-position-y: -80px;
+    .trail-detail {
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+      .trail-title h3 {
+        font-family: "Oswald", sans-serif;
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+      .trail-title a {
+        color: #f1f1f1;
+        background-color: #b80a0a;
+        padding: 12px 20px;
+        border-radius: 6px;
+      }
+      .scene {
+        width: 520px;
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        li {
+          width: 200px;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  // Section : Movie-related
+  .movie-related {
+    margin: 50px 0;
+    padding: 20px 0;
+    h3 {
+      position: relative;
+      font-size: 20px;
+      margin-bottom: 30px;
+      padding-left: 32px;
+    }
+    h3::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: #b80a0a;
+    }
+    .related-movies {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      li {
+        width: 210px;
+        .related-poster {
+          border-radius: 12px;
+          overflow: hidden;
+        }
+        img {
+          transition: .3s;
+        }
+        img:hover {
+          transform: scale(1.1);
+        }
+        .related-info {
+          padding: 20px 0;
+          box-sizing: border-box;
+          h4 {
+            margin-bottom: 10px;
+          }
+          span {
+            font-size: 14px;
+            color: #b80a0a;
+          }
+        }
+      }
+    }
+    .best-scene {
+      height: 560px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      .scene-left {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .scene-right {
+        display: grid;
+        justify-content: space-between;
+        gap: 20px;
+        li {
+          width: 320px;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+
+/* Search */
+.search {
+  position: relative;
+  display: flex;
+  width: 360px;
+  gap: 12px;
+  margin-top: 50px;
+  z-index: 9;
+  ::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #f1f1f1;
+  }
+  input {
+    display: block;
+    width: 360px;
+    height: 60px;
+    padding: 0 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #e3e3e3;
+    background-color: transparent;
+  }
+  input::placeholder {
+    color: rgba(255, 255, 255, .3);
+  }
+  .btn {
+    flex-grow: 1;
+    max-width: 100px;
+    font-size: 20px;
+    color: #f1f1f1;
+    transition: .3s;
+    background-color: transparent;
+  }
+  .btn:hover {
+    color: #b80a0a;
+  }
+}
+
+
+/* MovieItems */
+.movie-items {
+  padding: 60px 0 30px 0;
+  box-sizing: border-box;
+  .message {
+    color: rgba(255, 255, 255, .3);
+    font-size: 20px;
+    text-align: center;
+  }
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 26px;
+  }
+}
+
+
+/* MovieItem */
+.movies {
+  .movie {
+    position: relative;
+    --width: 190px;
+    width: var(--width);
+    height: calc(var(--width) * 3 / 2);
+    border-radius: 6px;
+    background-size: cover;
+    overflow: hidden;
+    transition: .3s;
+    img {
+      --width: 200px;
+      width: var(--width);
+      height: calc(var(--width) * 3 / 2);
+    }
+    .info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      padding-top: 40%;
+      font-size: 14px;
+      text-align: center;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.96);
+      transform: translateX(-200px);
+      .year {
+        color: #b80a0a;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .title {
+        color: #f1f1f1;
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+      .type {
+        color: #ddd11e;
+      }
+    }
+  }
+  :hover {
+    transform: scale(1.1);
+    .info {
+      transform: translateX(0);
+      transition: .3s;
+    }
+  }
+  :hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid #b80a0a;
+  }
+}
+
+
+/* MoviePage */
+.the-movie {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 1100px;
+  display: flex;
+  gap: 50px;
+  color: #e3e3e3;
+  padding: 30px;
+  border-radius: 30px;
+  background-size: cover;
+  background-color: rgba(132, 132, 132, 0.1);
+  backdrop-filter: blur(12px);
+  box-sizing: border-box;
+  .poster {
+    flex-shrink: 0;
+    --width: 400px;
+    width: var(--width);
+    height: calc(var(--width) * 3 / 2);
+    margin-top: -100px;
+    margin-left: -100px;
+    border-radius: 10px;
+    background-size: cover;
+    background-color: var(--color-area);
+  }
+  .specs {
+    flex-grow: 1;
+    position: relative;
+    .title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 70px;
+      line-height: 1;
+      color: #f1f1f1;
+      margin-bottom: 30px;
+    }
+    .title.skeleton {
+      height: 70px;
+    }
+    .labels {
+      color: #b80a0a;
+      margin-bottom: 30px;
+      span {
+        margin: 0 10px;
+      }
+      span:first-child {
+        margin-left: 0;
+      }
+      span:last-child {
+        margin-right: 0;
+      }
+      span:nth-child(2),
+      span:nth-child(3) {
+        color: #f1f1f1;
+      }
+    }
+    .labels.skeleton {
+      height: 30px;
+    }
+    .plot.skeleton {
+      height: 120px;
+    }
+    .movieinfo div {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      li {
+        width: 100%;
+        :last-child {
+          margin-right: 0px;
+        }
+        h3 {
+          font-family: 'Roboto', sans-serif;
+          font-size: 20px;
+          color: #b80a0a;
+          margin: 24px 0 10px;
+        }
+      }
+    }
+    .movieinfo.skeleton {
+      margin-top: 16px;
+      height: 230px;
+    }
+  }
+}

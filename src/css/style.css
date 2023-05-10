@@ -1,0 +1,146 @@
+/* Common */
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+  color: #f1f1f1;
+  background: url(https://www.10wallpaper.com/wallpaper/1920x1080/1911/Avengers_Endgame_2019_Film_4k_HD_Poster_1920x1080.jpg) no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.btn {
+  border: none;
+  height: 56px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  outline: none;
+  color: #f1f1f1;
+  background-color: #171717;
+  cursor: pointer;
+  transition: .3s;
+}
+.btn:hover {
+  background-color: #b80a0a;
+}
+.btn-primary {
+  color: #0e0e0e;
+  background-color: #b80a0a;
+  transition: .3s;
+}
+.btn-primary:hover {
+  color: #f1f1f1;
+  background-color: #b80a0a;
+}
+button {
+  border: none;
+}
+input {
+  outline: none;
+  border: none;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.bgblur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(6px);
+  background-attachment: fixed;
+  z-index: -9;
+  box-sizing: border-box;
+}
+
+
+/* Loading Animation */
+.the-loader {
+  width: 26px;
+  height: 26px;
+  margin: 30px auto;
+  border: 4px solid #b80a0a;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loader 1s infinite linear;
+}
+.the-loader.hide {
+  display: none;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Skeleton Loading Animation */
+.skeleton {
+  position: relative;
+  border-radius: 12px;
+  background-color: #171717;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(270deg, rgba(255,255,255,0), rgba(255,255,255,.1), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  animation: skeleton-loader 2s infinite;
+}
+@keyframes skeleton-loader {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+/* SearchPage */
+.searchpage {
+  width: 1200px;
+  margin-left: 260px;
+  box-sizing: border-box;
+}
+
+
+/* MovieItemsMore(button) */
+.more {
+  display: block;
+  width: 120px;
+  max-width: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 200px;
+}
+.more:hover {
+  width: 200px;
+  border-radius: 30px;
+}
+.more.hide {
+  display: none;
+}
+
+
+/* toTop */
+.to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+  border-radius: 50%;
+  color: #b80a0a;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
