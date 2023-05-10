@@ -1,25 +1,29 @@
-# 🎬 OMDb API 영화 검색
+# 🎬 OMDb API 영화 검색 사이트
+
 [OMDb API](https://www.omdbapi.com/)를 활용하여 영화 검색 페이지를 구현하였습니다.
 
 <br />
 
 ## 프로젝트 소개
+
 > **패스트캠퍼스 프론트엔드 개발 부트캠프 5기**<br />
-**개발 기간** : 2023. 04. 20 ~ 2023. 05. 05<br />
-**배포 주소** : [DEMO](https://omdb-api-movie-search.netlify.app/)
+> **개발 기간** : 2023. 04. 20 ~ 2023. 05. 05<br />
+> **배포 주소** : [DEMO](https://omdb-api-movie-search.netlify.app/)
 
 <br />
 
 ## 화면 구성
+
 <img src="./src/assets/sample01.png" />
 <img src="./src/assets/sample02.png" />
 <img src="./src/assets/sample03.png" />
 
 ## 개발자 소개
-|김준희|
-|:---:|
-|<img width="200" src="https://avatars.githubusercontent.com/u/116873887?v=4" />|
-|[@dev-junehee](https://github.com/dev-junehee)|
+
+|                                     김준희                                      |
+| :-----------------------------------------------------------------------------: |
+| <img width="200" src="https://avatars.githubusercontent.com/u/116873887?v=4" /> |
+|                 [@dev-junehee](https://github.com/dev-junehee)                  |
 
 <br />
 
@@ -39,6 +43,7 @@
 <br /><br />
 
 ## 구현 내용 (과제 요구사항)
+
 ### ❗ 필수
 
 - [x] 영화 제목으로 검색이 가능해야 합니다!
@@ -59,6 +64,7 @@
 - [ ] 영화와 관련된 기타 기능도 고려해보세요.
 
 ### 아쉬운 점
+
 - 영화 포스터 클릭 시 모달창과 해당 영화의 데이터를 연결하지 못함
 - Sass(SCSS) 및 Styled-Components 제대로 활용하지 못함
 - Components 분리 및 관리를 잘 하지 못함
