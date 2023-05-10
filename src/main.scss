@@ -3,6 +3,11 @@ $breakpoint-mobile: 600px;
 $breakpoint-tablet: 720px;
 $breakpoint-desktop: 1200px;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html {
   --color-bg: #020715;
   --color-des: #dce2ea;
@@ -21,6 +26,13 @@ body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.4;
   color: var(--color-des);
+}
+
+// Mixin styles
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .container {
@@ -198,15 +210,6 @@ header {
   }
 }
 
-footer {
-  padding: 40px 40px 60px;
-  text-align: center;
-
-  p {
-    color: var(--color-des-20);
-  }
-}
-
 .headline {
   margin-bottom: 40px;
 
@@ -302,14 +305,13 @@ footer {
     }
 
     .info {
-      width: 100%;
-      padding: 14px;
-      box-sizing: border-box;
-      font-size: 14px;
-      text-align: center;
       position: absolute;
       left: 0;
       bottom: 0;
+      width: 100%;
+      padding: 14px;
+      font-size: 14px;
+      text-align: center;
       background-color: rgba(14, 17, 27, 0.3);
       backdrop-filter: blur(10px);
 
@@ -318,6 +320,8 @@ footer {
       }
 
       .title {
+        width: 100%;
+        @include ellipsis;
         color: var(--color-des);
       }
     }
@@ -412,7 +416,8 @@ footer {
   }
 
   .name {
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
+    text-align: center;
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
   }
@@ -435,8 +440,18 @@ footer {
   }
 }
 
+footer {
+  padding: 40px 40px 60px;
+  text-align: center;
+
+  dt,
+  dd {
+    color: var(--color-des-20);
+  }
+}
+
 .not-found {
-  h1 {
+  h2 {
     font-size: 70px;
     font-weight: 700;
     text-align: center;

@@ -7,7 +7,7 @@ export default class About extends Component {
     this.el.classList.add('container', 'about')
     this.el.innerHTML = /* html */ `
       <img src="https://i.esdrop.com/d/f/w3LVwhrrgU/NSJbPV8BJI.jpg" class="photo" />
-      <p class="name">${name}</p>
+      <h3 class="name">${name}</h3>
       <p>
         <a href="javascript:void(0)">${email}</a>
       </p>

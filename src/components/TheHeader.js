@@ -36,8 +36,8 @@ export default class TheHeader extends Component {
         <ul>
           ${this.state.menus
             .map(menu => {
-              const href = menu.href.split('?')[0]
-              const hash = location.hash.split('?')[0]
+              const href = menu.href
+              const hash = location.hash
               const isActive = href === hash
               return /* html */ `
               <li>

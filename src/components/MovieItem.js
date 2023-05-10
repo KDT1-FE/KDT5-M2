@@ -14,14 +14,14 @@ export default class MovieItem extends Component {
     this.el.classList.add('movie')
     this.el.style.backgroundImage = `url(${movie.Poster})`
     this.el.innerHTML = /* html */ `
-      <div class="info">
-        <div class="year">
+      <section class="info">
+        <p class="year">
           ${movie.Year}
-        </div>
-        <div class="title">
+        </p>
+        <h5 class="title">
           ${movie.Title}
-        </div>
-      </div>
+        </h5>
+      </section>
     `
   }
 }
