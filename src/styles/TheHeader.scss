@@ -1,0 +1,65 @@
+@import 'Common.scss';
+
+header {
+  z-index: 999;
+  position: fixed;
+  font-family: 'Oleo Script', cursive;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: var(--white);
+  box-shadow: 0.2px 0.7px 15px 5px rgba($color: #d2d2d2, $alpha: 0.2);
+}
+.logo {
+  font-weight: 400;
+  font-size: 30px;
+  text-decoration: none;
+  color: var(--orange);
+  margin: 0 40px;
+  span {
+    color: var(--darkblue);
+  }
+}
+.main-menu {
+  list-style: none;
+  color: var(--darkblue);
+  display: flex;
+  padding: 10px;
+  transition: 0.5s;
+  &__item {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  &:hover {
+    color: var(--black);
+  }
+}
+.my-profile {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: 0.2s;
+  margin-left: auto;
+  margin-right: 40px;
+  img {
+    width: 100%;
+    position: relative;
+    top: -20%;
+  }
+  &:hover {
+    content: '';
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: solid 2px var(--orange);
+  }
+}

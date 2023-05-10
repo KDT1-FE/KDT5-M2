@@ -1,0 +1,24 @@
+@import 'Common.scss';
+
+footer {
+  padding: 50px 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px var(--white);
+  box-shadow: inset 2px 0.7px 15px 5px rgba($color: #d2d2d2, $alpha: 0.2);
+}
+.footer-logo {
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 30px;
+  font-family: 'Oleo Script', cursive;
+  color: var(--darkblue);
+  span {
+    color: var(--orange);
+  }
+}
+.a {
+  color: var(--point);
+}
