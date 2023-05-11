@@ -1,14 +1,14 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from '~/styles/MovieInfos.module.scss';
-import fetchMovieDetail from '~/api/fetchMovieDetail';
-import context from '~/store/MyContext';
+import { fetchMovieDetail } from '~/api/fetchMovies';
+import Context from '~/store/MyContext';
 import SkeletonMovie from '../components/SkeletonMovie';
 
 export default function MovieInfos() {
   const [infos, setInfos] = useState({});
   const { id } = useParams();
-  const { setValue } = useContext(context);
+  const { setValue } = useContext(Context);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

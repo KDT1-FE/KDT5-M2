@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '~/styles/Search.module.scss';
 import { NavLink } from 'react-router-dom';
-import fetchMovies from '~/api/fetchMovies';
+import { fetchMovies } from '~/api/fetchMovies';
 import Hero from '~/components/Hero';
 import Select from '~/components/Select';
 import selectItems from '~/common/selectItems';
@@ -147,7 +147,7 @@ export default function Search() {
               })}
             </>
           ) : (
-            <SkeletonSearch />
+            <SkeletonSearch items={10} />
           )}
           {lists == false ? (
             <p style={{ color: '#ced4da', fontSize: 20 + 'px' }}>
@@ -159,7 +159,7 @@ export default function Search() {
         </ul>
         {isClick ? (
           <ul style={{ paddingTop: 0, paddingBottom: 15 + 'px' }}>
-            <SkeletonSearch />
+            <SkeletonSearch items={10} />
           </ul>
         ) : (
           ''

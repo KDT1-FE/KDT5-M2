@@ -1,4 +1,4 @@
-export default async function fetchMovies(title, type, years, num, i = 1) {
+export async function fetchMovies(title, type, years, num, i = 1) {
   let movies = [];
   let total = '';
   for (; i <= num; i++) {
@@ -13,4 +13,15 @@ export default async function fetchMovies(title, type, years, num, i = 1) {
   }
 
   return [movies, +total];
+}
+
+export async function fetchMovieDetail(data) {
+  try {
+    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&${data}`);
+    const json = await res.json();
+    if (json.Response === 'False') throw new Error(json.Error);
+    return json;
+  } catch (err) {
+    alert(err);
+  }
 }

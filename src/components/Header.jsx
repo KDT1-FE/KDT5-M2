@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import context from '~/store/MyContext';
+import Context from '~/store/MyContext';
 import { NavLink, Link } from 'react-router-dom';
 import styles from '~/styles/Header.module.scss';
 
 export default function Header() {
-  const { value } = useContext(context);
+  const { value } = useContext(Context);
   return (
     <header>
       <nav>

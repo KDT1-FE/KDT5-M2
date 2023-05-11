@@ -12,6 +12,9 @@ export default function TopBtn({ total, page }) {
       }
     }, {});
     io.observe(target.current);
+    return () => {
+      io.disconnect();
+    };
   }, []);
   return (
     <>
