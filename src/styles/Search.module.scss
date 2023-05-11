@@ -1,0 +1,111 @@
+@import '~/common/vars';
+
+.searchBar {
+  display: flex;
+  gap: 10px;
+  * {
+    //font-size: 15px;
+    border-radius: 0.25rem;
+  }
+  input {
+    flex-grow: 1;
+    border: 1px solid;
+    font-size: 14px;
+    padding: 8px 16px;
+    &:focus {
+      outline: none;
+      border-color: #fee080;
+      box-shadow: 0 0 0 3px rgba(253, 192, 0, 0.25);
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 120px;
+    line-height: 1.5;
+    color: #212529;
+    padding: 10px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+    background-size: 13px;
+    cursor: pointer;
+  }
+
+  button {
+    font-weight: 700;
+    background-color: $omdb-yellow;
+    border: none;
+    width: 120px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+ul {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: $light-gray;
+  min-height: 150px;
+  padding: 20px 30px;
+  overflow: hidden;
+
+  li {
+    flex-shrink: 0;
+
+    figure {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      overflow: hidden;
+
+      figcaption {
+        position: absolute;
+        visibility: hidden;
+        bottom: 0;
+        width: 100%;
+        height: max-content;
+        opacity: 0;
+        transition: opacity 0.3s;
+        padding: 15px 10px;
+        border-radius: 0;
+        div {
+          text-align: center;
+          font-size: 14px;
+        }
+      }
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }
+        figcaption {
+          visibility: visible;
+          backdrop-filter: blur(10px);
+          color: #fff;
+          -webkit-backdrop-filter: blur(10px);
+          background-color: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+.btn {
+  display: block;
+  width: 150px;
+  margin: 20px auto 0;
+  border: none;
+  background-color: $omdb-yellow;
+  &:hover {
+    opacity: 0.7;
+  }
+}

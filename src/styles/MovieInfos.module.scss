@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  gap: 80px;
+  h1 {
+    font-size: 60px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  .poster {
+    position: relative;
+    width: 500px;
+    height: 750px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .details > * {
+    margin-bottom: 20px;
+    .ratings {
+      display: flex;
+      gap: 30px;
+      .rating {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .img {
+        height: 30px;
+      }
+    }
+  }
+}

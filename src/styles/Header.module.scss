@@ -1,0 +1,32 @@
+header {
+  position: fixed;
+  display: flex;
+  top: 0;
+  width: 100vw;
+  height: 70px;
+  padding: 10px 20px;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  nav {
+    display: flex;
+    gap: 5px;
+    font-size: 20px;
+    .logo {
+      margin-right: 20px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+    a:not(:first-child):hover {
+      color: #ca9a00;
+    }
+  }
+  > a {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

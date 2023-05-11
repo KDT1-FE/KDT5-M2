@@ -1,0 +1,29 @@
+.items {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 30px;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 200px;
+    height: 300px;
+    animation: pulse 2s infinite ease-in-out;
+  }
+}
+.item {
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #cbd5e1;
+  }
+
+  50% {
+    background-color: #94a3b8;
+  }
+
+  100% {
+    background-color: #cbd5e1;
+  }
+}

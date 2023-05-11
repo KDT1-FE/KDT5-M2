@@ -1,0 +1,17 @@
+.errorWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(orange, white);
+  h1 {
+    font-size: 50px;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+}

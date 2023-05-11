@@ -1,0 +1,22 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  > div,
+  a {
+    margin-bottom: 10px;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+}
+.profile {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
