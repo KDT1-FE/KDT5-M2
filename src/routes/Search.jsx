@@ -21,7 +21,7 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const [total, setTotal] = useState(0);
-  const [hasNext, setHasNext] = useState(true);
+  const [hasNext, setHasNext] = useState(false);
 
   const { type, page, years = years === 'All years' ? null : years } = options;
 
@@ -30,6 +30,7 @@ export default function Search() {
     let num = parseInt(page) / 10;
     try {
       setIsLoading(true);
+      setLists([]);
       setMore(0);
       setHasNext(true);
       const [movies, total] = await fetchMovies(title, type, years, num);
@@ -45,7 +46,7 @@ export default function Search() {
   }
 
   const getMoreList = useCallback(async () => {
-    let num = parseInt(page / 10) + 1;
+    let num = parseInt(page / 10);
     try {
       setIsClick(true);
       const [movies] = await fetchMovies(
@@ -60,6 +61,16 @@ export default function Search() {
     } catch (err) {
       setHasNext(false);
       alert(err);
+      if (total - lists.length < 10) {
+        const [movies] = await fetchMovies(
+          title,
+          type,
+          years,
+          more + 1,
+          more + 1
+        );
+        setLists([...lists, ...movies]);
+      }
     } finally {
       setIsClick(false);
     }
@@ -75,7 +86,7 @@ export default function Search() {
     const io = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting && more > 0 && hasNext) {
+        if (entry.isIntersecting && lists.length >= 10 && hasNext) {
           getMoreList();
         }
       },
@@ -100,7 +111,7 @@ export default function Search() {
             value={title}
             placeholder="Search for Movies, Series & more"
             onChange={(e) => {
-              setTitle(e.target.value);
+              setTitle(e.target.value.trim());
             }}
             autoFocus
           />
