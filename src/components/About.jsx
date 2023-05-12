@@ -18,7 +18,7 @@ export default function About() {
           <a
             className={styles.blogUrl}
             href="https://velog.io/@cdm1263">
-            Dongmin's Blog
+            Dongmin's Blog!
           </a>
         </div>
         <div className={styles.github}>
@@ -26,7 +26,7 @@ export default function About() {
           <a
             className={styles.githubUrl}
             href="https://github.com/cdm1263">
-            cdm1263's Github
+            cdm1263's Github!
           </a>
         </div>
       </div>
