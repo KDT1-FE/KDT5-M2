@@ -108,6 +108,19 @@ header {
   }
 }
 
+footer {
+  padding: 40px 40px 60px;
+  text-align: center;
+  font-size: 12px;
+  a {
+    color: var(--color-black-20);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 .headline {
   width: 800px;
   margin-bottom: 40px;
@@ -267,5 +280,44 @@ header {
       color: var(--color-black);
       margin: 24px 0 6px;
     }
+  }
+}
+
+.about {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  .photo {
+    width: 230px;
+    height: 230px;
+    margin: 0 auto 20px;
+      background-size: cover;
+
+  }
+  .name {
+    font-size: 40px;
+    font-family: "antipol-variable", sans-serif;
+    margin-bottom: 20px;
+  }
+  p {
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  a {
+    color: var(--color-highlight);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.not-found {
+  margin: 200px 0;
+  h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-black-10);
   }
 }

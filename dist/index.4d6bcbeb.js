@@ -572,16 +572,19 @@ parcelHelpers.defineInteropFlag(exports);
 var _bear = require("./core/bear");
 var _theHeader = require("./components/TheHeader");
 var _theHeaderDefault = parcelHelpers.interopDefault(_theHeader);
+var _theFooter = require("./components/TheFooter");
+var _theFooterDefault = parcelHelpers.interopDefault(_theFooter);
 class App extends (0, _bear.Component) {
     render() {
         const theHeader = new (0, _theHeaderDefault.default)().el;
+        const theFooter = new (0, _theFooterDefault.default)().el;
         const routerView = document.createElement("router-view");
-        this.el.append(theHeader, routerView);
+        this.el.append(theHeader, routerView, theFooter);
     }
 }
 exports.default = App;
 
-},{"./core/bear":"1TTl3","./components/TheHeader":"3Cyq4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1TTl3":[function(require,module,exports) {
+},{"./core/bear":"1TTl3","./components/TheHeader":"3Cyq4","./components/TheFooter":"b3x3c","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1TTl3":[function(require,module,exports) {
 ///// Component /////
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -711,12 +714,12 @@ class TheHeader extends (0, _bear.Component) {
             state: {
                 menus: [
                     {
-                        name: "Search",
+                        name: "Home",
                         href: "#/"
                     },
                     {
                         name: "Movie",
-                        href: "#/movie?id="
+                        href: "#/movie?id=tt0948470"
                     },
                     {
                         name: "About",
@@ -724,6 +727,9 @@ class TheHeader extends (0, _bear.Component) {
                     }
                 ]
             }
+        });
+        window.addEventListener("popstate", ()=>{
+            this.render();
         });
     }
     render() {
@@ -734,9 +740,12 @@ class TheHeader extends (0, _bear.Component) {
       <nav>
         <ul>
           ${this.state.menus.map((menu)=>{
+            const href = menu.href.split("?")[0];
+            const hash = location.hash.split("?")[0];
+            const isActive = href === hash;
             return `
               <li>
-                <a href="${menu.href}">${menu.name}</a>
+                <a class="${isActive ? "active" : ""}" href="${menu.href}">${menu.name}</a>
               </li>
             `;
         }).join("")}
@@ -752,6 +761,49 @@ class TheHeader extends (0, _bear.Component) {
 }
 exports.default = TheHeader;
 
+},{"../core/bear":"1TTl3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b3x3c":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _bear = require("../core/bear");
+var _about = require("../store/about");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+class TheFooter extends (0, _bear.Component) {
+    constructor(){
+        super({
+            tagName: "footer"
+        });
+    }
+    render() {
+        const { github , repository  } = (0, _aboutDefault.default).state;
+        this.el.innerHTML = `
+      <div>
+        <a href="${repository}">
+          GitHub Repository
+        </a>
+      </div>
+      <div>
+      <a href="${github}">
+          ${new Date().getFullYear()}
+          SeungYi
+        </a>
+      </div>
+    `;
+    }
+}
+exports.default = TheFooter;
+
+},{"../core/bear":"1TTl3","../store/about":"4RAJO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4RAJO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _bear = require("../core/bear");
+exports.default = new (0, _bear.Store)({
+    photo: "https://imgur.com/G9gZ44d.png",
+    name: "Lim SeungYi",
+    email: "evxrafter@gmail.com",
+    github: "https://github.com/doitidey",
+    repository: "https://github.com/doitidey/MovieApp"
+});
+
 },{"../core/bear":"1TTl3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3L9mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -760,6 +812,10 @@ var _home = require("./Home");
 var _homeDefault = parcelHelpers.interopDefault(_home);
 var _movie = require("./Movie");
 var _movieDefault = parcelHelpers.interopDefault(_movie);
+var _about = require("./About");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+var _notFoundJs = require("./NotFound.js");
+var _notFoundJsDefault = parcelHelpers.interopDefault(_notFoundJs);
 exports.default = (0, _bear.createRouter)([
     {
         path: "#/",
@@ -768,10 +824,18 @@ exports.default = (0, _bear.createRouter)([
     {
         path: "#/movie",
         component: (0, _movieDefault.default)
+    },
+    {
+        path: "#/about",
+        component: (0, _aboutDefault.default)
+    },
+    {
+        path: ".*",
+        component: (0, _notFoundJsDefault.default)
     }
 ]);
 
-},{"../core/bear":"1TTl3","./Home":"0JSNG","./Movie":"1LTyN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"0JSNG":[function(require,module,exports) {
+},{"../core/bear":"1TTl3","./Home":"0JSNG","./Movie":"1LTyN","./About":"gdB30","./NotFound.js":"4fDiL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"0JSNG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _bear = require("../core/bear");
@@ -859,7 +923,7 @@ var _bear = require("../core/bear");
 const store = new (0, _bear.Store)({
     searchText: "",
     page: 1,
-    pageMax: 1,
+    pageMax: 2,
     movies: [],
     movie: {},
     loading: false,
@@ -874,15 +938,18 @@ const searchMovies = async (page)=>{
         store.state.message = "";
     }
     try {
-        const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=${store.state.searchText}&page=${page}`);
-        const { Search , totalResults , Response , Error  } = await res.json();
-        if (Response === "True") {
-            store.state.movies = [
-                ...store.state.movies,
-                ...Search
-            ];
-            store.state.pageMax = Math.ceil(Number(totalResults) / 10);
-        } else store.state.message = Error;
+        for(i = 0; i < 2; i++){
+            const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=${store.state.searchText}&page=${page}`);
+            const { Search , totalResults , Response , Error  } = await res.json();
+            if (Response === "True") {
+                store.state.movies = [
+                    ...store.state.movies,
+                    ...Search
+                ];
+                store.state.pageMax = Math.ceil(Number(totalResults) / 10);
+            } else store.state.message = Error;
+            page++;
+        }
     } catch (error) {
         console.log("searchMovies error:", error);
     } finally{
@@ -987,7 +1054,7 @@ class MovieListMore extends (0, _bear.Component) {
         this.el.textContent = "View more...";
         this.el.addEventListener("click", async ()=>{
             this.el.classList.add("hide");
-            await (0, _movie.searchMovies)((0, _movieDefault.default).state.page + 1);
+            await (0, _movie.searchMovies)((0, _movieDefault.default).state.page + 2);
         });
     }
 }
@@ -1002,14 +1069,6 @@ var _movieDefault = parcelHelpers.interopDefault(_movie);
 class Movie extends (0, _bear.Component) {
     async render() {
         this.el.classList.add("container", "the-movie");
-        this.el.innerHTML = `
-      <div class="poster skeleton"></div>
-      <div class="specs">
-        <div class="title skeleton"></div>
-        <div class="skeleton"></div>
-        <div class="plot skeleton"></div>
-      </div>
-    `;
         await (0, _movie.getMovieDetails)(history.state.id);
         console.log((0, _movieDefault.default).state.movie);
         const { movie  } = (0, _movieDefault.default).state;
@@ -1061,6 +1120,49 @@ class Movie extends (0, _bear.Component) {
 }
 exports.default = Movie;
 
-},{"../core/bear":"1TTl3","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire0634")
+},{"../core/bear":"1TTl3","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gdB30":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _bear = require("../core/bear");
+var _about = require("../store/about");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
+class About extends (0, _bear.Component) {
+    render() {
+        const { photo , name , email , github , blog  } = (0, _aboutDefault.default).state;
+        this.el.classList.add("about");
+        this.el.innerHTML = `
+      <div 
+        style="background-image: url(${photo});" 
+        class="photo">
+      </div>
+      <p class="name">${name}</p>
+      <p>
+        <a 
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=${email}" 
+          target="_blank">
+          ${email}
+        </a>
+      </p>
+      <p><a href="${github}" target="_blank">GitHub</a></p>
+    `;
+    }
+}
+exports.default = About;
+
+},{"../core/bear":"1TTl3","../store/about":"4RAJO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4fDiL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _bear = require("../core/bear");
+class NotFound extends (0, _bear.Component) {
+    render() {
+        this.el.classList.add("not-found");
+        this.el.innerHTML = `
+      <h1> Sorry Page Not Found. </h1>
+    `;
+    }
+}
+exports.default = NotFound;
+
+},{"../core/bear":"1TTl3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire0634")
 
 //# sourceMappingURL=index.4d6bcbeb.js.map
