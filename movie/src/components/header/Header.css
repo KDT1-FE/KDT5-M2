@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap");
+.inner {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 9;
+  height: 70px;
+  position: relative;
+}
+.logo {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  color: #2651ff;
+  position: absolute;
+  font-size: 20px;
+  top: 20px;
+  bottom: 0;
+  left: 40px;
+  margin: auto;
+  cursor: pointer;
+}
+.logo span {
+  color: #000000;
+}
+.inner .sub-menu {
+  position: absolute;
+  font-size: 16px;
+  top: 15px;
+  left: 200px;
+  display: flex;
+}
+.inner .sub-menu .menu {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  position: absolute;
+  display: flex;
+}
+.inner .sub-menu .menu button {
+  /* margin-right: 10px; */
+  width: 80px;
+  height: 38px;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #2651ff;
+}
+.inner .sub-menu .menu .search {
+  background-color: #2651ff;
+  color: #ffffff;
+}
+.inner .sub-menu .menu .movie,
+.inner .sub-menu .menu .about {
+  background-color: #ffffff;
+}

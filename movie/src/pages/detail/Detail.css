@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap");
+body {
+  position: relative;
+}
+.container .poster {
+  position: absolute;
+  top: 120px;
+  left: 130px;
+}
+.container .poster img {
+  width: 500px;
+  height: 750px;
+  background-color: aqua;
+  margin: 0 70px 0 0;
+  position: absolute;
+  display: block;
+  border-radius: 15px;
+}
+.container .title {
+  width: 770px;
+  height: 70px;
+  margin: 0 0 30px 0;
+  position: absolute;
+  top: 35px;
+  left: 750px;
+}
+.container .title p {
+  font-size: 70px;
+  font-family: Osward, sans-serif;
+  line-height: 70px;
+  word-spacing: 0;
+  color: #000000;
+  font-weight: bold;
+}
+/* .container .sub-title {
+  width: 770px;
+  height: 22.4px;
+  background-color: antiquewhite;
+  
+} */
+.container .sub-title p {
+  width: 770px;
+  height: 22.4px;
+  color: #2651ff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 22.4px;
+  word-spacing: 0;
+  position: absolute;
+  top: 180px;
+  left: 750px;
+}
+.container .sub-title span {
+  margin-right: 5px;
+}
+.container .explains {
+  width: 770px;
+  height: 201.4px;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  line-height: 22.4px;
+  word-spacing: 0px;
+  position: absolute;
+  left: 750px;
+  top: 230px;
+}
+.container .ratings {
+  position: absolute;
+  left: 750px;
+  top: 500px;
+}
+.container .ratings .rating-title {
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  word-spacing: 0px;
+}
+.container .ratings .rating {
+  display: flex;
+}
+.container .ratings .rating .imdb {
+  width: 50px;
+  height: 30px;
+  margin: 10px 10px 10px 0;
+}
+.container .ratings .rating .rotten-tomatoes {
+  width: 85px;
+  height: 30px;
+  margin: 10px;
+}
+.container .ratings .rating .m {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+.container .ratings .rating p {
+  margin-right: 20px;
+}
+.container .ratings .relation span {
+  font-family: Oswald, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  word-spacing: 0px;
+}
+.container .ratings .relation p {
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  word-spacing: 3px;
+}
