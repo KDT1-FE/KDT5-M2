@@ -11,38 +11,8 @@ const Main = () => {
   const { id } = useParams(movie.imdbID);
 
   const changeText = (e) => {
-    // console.log("e:", e);
     setTitle(e.target.value);
   };
-  // const getMovie = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .get(`https://omdbapi.com/?apikey=7035c60c&s=${text}`)
-  //     .then((response) => {
-  //       console.log("response:", response);
-  //       setMovie(response.data.Search);
-  //     });
-  // };
-
-  // async function getMovies(title, year = '', page = 1) {
-  //   const s = `&s=${title}`
-  //   const y = `&y=${year}`
-  //   const p = `&page=${page}`
-  //   try {
-  //     const res = await fetch(`https://omdbapi.com/?apikey=7035c60c${s}${y}${p}`)
-  //     const json = await res.json()
-  //     if (json.Response === 'True') {
-  //       const { Search: movies, totalResults } = json
-  //       return {
-  //         movies,
-  //         totalResults
-  //       }
-  //     }
-  //     return json.Error
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
   async function getMovie() {
     try {
@@ -51,7 +21,6 @@ const Main = () => {
       );
       const json = await res.json();
 
-      console.log("json:", json);
       setMovie(json.Search);
     } catch (error) {
       console.log(error);

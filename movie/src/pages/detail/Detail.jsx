@@ -6,19 +6,6 @@ const Detail = () => {
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
 
-  // async function getMovie(id) {
-  //   const res = await fetch(
-  //     `https://omdbapi.com/?apikey=7035c60c&i=${id}&plot=full`
-  //   );
-  //   const json = await res.json();
-  //   console.log("json:", json);
-  //   if (json.Response === "True") {
-  //     return json;
-  //   }
-  //   return json.Error;
-  // }
-  // console.log(getMovie);
-
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
@@ -29,7 +16,6 @@ const Detail = () => {
     }
     fetchData();
   }, [id]);
-  console.log("movie:", movie);
 
   return (
     <div className="container">
