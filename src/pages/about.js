@@ -1,10 +1,5 @@
-
 function About($container) {
-  this.$container = $container;
-  
-  this.setState = () => {
-    this.render();
-  };
+  this.$container = $container
 
   this.render = () => {
     this.$container.innerHTML = `
@@ -23,11 +18,10 @@ function About($container) {
         </a>
 
       </main>
-    `;
-  };
-  
+    `
+  }
 
-  this.render();
+  this.render()
 }
 
-export default About;
+export default About
