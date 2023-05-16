@@ -1,0 +1,11 @@
+{
+  "name": "omdbapimoviesite-latest",
+  "description": "omdbAPI를 이용하여 만든 영화 검색 사이트",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
