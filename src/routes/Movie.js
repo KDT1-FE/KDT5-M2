@@ -1,6 +1,6 @@
 import { Component } from '~/core/coreComps.js'
 import movieStore, { getMovieDetails } from '~/store/movie.js'
-import noImage from '/static/noimages.png'
+
 
 export default class Movie extends Component {
   constructor() {
