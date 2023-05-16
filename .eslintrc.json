@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "eslintLrecommended", //eslint에서 추천하는 JS 문법을 사용하겠다.
+    "Plugin:prettier/recommended" //prettier의 방식으로 사용하겠다.
+  ],
+  "plugins": ["prettier"]
+}

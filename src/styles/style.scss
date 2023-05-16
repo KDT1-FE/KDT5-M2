@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500;700;800&family=Roboto:wght@100;300;500;900&display=swap');
+@import '~/styles/reset.css';
+@import '~/styles/_variables';
+
+.btn {
+  height: 50px;
+  width: 100px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  font-size: 700;
+  color: $dark_green;
+  background-color: $white_green;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: $primary2;
+  }
+}
+
+.btn_main {
+  color: $dark_green;
+  background-color: $white_green;
+}
+
+.loading {
+  width: 30px;
+  height: 30px;
+  margin: 30px auto;
+  border: 4px solid $primary2;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loader 1s infinite linear;
+}
+
+.loading.hide {
+  display: none;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: $dark_green;
+}
+.skeleton::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(270deg, $dark_green-50, $light_green-30, $dark_green-50);
+  transform: translateX(-100%);
+  animation: skeleton-loader 2s infinite;
+}
+@keyframes skeleton-loader {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+a {
+  font-style: none;
+  text-decoration: none;
+  color: $dark_green;
+  font-weight: 300;
+}
+
+body {
+  background-color: $dark_green;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+  color: $white;
+  text-align: center;
+  border-radius: 50%;
+  //브라우저 상단 네비게이션
+  nav {
+    padding: 20px 40px;
+    background-color: $dark_green-50;
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    display: flex;
+    align-items: end;
+    gap: 40px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 700;
+    .logo {
+      font-size: 20px;
+      color: $primary1;
+      text-decoration: none;
+      span {
+        color: $primary1;
+      }
+    }
+    .nav_menu {
+      ul {
+        display: flex;
+        gap: 14px;
+        li {
+          a {
+            font-size: 19px;
+            text-decoration: none;
+            color: $white-50;
+            &.active {
+              color: $primary2;
+            }
+          }
+        }
+      }
+    }
+    .user {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $dark_green;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 40px;
+      margin: auto;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+  //영화 메인 페이지
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 0;
+    .the_header {
+      margin-bottom: 40px;
+      color: $white;
+      h1 {
+        line-height: 1;
+        font-size: 7rem;
+        font-weight: 800;
+        font-family: 'Kanit', sans-serif;
+        color: $primary1;
+        transition: 0.5s;
+        &:hover {
+          color: $primary2;
+        }
+      }
+      h2 {
+        margin: 0 0 0px 0;
+        font-size: 2rem;
+        font-weight: 500;
+        font-family: 'Kanit', sans-serif;
+        color: $white-30;
+      }
+      p {
+        margin: 0 auto;
+        width: 90%;
+        font-weight: 100;
+        color: $white-30;
+      }
+    }
+    .search {
+      height: 10vh;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 30px;
+      align-items: center;
+      justify-content: center;
+      margin: 0 25px;
+      gap: 20px;
+      .search_bar {
+        flex-grow: 1;
+        height: 50px;
+        padding: 0 25px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        &::placeholder {
+          color: $dark_green-50;
+        }
+        &:focus {
+          outline: none;
+          background-color: $white;
+          border-color: $primary2;
+          box-shadow: 0 0 10px $primary2;
+        }
+        .btn {
+          flex-grow: 1;
+          max-width: 150px;
+        }
+      }
+    }
+    .movie_list {
+      background-color: $dark_green;
+      padding: 20px;
+      border-radius: 5px;
+      .movies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        .movie {
+          width: $width;
+          height: calc($width * 3 / 2);
+          border-radius: 5px;
+          background-color: #cccccc;
+          background-size: cover;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          &:hover::after {
+            content: '';
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: 2px solid $primary1;
+            position: absolute;
+          }
+          .info {
+            width: 100%;
+            padding: 14px;
+            box-sizing: border-box;
+            font-size: 14px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: $light_green-30;
+            backdrop-filter: blur(20px);
+            .movie_title {
+              color: $white;
+              font-size: 16px;
+              font-weight: 500;
+            }
+            .movie_year {
+              color: $primary2;
+              font-weight: 500;
+            }
+          }
+          img {
+            width: 100%;
+            background-size: 200px 100px;
+            background-repeat: repeat;
+          }
+        }
+      }
+      .view_more {
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        display: block;
+      }
+    }
+    .view_more {
+      margin: 20px auto;
+      min-width: 200px;
+      max-width: 300px;
+      text-align: center;
+      display: block;
+    }
+    // .hide {
+    //   display: none;
+    // }
+  }
+  //영화 상세 페에지  container랑 같은 뎁스
+  .the_movie {
+    color: $white-80;
+    display: flex;
+    gap: 70px;
+    .poster {
+      flex-shrink: 0;
+      width: 500px;
+      height: calc(500px * 3 / 2);
+      border-radius: 10px;
+      background-size: cover;
+      background-color: $dark_green;
+    }
+    .specs {
+      flex-grow: 1;
+      letter-spacing: 0.9px;
+      text-align: right;
+      position: relative;
+      top: -13px;
+      .title {
+        font-family: 'Kanit', sans-serif;
+        font-size: 70px;
+        color: $primary1;
+        line-height: 0.9;
+        margin-bottom: 20px;
+        // vertical-align: super;
+      }
+      .title.skeleton {
+        height: 70px;
+      }
+      .labels {
+        margin-bottom: 50px;
+        color: $primary2;
+      }
+      .labels.skeleton {
+        height: 70px;
+      }
+      .plot {
+        font-weight: 100;
+        line-height: 1.5;
+        text-align: justify;
+        margin-bottom: 50px;
+      }
+      .plot.skeleton {
+        height: 300px;
+      }
+      section {
+        text-align: justify;
+        align-items: start;
+        .info {
+          width: 100%;
+          flex-wrap: wrap;
+          padding-right: 30px;
+          color: $primary1;
+          h3 {
+            font-size: 20px;
+            font-family: 'Kanit', sans-serif;
+            margin: 24px 0 6px;
+
+            border-bottom: 0.5px solid $primary1;
+            line-height: 1.6;
+          }
+          div {
+            p {
+              font-weight: 500;
+            }
+            img {
+              height: 20px;
+              padding-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  //About page container랑 같은 뎁스
+  .about {
+    font-family: 'Kanit', sans-serif;
+    .photo {
+      width: 230px;
+      height: 230px;
+      margin: 0 auto 20px;
+      border-radius: 100%;
+      background-size: cover;
+      transition: 0.5s;
+      &:hover {
+        border: 2px solid $primary2;
+        border-radius: 100%;
+      }
+    }
+    .name {
+      color: $white;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    p {
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    a {
+      color: $primary2;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  //브라우저 하단 푸터 영약
+  footer {
+    padding: 40px 40px 60px;
+    text-align: center;
+    a {
+      color: $white_green;
+      font-family: 'Kanit', sans-serif;
+      &:hover {
+        text-decoration: underline;
+        color: $primary2;
+      }
+    }
+  }
+}
