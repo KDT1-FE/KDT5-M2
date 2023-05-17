@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'HalisGRRegularItalic';
+  src: url('/public/fonts/HalisGRRegularItalic.otf') format('opentype');
+  font-style: italic;
+  /* 폰트가 로드되면 swap합니다. */
+  font-display: swap;
+}
+@font-face {
+  font-family: 'HalisGRRegular';
+  src: url('/public/fonts/HalisGRRegular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+body,
+html {
+  font-family: HalisGRRegular, HalisGRRegularItalic, sans-serif;
+  background-color: rgb(239, 239, 239, 0.5);
+  min-height: 100vh;
+}
+#root {
+  width: inherit;
+  height: inherit;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* .plot {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
+  요기 아래는 -webkit을 사용하지 않는 브라우저를 위한 속성
+  line-height: 1.2em; 
+  height: 6em;
+} */
+
+/* https://codepen.io/mandelid/pen/vwKoe */
+.spinner {
+  display: inline-block;
+  transition: opacity linear 0.1s;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(80, 80, 80, 0.5);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  opacity: 0;
+}
+.spinner--active {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+}
