@@ -10,7 +10,7 @@ function bundleFrontApp(cb) {
     {
       mode: process.env.NODE_ENV,
       devtool: process.env.NODE_ENV ? 'source-map' : 'cheap-module-source-map',
-      entry: [path.resolve(__dirname, '../src/index.js')],,
+      entry: [path.resolve(__dirname, '../src/index.js')],
       output: {
         path: path.resolve(__dirname, 'build-ssr'),
         filename: 'server.js',
