@@ -41,10 +41,10 @@ export default function Detail() {
    */
   let movie = useMoviesData()
   movie = movie ? JSON.parse(htmlEntitiesDecoder(movie)) : ''
+
   if (!movie) {
     return <div>Empty plz check the movie</div>
   }
-
   return (
     <Layout>
       <main className="flex md:flex-row md:justify-center md:items-stretch flex-col items-center">
