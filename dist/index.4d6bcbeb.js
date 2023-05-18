@@ -938,7 +938,8 @@ const searchMovies = async (page)=>{
         store.state.message = "";
     }
     try {
-        for(i = 0; i < 2; i++){
+        let i = 0;
+        while(i < 3){
             const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=${store.state.searchText}&page=${page}`);
             const { Search , totalResults , Response , Error  } = await res.json();
             if (Response === "True") {
@@ -948,7 +949,11 @@ const searchMovies = async (page)=>{
                 ];
                 store.state.pageMax = Math.ceil(Number(totalResults) / 10);
             } else store.state.message = Error;
-            page++;
+            function getNextPage(value) {
+                return value + 1; // 새로운 값을 반환
+            }
+            page = getNextPage(page);
+            i++;
         }
     } catch (error) {
         console.log("searchMovies error:", error);
@@ -1163,6 +1168,6 @@ class NotFound extends (0, _bear.Component) {
 }
 exports.default = NotFound;
 
-},{"../core/bear":"1TTl3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire0634")
+},{"../core/bear":"1TTl3","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["e11Rl","gLLPy"], "gLLPy", "parcelRequire6588")
 
 //# sourceMappingURL=index.4d6bcbeb.js.map

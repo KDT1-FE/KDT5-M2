@@ -19,7 +19,8 @@ export const searchMovies = async page => {
     store.state.message = ''
   }
   try {
-    for(i=0; i<2; i++) {
+    let i = 0 
+    while (i<3) {
       const res = await fetch(
         `https://omdbapi.com/?apikey=7035c60c&s=${store.state.searchText}&page=${page}`
       )
@@ -30,7 +31,11 @@ export const searchMovies = async page => {
       } else {
         store.state.message = Error
       }
-      page++
+      function getNextPage(value) {
+        return value + 1; // 새로운 값을 반환
+      }
+      page = getNextPage(page); 
+      i++
     }
   } catch (error) {
     console.log('searchMovies error:', error)
